@@ -1,68 +1,89 @@
 ---
-// A coin drops, lands on a line, the line fills (progress) and the curtain lifts.
-// ~1.4s, first visit per session only, skipped for reduced motion. Click to skip.
+// Homepage intro (~2.3s, every visit; skip with click / Enter / Esc; off for reduced motion).
+// A coin drops, lands on a line, the line becomes the POS terminal outline, the coin becomes
+// the screen glow, then the curtain lifts onto the real terminal.
 ---
 <div class="loader" id="loader" aria-hidden="true">
   <div class="stage">
+    <svg class="draw" viewBox="0 0 200 300" fill="none">
+      <!-- receipt -->
+      <path pathLength="1" class="p p-receipt" d="M62 70 V26 L68 20 L74 26 L80 20 L86 26 L92 20 L98 26 L104 20 L110 26 L116 20 L122 26 L128 20 L134 26 L138 22 V70" />
+      <!-- printer head + body -->
+      <path pathLength="1" class="p p-body" d="M50 70 Q50 58 62 58 H138 Q150 58 150 70 V72 Q172 74 172 98 V262 Q172 290 144 290 H56 Q28 290 28 262 V98 Q28 74 50 72 Z" />
+      <!-- screen -->
+      <rect pathLength="1" class="p p-screen" x="42" y="92" width="116" height="84" rx="10" />
+      <!-- keys -->
+      <g class="keys">
+        <rect x="44" y="192" width="32" height="20" rx="6" /><rect x="84" y="192" width="32" height="20" rx="6" /><rect x="124" y="192" width="32" height="20" rx="6" />
+        <rect x="44" y="220" width="32" height="20" rx="6" /><rect x="84" y="220" width="32" height="20" rx="6" /><rect x="124" y="220" width="32" height="20" rx="6" />
+        <rect class="k-r" x="44" y="248" width="32" height="20" rx="6" /><rect class="k-y" x="84" y="248" width="32" height="20" rx="6" /><rect class="k-g" x="124" y="248" width="32" height="20" rx="6" />
+      </g>
+      <text class="approved" x="100" y="140" text-anchor="middle">APPROVED ✓</text>
+    </svg>
     <span class="coin"></span>
     <span class="track"><span class="fill"></span></span>
-    <span class="mono label">Tosin Lasisi · Product Design</span>
   </div>
+  <span class="label mono">Tosin Lasisi · Product Design</span>
   <span class="skip-pill mono">Skip intro ↵</span>
 </div>
 
 <script is:inline>
   (function () {
     const el = document.getElementById('loader');
-    let seen = false;
-    try { seen = sessionStorage.getItem('loaded') === '1'; } catch {}
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const params = new URLSearchParams(location.search);
-    if (params.has('loader')) seen = false; // ?loader to preview it again
-    if (seen || reduce) { el.remove(); return; }
+    if (reduce) { el.remove(); return; }
     document.documentElement.classList.add('is-loading');
+    let ended = false;
     const done = () => {
+      if (ended) return; ended = true;
       el.classList.add('out');
       document.documentElement.classList.remove('is-loading');
-      try { sessionStorage.setItem('loaded', '1'); } catch {}
-      setTimeout(() => el.remove(), 700);
+      setTimeout(() => el.remove(), 800);
     };
     el.addEventListener('click', done);
     addEventListener('keydown', function k(e) { if (e.key === 'Enter' || e.key === 'Escape') { done(); removeEventListener('keydown', k); } });
-    setTimeout(done, 1500);
+    setTimeout(done, 2400);
   })();
 </script>
 
 <style>
-  .loader {
-    position: fixed; inset: 0; z-index: 100;
-    background: var(--bg);
-    display: grid; place-items: center;
-    transition: clip-path .7s var(--ease);
-    clip-path: inset(0 0 0 0);
-    cursor: pointer;
-  }
+  .loader { position: fixed; inset: 0; z-index: 100; background: var(--bg); display: grid; place-items: center; cursor: pointer;
+    clip-path: inset(0 0 0 0); transition: clip-path .8s var(--ease); }
   .loader.out { clip-path: inset(0 0 100% 0); }
-  .stage { position: relative; width: min(280px, 60vw); height: 160px; }
-  .coin {
-    position: absolute; left: 50%; top: 0; width: 14px; height: 14px; margin-left: -7px;
-    border-radius: 50%; background: var(--coin);
-    box-shadow: 0 0 0 3px color-mix(in oklab, var(--coin) 25%, transparent);
-    animation: drop .55s cubic-bezier(.55, 0, 1, .45) forwards, bounce .35s .55s var(--ease) forwards;
-  }
-  .track { position: absolute; left: 0; right: 0; top: 104px; height: 1px; background: var(--line); }
-  .fill {
-    position: absolute; inset: 0; background: var(--text);
-    transform: scaleX(0); transform-origin: 50% 50%;
-    animation: fill .7s .6s var(--ease) forwards;
-  }
-  .label {
-    position: absolute; left: 0; right: 0; top: 122px; text-align: center; color: var(--muted);
-    opacity: 0; animation: fade .4s .7s forwards;
-  }
-  .skip-pill { position: absolute; left: 50%; bottom: 36px; transform: translateX(-50%); border: 1.5px solid var(--line-strong); border-radius: 99px; padding: 7px 14px; color: var(--muted); opacity: 0; animation: fade .4s .3s forwards; }
-  @keyframes drop { from { transform: translateY(-40px); opacity: 0 } 20% { opacity: 1 } to { transform: translateY(90px) } }
-  @keyframes bounce { 0% { transform: translateY(90px) } 50% { transform: translateY(70px) } 100% { transform: translateY(90px) } }
-  @keyframes fill { to { transform: scaleX(1) } }
-  @keyframes fade { to { opacity: 1 } }
+  .stage { position: relative; width: 200px; height: 300px; }
+
+  /* 1 · coin drops onto the line (0–0.6s) */
+  .coin { position: absolute; left: 50%; top: 0; width: 16px; height: 16px; margin-left: -8px; border-radius: 50%; background: var(--coin);
+    box-shadow: 0 0 0 4px color-mix(in oklab, var(--coin) 22%, transparent), 0 0 24px color-mix(in oklab, var(--coin) 60%, transparent);
+    animation: drop .55s cubic-bezier(.55, 0, 1, .45) forwards, settle .3s .55s var(--ease) forwards, toScreen .55s 1.25s var(--ease) forwards; }
+  @keyframes drop { from { transform: translateY(-60px); opacity: 0; } 20% { opacity: 1; } to { transform: translateY(276px); } }
+  @keyframes settle { 0% { transform: translateY(276px); } 50% { transform: translateY(258px); } 100% { transform: translateY(276px); } }
+  @keyframes toScreen { to { transform: translateY(126px) scale(5); opacity: .0; } }
+
+  /* 2 · line fills (0.55–1.1s) then fades as the body draws */
+  .track { position: absolute; left: 14px; right: 14px; top: 290px; height: 1.5px; background: var(--line); animation: hide .3s 1.15s forwards; }
+  .fill { position: absolute; inset: 0; background: var(--text); transform: scaleX(0); animation: fill .55s .55s var(--ease) forwards; }
+  @keyframes fill { to { transform: scaleX(1); } }
+  @keyframes hide { to { opacity: 0; } }
+
+  /* 3 · terminal outline draws (1.0–2.0s) */
+  .draw { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+  .p { stroke: var(--text); stroke-width: 1.6; stroke-linejoin: round; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; }
+  .p-body { animation: dash .8s 1s var(--ease) forwards; }
+  .p-screen { animation: dash .5s 1.35s var(--ease) forwards, glow .6s 1.7s var(--ease) forwards; }
+  .p-receipt { stroke: var(--muted); animation: dash .5s 1.55s var(--ease) forwards; }
+  @keyframes dash { to { stroke-dashoffset: 0; } }
+  @keyframes glow { to { fill: color-mix(in oklab, var(--text) 92%, var(--bg)); } }
+  .keys rect { fill: none; stroke: var(--line-strong); stroke-width: 1.2; opacity: 0; transform-origin: center; animation: key .3s var(--ease) forwards; }
+  .keys rect:nth-child(1) { animation-delay: 1.45s } .keys rect:nth-child(2) { animation-delay: 1.5s } .keys rect:nth-child(3) { animation-delay: 1.55s }
+  .keys rect:nth-child(4) { animation-delay: 1.6s } .keys rect:nth-child(5) { animation-delay: 1.65s } .keys rect:nth-child(6) { animation-delay: 1.7s }
+  .keys .k-r { animation-delay: 1.75s; fill: #e5484d; stroke: none; } .keys .k-y { animation-delay: 1.8s; fill: #f2c200; stroke: none; } .keys .k-g { animation-delay: 1.85s; fill: #2fb36a; stroke: none; }
+  @keyframes key { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+  .approved { font: 600 9px var(--f-mono); letter-spacing: .2em; fill: #5fe39a; opacity: 0; animation: key .35s 1.95s forwards; }
+
+  .label { position: absolute; left: 0; right: 0; bottom: calc(50% - 190px); text-align: center; color: var(--muted); opacity: 0; animation: key .4s .6s forwards; }
+  .skip-pill { position: absolute; left: 50%; bottom: 36px; transform: translateX(-50%); border: 1.5px solid var(--line-strong); border-radius: 99px; padding: 7px 14px; color: var(--muted); opacity: 0; animation: hidein .4s .3s forwards; }
+  @keyframes hidein { to { opacity: 1; } }
+
+  @media (max-width: 600px) { .stage { transform: scale(.85); } }
 </style>

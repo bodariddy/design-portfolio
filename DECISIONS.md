@@ -49,3 +49,5 @@
 | 2026-11-19 | Weave: pre-launch. Qash: closed beta (shown as status on cards and case studies) | Tosin's input |
 | 2026-11-19 | Placeholder metrics (XX, dimmed) on Roqqu Stocks/Staking/AEON/Contracts; placeholder testimonials section on homepage (data in `data/site.ts`, dashed gold until filled) | Tosin's request. Replace before launch |
 | 2026-11-19 | Removed the +15% team velocity claim everywhere (cards, experience, receipt, EN1 case study, CV) | Tosin's call |
+| 2026-11-19 | Nav: links hidden behind a "Menu" button on all screen sizes; full-screen menu with big numbered links, featured work list, contact and live Lagos clock. Bar keeps logo, theme toggle, Get in touch | Tosin's request |
+| 2026-11-19 | Loaders: homepage intro plays every visit (~2.4s: coin → line → POS terminal draws → APPROVED → wipe); short (~1s) intro on case studies in the project's gradient; all skippable, off for reduced motion | Tosin chose all 3 options |

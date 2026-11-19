@@ -1,0 +1,35 @@
+---
+// Short case-study intro (~1s): project name + a line filling in the project's colours, then a wipe.
+interface Props { name: string; ch: string }
+const { name, ch } = Astro.props;
+---
+<div class="cl" id="case-loader" aria-hidden="true">
+  <div class="cl-in">
+    <span class="mono cl-ch">{ch}</span>
+    <span class="cl-name">{name}</span>
+    <span class="cl-track"><span class="cl-fill"></span></span>
+  </div>
+</div>
+<script is:inline>
+  (function () {
+    const el = document.getElementById('case-loader');
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) { el.remove(); return; }
+    let ended = false;
+    const done = () => { if (ended) return; ended = true; el.classList.add('out'); setTimeout(() => el.remove(), 700); };
+    el.addEventListener('click', done);
+    setTimeout(done, 1050);
+  })();
+</script>
+<style>
+  .cl { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; cursor: pointer; color: var(--on-world);
+    background: radial-gradient(60% 70% at 20% 10%, var(--m2), transparent 65%), radial-gradient(50% 60% at 90% 95%, var(--m3), transparent 65%), var(--m1);
+    clip-path: inset(0 0 0 0); transition: clip-path .7s var(--ease); }
+  .cl.out { clip-path: inset(0 0 100% 0); }
+  .cl-in { display: grid; justify-items: center; gap: 10px; width: min(420px, 80vw); }
+  .cl-ch { opacity: 0; animation: clin .4s .05s forwards; }
+  .cl-name { font-size: clamp(44px, 8vw, 96px); font-weight: 800; letter-spacing: -.055em; line-height: 1; opacity: 0; transform: translateY(14px); animation: clin .5s .1s var(--ease) forwards; }
+  .cl-track { position: relative; width: 100%; height: 2px; margin-top: 14px; background: rgba(255,255,255,.25); border-radius: 2px; overflow: hidden; }
+  .cl-fill { position: absolute; inset: 0; background: linear-gradient(90deg, var(--coin), #fff); transform: scaleX(0); transform-origin: left; animation: clfill .75s .2s var(--ease) forwards; }
+  @keyframes clin { to { opacity: 1; transform: none; } }
+  @keyframes clfill { to { transform: scaleX(1); } }
+</style>
