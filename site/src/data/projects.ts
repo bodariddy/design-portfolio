@@ -45,7 +45,7 @@ export const projects: Project[] = [
     name: 'Qash',
     headline: 'One app for money across borders: 8 currencies, cards and passkeys',
     tags: ['Fintech', 'Payments', 'Cards'],
-    years: '2024 – now',
+    years: 'Closed beta',
     colour: '--w-qash',
     metrics: [
       { value: '101k', label: 'transactions, year one' },
@@ -130,7 +130,7 @@ export const projects: Project[] = [
     name: 'Weave',
     headline: 'A shared account for groups: money the whole group can see',
     tags: ['Fintech', 'Group payments', 'Mobile'],
-    years: '2025 – now',
+    years: 'Pre-launch',
     colour: '--w-weave',
     metrics: [
       { value: '2 of 3', label: 'signatory approvals' },

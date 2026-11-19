@@ -46,3 +46,5 @@
 | 2026-11-19 | Spacing/alignment pass: experience columns fixed-width (rows align), tighter hero→work and statement spacing, contact bottom trimmed, About sections on one 110px rhythm with dividers, mobile terminal gap fixed | Tosin: irregular spacing |
 | 2026-11-19 | Qash full case study from the Qash IMTO Figma (passkeys + face verification, multi-currency accounts & swap, currency themes, cards/bills/rewards); card headline now "8 currencies" | Tosin's Figma link |
 | 2026-11-19 | Weave role: Product Designer, end to end | Tosin's confirmation |
+| 2026-11-19 | Weave: pre-launch. Qash: closed beta (shown as status on cards and case studies) | Tosin's input |
+| 2026-11-19 | Placeholder metrics (XX, dimmed) on Roqqu Stocks/Staking/AEON/Contracts; placeholder testimonials section on homepage (data in `data/site.ts`, dashed gold until filled) | Tosin's request. Replace before launch |

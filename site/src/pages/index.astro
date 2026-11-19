@@ -6,6 +6,7 @@ import WorkGrid from '../components/WorkGrid.astro';
 import Nav from '../components/Nav.astro';
 import Experience from '../components/Experience.astro';
 import Contact from '../components/Contact.astro';
+import Testimonials from '../components/Testimonials.astro';
 import { site } from '../data/site';
 
 const statement = 'I make money feel simple. For six years I’ve designed the moments where people trust a product with their savings, their salary and their business.';
@@ -50,6 +51,7 @@ const email = site.email;
       </div>
     </section>
 
+    <Testimonials />
     <Experience />
 
     <Contact />
@@ -91,6 +93,7 @@ const email = site.email;
     .hero-object { order: 2; }
   }
 
+  :global(.exp) { border-top: 1.5px solid var(--line); padding-top: clamp(56px, 8vw, 110px); }
   .statement { padding-block: clamp(72px, 10vw, 140px); }
   .big { font-size: clamp(32px, 4.6vw, 72px); line-height: 1.05; letter-spacing: -.045em; font-weight: 700; margin: 18px 0 clamp(40px, 5vw, 72px); max-width: 22ch; }
   .big span { color: color-mix(in oklab, var(--text) 18%, var(--bg)); transition: color .35s var(--ease); }
