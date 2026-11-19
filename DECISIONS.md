@@ -32,3 +32,5 @@
 | 2026-11-19 | EN1 placeholder case study from old-site copy and images until the Figma link arrives | Tosin's request |
 | 2026-11-19 | Featured order: **Roqqu → Qash → EN1 → Clink → Glover Lite → Weave** (terminal keys 1–6 follow it) | Tosin's call |
 | 2026-11-19 | Edubanc and STEMuli added as **Other projects**: compact list under the grid, each with its own case study built from the old portfolio | Tosin's request. Keeps the grid focused on fintech |
+| 2026-11-19 | EN1 full case study from Figma: website, configurator, owner app/Kitshop (mobile), admin + ops dashboards + ERP, in-car infotainment, design system. Web Kitshop pending | Tosin's Figma link |
+| 2026-11-19 | Weave case study from Figma: Purses, approvals, collections, landing + store screenshots. Role and metrics TBC | Tosin's Figma link |

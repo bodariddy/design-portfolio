@@ -1,31 +1,45 @@
 ---
 import Case from '../../layouts/Case.astro';
+import Screens from '../../components/case/Screens.astro';
 import Draft from '../../components/case/Draft.astro';
 import { Image } from 'astro:assets';
 
 const img = import.meta.glob<{ default: ImageMetadata }>('../../assets/work/en1/*.webp', { eager: true });
 const s = (n: string) => img[`../../assets/work/en1/${n}.webp`].default;
+
+const mobile = [
+  { src: s('m-config'), alt: 'Mobile configurator choosing paint for EN1 Lite', cap: 'Configure on mobile: paint, wheels, lighting' },
+  { src: s('m-config-success'), alt: 'You joined the waitlist confirmation', cap: 'Configuration ends in a waitlist spot, not a dead end' },
+  { src: s('m-kitshop'), alt: 'Kitshop product detail for alloy rims', cap: 'Kitshop: parts and merch' },
+  { src: s('m-bag'), alt: 'Shopping bag', cap: 'A simple bag' },
+  { src: s('m-buy'), alt: 'Shipping address form', cap: 'Guest checkout, no account needed' },
+  { src: s('m-payment'), alt: 'Payment details form', cap: 'Payment in one screen' },
+  { src: s('m-warranty'), alt: 'Select a warranty plan', cap: 'Warranty plans as a subscription' },
+  { src: s('m-warranty-confirm'), alt: 'Confirm warranty purchase', cap: 'Billing dates up front' },
+  { src: s('m-return'), alt: 'Return an item form', cap: 'Returns and disputes self-serve' },
+];
 ---
 <Case
   slug="en1"
   title="A luxury EV brand’s digital platform, built from zero"
-  sub="Five products and EN1’s first design system, for an electric vehicle company launching in Nigeria."
+  sub="The website, configurator, Kitshop, owner app, admin and operations dashboards, an in-car infotainment system and the design system behind them, for an electric vehicle company launching in Nigeria."
   meta={[
     ['Role', 'Senior Product Designer · Contract'],
     ['Company', 'EN1 Technologies'],
     ['Timeline', 'May 2023 – Jul 2026'],
-    ['Platform', 'Web · Mobile · Admin'],
+    ['Platform', 'Web · Mobile · Admin · In-car'],
   ]}
-  hero={s('hero')}
-  heroAlt="EN1 digital experience on devices"
+  hero={s('landing')}
+  heroAlt="EN1 website hero: Advancing Africa’s electric future"
   tldr={{
-    problem: 'EN1 had a premium electric vehicle and no digital presence: no way to explore, configure or buy, and no internal tools to run orders.',
-    did: 'I designed EN1’s digital platform end to end (website, mobile app, car configurator, Kitshop merchandise store and admin portal) and built the company’s first design system.',
+    problem: 'EN1 had a premium electric vehicle and no digital presence: no way to explore, configure or buy, no way to run orders and production, and nothing inside the car itself.',
+    did: 'I designed EN1’s digital ecosystem end to end, customer-facing and internal, and built the company’s first design system so every product shipped in one consistent language.',
   }}
   results={[
-    { value: '5', label: 'products, concept to launch' },
+    { value: '7', label: 'products designed, 0 → 1' },
     { value: '+15%', label: 'team velocity from the design system' },
     { value: '1st', label: 'design system for EN1' },
+    { value: '3', label: 'surfaces: customer, internal, in-car' },
   ]}
 >
   <section class="wrap sec">
@@ -33,7 +47,7 @@ const s = (n: string) => img[`../../assets/work/en1/${n}.webp`].default;
     <div class="txt" data-reveal>
       <p class="lead">How do you make a luxury digital experience that feels premium and still resonates locally?</p>
       <p>Rising fuel prices were pushing Nigerians towards alternatives, and EN1 wanted to be the electric vehicle name in the country. The audience was affluent, tech-forward and sustainability-conscious. They were motivated by prestige and innovation, and held back by cost and worries about charging and support.</p>
-      <Draft>EN1 screens and deeper decisions are coming from the Figma link. This page is a placeholder.</Draft>
+      <p>EN1 needed more than a website. It needed every touchpoint a car company has: selling the car, configuring it, parts and merchandise, warranty and returns, running orders and production, and the screen inside the car.</p>
     </div>
   </section>
 
@@ -43,19 +57,116 @@ const s = (n: string) => img[`../../assets/work/en1/${n}.webp`].default;
       <li><span class="mono">01</span><h3>Aspirational but approachable</h3><p>Make EV ownership desirable without making it feel out of reach.</p></li>
       <li><span class="mono">02</span><h3>Trust and long-term value</h3><p>Answer the charging, support and cost questions before they become objections.</p></li>
       <li><span class="mono">03</span><h3>A seamless journey</h3><p>Awareness → exploration → purchase → ownership, across every touchpoint.</p></li>
-      <li><span class="mono">04</span><h3>One system, five products</h3><p>Website, app, configurator, Kitshop and admin built in parallel, without drifting apart.</p></li>
+      <li><span class="mono">04</span><h3>One system, many products</h3><p>Customer, internal and in-car products built in parallel, without drifting apart.</p></li>
     </ol>
   </section>
 
-  <div class="wrap duo" data-reveal>
-    <Image src={s('web-1')} alt="EN1 website screens" widths={[700, 1200]} sizes="(max-width: 900px) 94vw, 46vw" />
-    <Image src={s('web-2')} alt="EN1 configurator and mobile screens" widths={[700, 1200]} sizes="(max-width: 900px) 94vw, 46vw" />
-  </div>
+  <section class="decision">
+    <div class="wrap d-head">
+      <p class="mono d-n">Decision 01 · Website</p>
+      <h2>Restraint as luxury</h2>
+      <div class="d-cols" data-reveal>
+        <div><h4 class="mono">Insight</h4><p>Premium car brands sell with space and imagery. Busy interfaces read as cheap.</p></div>
+        <div><h4 class="mono">Decision</h4><p>A minimal, image-led site where the car is the hero: cinematic full-bleed photography, a dark palette with one red accent, and separate product pages for each model (Ultra and Lite) leading straight into the configurator.</p></div>
+        <div><h4 class="mono">Principle</h4><p class="big">The car is the interface</p></div>
+      </div>
+    </div>
+    <div class="wrap duo" data-reveal>
+      <Image src={s('product-ultra')} alt="EN1 Ultra product page" widths={[700, 1200]} sizes="(max-width: 900px) 94vw, 46vw" />
+      <Image src={s('product-lite')} alt="EN1 Lite product page" widths={[700, 1200]} sizes="(max-width: 900px) 94vw, 46vw" />
+    </div>
+  </section>
+
+  <section class="decision">
+    <div class="wrap d-head">
+      <p class="mono d-n">Decision 02 · Configurator</p>
+      <h2>A configurator that builds desire</h2>
+      <div class="d-cols" data-reveal>
+        <div><h4 class="mono">Insight</h4><p>Personalising the car before buying it creates ownership, and gives EN1 real demand data before production.</p></div>
+        <div><h4 class="mono">Decision</h4><p>Real-time paint, wheel and lighting choices for each model, on web and mobile, with a review step that ends in a reservation or waitlist spot.</p></div>
+        <div><h4 class="mono">Principle</h4><p class="big">Ownership before purchase</p></div>
+      </div>
+    </div>
+    <div class="wrap grid3" data-reveal>
+      <Image src={s('config-1')} alt="Configurator, black paint" widths={[600, 1000]} sizes="(max-width: 900px) 94vw, 31vw" />
+      <Image src={s('config-2')} alt="Configurator, teal paint" widths={[600, 1000]} sizes="(max-width: 900px) 94vw, 31vw" />
+      <Image src={s('config-3')} alt="Configurator, red paint" widths={[600, 1000]} sizes="(max-width: 900px) 94vw, 31vw" />
+    </div>
+  </section>
+
+  <section class="decision">
+    <div class="wrap d-head">
+      <p class="mono d-n">Decision 03 · Owner app &amp; Kitshop</p>
+      <h2>Everything after the sale, in your pocket</h2>
+      <div class="d-cols" data-reveal>
+        <div><h4 class="mono">Scope</h4><p>A mobile app for configuring, buying parts and merchandise, warranty plans, order history, returns and disputes.</p></div>
+        <div><h4 class="mono">Decisions</h4><p>Guest checkout so no one is forced to sign up for a cap. Warranty as a clear monthly subscription with billing dates up front. Returns and disputes made self-serve, to keep support for the conversations that need it.</p></div>
+        <div><h4 class="mono">Principle</h4><p class="big">Premium means fewer steps</p></div>
+      </div>
+      <Draft>The Kitshop web designs will be added when you have the link.</Draft>
+    </div>
+    <div class="wrap-bleed"><Screens shots={mobile} label="EN1 mobile app and Kitshop screens" /></div>
+  </section>
+
+  <section class="decision">
+    <div class="wrap d-head">
+      <p class="mono d-n">Decision 04 · Internal tools</p>
+      <h2>Internal tools are product too</h2>
+      <div class="d-cols" data-reveal>
+        <div><h4 class="mono">Scope</h4><p>An admin portal (orders, bulk orders, products, warranty claims, users and roles, blog, careers) plus production, finance and logistics dashboards and a procurement ERP for downtime and maintenance.</p></div>
+        <div><h4 class="mono">Decision</h4><p>Designed to the same standard as customer products: consistent tables and filters, clear status chips, empty states that say what to do next, and role-based access so each team sees only what it needs.</p></div>
+        <div><h4 class="mono">Principle</h4><p class="big">Ops speed is customer speed</p></div>
+      </div>
+    </div>
+    <div class="wrap duo" data-reveal>
+      <Image src={s('a-dashboard')} alt="Admin dashboard" widths={[700, 1200]} sizes="(max-width: 900px) 94vw, 46vw" />
+      <Image src={s('dash-production')} alt="Production dashboard" widths={[700, 1200]} sizes="(max-width: 900px) 94vw, 46vw" />
+    </div>
+    <div class="wrap grid3" data-reveal>
+      <Image src={s('a-orders')} alt="Admin orders" widths={[600, 1000]} sizes="(max-width: 900px) 94vw, 31vw" />
+      <Image src={s('a-products')} alt="Admin products grid" widths={[600, 1000]} sizes="(max-width: 900px) 94vw, 31vw" />
+      <Image src={s('a-claims')} alt="Warranty claims" widths={[600, 1000]} sizes="(max-width: 900px) 94vw, 31vw" />
+      <Image src={s('a-bulk')} alt="New bulk order" widths={[600, 1000]} sizes="(max-width: 900px) 94vw, 31vw" />
+      <Image src={s('a-roles')} alt="User roles" widths={[600, 1000]} sizes="(max-width: 900px) 94vw, 31vw" />
+      <Image src={s('erp-analytics')} alt="Procurement ERP downtime analytics" widths={[600, 1000]} sizes="(max-width: 900px) 94vw, 31vw" />
+    </div>
+  </section>
+
+  <section class="decision">
+    <div class="wrap d-head">
+      <p class="mono d-n">Decision 05 · In-car</p>
+      <h2>Designing for a driver doing 57 km/h</h2>
+      <div class="d-cols" data-reveal>
+        <div><h4 class="mono">Insight</h4><p>Inside the car, attention is the scarcest resource. Every glance away from the road has a cost.</p></div>
+        <div><h4 class="mono">Decision</h4><p>An infotainment system with two clear states: parked and in motion. Speed, gear and the car’s surroundings sit on the left. Navigation is always visible on the right. One persistent bar holds climate, media and calls.</p></div>
+        <div><h4 class="mono">Principle</h4><p class="big">Glanceable or nothing</p></div>
+      </div>
+      <Draft>Confirm the infotainment system was your work, and whether it shipped.</Draft>
+    </div>
+    <div class="wrap duo" data-reveal>
+      <Image src={s('info-parked')} alt="Infotainment, parked state" widths={[700, 1200]} sizes="(max-width: 900px) 94vw, 46vw" />
+      <Image src={s('info-motion')} alt="Infotainment, in motion" widths={[700, 1200]} sizes="(max-width: 900px) 94vw, 46vw" />
+    </div>
+  </section>
+
+  <section class="decision">
+    <div class="wrap d-head">
+      <p class="mono d-n">Decision 06 · Design system</p>
+      <h2>One system across every surface</h2>
+      <div class="d-cols" data-reveal>
+        <div><h4 class="mono">Insight</h4><p>Seven products built in parallel would drift apart fast.</p></div>
+        <div><h4 class="mono">Decision</h4><p>Build EN1’s first design system early: typography, colour, brand marks, icon sets and components shared across web, mobile, admin and in-car.</p></div>
+        <div><h4 class="mono">Result</h4><p class="big">+15% team velocity</p></div>
+      </div>
+    </div>
+    <div class="wrap wide" data-reveal><Image src={s('ds')} alt="EN1 design system: typography, font weight, brand colour and palette" widths={[900, 1600]} sizes="(max-width: 1440px) 94vw, 1360px" /></div>
+  </section>
 
   <section class="wrap sec">
-    <p class="side mono">Coming next</p>
+    <p class="side mono">Reflection</p>
     <div class="txt" data-reveal>
-      <p>Key decisions on the minimal, image-led website, the real-time car configurator, the Kitshop, the admin portal and the design system, with screens from Figma.</p>
+      <p class="lead">In an emerging market, “premium” is about trust and relevance as much as polish.</p>
+      <p>EN1 taught me to adapt global luxury standards to local context, something that runs through all my work. It also showed me that a design system pays off fastest when it starts on day one, not after the third product.</p>
     </div>
   </section>
 </Case>

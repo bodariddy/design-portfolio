@@ -1,0 +1,117 @@
+---
+import Case from '../../layouts/Case.astro';
+import Screens from '../../components/case/Screens.astro';
+import Draft from '../../components/case/Draft.astro';
+import { Image } from 'astro:assets';
+
+const img = import.meta.glob<{ default: ImageMetadata }>('../../assets/work/weave/*.webp', { eager: true });
+const s = (n: string) => img[`../../assets/work/weave/${n}.webp`].default;
+
+const start = [
+  { src: s('invite'), alt: 'You have been invited to Harmony Court', cap: 'Most people arrive by invite' },
+  { src: s('passkey'), alt: 'Welcome back, sign in with passkey', cap: 'Passkey sign-in: one tap, no code' },
+  { src: s('create'), alt: 'Create a purse: what should we call it', cap: 'Create a Purse in a few steps' },
+  { src: s('home'), alt: 'Home showing Harmony Court purse', cap: 'Home is your purses' },
+  { src: s('purse'), alt: 'Purse detail with balance and actions', cap: 'Fund, pay a bill, pay out' },
+];
+const approve = [
+  { src: s('review'), alt: 'Review payment for gate repair with signatories', cap: 'Every payout shows who has approved' },
+  { src: s('approved'), alt: 'You approved this payment', cap: 'Rule: 2 of 3 signatories' },
+  { src: s('bill-approval'), alt: 'Electricity bill sent for approval', cap: 'Even bills wait for the rule' },
+  { src: s('payout'), alt: 'Payout enter amount keypad', cap: 'Payouts with the balance always visible' },
+  { src: s('activity'), alt: 'History of transactions', cap: 'Everyone sees every payment' },
+];
+const collect = [
+  { src: s('raise'), alt: 'Choose a type of collection', cap: 'Simple, flat, goal or custom collections' },
+  { src: s('pool-goal'), alt: 'Pool goal progress for fixing the estate road', cap: 'Goals with live progress and contributors' },
+  { src: s('pay-due'), alt: 'Pay a due via bank transfer', cap: 'Pay by transfer: it’s matched automatically' },
+  { src: s('dark-you'), alt: 'Profile settings in dark mode', cap: 'Full dark mode' },
+];
+---
+<Case
+  slug="weave"
+  title="Money the whole group can see"
+  sub="Weave is a shared account for groups (estates, families, clubs and projects) that collect, approve and spend money together."
+  meta={[
+    ['Role', 'Product Designer'],
+    ['Product', 'Weave · mobile app'],
+    ['Timeline', '2025 – present'],
+    ['Platform', 'iOS · Android · Web'],
+  ]}
+  hero={s('landing')}
+  heroAlt="Weave landing page: Money the whole group can see"
+  tldr={{
+    problem: 'Group money in Nigeria usually lives in one person’s personal account: estate dues, family contributions, club funds. Nobody else can see the balance, and every payment depends on trusting that one person.',
+    did: 'I designed Weave end to end: Purses (shared accounts with their own account numbers), pools for different purposes, collections, multi-signatory approvals, bill payments and payouts, plus the brand, the design system and the store screenshots.',
+  }}
+  results={[
+    { value: '2 of 3', label: 'signatory rules before money moves' },
+    { value: '4', label: 'collection types' },
+    { value: '100%', label: 'of payments visible to members' },
+  ]}
+>
+  <section class="wrap sec">
+    <p class="side mono">01 · Context</p>
+    <div class="txt" data-reveal>
+      <p class="lead">“Send it to my account, I’ll keep it for the group.”</p>
+      <p>That sentence runs a lot of Nigerian community finance. It works until someone asks where the money went. Weave turns that trust into a feature: one shared Purse with its own account number, where everyone sees every payment in and out, and no one spends alone.</p>
+      <Draft>Please confirm your role (solo designer or team?), timeline, launch status and any metrics.</Draft>
+    </div>
+  </section>
+
+  <div class="wrap grid3" data-reveal>
+    <Image src={s('store-1')} alt="Stay in control" widths={[500, 900]} sizes="(max-width: 900px) 94vw, 31vw" />
+    <Image src={s('store-3')} alt="No one spends alone" widths={[500, 900]} sizes="(max-width: 900px) 94vw, 31vw" />
+    <Image src={s('store-4')} alt="Collect without friction" widths={[500, 900]} sizes="(max-width: 900px) 94vw, 31vw" />
+  </div>
+
+  <div class="wrap wide" data-reveal><Image src={s('how-it-works')} alt="How it works: create a Purse, add your people, collect contributions, pay with sign-off" widths={[900, 1600]} sizes="(max-width: 1440px) 94vw, 1360px" /><p class="cap">From group chat to group account in minutes: the landing page I designed</p></div>
+
+  <section class="decision">
+    <div class="wrap d-head">
+      <p class="mono d-n">Decision 01</p>
+      <h2>A Purse, not a personal account</h2>
+      <div class="d-cols" data-reveal>
+        <div><h4 class="mono">Insight</h4><p>The problem wasn’t moving money. It was that group money had no home of its own.</p></div>
+        <div><h4 class="mono">Decision</h4><p>Every group gets a Purse with its own account number, which can hold several pools (dues, a road repair, a bill) each with its own balance. People join by invite and sign in with a passkey.</p></div>
+        <div><h4 class="mono">Principle</h4><p class="big">Give group money a home</p></div>
+      </div>
+    </div>
+    <div class="wrap-bleed"><Screens shots={start} label="Weave onboarding, home and purse screens" /></div>
+  </section>
+
+  <section class="decision">
+    <div class="wrap d-head">
+      <p class="mono d-n">Decision 02</p>
+      <h2>No one spends alone</h2>
+      <div class="d-cols" data-reveal>
+        <div><h4 class="mono">Insight</h4><p>Transparency after the fact isn’t enough. Groups want a say before money leaves.</p></div>
+        <div><h4 class="mono">Decision</h4><p>Signatory rules (e.g. 2 of 3) on every payout and bill. Each request shows the payee, the pool, the quote attached and who has approved so far. Then a shared history where everyone sees every payment.</p></div>
+        <div><h4 class="mono">Principle</h4><p class="big">Trust, made visible</p></div>
+      </div>
+    </div>
+    <div class="wrap-bleed"><Screens shots={approve} label="Weave approvals, payouts and history screens" /></div>
+  </section>
+
+  <section class="decision">
+    <div class="wrap d-head">
+      <p class="mono d-n">Decision 03</p>
+      <h2>Collecting without chasing</h2>
+      <div class="d-cols" data-reveal>
+        <div><h4 class="mono">Insight</h4><p>Organisers spend more time chasing contributions than spending them.</p></div>
+        <div><h4 class="mono">Decision</h4><p>Four collection types (simple, flat, goal and custom). Goals show live progress and contributors. Paying a due by bank transfer is matched to the member automatically. Admins can nudge instead of chase.</p></div>
+        <div><h4 class="mono">Principle</h4><p class="big">Every transfer just lands</p></div>
+      </div>
+    </div>
+    <div class="wrap-bleed"><Screens shots={collect} label="Weave collections and payments screens" /></div>
+  </section>
+
+  <section class="wrap sec">
+    <p class="side mono">Reflection</p>
+    <div class="txt" data-reveal>
+      <p class="lead">Designing for a group is designing for trust between people, not just between a user and an app.</p>
+      <p>Every feature in Weave had to work for the organiser and for the most sceptical member at the same time. That is where approvals, shared history and the tone of every status message came from.</p>
+      <Draft>Draft reflection. Edit it so it sounds like you.</Draft>
+    </div>
+  </section>
+</Case>

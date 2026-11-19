@@ -64,11 +64,11 @@ export const projects: Project[] = [
     years: '2023 – 2026',
     colour: '--w-en1',
     metrics: [
-      { value: '5', label: 'products, 0 → 1' },
+      { value: '7', label: 'products, 0 → 1' },
       { value: '+15%', label: 'team velocity' },
     ],
     receipt: [
-      ['TOUCHPOINTS', '5'],
+      ['PRODUCTS', '7'],
       ['DESIGN SYSTEM', 'NEW'],
       ['TEAM VELOCITY', '+15%'],
       ['PLATFORMS', 'WEB/APP'],
@@ -119,12 +119,19 @@ export const projects: Project[] = [
     device: 'phone',
     ch: 6,
     name: 'Weave',
-    headline: 'Case study coming soon',
-    tags: ['TBC'],
-    years: '—',
+    headline: 'A shared account for groups: money the whole group can see',
+    tags: ['Fintech', 'Group payments', 'Mobile'],
+    years: '2025 – now',
     colour: '--w-weave',
-    metrics: [{ value: 'Soon', label: 'in progress' }],
-    receipt: [['STATUS', 'PENDING']],
+    metrics: [
+      { value: '2 of 3', label: 'signatory approvals' },
+      { value: '4', label: 'collection types' },
+    ],
+    receipt: [
+      ['PURSE', 'SHARED'],
+      ['APPROVALS', '2 OF 3'],
+      ['VISIBILITY', '100%'],
+    ],
   },
   {
     slug: 'edubanc',

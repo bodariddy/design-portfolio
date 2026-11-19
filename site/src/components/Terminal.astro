@@ -72,10 +72,12 @@ const receiptData = JSON.stringify(projects.map(p => ({ ch: p.ch, name: p.name, 
         <div class="s-row"><span class="s-small">₦1,850,000 → $1,250</span><span class="s-small conv">Converted ✓</span></div>
       </section>
 
-      <!-- CH6 Weave: test pattern -->
+      <!-- CH6 Weave: group payout waits for approvals -->
       <section class="ch" data-for="6">
-        <div class="bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-        <p class="s-label center">Weave · case study coming soon</p>
+        <p class="s-label">Harmony Court · Purse</p>
+        <p class="s-big" data-count="482500" data-prefix="₦">₦0</p>
+        <div class="appr"><span>Gate repair · ₦185,000</span><span class="sig"><i></i><i></i><i></i></span></div>
+        <div class="s-row"><span class="s-small">Rule: 2 of 3 signatories</span><span class="s-small conv">Approved ✓</span></div>
       </section>
 
       <!-- CH00 hidden game: collect coins -->
@@ -336,6 +338,12 @@ const receiptData = JSON.stringify(projects.map(p => ({ ch: p.ch, name: p.name, 
   .play .svc i { animation: pop .4s var(--ease) forwards; }
   .play .svc i:nth-child(2) { animation-delay: .08s } .play .svc i:nth-child(3) { animation-delay: .16s } .play .svc i:nth-child(4) { animation-delay: .24s } .play .svc i:nth-child(5) { animation-delay: .32s } .play .svc i:nth-child(6) { animation-delay: .4s }
   .toast-soft { background: #b9a6ff; color: #1b1240; }
+  /* CH6 Weave */
+  .appr { display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,.07); border-radius: 8px; padding: 7px 9px; font-size: 10px; }
+  .sig { display: inline-flex; gap: 4px; }
+  .sig i { width: 9px; height: 9px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,.4); }
+  .play .sig i:nth-child(1) { animation: sigon .3s .5s forwards; } .play .sig i:nth-child(2) { animation: sigon .3s 1.1s forwards; }
+  @keyframes sigon { to { background: #5fe39a; border-color: #5fe39a; } }
   /* CH5 Qash */
   .vcard { position: relative; height: 54px; border-radius: 9px; padding: 7px 9px; background: linear-gradient(135deg, #6c4ee0, #2b1a73); display: grid; grid-template-columns: 1fr auto; align-content: space-between; color: #fff; transform: translateX(110%) rotate(6deg); }
   .vcard .mono { font-size: 7.5px; opacity: .85; } .vcard b { font: italic 800 11px var(--f-display); text-align: right; grid-column: 2; grid-row: 2; }

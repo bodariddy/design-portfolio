@@ -4,8 +4,9 @@ import { Image } from 'astro:assets';
 import roqquCover from '../assets/work/roqqu/home.webp';
 import gloverCover from '../assets/work/glover-lite/dashboard-final.webp';
 import clinkCover from '../assets/work/clink/links.webp';
-import en1Cover from '../assets/work/en1/web-1.webp';
-const covers: Record<string, ImageMetadata> = { roqqu: roqquCover, 'glover-lite': gloverCover, clink: clinkCover, en1: en1Cover };
+import en1Cover from '../assets/work/en1/a-dashboard.webp';
+import weaveCover from '../assets/work/weave/home.webp';
+const covers: Record<string, ImageMetadata> = { roqqu: roqquCover, 'glover-lite': gloverCover, clink: clinkCover, en1: en1Cover, weave: weaveCover };
 ---
 <section id="work" class="work" aria-labelledby="work-title">
   <div class="wrap work-head">
@@ -130,7 +131,7 @@ const covers: Record<string, ImageMetadata> = { roqqu: roqquCover, 'glover-lite'
   .t-metrics { display: flex; gap: 20px; flex-wrap: wrap; font-size: 14px; }
   .t-metrics b { font-size: 22px; letter-spacing: -.03em; }
   .t-tags { opacity: .7; font-size: 11px; }
-  .soon:last-child .d-screen { background: repeating-linear-gradient(90deg, #e9e4da 0 14.28%, #f2a900 14.28% 28.56%, #0b8086 28.56% 42.84%, #1d5c45 42.84% 57.12%, #c92f63 57.12% 71.4%, #b9512b 71.4% 85.68%, #2b36c9 85.68% 100%); color: #111; }
+  .soon.never .d-screen { background: repeating-linear-gradient(90deg, #e9e4da 0 14.28%, #f2a900 14.28% 28.56%, #0b8086 28.56% 42.84%, #1d5c45 42.84% 57.12%, #c92f63 57.12% 71.4%, #b9512b 71.4% 85.68%, #2b36c9 85.68% 100%); color: #111; }
 
   .others { padding-top: clamp(40px, 6vw, 72px); }
   .others h3 { font-weight: 400; margin: 0 0 12px; }
