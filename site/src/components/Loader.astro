@@ -1,0 +1,65 @@
+---
+// A coin drops, lands on a line, the line fills (progress) and the curtain lifts.
+// ~1.4s, first visit per session only, skipped for reduced motion. Click to skip.
+---
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="stage">
+    <span class="coin"></span>
+    <span class="track"><span class="fill"></span></span>
+    <span class="mono label">Tosin Lasisi · Product Design</span>
+  </div>
+</div>
+
+<script is:inline>
+  (function () {
+    const el = document.getElementById('loader');
+    let seen = false;
+    try { seen = sessionStorage.getItem('loaded') === '1'; } catch {}
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const params = new URLSearchParams(location.search);
+    if (params.has('loader')) seen = false; // ?loader to preview it again
+    if (seen || reduce) { el.remove(); return; }
+    document.documentElement.classList.add('is-loading');
+    const done = () => {
+      el.classList.add('out');
+      document.documentElement.classList.remove('is-loading');
+      try { sessionStorage.setItem('loaded', '1'); } catch {}
+      setTimeout(() => el.remove(), 700);
+    };
+    el.addEventListener('click', done);
+    setTimeout(done, 1500);
+  })();
+</script>
+
+<style>
+  .loader {
+    position: fixed; inset: 0; z-index: 100;
+    background: var(--bg);
+    display: grid; place-items: center;
+    transition: clip-path .7s var(--ease);
+    clip-path: inset(0 0 0 0);
+    cursor: pointer;
+  }
+  .loader.out { clip-path: inset(0 0 100% 0); }
+  .stage { position: relative; width: min(280px, 60vw); height: 160px; }
+  .coin {
+    position: absolute; left: 50%; top: 0; width: 14px; height: 14px; margin-left: -7px;
+    border-radius: 50%; background: var(--coin);
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--coin) 25%, transparent);
+    animation: drop .55s cubic-bezier(.55, 0, 1, .45) forwards, bounce .35s .55s var(--ease) forwards;
+  }
+  .track { position: absolute; left: 0; right: 0; top: 104px; height: 1px; background: var(--line); }
+  .fill {
+    position: absolute; inset: 0; background: var(--text);
+    transform: scaleX(0); transform-origin: 50% 50%;
+    animation: fill .7s .6s var(--ease) forwards;
+  }
+  .label {
+    position: absolute; left: 0; right: 0; top: 122px; text-align: center; color: var(--muted);
+    opacity: 0; animation: fade .4s .7s forwards;
+  }
+  @keyframes drop { from { transform: translateY(-40px); opacity: 0 } 20% { opacity: 1 } to { transform: translateY(90px) } }
+  @keyframes bounce { 0% { transform: translateY(90px) } 50% { transform: translateY(70px) } 100% { transform: translateY(90px) } }
+  @keyframes fill { to { transform: scaleX(1) } }
+  @keyframes fade { to { opacity: 1 } }
+</style>

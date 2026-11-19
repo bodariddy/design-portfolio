@@ -1,0 +1,81 @@
+---
+import { projects } from '../data/projects';
+---
+<section id="work" class="work" aria-labelledby="work-title">
+  <div class="wrap work-head">
+    <h2 id="work-title">Selected <span class="serif">work</span></h2>
+    <p class="mono muted">05 case studies · 2019 — now</p>
+  </div>
+
+  <ul class="grid" role="list">
+    {projects.map((p, i) => (
+      <li class={`tile ${i === 0 ? 'tile-lg' : ''}`} style={`--world: var(${p.colour})`}>
+        <a href={p.slug === 'weave' ? '#work' : `/work/${p.slug}`} aria-label={`${p.name}: ${p.headline}`}>
+          <div class="t-top mono">
+            <span>CH {String(p.ch).padStart(2, '0')}</span>
+            <span>{p.years}</span>
+          </div>
+
+          <div class="t-media" aria-hidden="true">
+            <div class="ph">
+              <span class="mono">[ {p.name} screens: from Figma ]</span>
+            </div>
+          </div>
+
+          <div class="t-body">
+            <h3>{p.name} <span class="arrow">↗</span></h3>
+            <p>{p.headline}</p>
+            <div class="t-metrics">
+              {p.metrics.map(m => <span><b>{m.value}</b> {m.label}</span>)}
+            </div>
+            <div class="t-tags mono">{p.tags.join(' · ')}</div>
+          </div>
+        </a>
+      </li>
+    ))}
+  </ul>
+</section>
+
+<style>
+  .work { padding-block: clamp(64px, 10vw, 140px) 0; }
+  .work-head { display: flex; justify-content: space-between; align-items: end; gap: 16px; margin-bottom: 28px; flex-wrap: wrap; }
+  .work-head h2 { margin: 0; font-size: clamp(44px, 8vw, 120px); line-height: .9; letter-spacing: -.05em; font-weight: 800; }
+  .work-head .serif { font-weight: 400; letter-spacing: -.02em; }
+
+  /* Full-bleed, edge-to-edge grid (ref: Ben Doan) */
+  .grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, 1fr); }
+  .tile { grid-column: span 2; position: relative; background: var(--world); color: var(--on-world); min-height: 520px; transition: filter .45s var(--ease), opacity .45s var(--ease); }
+  .tile-lg { grid-column: span 3; }
+  .tile:nth-child(2) { grid-column: span 3; }
+  .tile a { position: absolute; inset: 0; display: flex; flex-direction: column; padding: 22px; text-decoration: none; }
+
+  /* Hover spotlight: others dim */
+  @media (hover: hover) {
+    .grid:hover .tile:not(:hover) { filter: saturate(.25) brightness(.55); }
+    .tile:hover .arrow { transform: translate(4px, -4px); }
+    .tile:hover .ph { transform: translateY(-8px) rotate(-1.5deg); }
+  }
+
+  .t-top { display: flex; justify-content: space-between; opacity: .8; }
+  .t-media { flex: 1; display: grid; place-items: center; padding: 26px 8%; }
+  .ph {
+    width: min(100%, 420px); aspect-ratio: 16 / 10; border-radius: 14px;
+    border: 1.5px dashed color-mix(in oklab, var(--on-world) 45%, transparent);
+    background: color-mix(in oklab, var(--on-world) 8%, transparent);
+    display: grid; place-items: center; text-align: center; padding: 12px;
+    transition: transform .5s var(--ease);
+  }
+  .ph span { opacity: .7; font-size: 11px; }
+
+  .t-body h3 { margin: 0; font-size: clamp(30px, 3.4vw, 48px); letter-spacing: -.04em; line-height: 1; font-weight: 800; }
+  .arrow { display: inline-block; font-weight: 400; transition: transform .3s var(--ease); }
+  .t-body p { margin: 8px 0 14px; font-size: 17px; max-width: 32ch; opacity: .92; }
+  .t-metrics { display: flex; gap: 18px; flex-wrap: wrap; font-size: 14px; }
+  .t-metrics b { font-size: 20px; letter-spacing: -.02em; }
+  .t-tags { margin-top: 14px; opacity: .7; font-size: 11px; }
+
+  @media (max-width: 900px) {
+    .grid { grid-template-columns: 1fr; }
+    .tile, .tile-lg, .tile:nth-child(2) { grid-column: auto; min-height: 460px; }
+  }
+</style>

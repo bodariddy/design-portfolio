@@ -1,0 +1,96 @@
+@import '@fontsource-variable/bricolage-grotesque';
+@import '@fontsource/instrument-serif/400.css';
+@import '@fontsource/instrument-serif/400-italic.css';
+@import '@fontsource-variable/jetbrains-mono';
+
+/* ───────── Tokens ─────────
+   Light = "paper", Dark = "ink". Theme follows the system;
+   [data-theme] on <html> overrides it when the visitor uses the switch. */
+:root {
+  --bg: #f3eee4;
+  --surface: #fbf8f2;
+  --text: #171614;
+  --muted: #6a655c;
+  --line: color-mix(in oklab, var(--text) 14%, transparent);
+  --line-strong: color-mix(in oklab, var(--text) 75%, transparent);
+  --coin: #f2a900;           /* the "coin": loader, accents, cursor */
+  --screen: #0f1110;         /* terminal screen */
+  --screen-text: #e9f5ec;
+  --paper: #fffdf8;          /* receipt */
+
+  /* Project colour worlds, inspired by Lagos */
+  --w-roqqu: #2b36c9;   /* adire indigo */
+  --w-en1: #1d5c45;     /* palm */
+  --w-clink: #0b8086;   /* lagoon */
+  --w-glover: #c92f63;  /* hibiscus */
+  --w-weave: #b9512b;   /* laterite */
+  --on-world: #fbf7ee;
+
+  --f-display: 'Bricolage Grotesque Variable', system-ui, sans-serif;
+  --f-serif: 'Instrument Serif', Georgia, serif;
+  --f-mono: 'JetBrains Mono Variable', ui-monospace, monospace;
+
+  --gutter: clamp(16px, 4vw, 48px);
+  --ease: cubic-bezier(.2, .7, .1, 1);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --bg: #131211;
+    --surface: #1c1a18;
+    --text: #f1ebe0;
+    --muted: #9b958a;
+    --screen: #070807;
+    --paper: #f4efe4;
+    --w-roqqu: #3a46e0;
+    --w-en1: #23704f;
+    --w-clink: #0f9096;
+    --w-glover: #d8396e;
+    --w-weave: #c95c33;
+    color-scheme: dark;
+  }
+}
+:root[data-theme='dark'] {
+  --bg: #131211;
+  --surface: #1c1a18;
+  --text: #f1ebe0;
+  --muted: #9b958a;
+  --screen: #070807;
+  --paper: #f4efe4;
+  --w-roqqu: #3a46e0;
+  --w-en1: #23704f;
+  --w-clink: #0f9096;
+  --w-glover: #d8396e;
+  --w-weave: #c95c33;
+  color-scheme: dark;
+}
+
+/* ───────── Base ───────── */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--f-display);
+  font-size: 17px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color .4s var(--ease), color .4s var(--ease);
+  overflow-x: hidden;
+}
+a { color: inherit; }
+::selection { background: var(--coin); color: #171614; }
+:focus-visible { outline: 2px solid var(--coin); outline-offset: 3px; border-radius: 4px; }
+img { max-width: 100%; display: block; }
+
+.mono { font-family: var(--f-mono); font-size: 12px; letter-spacing: .04em; text-transform: uppercase; }
+.serif { font-family: var(--f-serif); font-weight: 400; font-style: italic; letter-spacing: 0; }
+.muted { color: var(--muted); }
+.wrap { padding-inline: var(--gutter); max-width: 1440px; margin-inline: auto; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
