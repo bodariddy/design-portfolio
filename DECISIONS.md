@@ -35,3 +35,4 @@
 | 2026-11-19 | EN1 full case study from Figma: website, configurator, owner app/Kitshop (mobile), admin + ops dashboards + ERP, in-car infotainment, design system. Web Kitshop pending | Tosin's Figma link |
 | 2026-11-19 | Weave case study from Figma: Purses, approvals, collections, landing + store screenshots. Role and metrics TBC | Tosin's Figma link |
 | 2026-11-19 | Footer glow (ref: Wikicasts), toned down per feedback: dark = low single-hue violet haze at the bottom edge; light = faint white halo, no colour; visible "Skip intro" pill on the loader (ref: Cinetic) | Tosin liked Wikicasts' bottom gradient |
+| 2026-11-19 | **Primary brand colour = coin gold `#F2A900`** (logo dot, loader, active keys, favicon, selection). Footer haze uses it at ~15–20% opacity in dark; light mode keeps only a faint white halo | Tosin asked to tone the gradient down and use the site's primary colour |
