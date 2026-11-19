@@ -3,38 +3,25 @@ import Base from '../layouts/Base.astro';
 import Loader from '../components/Loader.astro';
 import Terminal from '../components/Terminal.astro';
 import WorkGrid from '../components/WorkGrid.astro';
+import Nav from '../components/Nav.astro';
+import Experience from '../components/Experience.astro';
+import Contact from '../components/Contact.astro';
+import { site } from '../data/site';
 
 const statement = 'I make money feel simple. For six years I’ve designed the moments where people trust a product with their savings, their salary and their business.';
-const experience = [
-  ['2023 — now', 'Roqqu', 'Senior Product Designer', '+22% activation'],
-  ['2023 — 2026', 'EN1', 'Senior Product Designer · Contract', '+15% team velocity'],
-  ['2022 — 2023', 'Glover', 'Senior Product Designer', '+30% revenue'],
-  ['2021 — 2023', 'Clink', 'Co-founder & Product Designer', '+20% conversion'],
-  ['2021 — 2022', 'STEMuli · US', 'Product Designer', '+25% retention'],
-  ['2019 — 2023', 'Sterling Bank · Edubanc', 'Product Designer', '₦45M+ processed'],
-];
-const email = 'thosynlasisi@gmail.com';
+const email = site.email;
 ---
 <Base>
   <Loader />
 
-  <header class="nav wrap">
-    <a href="/" class="logo"><span class="dot"></span>Tosin Lasisi</a>
-    <nav aria-label="Main">
-      <a href="#work">Work</a>
-      <a href="/about">About</a>
-      <a href="/Tosin_Lasisi_CV.pdf">CV</a>
-      <button class="theme-btn" onclick="window.__toggleTheme && window.__toggleTheme()" aria-label="Switch light or dark theme"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor"/></svg></button>
-      <a class="cta" href={`mailto:${email}`}>Get in touch</a>
-    </nav>
-  </header>
+  <Nav />
 
   <main>
     <!-- HERO -->
     <section class="hero wrap">
       <div class="hero-copy">
         <p class="mono eyebrow"><span class="live"></span> Open to senior &amp; lead roles</p>
-        <h1>I design <span class="serif">financial</span> products people trust with their money.</h1>
+        <h1>I design how <span class="serif">money</span> moves.</h1>
         <p class="sub">Senior Product Designer with 6+ years across crypto, fintech and platforms in Africa and beyond. I take products from first discovery to launch, and measure the result.</p>
         <div class="hero-ctas">
           <a class="btn btn-solid" href="#work">See the work ↓</a>
@@ -63,32 +50,10 @@ const email = 'thosynlasisi@gmail.com';
       </div>
     </section>
 
-    <!-- EXPERIENCE (ref: Ethan Kinnan list) -->
-    <section class="exp wrap" aria-labelledby="exp-title">
-      <h2 id="exp-title" class="mono muted">Experience</h2>
-      <ol role="list">
-        {experience.map(([y, c, r, m]) => (
-          <li><span class="mono muted">{y}</span><strong>{c}</strong><span class="muted">{r}</span><span class="m">{m}</span></li>
-        ))}
-      </ol>
-    </section>
+    <Experience />
 
-    <!-- CONTACT -->
-    <section class="contact wrap">
-      <p class="mono muted">Next transaction</p>
-      <h2>Hiring a senior <span class="serif">product designer?</span></h2>
-      <p class="sub">I’m looking for my next full-time role on a team building products people rely on.</p>
-      <div class="hero-ctas">
-        <a class="btn btn-solid btn-xl" href={`mailto:${email}`}>{email}</a>
-        <a class="btn" href="https://www.linkedin.com/in/tosin-ridwan-lasisi/" rel="noopener">LinkedIn ↗</a>
-        <a class="btn" href="/Tosin_Lasisi_CV.pdf">Download CV</a>
-      </div>
-    </section>
+    <Contact />
   </main>
-
-  <footer class="foot wrap mono muted">
-    <span>© 2026 Tosin Lasisi</span><span>Designed by me · Built with Astro</span>
-  </footer>
 </Base>
 
 <script is:inline>
@@ -111,16 +76,6 @@ const email = 'thosynlasisi@gmail.com';
 </script>
 
 <style>
-  .nav { position: sticky; top: 0; z-index: 20; display: flex; justify-content: space-between; align-items: center; height: 68px; background: color-mix(in oklab, var(--bg) 82%, transparent); backdrop-filter: blur(12px); }
-  .logo { display: inline-flex; align-items: center; gap: 9px; font-weight: 700; letter-spacing: -.02em; text-decoration: none; font-size: 18px; }
-  .dot { width: 12px; height: 12px; border-radius: 50%; background: var(--coin); box-shadow: 0 0 0 3px color-mix(in oklab, var(--coin) 25%, transparent); }
-  .nav nav { display: flex; align-items: center; gap: clamp(12px, 2.4vw, 28px); font-size: 15px; }
-  .nav nav a { text-decoration: none; }
-  .nav nav a:not(.cta):hover { text-decoration: underline; text-underline-offset: 4px; }
-  .theme-btn { display: grid; place-items: center; appearance: none; background: none; border: 1.5px solid var(--line-strong); color: var(--text); width: 32px; height: 32px; border-radius: 50%; cursor: pointer; font-size: 15px; }
-  .cta { background: var(--text); color: var(--bg); padding: 9px 16px; border-radius: 99px; font-weight: 600; }
-  @media (max-width: 640px) { .nav nav a:not(.cta) { display: none; } }
-
   .hero { display: grid; grid-template-columns: 1.05fr 1fr; align-items: center; gap: 40px; min-height: calc(100svh - 68px); padding-block: 24px 56px; }
   .eyebrow { display: inline-flex; align-items: center; gap: 8px; border: 1.5px solid var(--line); border-radius: 99px; padding: 6px 12px; margin: 0 0 28px; }
   .live { width: 8px; height: 8px; border-radius: 50%; background: #2fb36a; box-shadow: 0 0 0 0 #2fb36a88; animation: ping 2s infinite; }
@@ -129,10 +84,6 @@ const email = 'thosynlasisi@gmail.com';
   h1 .serif { font-weight: 400; letter-spacing: -.025em; color: var(--w-roqqu); }
   .sub { font-size: clamp(17px, 1.4vw, 20px); max-width: 46ch; color: var(--muted); margin: 26px 0 30px; }
   .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
-  .btn { display: inline-flex; align-items: center; height: 50px; padding: 0 22px; border-radius: 99px; border: 1.5px solid var(--line-strong); text-decoration: none; font-weight: 600; transition: transform .2s var(--ease), background .2s; }
-  .btn:hover { transform: translateY(-2px); }
-  .btn-solid { background: var(--text); color: var(--bg); border-color: var(--text); }
-  .btn-xl { height: 60px; font-size: 18px; padding: 0 28px; }
   .meta { margin-top: 36px; }
   @media (max-width: 900px) {
     .hero { grid-template-columns: 1fr; min-height: auto; padding-top: 32px; }
@@ -150,17 +101,4 @@ const email = 'thosynlasisi@gmail.com';
   @media (max-width: 900px) { .principles { grid-template-columns: 1fr 1fr; } }
   @media (max-width: 560px) { .principles { grid-template-columns: 1fr; } }
 
-  .exp { padding-bottom: clamp(80px, 10vw, 140px); }
-  .exp h2 { font-weight: 400; margin: 0 0 12px; }
-  .exp ol { list-style: none; margin: 0; padding: 0; }
-  .exp li { display: grid; grid-template-columns: 150px 1fr 1fr auto; gap: 16px; align-items: baseline; padding: 18px 0; border-top: 1.5px solid var(--line); font-size: 18px; transition: padding .3s var(--ease); }
-  .exp li:last-child { border-bottom: 1.5px solid var(--line); }
-  .exp li:hover { padding-left: 10px; }
-  .exp .m { font-family: var(--f-mono); font-size: 13px; background: color-mix(in oklab, var(--coin) 22%, transparent); padding: 3px 8px; border-radius: 6px; }
-  @media (max-width: 760px) { .exp li { grid-template-columns: 1fr auto; } .exp li > span:first-child { grid-column: 1 / -1; } .exp li > span.muted:not(.mono) { display: none; } }
-
-  .contact { padding-block: clamp(80px, 12vw, 160px); border-top: 1.5px solid var(--line); }
-  .contact h2 { font-size: clamp(44px, 7.5vw, 120px); line-height: .92; letter-spacing: -.055em; margin: 16px 0 0; font-weight: 800; max-width: 12ch; }
-  .contact .serif { font-weight: 400; color: var(--w-glover); }
-  .foot { display: flex; justify-content: space-between; padding-block: 28px; border-top: 1.5px solid var(--line); flex-wrap: wrap; gap: 8px; }
 </style>

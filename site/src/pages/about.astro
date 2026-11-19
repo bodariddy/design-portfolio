@@ -1,0 +1,210 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Experience from '../components/Experience.astro';
+import Contact from '../components/Contact.astro';
+import portrait from '../assets/portrait.png';
+
+const beliefs = [
+  ['Clarity is a feature', 'Especially when someone’s money is on the line. If a nervous first-time user can’t follow it, it isn’t finished.'],
+  ['Good design is measurable', 'If it doesn’t move a number or remove real pain, it’s decoration. I agree what success looks like before I open Figma.'],
+  ['Systems give teams time back', 'A good design system is the quiet reason a team ships faster next quarter.'],
+  ['Own the problem, not the ticket', 'Founding Clink taught me to care about the outcome, not just the hand-off.'],
+];
+
+const toolkit = {
+  Design: ['Figma', 'FigJam', 'Miro', 'Prototyping', 'Design systems'],
+  Research: ['Interviews', 'Journey mapping', 'Usability testing', 'Mixpanel', 'A/B tests'],
+  Build: ['HTML / CSS', 'Framer', 'Webflow', 'Astro', 'AI-assisted coding'],
+};
+
+const offClock = [
+  { k: 'training', title: 'Training', line: 'Most mornings start in the gym. It keeps me disciplined, and it’s where the best ideas show up.', meta: '[TOSIN: e.g. “4× a week · push/pull/legs”]' },
+  { k: 'gaming', title: 'Gaming', line: 'It started in my dad’s study and never stopped. Games are still my favourite lesson in onboarding and feedback loops.', meta: '[TOSIN: currently playing?]' },
+  { k: 'mentoring', title: 'Mentoring', line: 'I help junior designers find their footing, with portfolio reviews, career chats and honest feedback.', meta: '[TOSIN: ADPList / community link?]' },
+  { k: 'people', title: 'My people', line: 'Weekends are for friends, long conversations and good food somewhere in Lagos.', meta: 'Lagos, NG' },
+];
+---
+<Base title="About · Tosin Lasisi" description="Tosin Lasisi is a senior product designer in Lagos with a Computer Science background, designing crypto, fintech and platform products.">
+  <Nav />
+
+  <main>
+    <!-- HERO -->
+    <section class="hero wrap">
+      <div class="intro">
+        <p class="mono muted">About</p>
+        <h1>Hi, I’m <span class="serif">Tosin.</span></h1>
+        <p class="lede">I’m a senior product designer in Lagos. For six years I’ve made financial products simpler, faster and easier to trust: crypto trading, payments, gift cards and school banking.</p>
+        <dl class="facts">
+          <div><dt class="mono muted">Based in</dt><dd>Lagos · <span id="clock">—</span> WAT</dd></div>
+          <div><dt class="mono muted">Studied</dt><dd>Computer Science, FUNAAB</dd></div>
+          <div><dt class="mono muted">Focus</dt><dd>Fintech · Crypto · Platforms</dd></div>
+          <div><dt class="mono muted">Status</dt><dd><span class="live"></span>Open to senior roles</dd></div>
+        </dl>
+      </div>
+
+      <figure class="portrait">
+        <div class="frame">
+          <Image src={portrait} alt="Portrait of Tosin Lasisi" widths={[400, 700, 1000]} sizes="(max-width: 900px) 90vw, 36vw" loading="eager" />
+        </div>
+        <figcaption class="mono">
+          <span>FIG. 01 · TOSIN</span><span>LAGOS</span>
+        </figcaption>
+      </figure>
+    </section>
+
+    <!-- LETTER (ref: Commissioner) -->
+    <section class="letter wrap" aria-label="My story">
+      <div class="side mono muted">
+        <p>01 · Where it started</p>
+      </div>
+      <div class="body">
+        <p class="drop">I grew up in my father’s study. It was where I played my first computer games and learned to type, and where I first noticed that some products leave a lasting impression while others are forgotten the moment you close them.</p>
+        <p>That curiosity took me to a degree in Computer Science, and from there into design. The engineering background never left. I think in systems, I speak the same language as the developers I work with, and I care about what’s feasible as much as what’s beautiful.</p>
+        <p>Since then I’ve designed crypto trading at Roqqu, a luxury EV platform and its first design system at EN1, B2B gift cards at Glover, and school banking at Sterling. I also co-founded Clink, a payment-link tool, which taught me more about product than any job title.</p>
+        <p>What ties it together is money, and the people who are nervous about it. I like the moments where a product has to earn someone’s trust: the KYC step, the first transfer, the “are you sure?” screen. That’s where I do my best work.</p>
+        <p>If you’re building something people rely on, I’d love to hear about it.</p>
+        <p class="signoff">Cheers,</p>
+        <p class="signature serif" aria-label="Tosin">Tosin</p>
+      </div>
+    </section>
+
+    <!-- BELIEFS -->
+    <section class="beliefs wrap" aria-labelledby="b-title">
+      <div class="side mono muted"><p id="b-title">02 · What I believe</p></div>
+      <ol class="b-list" role="list">
+        {beliefs.map(([t, d], i) => (
+          <li><span class="mono n">{String(i + 1).padStart(2, '0')}</span><h3>{t}</h3><p>{d}</p></li>
+        ))}
+      </ol>
+    </section>
+
+    <!-- TOOLKIT -->
+    <section class="toolkit wrap" aria-labelledby="t-title">
+      <div class="side mono muted"><p id="t-title">03 · Toolkit</p></div>
+      <div class="t-grid">
+        {Object.entries(toolkit).map(([group, items]) => (
+          <div><h3 class="mono">{group}</h3><ul role="list">{items.map(i => <li>{i}</li>)}</ul></div>
+        ))}
+      </div>
+    </section>
+
+    <Experience title="04 · Where I’ve been" />
+
+    <!-- OFF THE CLOCK (ref: Commissioner) -->
+    <section class="off wrap" aria-labelledby="o-title">
+      <div class="off-head">
+        <p class="mono muted">05 · Off the clock</p>
+        <h2 id="o-title">When I’m not in <span class="serif">Figma</span></h2>
+      </div>
+      <ul class="off-grid" role="list">
+        {offClock.map(o => (
+          <li class={`card card-${o.k}`}>
+            <div class="art" aria-hidden="true">
+              {o.k === 'training' && <svg viewBox="0 0 120 60"><rect x="8" y="18" width="10" height="24" rx="3"/><rect x="20" y="12" width="10" height="36" rx="3"/><rect x="90" y="12" width="10" height="36" rx="3"/><rect x="102" y="18" width="10" height="24" rx="3"/><line x1="30" y1="30" x2="90" y2="30"/></svg>}
+              {o.k === 'gaming' && <svg viewBox="0 0 120 60"><path d="M30 14h60c14 0 22 12 22 24 0 10-8 14-14 10l-10-8H32l-10 8c-6 4-14 0-14-10 0-12 8-24 22-24z"/><line x1="32" y1="24" x2="32" y2="36"/><line x1="26" y1="30" x2="38" y2="30"/><circle cx="84" cy="26" r="3" class="f"/><circle cx="92" cy="33" r="3" class="f"/></svg>}
+              {o.k === 'mentoring' && <svg viewBox="0 0 120 60"><rect x="10" y="10" width="56" height="30" rx="10"/><path d="M24 40l-6 12 16-12"/><rect x="58" y="22" width="52" height="28" rx="10" class="f2"/><line x1="22" y1="22" x2="54" y2="22"/><line x1="22" y1="29" x2="44" y2="29"/></svg>}
+              {o.k === 'people' && <svg viewBox="0 0 120 60"><circle cx="40" cy="22" r="9"/><circle cx="62" cy="18" r="9"/><circle cx="84" cy="22" r="9"/><path d="M24 54c2-12 9-18 16-18s14 6 16 18"/><path d="M46 54c2-14 9-22 16-22s14 8 16 22"/><path d="M68 54c2-12 9-18 16-18s14 6 16 18"/></svg>}
+            </div>
+            <h3>{o.title}</h3>
+            <p>{o.line}</p>
+            <span class="mono muted meta">{o.meta}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <Contact />
+  </main>
+</Base>
+
+<script is:inline>
+  const c = document.getElementById('clock');
+  const t = () => c.textContent = new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', timeZone: 'Africa/Lagos' });
+  t(); setInterval(t, 30000);
+
+  // Reveal on scroll
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -10% 0px' });
+    document.querySelectorAll('.letter .body > p, .b-list li, .t-grid > div, .off-grid li').forEach((el, i) => { el.classList.add('rv'); el.style.setProperty('--d', (i % 4) * 70 + 'ms'); io.observe(el); });
+  }
+</script>
+
+<style>
+  .hero { display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(32px, 6vw, 96px); align-items: end; padding-block: clamp(40px, 7vw, 96px) clamp(64px, 9vw, 120px); }
+  h1 { font-size: clamp(64px, 11vw, 176px); line-height: .86; letter-spacing: -.06em; font-weight: 800; margin: 18px 0 32px; }
+  h1 .serif { font-weight: 400; letter-spacing: -.03em; color: var(--w-roqqu); }
+  .lede { font-size: clamp(20px, 1.9vw, 27px); line-height: 1.35; letter-spacing: -.015em; max-width: 30ch; margin: 0 0 40px; }
+  .facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 32px; margin: 0; max-width: 560px; }
+  .facts div { border-top: 1.5px solid var(--line); padding-top: 10px; }
+  .facts dd { margin: 4px 0 0; font-size: 16px; display: flex; align-items: center; gap: 8px; }
+  .live { width: 8px; height: 8px; border-radius: 50%; background: #2fb36a; animation: ping 2s infinite; }
+  @keyframes ping { 0% { box-shadow: 0 0 0 0 #2fb36a88 } 70% { box-shadow: 0 0 0 8px #2fb36a00 } 100% { box-shadow: 0 0 0 0 #2fb36a00 } }
+
+  .portrait { margin: 0; }
+  .frame { position: relative; overflow: hidden; border-radius: 4px; aspect-ratio: 4 / 5; background: var(--surface); }
+  .frame :global(img) { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; filter: grayscale(1) contrast(1.05); transition: transform 1.2s var(--ease), filter .6s; }
+  .portrait:hover .frame :global(img) { transform: scale(1.03); filter: grayscale(.2) contrast(1.05); }
+  .frame::after { content: ''; position: absolute; inset: 0; box-shadow: inset 0 0 0 1.5px var(--line); pointer-events: none; }
+  figcaption { display: flex; justify-content: space-between; margin-top: 10px; color: var(--muted); }
+
+  /* Two-column editorial sections */
+  .letter, .beliefs, .toolkit { display: grid; grid-template-columns: 1fr 2.2fr; gap: 32px; padding-block: clamp(56px, 8vw, 110px); border-top: 1.5px solid var(--line); }
+  .side p { margin: 6px 0 0; position: sticky; top: 92px; }
+  .body { max-width: 680px; }
+  .body p { font-size: clamp(18px, 1.5vw, 21px); line-height: 1.6; margin: 0 0 1.1em; }
+  .drop::first-letter { font-family: var(--f-serif); font-size: 4.4em; float: left; line-height: .8; padding: .08em .1em 0 0; color: var(--w-glover); }
+  .signoff { margin-top: 2em !important; color: var(--muted); }
+  .signature { font-size: clamp(48px, 5vw, 72px) !important; line-height: 1 !important; margin: 0 !important; transform: rotate(-4deg); transform-origin: left; display: inline-block; }
+
+  .b-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 40px 48px; }
+  .b-list .n { color: var(--muted); }
+  .b-list h3 { font-size: clamp(24px, 2.2vw, 32px); letter-spacing: -.035em; line-height: 1.05; margin: 10px 0 10px; }
+  .b-list p { margin: 0; color: var(--muted); max-width: 38ch; }
+
+  .t-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .t-grid h3 { margin: 0 0 14px; font-weight: 500; }
+  .t-grid ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+  .t-grid li { border: 1.5px solid var(--line); border-radius: 99px; padding: 6px 13px; font-size: 15px; transition: background .2s, border-color .2s; }
+  .t-grid li:hover { background: color-mix(in oklab, var(--coin) 20%, transparent); border-color: var(--coin); }
+
+  :global(.exp) { border-top: 1.5px solid var(--line); padding-top: clamp(56px, 8vw, 110px); }
+
+  .off { padding-bottom: clamp(80px, 10vw, 140px); }
+  .off-head h2 { font-size: clamp(40px, 6vw, 92px); letter-spacing: -.055em; line-height: .95; margin: 12px 0 40px; font-weight: 800; }
+  .off-head .serif { font-weight: 400; color: var(--w-clink); }
+  .off-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .card { background: var(--surface); border: 1.5px solid var(--line); border-radius: 20px; padding: 22px; display: flex; flex-direction: column; gap: 8px; transition: transform .4s var(--ease), border-color .3s; min-height: 320px; }
+  .card:hover { transform: translateY(-6px) rotate(-.6deg); border-color: var(--line-strong); }
+  .card h3 { margin: 6px 0 0; font-size: 24px; letter-spacing: -.03em; }
+  .card p { margin: 0; color: var(--muted); font-size: 15.5px; }
+  .card .meta { margin-top: auto; padding-top: 12px; text-transform: none; letter-spacing: 0; font-size: 11.5px; }
+  .art { height: 92px; border-radius: 12px; display: grid; place-items: center; margin-bottom: 6px; }
+  .art svg { width: 70%; height: 70%; fill: none; stroke: var(--on-world); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; transition: transform .5s var(--ease); }
+  .art svg .f { fill: var(--on-world); }
+  .art svg .f2 { fill: color-mix(in oklab, var(--on-world) 20%, transparent); }
+  .card:hover .art svg { transform: scale(1.08) rotate(-3deg); }
+  .card-training .art { background: var(--w-weave); }
+  .card-gaming .art { background: var(--w-roqqu); }
+  .card-mentoring .art { background: var(--w-en1); }
+  .card-people .art { background: var(--w-glover); }
+
+  /* Reveal */
+  :global(.rv) { opacity: 0; transform: translateY(18px); transition: opacity .7s var(--ease) var(--d, 0ms), transform .7s var(--ease) var(--d, 0ms); }
+  :global(.rv.in) { opacity: 1; transform: none; }
+
+  @media (max-width: 1000px) {
+    .off-grid { grid-template-columns: 1fr 1fr; }
+    .t-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; align-items: start; }
+    .portrait { max-width: 520px; }
+    .letter, .beliefs, .toolkit { grid-template-columns: 1fr; gap: 12px; }
+    .side p { position: static; }
+  }
+  @media (max-width: 600px) {
+    .b-list, .off-grid, .t-grid, .facts { grid-template-columns: 1fr; }
+  }
+</style>

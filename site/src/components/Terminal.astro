@@ -151,13 +151,7 @@ const receiptData = JSON.stringify(projects.map(p => ({ ch: p.ch, name: p.name, 
   function schedule() { clearInterval(timer); if (auto) timer = setInterval(() => setChannel(cur + 1), 6500); }
   function userInput() { pos.classList.add('touched'); auto = false; clearInterval(timer); }
 
-  function toggleTheme() {
-    const root = document.documentElement;
-    const dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
-    root.dataset.theme = dark ? 'light' : 'dark';
-    try { localStorage.setItem('theme', root.dataset.theme); } catch {}
-  }
-  window.__toggleTheme = toggleTheme;
+  const toggleTheme = () => window.__toggleTheme();
 
   pos.addEventListener('click', e => {
     const k = e.target.closest('.key'); if (!k) return;

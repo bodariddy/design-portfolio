@@ -1,0 +1,26 @@
+---
+import { site } from '../data/site';
+---
+<section class="contact wrap">
+  <p class="mono muted">Next transaction</p>
+  <h2>Hiring a senior <span class="serif">product designer?</span></h2>
+  <p class="sub">I’m looking for my next full-time role on a team building products people rely on.</p>
+  <div class="ctas">
+    <a class="btn btn-solid btn-xl" href={`mailto:${site.email}`}>{site.email}</a>
+    <a class="btn" href={site.linkedin} rel="noopener">LinkedIn ↗</a>
+    <a class="btn" href={site.cv}>Download CV</a>
+  </div>
+</section>
+
+<footer class="foot wrap mono muted">
+  <span>© 2026 {site.name}</span><span>Designed by me · Built with Astro</span>
+</footer>
+
+<style>
+  .contact { padding-block: clamp(80px, 12vw, 160px); border-top: 1.5px solid var(--line); }
+  h2 { font-size: clamp(44px, 7.5vw, 120px); line-height: .92; letter-spacing: -.055em; margin: 16px 0 0; font-weight: 800; max-width: 12ch; }
+  .serif { font-weight: 400; color: var(--w-glover); }
+  .sub { font-size: clamp(17px, 1.4vw, 20px); max-width: 46ch; color: var(--muted); margin: 26px 0 30px; }
+  .ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+  .foot { display: flex; justify-content: space-between; padding-block: 28px; border-top: 1.5px solid var(--line); flex-wrap: wrap; gap: 8px; }
+</style>

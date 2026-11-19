@@ -21,6 +21,8 @@ We review each one together. **Status:** 🟢 steal · 🟡 maybe · 🔴 not fo
 | 3 | [Ethan Kinnan](https://ethankinnan.com/) · [notes](ethan-kinnan/notes.md) | `layout` `colour` `typography` | Calm warm canvas + one living element, year · company timeline list | 🟢 |
 | 4 | [Ben Doan](https://bdoan.me/) · [notes](bdoan/notes.md) | `layout` `case-study` `motion` | Full-bleed edge-to-edge project grid with hover spotlight | 🟢 |
 | 5 | [Resn](https://www.resn.co.nz/) · [notes](resn/notes.md) | `motion` `colour` | One-object loader (drop → line → hero), soft charcoal dark mode | 🟢 |
+| 6 | [Jaykay](https://jaykay-portfolio.vercel.app/index.html) · [notes](jaykay/notes.md) | `positioning` `hero` `motion` | Design-engineer positioning, live "drag to take over" hero, code-backed principles, testimonials | 🟢 ⚠️ differentiate (also ex-Roqqu) |
+| 7 | [Commissioner](https://www.commissioner.design/) · [notes](commissioner/notes.md) | `positioning` `about` `detail` | About as a signed letter, "off the clock" interests, playable easter egg, GitHub graph | 🟢 |
 
 ## Patterns we've agreed on
 See `MOODBOARD.png` and `../design/DIRECTION.md`.

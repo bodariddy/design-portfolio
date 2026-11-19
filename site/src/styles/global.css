@@ -91,6 +91,12 @@ img { max-width: 100%; display: block; }
 .wrap { padding-inline: var(--gutter); max-width: 1440px; margin-inline: auto; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
+/* Buttons */
+.btn { display: inline-flex; align-items: center; gap: 8px; height: 50px; padding: 0 22px; border-radius: 99px; border: 1.5px solid var(--line-strong); text-decoration: none; font-weight: 600; transition: transform .2s var(--ease), background .2s, color .2s; }
+.btn:hover { transform: translateY(-2px); }
+.btn-solid { background: var(--text); color: var(--bg); border-color: var(--text); }
+.btn-xl { height: 60px; font-size: 18px; padding: 0 28px; }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
