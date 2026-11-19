@@ -43,13 +43,13 @@ export const projects: Project[] = [
     device: 'phone',
     ch: 2,
     name: 'Qash',
-    headline: 'Send, spend and save in dollars: one app for money across borders',
+    headline: 'One app for money across borders: 8 currencies, cards and passkeys',
     tags: ['Fintech', 'Payments', 'Cards'],
     years: '2024 – now',
     colour: '--w-qash',
     metrics: [
       { value: '101k', label: 'transactions, year one' },
-      { value: '150+', label: 'countries' },
+      { value: '8', label: 'currencies' },
     ],
     receipt: [
       ['TXNS / YR1', '101,045'],

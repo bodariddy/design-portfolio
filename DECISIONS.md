@@ -44,3 +44,5 @@
 | 2026-11-19 | Project cards: **copy and metrics always visible** (2 columns, framed image above; name, years, outcome headline, metric chips, tags, "View case study"). Hover-only info panel removed | Tosin: recruiters need copy at a glance |
 | 2026-11-19 | Covers: each project has a **3-colour mesh** (`mesh` in projects.ts) shared by its card and case-study hero, with real screens in framed phones / browser. Qash now uses its own screens | Tosin: covers felt bland and monotonous |
 | 2026-11-19 | Spacing/alignment pass: experience columns fixed-width (rows align), tighter hero→work and statement spacing, contact bottom trimmed, About sections on one 110px rhythm with dividers, mobile terminal gap fixed | Tosin: irregular spacing |
+| 2026-11-19 | Qash full case study from the Qash IMTO Figma (passkeys + face verification, multi-currency accounts & swap, currency themes, cards/bills/rewards); card headline now "8 currencies" | Tosin's Figma link |
+| 2026-11-19 | Weave role: Product Designer, end to end | Tosin's confirmation |

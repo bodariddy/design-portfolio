@@ -1,66 +1,147 @@
 ---
 import Case from '../../layouts/Case.astro';
+import Screens from '../../components/case/Screens.astro';
 import Draft from '../../components/case/Draft.astro';
 import { Image } from 'astro:assets';
-import qash1 from '../../assets/work/roqqu/qash-1.webp';
-import qash2 from '../../assets/work/roqqu/qash-2.webp';
-import qh from '../../assets/work/qash/home.webp';
-import qb from '../../assets/work/qash/bills.webp';
-import qo from '../../assets/work/qash/orb.webp';
-import qm from '../../assets/work/qash/manage-bills.webp';
+
+const img = import.meta.glob<{ default: ImageMetadata }>('../../assets/work/qash/*.webp', { eager: true });
+const s = (n: string) => img[`../../assets/work/qash/${n}.webp`].default;
+
+const access = [
+  { src: s('face-intro'), alt: 'Next, face verification: tips before the camera opens', cap: 'Face verification, coached up front' },
+  { src: s('face-scan'), alt: 'Keep your face within the circle', cap: 'One instruction, one ring' },
+  { src: s('passkey'), alt: 'Create a passkey for password-less login', cap: 'Passkeys instead of passwords' },
+  { src: s('passkey-success'), alt: 'Passkey created successfully', cap: 'Sign in with your face from then on' },
+];
+const money = [
+  { src: s('home'), alt: 'Qash home with NGN balance, add and send money', cap: 'Home: one balance, two big actions' },
+  { src: s('all-currencies'), alt: 'All currencies: open an account in each', cap: 'Open a local account per currency' },
+  { src: s('accounts'), alt: 'Accounts landing with currency wallets', cap: 'Every wallet side by side' },
+  { src: s('currency-detail'), alt: 'Naira account details with account number', cap: 'Real account details to receive into' },
+  { src: s('swap'), alt: 'Swap money between currencies with keypad', cap: 'Swap with the rate shown live' },
+  { src: s('swap-review'), alt: 'Review swap with rate and fee', cap: 'Review: rate, fee, what lands' },
+];
+const themes = [
+  { src: s('theme-picker'), alt: 'Choose a currency theme', cap: 'Pick a theme per currency' },
+  { src: s('home-ngn'), alt: 'Home themed green for Naira', cap: 'Naira: green' },
+  { src: s('home-gbp'), alt: 'Home themed purple for Pound sterling', cap: 'Pounds: violet' },
+  { src: s('home-ghs'), alt: 'Home themed for Ghana Cedi', cap: 'Cedi: its own colour' },
+];
+const cards = [
+  { src: s('card-name'), alt: 'Give your card a name', cap: 'Name the card for what it’s for' },
+  { src: s('card-theme'), alt: 'Customise your card colour', cap: 'Choose its look' },
+  { src: s('card'), alt: 'Card dashboard with fund, freeze and settings', cap: 'Fund, freeze, settings in one row' },
+  { src: s('freeze'), alt: 'Freeze card confirmation', cap: 'Freezing explained before you tap' },
+  { src: s('bills'), alt: 'Bills home with recurring payments', cap: 'Bills, with recurring plans' },
+  { src: s('bill-detail'), alt: 'Recurring electricity bill detail', cap: 'Every plan editable or stoppable' },
+  { src: s('rewards'), alt: 'Rewards with available coupons', cap: 'Rewards that pay you back' },
+];
 ---
 <Case
   slug="qash"
   title="One app for money across borders"
-  sub="Qash lets people send money, spend globally with a virtual Dollar Card, and convert between naira, dollars, pounds, euros and USDT in seconds."
+  sub="Qash lets people hold, send, swap and spend money in naira, cedis, shillings, pounds, dollars and euros, with a virtual card for paying anywhere online."
   meta={[
     ['Role', 'Senior Product Designer · co-designer'],
-    ['Company', 'Qash'],
+    ['Company', 'Qash (Roqqu group)'],
     ['Timeline', '2024 – present'],
     ['Platform', 'iOS · Android'],
   ]}
-  hero={qash1}
-  heroAlt="Qash app screens: home, bills, actions and subscriptions"
-  stage={{ kind: 'phone', screens: [qh, qb, qo, qm] }}
+  hero={s('store-0')}
+  heroAlt="Qash app screens: home, accounts, swap and cards"
+  stage={{ kind: 'phone', screens: [s('home'), s('home-gbp'), s('accounts'), s('swap'), s('card'), s('bills')] }}
   tldr={{
-    problem: 'Nigerians paying for things abroad, or getting paid from abroad, juggle banks, FX dealers and cards that get declined. Every hop adds fees, delay and doubt.',
-    did: 'I designed Qash as the fiat layer inside Roqqu, then co-designed the standalone Qash app with one other designer: $QashTag transfers, international payouts, a virtual Dollar Card and multi-currency conversion.',
+    problem: 'Africans paying abroad, or getting paid from abroad, juggle banks, FX dealers and cards that get declined. Every hop adds fees, delay and doubt, and most money apps only speak one currency.',
+    did: 'I designed Qash first as the fiat layer inside Roqqu, then co-designed the standalone app with one other designer: passkey and face-verified onboarding, multi-currency accounts, swaps, virtual cards, recurring bills, rewards and currency themes.',
   }}
   results={[
-    { value: '101k', label: 'transactions in year one' },
-    { value: '150+', label: 'countries for transfers' },
-    { value: '5', label: 'currencies: NGN, USD, GBP, EUR, USDT' },
-    { value: '30s', label: 'to get a Dollar Card' },
+    { value: '101k', label: 'transactions in year one (in Roqqu)' },
+    { value: '8', label: 'currencies: NGN, GHS, KES, TZS, GBP, USD, EUR, CAD' },
+    { value: '0', label: 'passwords: passkey sign-in' },
+    { value: '30s', label: 'to create a virtual card' },
   ]}
 >
   <section class="wrap sec">
-    <p class="side mono">Status</p>
+    <p class="side mono">01 · Context</p>
     <div class="txt" data-reveal>
-      <p class="lead">This case study is being written.</p>
-      <p>Qash started as the fiat solution inside Roqqu, the feature that processed 101,045 transactions in its first year, and grew into its own product at <a href="https://qash.global/" rel="noopener">qash.global</a>.</p>
-      <Draft>Still needed: which parts of the app you led, timeline, metrics (users, volume), and the Qash Figma link.</Draft>
+      <p class="lead">“Your money’s new home.”</p>
+      <p>Qash started as the fiat solution inside Roqqu, the feature that processed 101,045 transactions in its first year. The demand was clear, so Qash became its own app at <a href="https://qash.global/" rel="noopener">qash.global</a>: a money app for people whose lives cross borders, not a crypto app with a bank attached.</p>
+      <p>That meant designing for many currencies, many countries’ rules (different tiers, limits and documents for each) and one consistent experience on top.</p>
+      <Draft>Any standalone Qash metrics yet (users, volume, cards created)?</Draft>
     </div>
   </section>
 
   <section class="wrap sec">
-    <p class="side mono">The product</p>
-    <ol class="insights" role="list" data-reveal>
-      <li><span class="mono">01</span><h3>Send</h3><p>Pay anyone with a $QashTag, any Nigerian bank account, or 150+ countries at live FX rates.</p></li>
-      <li><span class="mono">02</span><h3>Spend</h3><p>A virtual Visa or Mastercard in 30 seconds for Netflix, Spotify, Amazon and flights, with an optional physical card.</p></li>
-      <li><span class="mono">03</span><h3>Convert &amp; save</h3><p>Move between NGN, USD, GBP, EUR and USDT, and hold dollars.</p></li>
-      <li><span class="mono">04</span><h3>Pay bills</h3><p>Airtime, data, TV and utilities, with reminders so nothing is missed.</p></li>
-    </ol>
+    <p class="side mono">02 · My role</p>
+    <div class="txt" data-reveal>
+      <p>Co-designer on the standalone app with one other designer, from onboarding and verification to accounts, swaps, cards, bills, rewards, appearance and account restrictions. I also carried over the fiat patterns I’d designed inside Roqqu, so the two products feel like one family.</p>
+    </div>
   </section>
 
-  <div class="wrap duo" data-reveal>
-    <Image src={qash1} alt="Qash onboarding, home and exchange screens" widths={[700, 1200]} sizes="(max-width: 900px) 94vw, 46vw" />
-    <Image src={qash2} alt="Qash transactions and analytics screens" widths={[700, 1200]} sizes="(max-width: 900px) 94vw, 46vw" />
+  <div class="wrap grid3" data-reveal>
+    <Image src={s('store-1')} alt="Qash store screenshot: home" widths={[500, 900]} sizes="(max-width: 900px) 94vw, 31vw" />
+    <Image src={s('store-3')} alt="Qash store screenshot: manage all your bills in one place" widths={[500, 900]} sizes="(max-width: 900px) 94vw, 31vw" />
+    <Image src={s('store-2')} alt="Qash store screenshot: earn rewards as you transact" widths={[500, 900]} sizes="(max-width: 900px) 94vw, 31vw" />
   </div>
 
+  <section class="decision">
+    <div class="wrap d-head">
+      <p class="mono d-n">Decision 01</p>
+      <h2>Secure without passwords</h2>
+      <div class="d-cols" data-reveal>
+        <div><h4 class="mono">Insight</h4><p>Passwords and OTPs were both the weakest security link and the biggest source of friction for returning users.</p></div>
+        <div><h4 class="mono">Decision</h4><p>Face verification during sign-up, coached before the camera opens. Then passkeys for sign-in and for confirming transactions, with a passcode fallback and clear failure states when a passkey can’t be created.</p></div>
+        <div><h4 class="mono">Principle</h4><p class="big">The safest path is the easiest one</p></div>
+      </div>
+    </div>
+    <div class="wrap-bleed"><Screens shots={access} label="Qash verification and passkey screens" /></div>
+  </section>
+
+  <section class="decision">
+    <div class="wrap d-head">
+      <p class="mono d-n">Decision 02</p>
+      <h2>Many currencies, one calm home</h2>
+      <div class="d-cols" data-reveal>
+        <div><h4 class="mono">Insight</h4><p>Multi-currency apps get crowded fast: balances, rates and account numbers all compete for attention.</p></div>
+        <div><h4 class="mono">Decision</h4><p>Home shows one currency at a time, with Add money and Send as the two big actions. Each currency is a real local account with its own details. Swaps show the live rate as you type, then a review of the rate, fee and what lands.</p></div>
+        <div><h4 class="mono">Principle</h4><p class="big">One currency in focus</p></div>
+      </div>
+    </div>
+    <div class="wrap-bleed"><Screens shots={money} label="Qash home, accounts and swap screens" /></div>
+  </section>
+
+  <section class="decision">
+    <div class="wrap d-head">
+      <p class="mono d-n">Decision 03</p>
+      <h2>A colour for every currency</h2>
+      <div class="d-cols" data-reveal>
+        <div><h4 class="mono">Insight</h4><p>When you hold several currencies, the worst mistake is sending from the wrong one.</p></div>
+        <div><h4 class="mono">Decision</h4><p>Currency themes: the whole home recolours to match the active currency (green for naira, violet for pounds and so on), so you know where you are at a glance before you send anything.</p></div>
+        <div><h4 class="mono">Principle</h4><p class="big">Context you can feel</p></div>
+      </div>
+    </div>
+    <div class="wrap-bleed"><Screens shots={themes} label="Qash currency theme screens" /></div>
+  </section>
+
+  <section class="decision">
+    <div class="wrap d-head">
+      <p class="mono d-n">Decision 04</p>
+      <h2>Cards, bills and rewards that stay out of the way</h2>
+      <div class="d-cols" data-reveal>
+        <div><h4 class="mono">Scope</h4><p>Virtual cards for online spending, recurring bill payments and coupon rewards.</p></div>
+        <div><h4 class="mono">Decisions</h4><p>Name and theme each card for its purpose (Netflix, travel, shopping). Fund, freeze and settings sit in one row, and freezing is explained before you tap. Recurring bills can be edited or stopped in two taps. Rewards are coupons you can see, claim and track.</p></div>
+        <div><h4 class="mono">Principle</h4><p class="big">Control, always one tap away</p></div>
+      </div>
+    </div>
+    <div class="wrap-bleed"><Screens shots={cards} label="Qash cards, bills and rewards screens" /></div>
+  </section>
+
   <section class="wrap sec">
-    <p class="side mono">Coming next</p>
+    <p class="side mono">Reflection</p>
     <div class="txt" data-reveal>
-      <p>Key decisions for sending money, the Dollar Card and conversion, with screens from Figma.</p>
+      <p class="lead">Spinning a feature out into a product means designing its identity, not just its screens.</p>
+      <p>Inside Roqqu, Qash only had to be clear. On its own it had to be trusted by people who’d never heard of it. Passkeys, currency themes and honest limits did more for that than any visual polish.</p>
+      <Draft>Draft reflection. Edit it so it sounds like you.</Draft>
     </div>
   </section>
 </Case>
