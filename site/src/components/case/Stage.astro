@@ -62,18 +62,20 @@ const { kind, screens, url = '', label } = Astro.props;
 </script>
 
 <style>
-  .stage { --p: 0; position: relative; overflow: hidden; border-radius: 24px 24px 0 0; height: clamp(460px, 72vh, 760px); perspective: 1600px;
+  .stage { --p: 0; position: relative; overflow: hidden; border-radius: 24px 24px 0 0; height: clamp(460px, 72vh, 760px); perspective: 1600px; isolation: isolate;
     background:
-      radial-gradient(60% 55% at 50% 38%, color-mix(in oklab, var(--world) 60%, white 12%), transparent 70%),
-      radial-gradient(120% 80% at 50% 120%, color-mix(in oklab, var(--world) 40%, black), transparent 60%),
-      color-mix(in oklab, var(--world) 78%, black);
+      radial-gradient(55% 70% at 15% 10%, var(--m2), transparent 62%),
+      radial-gradient(50% 70% at 90% 95%, var(--m3), transparent 65%),
+      radial-gradient(45% 45% at 50% 40%, color-mix(in oklab, var(--m2) 50%, white 25%), transparent 70%),
+      var(--m1);
     box-shadow: inset 0 1px 0 rgba(255,255,255,.12); }
+  .stage::after { content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; box-shadow: inset 0 -120px 120px -60px rgba(0,0,0,.25); }
 
   /* Glossy fluted plinth, in the project's colour */
   .plinth { position: absolute; left: 50%; bottom: -12%; width: 140%; height: 70%; transform: translateX(-50%) rotateX(62deg); transform-origin: 50% 100%;
     background:
       repeating-linear-gradient(90deg, rgba(255,255,255,.0) 0 22px, rgba(255,255,255,.22) 26px, rgba(255,255,255,.05) 34px, rgba(0,0,0,.25) 44px, rgba(0,0,0,0) 48px),
-      linear-gradient(180deg, color-mix(in oklab, var(--world) 70%, white 10%), color-mix(in oklab, var(--world) 50%, black));
+      linear-gradient(180deg, color-mix(in oklab, var(--m1) 70%, white 10%), color-mix(in oklab, var(--m1) 60%, black));
     -webkit-mask: radial-gradient(60% 90% at 50% 100%, #000 40%, transparent 75%); mask: radial-gradient(60% 90% at 50% 100%, #000 40%, transparent 75%); opacity: .9; }
 
   .rig { position: absolute; inset: 0; display: grid; place-items: center; transform-style: preserve-3d;

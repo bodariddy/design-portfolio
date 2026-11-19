@@ -175,9 +175,9 @@ const offClock = [
   .t-grid li { border: 1.5px solid var(--line); border-radius: 99px; padding: 6px 13px; font-size: 15px; transition: background .2s, border-color .2s; }
   .t-grid li:hover { background: color-mix(in oklab, var(--coin) 20%, transparent); border-color: var(--coin); }
 
-  :global(.exp) { border-top: 1.5px solid var(--line); padding-top: clamp(56px, 8vw, 110px); }
+  :global(.exp) { border-top: 1.5px solid var(--line); padding-block: clamp(56px, 8vw, 110px) !important; }
 
-  .off { padding-bottom: clamp(80px, 10vw, 140px); }
+  .off { padding-block: clamp(56px, 8vw, 110px); border-top: 1.5px solid var(--line); }
   .off-head h2 { font-size: clamp(40px, 6vw, 92px); letter-spacing: -.055em; line-height: .95; margin: 12px 0 40px; font-weight: 800; }
   .off-head .serif { font-weight: 400; color: var(--w-clink); }
   .off-grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }

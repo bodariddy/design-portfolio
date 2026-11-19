@@ -27,7 +27,7 @@ const live = projects.filter(x => hasPage(x.slug));
 const next = live[(live.findIndex(x => x.slug === slug) + 1) % live.length];
 ---
 <Base title={`${p.name}: ${title} · Tosin Lasisi`} description={sub}>
-  <div style={`--world: var(${p.colour})`}>
+  <div style={`--world: var(${p.colour});--m1:${p.mesh?.[0]};--m2:${p.mesh?.[1]};--m3:${p.mesh?.[2]}`}>
     <Nav />
     <main id="main">
       <header class="hero">
@@ -72,7 +72,7 @@ const next = live[(live.findIndex(x => x.slug === slug) + 1) % live.length];
 </Base>
 
 <style>
-  .hero { background: var(--world); color: var(--on-world); padding-top: clamp(28px, 5vw, 64px); position: relative; overflow: hidden; }
+  .hero { background: radial-gradient(60% 80% at 100% 0%, color-mix(in oklab, var(--m2) 55%, transparent), transparent 70%), var(--world); color: var(--on-world); padding-top: clamp(28px, 5vw, 64px); position: relative; overflow: hidden; }
   .hero::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(70% 60% at 80% 10%, rgba(255,255,255,.14), transparent 60%); }
   .hero .wrap { position: relative; }
   .crumbs { display: flex; gap: 8px; opacity: .8; }

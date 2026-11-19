@@ -42,3 +42,5 @@
 | 2026-11-19 | Weave stays **Weave** (not OneWeave) | Tosin's call |
 | 2026-11-19 | About opens with a plain, factual 5-line bio linking every company to its case study; "Updated <build date>" on About + footer; hand-drawn "New" scribble on the Weave tile; live Lagos clock (seconds) in footer | Refs: Benji Taylor, Bill Guo |
 | 2026-11-19 | Project cards: **copy and metrics always visible** (2 columns, framed image above; name, years, outcome headline, metric chips, tags, "View case study"). Hover-only info panel removed | Tosin: recruiters need copy at a glance |
+| 2026-11-19 | Covers: each project has a **3-colour mesh** (`mesh` in projects.ts) shared by its card and case-study hero, with real screens in framed phones / browser. Qash now uses its own screens | Tosin: covers felt bland and monotonous |
+| 2026-11-19 | Spacing/alignment pass: experience columns fixed-width (rows align), tighter hero→work and statement spacing, contact bottom trimmed, About sections on one 110px rhythm with dividers, mobile terminal gap fixed | Tosin: irregular spacing |

@@ -8,6 +8,7 @@ export type Project = {
   years: string;
   colour: string; // CSS var name of its colour world
   device: 'phone' | 'laptop';
+  mesh?: [string, string, string]; // 3-colour cover gradient
   isNew?: boolean; // shows a hand-drawn “New” mark on the tile
   featured?: boolean; // false = shown under 'Other projects', not in the grid or terminal
   metrics: { value: string; label: string }[];
@@ -17,6 +18,7 @@ export type Project = {
 export const projects: Project[] = [
   {
     slug: 'roqqu',
+    mesh: ['#2b36c9', '#8a6bff', '#19c2d6'],
     device: 'phone',
     ch: 1,
     name: 'Roqqu',
@@ -37,6 +39,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'qash',
+    mesh: ['#4a2fb8', '#ff8a5c', '#ffd36e'],
     device: 'phone',
     ch: 2,
     name: 'Qash',
@@ -57,6 +60,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'en1',
+    mesh: ['#123d2e', '#3f9a6e', '#c9e8c8'],
     device: 'laptop',
     ch: 3,
     name: 'EN1',
@@ -77,6 +81,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'clink',
+    mesh: ['#0a6b70', '#3fd1c4', '#1b3f78'],
     device: 'laptop',
     ch: 4,
     name: 'Clink',
@@ -97,6 +102,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'glover-lite',
+    mesh: ['#b3235a', '#ff8a7a', '#ffc2a8'],
     device: 'phone',
     ch: 5,
     name: 'Glover Lite',
@@ -117,6 +123,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'weave',
+    mesh: ['#a8441f', '#ff9f6b', '#ffe0c2'],
     isNew: true,
     device: 'phone',
     ch: 6,
@@ -137,6 +144,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'edubanc',
+    mesh: ['#8f1f25', '#e8574f', '#f2b8a2'],
     device: 'laptop',
     featured: false,
     ch: 7,
@@ -153,6 +161,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'stemuli',
+    mesh: ['#22476b', '#5b9bd5', '#b8dcf0'],
     device: 'laptop',
     featured: false,
     ch: 8,

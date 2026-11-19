@@ -76,7 +76,7 @@ const email = site.email;
 </script>
 
 <style>
-  .hero { display: grid; grid-template-columns: 1.05fr 1fr; align-items: center; gap: 40px; min-height: calc(100svh - 68px); padding-block: 24px 56px; }
+  .hero { display: grid; grid-template-columns: 1.05fr 1fr; align-items: center; gap: 40px; min-height: calc(100svh - 68px); padding-block: 24px 40px; }
   .eyebrow { display: inline-flex; align-items: center; gap: 8px; border: 1.5px solid var(--line); border-radius: 99px; padding: 6px 12px; margin: 0 0 28px; }
   .live { width: 8px; height: 8px; border-radius: 50%; background: #2fb36a; box-shadow: 0 0 0 0 #2fb36a88; animation: ping 2s infinite; }
   @keyframes ping { 70% { box-shadow: 0 0 0 8px #2fb36a00 } 100% { box-shadow: 0 0 0 0 #2fb36a00 } }
@@ -85,13 +85,14 @@ const email = site.email;
   .sub { font-size: clamp(17px, 1.4vw, 20px); max-width: 46ch; color: var(--muted); margin: 26px 0 30px; }
   .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
   .meta { margin-top: 36px; }
+  @media (max-width: 900px) { .meta { margin: 24px 0 0; } }
   @media (max-width: 900px) {
-    .hero { grid-template-columns: 1fr; min-height: auto; padding-top: 32px; }
+    .hero { grid-template-columns: 1fr; min-height: auto; padding-top: 32px; gap: 8px; }
     .hero-object { order: 2; }
   }
 
-  .statement { padding-block: clamp(80px, 12vw, 180px); }
-  .big { font-size: clamp(32px, 4.6vw, 72px); line-height: 1.05; letter-spacing: -.045em; font-weight: 700; margin: 18px 0 72px; max-width: 22ch; }
+  .statement { padding-block: clamp(72px, 10vw, 140px); }
+  .big { font-size: clamp(32px, 4.6vw, 72px); line-height: 1.05; letter-spacing: -.045em; font-weight: 700; margin: 18px 0 clamp(40px, 5vw, 72px); max-width: 22ch; }
   .big span { color: color-mix(in oklab, var(--text) 18%, var(--bg)); transition: color .35s var(--ease); }
   .big span.lit { color: var(--text); }
   .principles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; border-top: 1.5px solid var(--line); padding-top: 28px; }

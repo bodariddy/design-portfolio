@@ -3,23 +3,30 @@
 // 2 columns on desktop, 1 on mobile, in featured order.
 import { featured as projects, others, hasPage } from '../data/projects';
 import { Image } from 'astro:assets';
-import roqquImg from '../assets/work/roqqu/hero-mockup.webp';
-import qashImg from '../assets/work/roqqu/qash-1.webp';
-import en1Img from '../assets/work/en1/landing.webp';
-import clinkImg from '../assets/work/clink/hero.webp';
-import gloverScreen from '../assets/work/glover-lite/dashboard-final.webp';
-import weaveImg from '../assets/work/weave/store-1.webp';
+import r1 from '../assets/work/roqqu/home.webp';
+import r2 from '../assets/work/roqqu/stocks-home.webp';
+import q1 from '../assets/work/qash/home.webp';
+import q2 from '../assets/work/qash/bills.webp';
+import e1 from '../assets/work/en1/landing.webp';
+import c1 from '../assets/work/clink/dashboard.webp';
+import g1 from '../assets/work/glover-lite/dashboard-final.webp';
+import g2 from '../assets/work/glover-lite/airtime.webp';
+import w1 from '../assets/work/weave/home.webp';
+import w2 from '../assets/work/weave/review.webp';
 
-type Media = { img: ImageMetadata; mode: 'cover' | 'device'; pos?: string; zoom?: number };
-const media: Record<string, Media> = {
-  roqqu: { img: roqquImg, mode: 'cover', pos: '55% 50%' },
-  qash: { img: qashImg, mode: 'cover', pos: '40% 50%' },
-  en1: { img: en1Img, mode: 'cover', pos: '15% 50%' },
-  clink: { img: clinkImg, mode: 'cover', pos: '30% 50%' },
-  'glover-lite': { img: gloverScreen, mode: 'device' },
-  weave: { img: weaveImg, mode: 'cover', pos: '50% 0%', zoom: 1.08 },
+// Each cover = a 3-colour mesh in the project's palette + real screens in premium frames.
+type Cover =
+  | { kind: 'phones'; front: ImageMetadata; back?: ImageMetadata }
+  | { kind: 'browser'; img: ImageMetadata; url: string }
+  | { kind: 'float'; img: ImageMetadata };
+const covers: Record<string, Cover> = {
+  roqqu: { kind: 'phones', front: r1, back: r2 },
+  qash: { kind: 'phones', front: q1, back: q2 },
+  en1: { kind: 'browser', img: e1, url: 'en1.ng' },
+  clink: { kind: 'float', img: c1 },
+  'glover-lite': { kind: 'phones', front: g1, back: g2 },
+  weave: { kind: 'phones', front: w1, back: w2 },
 };
-// tall/short per card keeps the three columns level: each column = one tall + one short
 ---
 <section id="work" class="work" aria-labelledby="work-title">
   <div class="wrap work-head">
@@ -30,18 +37,23 @@ const media: Record<string, Media> = {
   <div class="wrap">
     <ul class="cards" role="list" id="grid">
       {projects.map((p, i) => {
-        const m = media[p.slug];
         const link = hasPage(p.slug);
         return (
           <li class="card" style={`--world: var(${p.colour})`}>
             <a href={link ? `/work/${p.slug}` : '#work'} data-cursor={link ? 'View case study' : 'Case study soon'}>
-              <div class="media">
-                {m && m.mode === 'cover' && (
-                  <Image src={m.img} alt="" widths={[600, 1000, 1400]} sizes="(max-width: 900px) 92vw, 46vw" style={`object-position:${m.pos ?? '50% 50%'};--z:${m.zoom ?? 1}`} loading={i < 2 ? 'eager' : 'lazy'} />
-                )}
-                {m && m.mode === 'device' && (
-                  <div class="device-field"><div class="phone"><Image src={m.img} alt="" widths={[300, 520]} sizes="220px" /></div></div>
-                )}
+              <div class="media" style={`--m1:${p.mesh![0]};--m2:${p.mesh![1]};--m3:${p.mesh![2]}`}>
+                {(() => { const c = covers[p.slug]; return (
+                  c.kind === 'phones' ? (
+                    <div class="phones">
+                      {c.back && <div class="ph ph-back"><Image src={c.back} alt="" widths={[300, 520]} sizes="200px" loading="lazy" /></div>}
+                      <div class="ph ph-front"><Image src={c.front} alt="" widths={[300, 520]} sizes="220px" loading={i < 2 ? 'eager' : 'lazy'} /></div>
+                    </div>
+                  ) : c.kind === 'browser' ? (
+                    <div class="win"><div class="win-bar"><i></i><i></i><i></i><span class="mono">{c.url}</span></div><Image src={c.img} alt="" widths={[600, 1000]} sizes="(max-width: 900px) 80vw, 36vw" loading={i < 2 ? 'eager' : 'lazy'} /></div>
+                  ) : (
+                    <div class="float"><Image src={c.img} alt="" widths={[600, 1000]} sizes="(max-width: 900px) 80vw, 38vw" loading={i < 2 ? 'eager' : 'lazy'} /></div>
+                  )
+                ); })()}
                 {p.isNew && (
                   <span class="new" aria-label="New">
                     <svg viewBox="0 0 92 44" aria-hidden="true"><path d="M78 9C64 2 30 1 14 9 3 15 2 30 14 36c16 8 52 7 66-1 12-7 10-21-2-26-7-3-17-4-26-3" /></svg>
@@ -103,8 +115,9 @@ const media: Record<string, Media> = {
 </script>
 
 <style>
-  .work { padding-block: clamp(64px, 10vw, 140px) 0; position: relative; }
-  .work-head { display: flex; justify-content: space-between; align-items: end; gap: 16px; margin-bottom: 28px; flex-wrap: wrap; }
+  .work { padding-block: clamp(56px, 7vw, 104px) 0; position: relative; }
+  .work-head { display: flex; justify-content: space-between; align-items: end; gap: 16px; margin-bottom: clamp(24px, 3vw, 40px); flex-wrap: wrap; }
+  .work-head .mono { margin: 0 0 .6em; }
   .work-head h2 { margin: 0; font-size: clamp(48px, 9vw, 136px); line-height: .88; letter-spacing: -.055em; font-weight: 800; }
   .work-head .serif { font-weight: 400; letter-spacing: -.025em; }
 
@@ -115,12 +128,38 @@ const media: Record<string, Media> = {
     background: color-mix(in oklab, var(--surface) 70%, var(--bg));
     box-shadow: inset 0 0 0 1px var(--line), 0 1px 0 var(--hl), 0 20px 40px -30px rgba(0,0,0,.35);
     transition: transform .5s var(--ease), box-shadow .5s var(--ease); }
-  .media { position: relative; overflow: hidden; border-radius: 19px; aspect-ratio: 16 / 10.5; background: var(--world); }
-  .media > :global(img) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform: scale(var(--z, 1)); transform-origin: 50% 30%; transition: transform 1s var(--ease); }
-  .device-field { position: absolute; inset: 0; display: grid; place-items: center; overflow: hidden;
-    background: radial-gradient(80% 60% at 50% 35%, rgba(255,255,255,.18), transparent 70%), var(--world); }
-  .phone { width: 30%; margin-top: 18%; border-radius: 26px; padding: 5px; background: #111; box-shadow: 0 30px 50px -20px rgba(0,0,0,.5); transition: transform 1s var(--ease); }
-  .phone :global(img) { width: 100%; height: auto; border-radius: 21px; display: block; }
+  .media { position: relative; overflow: hidden; border-radius: 19px; aspect-ratio: 16 / 10.5; isolation: isolate;
+    background:
+      radial-gradient(70% 90% at 12% 10%, var(--m2), transparent 60%),
+      radial-gradient(60% 80% at 95% 95%, var(--m3), transparent 62%),
+      radial-gradient(50% 60% at 70% 20%, color-mix(in oklab, var(--m2) 60%, white 20%), transparent 70%),
+      var(--m1); }
+  .media::before { /* grain + soft vignette for depth */
+    content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: .5; mix-blend-mode: overlay;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+  .media::after { content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none; box-shadow: inset 0 0 80px rgba(0,0,0,.18); border-radius: inherit; }
+
+  /* Two phones, overlapped and angled */
+  .phones { position: absolute; inset: 0; z-index: 1; }
+  .ph { position: absolute; width: 27%; aspect-ratio: 390 / 844; border-radius: 13% / 6%; padding: .8%;
+    background: linear-gradient(140deg, #d4d4d9 0%, #5a5a5f 14%, #232326 40%, #1a1a1d 62%, #9a9aa0 92%);
+    box-shadow: 0 30px 50px -18px rgba(0,0,0,.5), 0 10px 18px -10px rgba(0,0,0,.35); transition: transform .9s var(--ease); }
+  .ph :global(img) { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; border-radius: 12% / 5.5%; border: 3px solid #000; background: #000; }
+  .ph-front { left: 50%; top: 13%; transform: translateX(-12%) rotate(6deg); z-index: 2; }
+  .ph-back { left: 50%; top: 20%; transform: translateX(-92%) rotate(-7deg); opacity: .96; }
+
+  /* Browser window */
+  .win { position: absolute; z-index: 1; left: 9%; right: 9%; top: 12%; border-radius: 12px; overflow: hidden; background: #111;
+    box-shadow: 0 0 0 1px rgba(255,255,255,.12), 0 34px 60px -24px rgba(0,0,0,.55); transform: rotate(-2deg); transition: transform .9s var(--ease); }
+  .win-bar { height: 24px; display: flex; align-items: center; gap: 5px; padding: 0 10px; background: linear-gradient(#2a2826, #1d1c1b); }
+  .win-bar i { width: 8px; height: 8px; border-radius: 50%; background: #ff5f57; } .win-bar i:nth-child(2) { background: #febc2e; } .win-bar i:nth-child(3) { background: #28c840; }
+  .win-bar span { margin: 0 auto; transform: translateX(-20px); font-size: 9.5px; color: rgba(255,255,255,.55); text-transform: none; letter-spacing: 0; }
+  .win :global(img) { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9.4; object-fit: cover; object-position: 30% 0%; }
+
+  /* Floating composite (already-mocked image) */
+  .float { position: absolute; z-index: 1; left: 7%; right: 7%; top: 10%; bottom: 10%; border-radius: 14px; overflow: hidden; background: #fff;
+    box-shadow: 0 34px 60px -24px rgba(0,0,0,.5); transform: rotate(-2deg); transition: transform .9s var(--ease); }
+  .float :global(img) { width: 100%; height: 100%; object-fit: cover; display: block; }
 
   .new { position: absolute; top: 14px; right: 14px; z-index: 2; width: 78px; height: 38px; display: grid; place-items: center; color: #ff2fa0; font: 400 21px var(--f-serif); font-style: italic; }
   .new svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
@@ -145,8 +184,9 @@ const media: Record<string, Media> = {
 
   @media (hover: hover) {
     .card a:hover { transform: translateY(-4px); box-shadow: inset 0 0 0 1px var(--line-strong), 0 1px 0 var(--hl), 0 30px 50px -30px rgba(0,0,0,.45); }
-    .card a:hover .media > :global(img) { transform: scale(calc(var(--z, 1) * 1.04)); }
-    .card a:hover .phone { transform: scale(1.04); }
+    .card a:hover .ph-front { transform: translateX(-12%) rotate(3deg) translateY(-8px); }
+    .card a:hover .ph-back { transform: translateX(-96%) rotate(-10deg); }
+    .card a:hover .win, .card a:hover .float { transform: rotate(0deg) translateY(-6px); }
     .card a:hover .go span { transform: translateX(4px); }
   }
   @media (hover: hover) and (pointer: fine) { .card a { cursor: none; } }

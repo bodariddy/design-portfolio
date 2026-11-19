@@ -4,6 +4,10 @@ import Draft from '../../components/case/Draft.astro';
 import { Image } from 'astro:assets';
 import qash1 from '../../assets/work/roqqu/qash-1.webp';
 import qash2 from '../../assets/work/roqqu/qash-2.webp';
+import qh from '../../assets/work/qash/home.webp';
+import qb from '../../assets/work/qash/bills.webp';
+import qo from '../../assets/work/qash/orb.webp';
+import qm from '../../assets/work/qash/manage-bills.webp';
 ---
 <Case
   slug="qash"
@@ -16,7 +20,8 @@ import qash2 from '../../assets/work/roqqu/qash-2.webp';
     ['Platform', 'iOS · Android'],
   ]}
   hero={qash1}
-  heroAlt="Qash onboarding, wallet and exchange screens"
+  heroAlt="Qash app screens: home, bills, actions and subscriptions"
+  stage={{ kind: 'phone', screens: [qh, qb, qo, qm] }}
   tldr={{
     problem: 'Nigerians paying for things abroad, or getting paid from abroad, juggle banks, FX dealers and cards that get declined. Every hop adds fees, delay and doubt.',
     did: 'I designed Qash as the fiat layer inside Roqqu, then co-designed the standalone Qash app with one other designer: $QashTag transfers, international payouts, a virtual Dollar Card and multi-currency conversion.',
