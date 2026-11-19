@@ -1,55 +1,69 @@
 ---
+// Framed, image-led masonry (ref: framed card gallery). 3 columns on desktop,
+// placed so the first row reads Roqqu · Qash · EN1. Collapses to one column in order on mobile.
 import { featured as projects, others, hasPage } from '../data/projects';
 import { Image } from 'astro:assets';
-import roqquCover from '../assets/work/roqqu/home.webp';
-import gloverCover from '../assets/work/glover-lite/dashboard-final.webp';
-import clinkCover from '../assets/work/clink/links.webp';
-import en1Cover from '../assets/work/en1/a-dashboard.webp';
-import weaveCover from '../assets/work/weave/home.webp';
-const covers: Record<string, ImageMetadata> = { roqqu: roqquCover, 'glover-lite': gloverCover, clink: clinkCover, en1: en1Cover, weave: weaveCover };
+import roqquImg from '../assets/work/roqqu/hero-mockup.webp';
+import qashImg from '../assets/work/roqqu/qash-1.webp';
+import en1Img from '../assets/work/en1/landing.webp';
+import clinkImg from '../assets/work/clink/hero.webp';
+import gloverScreen from '../assets/work/glover-lite/dashboard-final.webp';
+import weaveImg from '../assets/work/weave/store-1.webp';
+
+type Media = { img: ImageMetadata; mode: 'cover' | 'device'; pos?: string; zoom?: number };
+const media: Record<string, Media> = {
+  roqqu: { img: roqquImg, mode: 'cover', pos: '55% 50%' },
+  qash: { img: qashImg, mode: 'cover', pos: '40% 50%' },
+  en1: { img: en1Img, mode: 'cover', pos: '15% 50%' },
+  clink: { img: clinkImg, mode: 'cover', pos: '30% 50%' },
+  'glover-lite': { img: gloverScreen, mode: 'device' },
+  weave: { img: weaveImg, mode: 'cover', pos: '50% 0%', zoom: 1.08 },
+};
+// tall/short per card keeps the three columns level: each column = one tall + one short
+const tall = new Set(['roqqu', 'glover-lite', 'weave']);
+const cols = [0, 1, 2].map(c => projects.map((p, i) => ({ p, i })).filter(x => x.i % 3 === c));
 ---
 <section id="work" class="work" aria-labelledby="work-title">
   <div class="wrap work-head">
     <h2 id="work-title">Selected <span class="serif">work</span></h2>
-    <p class="mono muted">06 featured · 2019 — now</p>
+    <p class="mono muted">{String(projects.length).padStart(2, '0')} featured · 2019 — now</p>
   </div>
 
-  <ul class="grid" role="list" id="grid">
-    {projects.map((p, i) => {
-      const soon = !hasPage(p.slug);
-      return (
-      <li class={`tile tile-lg ${soon ? 'soon' : ''}`} style={`--world: var(${p.colour})`}>
-        <a href={soon ? '#work' : `/work/${p.slug}`} aria-label={`${p.name}: ${p.headline}`} data-cursor={soon ? 'Case study soon' : 'View case study'}>
-          <div class="t-top mono">
-            <span>CH {String(p.ch).padStart(2, '0')}</span>
-            <span>{p.years}</span>
-          </div>
+  <div class="wrap">
+    <ul class="masonry" role="list" id="grid">
+      {cols.map(col => (
+        <li class="col">
+          <ul role="list" class="col-list">
+            {col.map(({ p, i }) => {
+              const m = media[p.slug];
+              const link = hasPage(p.slug);
+              return (
+                <li class={`card ${tall.has(p.slug) ? 'tall' : 'short'}`} style={`--world: var(${p.colour}); order: ${i}`}>
+                  <a href={link ? `/work/${p.slug}` : '#work'} data-cursor={link ? 'View case study' : 'Case study soon'} aria-label={`${p.name}: ${p.headline}`}>
+                    <div class="media">
+                      {m && m.mode === 'cover' && (
+                        <Image src={m.img} alt="" widths={[480, 800, 1200]} sizes="(max-width: 900px) 92vw, 30vw" style={`object-position:${m.pos ?? '50% 50%'};--z:${m.zoom ?? 1}`} loading={i < 3 ? 'eager' : 'lazy'} />
+                      )}
+                      {m && m.mode === 'device' && (
+                        <div class="device-field"><div class="phone"><Image src={m.img} alt="" widths={[300, 520]} sizes="220px" /></div></div>
+                      )}
+                      <div class="badge" aria-hidden="true"><span>{p.name.charAt(0)}</span></div>
+                      <div class="info">
+                        <div class="i-top"><strong>{p.name}</strong><span class="mono">{p.years}</span></div>
+                        <p>{p.headline}</p>
+                        <div class="i-metrics">{p.metrics.map(x => <span><b>{x.value}</b> {x.label}</span>)}</div>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </li>
+      ))}
+    </ul>
+  </div>
 
-          <div class="t-media" aria-hidden="true">
-            <div class={`device device-${p.device}`}>
-              {covers[p.slug]
-                ? <div class="d-screen d-img"><Image src={covers[p.slug]} alt="" widths={[320, 520]} sizes="(max-width: 900px) 80vw, 460px" /></div>
-                : <div class="d-screen">
-                    <span class="mono">{p.name}</span>
-                    <span class="mono d-note">{soon ? 'Coming soon' : 'Screens from Figma'}</span>
-                  </div>}
-            </div>
-          </div>
-
-          <div class="t-body">
-            <h3>{p.name}</h3>
-            <p>{p.headline}</p>
-            <div class="t-foot">
-              <div class="t-metrics">
-                {p.metrics.map(m => <span><b>{m.value}</b> {m.label}</span>)}
-              </div>
-              <span class="t-tags mono">{p.tags.join(' · ')}</span>
-            </div>
-          </div>
-        </a>
-      </li>
-    );})}
-  </ul>
   <div class="wrap others" aria-labelledby="others-title">
     <h3 id="others-title" class="mono muted">Other projects</h3>
     <ul role="list">
@@ -88,52 +102,59 @@ const covers: Record<string, ImageMetadata> = { roqqu: roqquCover, 'glover-lite'
   .work-head h2 { margin: 0; font-size: clamp(48px, 9vw, 136px); line-height: .88; letter-spacing: -.055em; font-weight: 800; }
   .work-head .serif { font-weight: 400; letter-spacing: -.025em; }
 
-  /* Full-bleed, edge-to-edge grid (ref: Ben Doan) */
-  .grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, 1fr); }
-  .tile { grid-column: span 2; position: relative; background: var(--world); color: var(--on-world); min-height: 560px; overflow: hidden; transition: filter .5s var(--ease); }
-  .tile-lg { grid-column: span 3; min-height: 640px; }
-  .tile::before { /* soft light falloff gives the flat colour depth */
-    content: ''; position: absolute; inset: 0; pointer-events: none;
-    background: radial-gradient(90% 70% at 50% 40%, rgba(255,255,255,.14), transparent 60%), linear-gradient(180deg, transparent 55%, rgba(0,0,0,.22));
-  }
-  .tile a { position: relative; min-height: inherit; height: 100%; display: flex; flex-direction: column; padding: clamp(18px, 2vw, 28px); text-decoration: none; }
-  @media (hover: hover) and (pointer: fine) { .tile a { cursor: none; } }
+  .masonry, .col-list { list-style: none; margin: 0; padding: 0; }
+  .masonry { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(14px, 1.6vw, 24px); align-items: start; }
+  .col-list { display: flex; flex-direction: column; gap: clamp(14px, 1.6vw, 24px); }
 
-  /* Hover spotlight */
+  /* The frame: an outer bezel with a hairline border, media inset inside it */
+  .card a { display: block; padding: 7px; border-radius: 26px; text-decoration: none; color: inherit;
+    background: color-mix(in oklab, var(--surface) 70%, var(--bg));
+    box-shadow: inset 0 0 0 1px var(--line), 0 1px 0 var(--hl), 0 20px 40px -30px rgba(0,0,0,.35);
+    transition: transform .5s var(--ease), box-shadow .5s var(--ease); }
+  @media (hover: hover) and (pointer: fine) { .card a { cursor: none; } }
+  .media { position: relative; overflow: hidden; border-radius: 19px; background: var(--world); box-shadow: inset 0 0 0 1px rgba(0,0,0,.06); }
+  .tall .media { aspect-ratio: 4 / 5; }
+  .short .media { aspect-ratio: 4 / 3.1; }
+  .media > :global(img) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform: scale(var(--z, 1)); transform-origin: 50% 30%; transition: transform 1s var(--ease); }
+
+  .device-field { position: absolute; inset: 0; display: grid; place-items: center;
+    background: radial-gradient(80% 60% at 50% 35%, rgba(255,255,255,.18), transparent 70%), var(--world); }
+  .phone { width: 46%; border-radius: 28px; padding: 6px; background: #111; box-shadow: 0 30px 50px -20px rgba(0,0,0,.5); transition: transform 1s var(--ease); }
+  .phone :global(img) { width: 100%; height: auto; border-radius: 22px; display: block; }
+
+  .badge { position: absolute; left: 14px; bottom: 14px; width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center;
+    background: var(--world); color: var(--on-world); font-weight: 800; font-size: 17px; letter-spacing: -.03em;
+    box-shadow: 0 0 0 3px color-mix(in oklab, #fff 85%, transparent), 0 6px 16px rgba(0,0,0,.25); transition: opacity .3s; }
+
+  .info { position: absolute; left: 10px; right: 10px; bottom: 10px; padding: 14px 16px; border-radius: 14px;
+    background: color-mix(in oklab, var(--bg) 92%, transparent); backdrop-filter: blur(16px) saturate(1.2); -webkit-backdrop-filter: blur(16px) saturate(1.2);
+    box-shadow: inset 0 0 0 1px var(--line); transform: translateY(calc(100% + 14px)); opacity: 0; transition: transform .5s var(--ease), opacity .3s; }
+  .i-top { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+  .i-top strong { font-size: 22px; letter-spacing: -.035em; }
+  .i-top .mono { color: var(--muted); font-size: 11px; }
+  .info p { margin: 4px 0 10px; font-size: 14.5px; line-height: 1.4; color: var(--muted); }
+  .i-metrics { display: flex; gap: 14px; flex-wrap: wrap; font-size: 13px; }
+  .i-metrics b { font-size: 16px; letter-spacing: -.02em; }
+
   @media (hover: hover) {
-    .grid:hover .tile:not(:hover) { filter: saturate(.3) brightness(.6); }
-    .tile:hover .device { transform: translateY(-10px) rotate(-1.2deg) scale(1.02); }
+    .card a:hover { transform: translateY(-4px); box-shadow: inset 0 0 0 1px var(--line-strong), 0 1px 0 var(--hl), 0 30px 50px -30px rgba(0,0,0,.45); }
+    .card a:hover .media > :global(img) { transform: scale(calc(var(--z, 1) * 1.04)); }
+    .card a:hover .phone { transform: scale(1.04); }
+    .card a:hover .info, .card a:focus-visible .info { transform: none; opacity: 1; }
+    .card a:hover .badge { opacity: 0; }
+    .masonry:hover .card a:not(:hover) { filter: saturate(.85); opacity: .92; }
+    .card a { transition: transform .5s var(--ease), box-shadow .5s var(--ease), opacity .4s, filter .4s; }
+  }
+  /* Touch: info always visible, badge hidden */
+  @media (hover: none) { .info { transform: none; opacity: 1; } .badge { display: none; } }
+
+  @media (max-width: 900px) {
+    .masonry { grid-template-columns: 1fr; }
+    .col, .col-list { display: contents; }
+    .tall .media, .short .media { aspect-ratio: 4 / 4.2; }
   }
 
-  .t-top { display: flex; justify-content: space-between; opacity: .8; position: relative; }
-  .t-media { flex: 1; display: grid; place-items: center; padding: 28px 6% 32px; position: relative; }
-
-  .device { transition: transform .7s var(--ease); filter: drop-shadow(0 30px 40px rgba(0,0,0,.28)); }
-  .d-screen { height: 100%; border-radius: inherit; display: grid; place-content: center; gap: 4px; text-align: center;
-    background:
-      linear-gradient(160deg, color-mix(in oklab, var(--on-world) 16%, transparent), transparent 55%),
-      color-mix(in oklab, var(--world) 70%, #000);
-    color: color-mix(in oklab, var(--on-world) 75%, transparent); }
-  .d-note { opacity: .55; font-size: 10px; }
-  .d-img { display: block; overflow: hidden; }
-  .d-img :global(img) { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
-  .device-phone { width: clamp(140px, 12.5vw, 190px); aspect-ratio: 9 / 19; border-radius: 30px; padding: 7px; background: #111; box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.18); position: relative; }
-  .device-phone .d-screen { border-radius: 24px; }
-  .device-phone::after { content: ''; position: absolute; top: 14px; left: 50%; width: 30%; height: 14px; margin-left: -15%; border-radius: 99px; background: #111; }
-  .device-laptop { width: min(92%, 460px); aspect-ratio: 16 / 10.6; border-radius: 14px 14px 4px 4px; padding: 8px 8px 12px; background: #141414; box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.16); position: relative; }
-  .device-laptop .d-screen { border-radius: 6px; }
-  .device-laptop::after { content: ''; position: absolute; left: -7%; right: -7%; bottom: -12px; height: 12px; border-radius: 0 0 14px 14px; background: linear-gradient(#d9d5cc, #a7a398); }
-
-  .t-body { position: relative; }
-  .t-body h3 { margin: 0; font-size: clamp(32px, 3.6vw, 56px); letter-spacing: -.045em; line-height: .95; font-weight: 800; }
-  .t-body p { margin: 10px 0 18px; font-size: clamp(16px, 1.2vw, 18px); max-width: 34ch; opacity: .92; }
-  .t-foot { display: flex; justify-content: space-between; align-items: end; gap: 16px; flex-wrap: wrap; border-top: 1px solid color-mix(in oklab, var(--on-world) 25%, transparent); padding-top: 14px; }
-  .t-metrics { display: flex; gap: 20px; flex-wrap: wrap; font-size: 14px; }
-  .t-metrics b { font-size: 22px; letter-spacing: -.03em; }
-  .t-tags { opacity: .7; font-size: 11px; }
-  .soon.never .d-screen { background: repeating-linear-gradient(90deg, #e9e4da 0 14.28%, #f2a900 14.28% 28.56%, #0b8086 28.56% 42.84%, #1d5c45 42.84% 57.12%, #c92f63 57.12% 71.4%, #b9512b 71.4% 85.68%, #2b36c9 85.68% 100%); color: #111; }
-
-  .others { padding-top: clamp(40px, 6vw, 72px); }
+  .others { padding-top: clamp(48px, 7vw, 88px); }
   .others h3 { font-weight: 400; margin: 0 0 12px; }
   .others ul { list-style: none; margin: 0; padding: 0; }
   .others li { border-top: 1.5px solid var(--line); }
@@ -151,11 +172,7 @@ const covers: Record<string, ImageMetadata> = { roqqu: roqquCover, 'glover-lite'
     .others a { grid-template-columns: 14px 1fr auto; row-gap: 6px; }
     .o-line { grid-column: 2 / -1; } .o-metric { grid-column: 2; justify-self: start; } .o-years { display: none; } .o-arrow { grid-row: 1; grid-column: 3; }
   }
-  .cursor { position: fixed; left: 0; top: 0; z-index: 60; pointer-events: none; margin: -20px 0 0 -10px; padding: 10px 14px; border-radius: 99px; background: var(--bg); color: var(--text); font-size: 11px; box-shadow: 0 10px 30px -10px rgba(0,0,0,.4); opacity: 0; scale: .6; transition: opacity .25s, scale .35s var(--ease); white-space: nowrap; }
-  .cursor.on { opacity: 1; scale: 1; }
 
-  @media (max-width: 900px) {
-    .grid { grid-template-columns: 1fr; }
-    .tile, .tile-lg { grid-column: auto; min-height: 540px; }
-  }
+  .cursor { position: fixed; left: 0; top: 0; z-index: 60; pointer-events: none; margin: -20px 0 0 -10px; padding: 10px 14px; border-radius: 99px; background: var(--text); color: var(--bg); font-size: 11px; box-shadow: 0 10px 30px -10px rgba(0,0,0,.4); opacity: 0; scale: .6; transition: opacity .25s, scale .35s var(--ease); white-space: nowrap; }
+  .cursor.on { opacity: 1; scale: 1; }
 </style>

@@ -32,12 +32,12 @@ import { site } from '../data/site';
   .foot { position: relative; z-index: 1; display: flex; justify-content: space-between; padding-block: 28px; flex-wrap: wrap; gap: 8px; color: color-mix(in oklab, var(--text) 70%, transparent); }
 
   /* Dark: a faint haze in the brand gold (--coin), hugging the bottom edge. Light: no colour, just a soft halo. */
-  .aurora { position: absolute; inset: auto 0 0 0; height: 32%; z-index: 0; pointer-events: none; display: none;
+  .aurora { position: absolute; inset: auto 0 0 0; height: 26%; z-index: 0; pointer-events: none; display: none;
     -webkit-mask: linear-gradient(to top, #000 0%, rgba(0,0,0,.5) 40%, transparent 100%); mask: linear-gradient(to top, #000 0%, rgba(0,0,0,.5) 40%, transparent 100%); }
   .aurora i { position: absolute; bottom: -55%; height: 100%; border-radius: 50%; filter: blur(80px); background: var(--coin); animation: drift 24s ease-in-out infinite alternate; }
-  .aurora i:nth-child(1) { left: -5%; width: 50%; opacity: .16; }
-  .aurora i:nth-child(2) { left: 30%; width: 45%; opacity: .2; animation-delay: -8s; }
-  .aurora i:nth-child(3) { left: 62%; width: 45%; opacity: .14; animation-delay: -16s; }
+  .aurora i:nth-child(1) { left: -5%; width: 50%; opacity: .08; }
+  .aurora i:nth-child(2) { left: 30%; width: 45%; opacity: .1; animation-delay: -8s; }
+  .aurora i:nth-child(3) { left: 62%; width: 45%; opacity: .07; animation-delay: -16s; }
   .aurora i:nth-child(4), .aurora i:nth-child(5) { display: none; }
   @keyframes drift { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(4%, -5%, 0); } }
   :global(:root[data-theme='dark']) .aurora { display: block; }
