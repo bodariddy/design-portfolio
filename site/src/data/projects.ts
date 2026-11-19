@@ -58,7 +58,7 @@ export const projects: Project[] = [
     device: 'laptop',
     ch: 3,
     name: 'Clink',
-    headline: 'Co-founding a payment-link tool, idea to ₦2M+ volume',
+    headline: 'Co-founding a payment-link tool: ₦2M+ volume, and what fraud taught me',
     tags: ['Fintech', 'Founder'],
     years: '2021 – 2023',
     colour: '--w-clink',

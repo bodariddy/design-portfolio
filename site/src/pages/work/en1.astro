@@ -1,0 +1,61 @@
+---
+import Case from '../../layouts/Case.astro';
+import Draft from '../../components/case/Draft.astro';
+import { Image } from 'astro:assets';
+
+const img = import.meta.glob<{ default: ImageMetadata }>('../../assets/work/en1/*.webp', { eager: true });
+const s = (n: string) => img[`../../assets/work/en1/${n}.webp`].default;
+---
+<Case
+  slug="en1"
+  title="A luxury EV brand’s digital platform, built from zero"
+  sub="Five products and EN1’s first design system, for an electric vehicle company launching in Nigeria."
+  meta={[
+    ['Role', 'Senior Product Designer · Contract'],
+    ['Company', 'EN1 Technologies'],
+    ['Timeline', 'May 2023 – Jul 2026'],
+    ['Platform', 'Web · Mobile · Admin'],
+  ]}
+  hero={s('hero')}
+  heroAlt="EN1 digital experience on devices"
+  tldr={{
+    problem: 'EN1 had a premium electric vehicle and no digital presence: no way to explore, configure or buy, and no internal tools to run orders.',
+    did: 'I designed EN1’s digital platform end to end (website, mobile app, car configurator, Kitshop merchandise store and admin portal) and built the company’s first design system.',
+  }}
+  results={[
+    { value: '5', label: 'products, concept to launch' },
+    { value: '+15%', label: 'team velocity from the design system' },
+    { value: '1st', label: 'design system for EN1' },
+  ]}
+>
+  <section class="wrap sec">
+    <p class="side mono">01 · Context</p>
+    <div class="txt" data-reveal>
+      <p class="lead">How do you make a luxury digital experience that feels premium and still resonates locally?</p>
+      <p>Rising fuel prices were pushing Nigerians towards alternatives, and EN1 wanted to be the electric vehicle name in the country. The audience was affluent, tech-forward and sustainability-conscious. They were motivated by prestige and innovation, and held back by cost and worries about charging and support.</p>
+      <Draft>EN1 screens and deeper decisions are coming from the Figma link. This page is a placeholder.</Draft>
+    </div>
+  </section>
+
+  <section class="wrap sec">
+    <p class="side mono">02 · Framing</p>
+    <ol class="insights" role="list" data-reveal>
+      <li><span class="mono">01</span><h3>Aspirational but approachable</h3><p>Make EV ownership desirable without making it feel out of reach.</p></li>
+      <li><span class="mono">02</span><h3>Trust and long-term value</h3><p>Answer the charging, support and cost questions before they become objections.</p></li>
+      <li><span class="mono">03</span><h3>A seamless journey</h3><p>Awareness → exploration → purchase → ownership, across every touchpoint.</p></li>
+      <li><span class="mono">04</span><h3>One system, five products</h3><p>Website, app, configurator, Kitshop and admin built in parallel, without drifting apart.</p></li>
+    </ol>
+  </section>
+
+  <div class="wrap duo" data-reveal>
+    <Image src={s('web-1')} alt="EN1 website screens" widths={[700, 1200]} sizes="(max-width: 900px) 94vw, 46vw" />
+    <Image src={s('web-2')} alt="EN1 configurator and mobile screens" widths={[700, 1200]} sizes="(max-width: 900px) 94vw, 46vw" />
+  </div>
+
+  <section class="wrap sec">
+    <p class="side mono">Coming next</p>
+    <div class="txt" data-reveal>
+      <p>Key decisions on the minimal, image-led website, the real-time car configurator, the Kitshop, the admin portal and the design system, with screens from Figma.</p>
+    </div>
+  </section>
+</Case>

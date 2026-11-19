@@ -27,3 +27,6 @@
 | 2026-11-19 | Roqqu expanded into two parts: foundations (KYC, send, checkers, Qash, Academy) + platform (Stocks, Staking, AEON, Contracts) | Tosin confirmed scope |
 | 2026-11-19 | Glover project is **Glover Lite** (not Business); Clink and Glover Lite case studies rebuilt from old Figma portfolio | Tosin's correction + own source material |
 | 2026-11-19 | Added **Qash** as project 05 (placeholder case study); Weave moves to 06; terminal now 6 channels, theme toggle moved to brand row | Tosin's request |
+| 2026-11-19 | Stocks: Tosin sole designer (Jaykay reviewed only, no credit needed). Qash app: co-designed with one other designer | Tosin's confirmation |
+| 2026-11-19 | Clink reflection: shut down after fraud and chargeback issues; framed as the origin of a risk-first design approach | Tosin's input |
+| 2026-11-19 | EN1 placeholder case study from old-site copy and images until the Figma link arrives | Tosin's request |
