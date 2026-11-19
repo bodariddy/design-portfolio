@@ -19,4 +19,4 @@
 | 2026-11-19 | CV rebuilt as `site/src/pages/cv.astro`, rendered to PDF with `npm run cv`; no phone number | ATS-friendly, on-brand, versioned with the site |
 | 2026-11-19 | Off the clock: Training, Gaming, Reading | Your input |
 | 2026-11-19 | Roqqu metrics (45%, 101,045, −30% queries, +20% CSAT) OK to publish | Your confirmation |
-| 2026-11-19 | Full-time: Roqqu, Glover, Sterling. Contract: EN1, Clink, STEMuli | Your input. Explains the overlapping dates |
+| 2026-11-19 | Contract label on EN1, Clink, STEMuli. Full-time roles (Roqqu, Glover, Sterling) unlabelled, as is standard. Sterling and Glover genuinely overlapped | Your input |
