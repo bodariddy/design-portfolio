@@ -1,0 +1,31 @@
+---
+import Base from '../layouts/Base.astro';
+---
+<Base title="Transaction declined · Tosin Lasisi">
+  <main class="nf">
+    <div class="slip">
+      <p class="mono center"><strong>TOSIN LASISI</strong><br /><span class="dim">PRODUCT DESIGN · LAGOS</span></p>
+      <div class="rule"></div>
+      <p class="mono row"><span>ERROR</span><b>404</b></p>
+      <p class="mono row"><span>PAGE</span><b>NOT FOUND</b></p>
+      <p class="mono row"><span>STATUS</span><b>IN PROGRESS</b></p>
+      <div class="rule"></div>
+      <p class="mono center big">TRANSACTION DECLINED ✕</p>
+      <p class="note">This page is still being designed. Check back soon.</p>
+      <a class="btn" href="/">← Back to the homepage</a>
+    </div>
+  </main>
+</Base>
+
+<style>
+  .nf { min-height: 100svh; display: grid; place-items: center; padding: 24px; }
+  .slip { width: min(360px, 100%); background: var(--paper); color: #1b1a17; padding: 26px 22px 24px; box-shadow: 0 20px 50px -24px rgba(0,0,0,.35); transform: rotate(-1.5deg); }
+  .mono { font-family: var(--f-mono); font-size: 12px; letter-spacing: .06em; margin: 4px 0; }
+  .center { text-align: center; }
+  .dim { opacity: .6; font-size: 10px; }
+  .rule { border-top: 1px dashed rgba(0,0,0,.35); margin: 12px 0; }
+  .row { display: flex; justify-content: space-between; }
+  .big { font-weight: 700; letter-spacing: .14em; color: #c8322f; margin: 8px 0; }
+  .note { font-size: 15px; text-align: center; color: #5a554c; margin: 14px 0 18px; }
+  .btn { display: block; text-align: center; padding: 12px; border-radius: 99px; background: #1b1a17; color: #fffdf8; text-decoration: none; font-weight: 600; }
+</style>

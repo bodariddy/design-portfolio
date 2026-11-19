@@ -10,3 +10,7 @@
 | 2026-11-19 | Featured order: **Roqqu → EN1 → Clink → Glover Business → (Weave)** | Your call |
 | 2026-11-19 | Locked projects go public with new case studies | Your call |
 | 2026-11-19 | Domain: `*.vercel.app` for now | Your call |
+| 2026-11-19 | Signature object: **POS terminal** (trial) | Your call. Revisit after seeing it live |
+| 2026-11-19 | New Lagos colour worlds: Roqqu indigo, EN1 palm, Clink lagoon, Glover hibiscus, Weave laterite; gold coin accent | Old palette rethought |
+| 2026-11-19 | Theme follows the system, with a manual switch | Your call |
+| 2026-11-19 | Live preview at tosin-design-portfolio.vercel.app (auto-deploys from `main`) | Vercel |
