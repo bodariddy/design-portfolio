@@ -1,0 +1,8 @@
+---
+// Visible review note while the site is in draft. Flip DRAFT to false before launch to hide them all.
+import { DRAFT } from '../../data/site';
+---
+{DRAFT && <span class="draft mono"><slot /></span>}
+<style>
+  .draft { display: inline-block; border: 1.5px dashed var(--coin); color: var(--text); background: color-mix(in oklab, var(--coin) 12%, transparent); border-radius: 8px; padding: 4px 8px; font-size: 11px; text-transform: none; letter-spacing: 0; margin: 4px 0; }
+</style>

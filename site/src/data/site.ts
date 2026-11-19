@@ -14,3 +14,6 @@ export const experience: [string, string, string, string][] = [
   ['2021 — 2022', 'STEMuli · US', 'Product Designer · Contract', '+25% retention'],
   ['2019 — 2023', 'Sterling Bank · Edubanc', 'Product Designer', '₦45M+ processed'],
 ];
+
+// While true, <Draft> review notes are visible on the site. Set to false before launch.
+export const DRAFT = true;

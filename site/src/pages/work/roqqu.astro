@@ -1,0 +1,214 @@
+---
+import Case from '../../layouts/Case.astro';
+import Screens from '../../components/case/Screens.astro';
+import Draft from '../../components/case/Draft.astro';
+import { Image } from 'astro:assets';
+
+const img = import.meta.glob<{ default: ImageMetadata }>('../../assets/work/roqqu/*.webp', { eager: true });
+const s = (n: string) => img[`../../assets/work/roqqu/${n}.webp`].default;
+
+const kyc = [
+  { src: s('kyc-start'), alt: 'Verify your identity screen listing what is needed up front', cap: 'What we need, said up front' },
+  { src: s('kyc-bvn'), alt: 'Enter your BVN screen', cap: 'One question per screen, with the why' },
+  { src: s('kyc-selfie'), alt: 'Take a selfie screen with tips', cap: 'Tips before the camera opens' },
+  { src: s('kyc-selfie-capture'), alt: 'Guided liveness capture asking the user to tilt their face', cap: 'Guided liveness, one instruction at a time' },
+  { src: s('kyc-processing'), alt: 'Verification processing screen with live checklist', cap: 'Processing you can watch' },
+  { src: s('kyc-success'), alt: 'Identity verification successful screen', cap: 'A clear finish line' },
+];
+const tools = [
+  { src: s('rate-checker'), alt: 'Rate checker converting BTC to USDT with popular pairs', cap: 'Rate checker: live, with “last updated”' },
+  { src: s('network-result'), alt: 'Network checker showing supported networks for a pasted address', cap: 'Network checker: paste an address, see safe networks' },
+  { src: s('txcheck-detail'), alt: 'Transaction checker with plain-language summary of a Bitcoin transaction', cap: 'Transaction checker: the chain, in plain English' },
+  { src: s('txcheck-result'), alt: 'Transaction checker result for a sale', cap: 'Every detail, one tap to copy' },
+];
+const send = [
+  { src: s('send-address'), alt: 'Send BTC address and network screen', cap: 'Address and network, nothing else' },
+  { src: s('send-network'), alt: 'Select network sheet with a warning to match networks', cap: 'Network choice made explicit, with fees and ETA' },
+  { src: s('send-confirm'), alt: 'Confirm transaction screen showing fee, arrival and balance after', cap: 'Confirm shows what lands, what it costs, what’s left' },
+  { src: s('tx-progress-1'), alt: 'Transaction details processing state', cap: 'Then a live timeline…' },
+  { src: s('tx-progress-done'), alt: 'Transaction details successful state', cap: '…to a clear “Successful”' },
+];
+---
+<Case
+  slug="roqqu"
+  title="Making crypto feel safe enough to trade"
+  sub="Redesigning onboarding, money movement and self-serve tools for a crypto platform serving retail and Web3 users across Africa and Europe."
+  meta={[
+    ['Role', 'Senior Product Designer'],
+    ['Team', 'Product design team of 5, plus PM & engineering'],
+    ['Timeline', 'Nov 2023 – present'],
+    ['Platform', 'iOS · Android'],
+  ]}
+  hero={s('hero-mockup')}
+  heroAlt="Two Roqqu app screens on phones, showing the home balance and wallet"
+  tldr={{
+    problem: 'New users were dropping out of a long, confusing KYC, and existing users were nervous about moving money. One wrong network or one unclear status and trust was gone, and the support queue grew.',
+    did: 'I led discovery and redesigned the flows where trust is won or lost: identity verification, sending and tracking crypto, fiat in and out with Qash, and a set of self-serve tools that answer “is my money safe?” before anyone has to ask support.',
+  }}
+  results={[
+    { value: '−45%', label: 'onboarding time' },
+    { value: '+22%', label: 'onboarding → first transaction' },
+    { value: '+18%', label: 'successful trade completion' },
+    { value: '101k', label: 'Qash transactions in year one' },
+    { value: '−30%', label: 'support queries' },
+  ]}
+>
+  <section class="wrap sec">
+    <p class="side mono">01 · Context</p>
+    <div class="txt" data-reveal>
+      <p class="lead">In crypto, every tap feels high-stakes. Pick the wrong network and the money is gone. Don’t understand a status and you assume the worst.</p>
+      <p>Roqqu lets people across Africa and Europe buy, sell, store and send crypto, and move between crypto and local currency. The business needed more sign-ups to become active traders, and fewer support tickets from people who didn’t understand what was happening to their funds.</p>
+      <p>The product is large: crypto, stocks, a Web3 wallet, cards and more, designed by a team of five. This case study focuses on the parts I owned.</p>
+      <Draft>To confirm: KYC & onboarding, send/transaction states, Qash, the three checkers and Academy were yours. Anything to add or remove?</Draft>
+    </div>
+  </section>
+
+  <section class="wrap sec">
+    <p class="side mono">02 · My role</p>
+    <div class="txt" data-reveal>
+      <p>I’m a Senior Product Designer on the core product, working with product and engineering leadership on strategy for trading and Web3 wallet expansion. Alongside the design work, I introduced a structured discovery process (research synthesis, journey mapping and problem-framing workshops) that now feeds roadmap prioritisation.</p>
+    </div>
+  </section>
+
+  <section class="wrap sec">
+    <p class="side mono">03 · What we learned</p>
+    <ol class="insights" role="list" data-reveal>
+      <li><span class="mono">01</span><h3>Onboarding was the biggest leak</h3><p>KYC was long, unclear about what it needed, and failed silently.</p></li>
+      <li><span class="mono">02</span><h3>Uncertainty drove support</h3><p>“Has my transaction gone through?” was the top query, and most tickets were people checking status rather than real problems.</p></li>
+      <li><span class="mono">03</span><h3>Networks were scary</h3><p>Users didn’t understand networks or fees, and feared losing funds by choosing wrong.</p></li>
+      <li><span class="mono">04</span><h3>People wanted to learn</h3><p>Many users wanted to understand crypto before committing real money.</p></li>
+    </ol>
+  </section>
+
+  <!-- Decisions -->
+  <section class="decision">
+    <div class="wrap d-head">
+      <p class="mono d-n">Decision 01</p>
+      <h2>KYC as a guided, recoverable journey</h2>
+      <div class="d-cols" data-reveal>
+        <div><h4 class="mono">Insight</h4><p>Users quit when they didn’t know how many steps were left, why a document was needed, or why it was rejected.</p></div>
+        <div><h4 class="mono">Decision</h4><p>Say what we need up front. Ask one thing per screen and explain why. Coach before the camera opens, guide liveness one instruction at a time, and show processing as a live checklist with a clear finish.</p></div>
+        <div><h4 class="mono">Result</h4><p class="big">−45% onboarding time</p></div>
+      </div>
+    </div>
+    <div class="wrap-bleed"><Screens shots={kyc} label="KYC flow screens" /></div>
+  </section>
+
+  <section class="decision">
+    <div class="wrap d-head">
+      <p class="mono d-n">Decision 02</p>
+      <h2>Sending crypto without the fear</h2>
+      <div class="d-cols" data-reveal>
+        <div><h4 class="mono">Insight</h4><p>The riskiest moments were choosing a network and waiting for confirmation, with users guessing at both.</p></div>
+        <div><h4 class="mono">Decision</h4><p>Strip the send screen to address and network. Make network choice explicit, with a warning, fees and ETA. Show exactly what lands, what it costs and what’s left before confirming. Replace “pending” with a live timeline.</p></div>
+        <div><h4 class="mono">Result</h4><p class="big">+18% trade completion</p></div>
+      </div>
+    </div>
+    <div class="wrap-bleed"><Screens shots={send} label="Send and transaction status screens" /></div>
+  </section>
+
+  <section class="decision">
+    <div class="wrap d-head">
+      <p class="mono d-n">Decision 03</p>
+      <h2>Self-serve answers instead of support tickets</h2>
+      <div class="d-cols" data-reveal>
+        <div><h4 class="mono">Insight</h4><p>Most support tickets were questions the product could answer itself: what’s the rate, is this network right, where’s my transaction?</p></div>
+        <div><h4 class="mono">Decision</h4><p>Three small tools: a Rate checker, a Network checker and a Transaction checker, which explains on-chain data in plain language.</p></div>
+        <div><h4 class="mono">Result</h4><p class="big">−30% support queries</p></div>
+      </div>
+    </div>
+    <div class="wrap-bleed"><Screens shots={tools} label="Rate, network and transaction checker screens" /></div>
+  </section>
+
+  <section class="decision">
+    <div class="wrap d-head">
+      <p class="mono d-n">Decision 04</p>
+      <h2>Qash: local money in and out, without the maths</h2>
+      <div class="d-cols" data-reveal>
+        <div><h4 class="mono">Insight</h4><p>Converting NGN, GBP or USD into crypto meant leaving the app or doing mental arithmetic, and that’s where trust broke.</p></div>
+        <div><h4 class="mono">Decision</h4><p>A native fiat wallet with live rates up front, the total cost before confirmation, and one flow for conversion.</p></div>
+        <div><h4 class="mono">Result</h4><p class="big">101,045 transactions in year one</p></div>
+      </div>
+    </div>
+    <div class="wrap duo" data-reveal>
+      <Image src={s('qash-1')} alt="Qash onboarding, wallet and exchange screens" widths={[700, 1200]} sizes="(max-width: 800px) 94vw, 46vw" />
+      <Image src={s('qash-2')} alt="Qash transaction history and analytics screens" widths={[700, 1200]} sizes="(max-width: 800px) 94vw, 46vw" />
+    </div>
+  </section>
+
+  <section class="wrap sec">
+    <p class="side mono">Also shipped</p>
+    <div class="txt" data-reveal>
+      <h3 class="also">Roqqu Academy</h3>
+      <p>In-app learning paths with short lessons and quizzes for beginner and advanced traders, so people can learn before they risk real money.</p>
+    </div>
+  </section>
+  <div class="wrap duo" data-reveal>
+    <Image src={s('academy-1')} alt="Roqqu Academy course list and lesson screens" widths={[700, 1200]} sizes="(max-width: 800px) 94vw, 46vw" />
+    <Image src={s('academy-2')} alt="Roqqu Academy quiz and score screens" widths={[700, 1200]} sizes="(max-width: 800px) 94vw, 46vw" />
+  </div>
+
+  <section class="wrap sec">
+    <p class="side mono">Results</p>
+    <div class="txt" data-reveal>
+      <table class="rtable">
+        <tbody>
+          <tr><th>Onboarding time</th><td>−45%</td></tr>
+          <tr><th>Onboarding → first transaction</th><td>+22%</td></tr>
+          <tr><th>Successful trade completion</th><td>+18%</td></tr>
+          <tr><th>Qash transactions, year one</th><td>101,045</td></tr>
+          <tr><th>Support queries</th><td>−30%</td></tr>
+          <tr><th>User satisfaction (survey)</th><td>+20%</td></tr>
+        </tbody>
+      </table>
+      <Draft>A one-line quote from a PM or engineer here would make this much stronger.</Draft>
+    </div>
+  </section>
+
+  <section class="wrap sec">
+    <p class="side mono">Reflection</p>
+    <div class="txt" data-reveal>
+      <p class="lead">If I did it again, I’d instrument the KYC funnel step by step from day one.</p>
+      <p>We found the biggest drop-off through interviews first. Earlier event data would have got us there faster. The bigger lesson: in financial products, the most valuable design work is often a status, a warning or a single sentence of reassurance, placed at exactly the right moment.</p>
+      <Draft>Draft reflection. Edit it so it sounds like you.</Draft>
+    </div>
+  </section>
+</Case>
+
+<style>
+  .sec { display: grid; grid-template-columns: 1fr 2.2fr; gap: 32px; padding-block: clamp(44px, 6vw, 80px); border-top: 1.5px solid var(--line); }
+  .side { margin: 6px 0 0; color: var(--muted); position: sticky; top: 92px; align-self: start; }
+  .txt { max-width: 700px; }
+  .txt p { font-size: clamp(17px, 1.35vw, 20px); line-height: 1.6; margin: 0 0 1em; }
+  .txt .lead { font-size: clamp(22px, 2.1vw, 30px); line-height: 1.3; letter-spacing: -.02em; font-weight: 600; }
+  .also { font-size: 28px; letter-spacing: -.03em; margin: 0 0 8px; }
+
+  .insights { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 32px 40px; }
+  .insights span { color: var(--muted); }
+  .insights h3 { font-size: clamp(22px, 2vw, 28px); letter-spacing: -.03em; line-height: 1.1; margin: 8px 0 8px; }
+  .insights p { margin: 0; color: var(--muted); }
+
+  .decision { padding-block: clamp(56px, 8vw, 110px) clamp(20px, 3vw, 40px); border-top: 1.5px solid var(--line); }
+  .d-n { color: var(--muted); margin: 0; }
+  .d-head h2 { font-size: clamp(34px, 4.6vw, 72px); letter-spacing: -.05em; line-height: .95; margin: 14px 0 32px; max-width: 18ch; font-weight: 800; }
+  .d-cols { display: grid; grid-template-columns: 1fr 1.4fr .9fr; gap: 28px 40px; margin-bottom: 36px; }
+  .d-cols h4 { margin: 0 0 8px; font-weight: 500; color: var(--muted); }
+  .d-cols p { margin: 0; font-size: 16.5px; line-height: 1.55; }
+  .d-cols .big { font-size: clamp(22px, 2vw, 30px); font-weight: 700; letter-spacing: -.03em; line-height: 1.15; }
+  .wrap-bleed { padding-left: var(--gutter); max-width: calc(1440px + (100vw - 1440px) / 2); margin-left: max(0px, calc((100vw - 1440px) / 2)); }
+
+  .duo { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding-bottom: clamp(20px, 3vw, 40px); }
+  .duo :global(img) { width: 100%; height: auto; border-radius: 14px; }
+
+  .rtable { width: 100%; border-collapse: collapse; margin-bottom: 16px; }
+  .rtable th, .rtable td { padding: 14px 0; border-top: 1.5px solid var(--line); font-size: 18px; text-align: left; }
+  .rtable th { font-weight: 500; }
+  .rtable td { text-align: right; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .rtable tr:last-child th, .rtable tr:last-child td { border-bottom: 1.5px solid var(--line); }
+
+  @media (max-width: 900px) {
+    .sec { grid-template-columns: 1fr; gap: 10px; }
+    .side { position: static; }
+    .d-cols, .insights, .duo { grid-template-columns: 1fr; }
+  }
+</style>

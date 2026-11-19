@@ -1,0 +1,106 @@
+---
+// Case-study template: colour-world hero → TL;DR → body sections (slot) → next project → contact.
+import Base from './Base.astro';
+import Nav from '../components/Nav.astro';
+import Contact from '../components/Contact.astro';
+import { projects } from '../data/projects';
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  slug: string;
+  title: string;
+  sub: string;
+  meta: [string, string][];
+  hero: ImageMetadata;
+  heroAlt: string;
+  tldr: { problem: string; did: string };
+  results: { value: string; label: string }[];
+}
+const { slug, title, sub, meta, hero, heroAlt, tldr, results } = Astro.props;
+const i = projects.findIndex(p => p.slug === slug);
+const p = projects[i];
+const live = projects.filter(x => x.slug !== 'weave');
+const next = live[(live.findIndex(x => x.slug === slug) + 1) % live.length];
+---
+<Base title={`${p.name}: ${title} · Tosin Lasisi`} description={sub}>
+  <div style={`--world: var(${p.colour})`}>
+    <Nav />
+    <main id="main">
+      <header class="hero">
+        <div class="wrap">
+          <nav class="crumbs mono" aria-label="Breadcrumb"><a href="/#work">Work</a><span>/</span><span>CH {String(p.ch).padStart(2, '0')} · {p.name}</span></nav>
+          <h1>{title}</h1>
+          <p class="sub">{sub}</p>
+          <dl class="meta">
+            {meta.map(([k, v]) => <div><dt class="mono">{k}</dt><dd>{v}</dd></div>)}
+          </dl>
+        </div>
+        <div class="wrap hero-img">
+          <Image src={hero} alt={heroAlt} widths={[800, 1400, 2000]} sizes="(max-width: 1440px) 94vw, 1360px" loading="eager" />
+        </div>
+      </header>
+
+      <section class="wrap tldr" aria-label="Summary">
+        <div class="t-col"><h2 class="mono">The problem</h2><p>{tldr.problem}</p></div>
+        <div class="t-col"><h2 class="mono">What I did</h2><p>{tldr.did}</p></div>
+        <ul class="results" role="list" data-reveal>
+          {results.map(r => <li><b>{r.value}</b><span>{r.label}</span></li>)}
+        </ul>
+      </section>
+
+      <article class="body">
+        <slot />
+      </article>
+
+      <a class="next" href={`/work/${next.slug}`} style={`--world: var(${next.colour})`}>
+        <div class="wrap">
+          <span class="mono">Next · CH {String(next.ch).padStart(2, '0')}</span>
+          <strong>{next.name} <span aria-hidden="true">→</span></strong>
+          <span class="n-line">{next.headline}</span>
+        </div>
+      </a>
+
+      <Contact />
+    </main>
+  </div>
+</Base>
+
+<style>
+  .hero { background: var(--world); color: var(--on-world); padding-top: clamp(28px, 5vw, 64px); position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(70% 60% at 80% 10%, rgba(255,255,255,.14), transparent 60%); }
+  .hero .wrap { position: relative; }
+  .crumbs { display: flex; gap: 8px; opacity: .8; }
+  .crumbs a { text-decoration: none; } .crumbs a:hover { text-decoration: underline; }
+  h1 { font-size: clamp(44px, 7.4vw, 124px); line-height: .9; letter-spacing: -.058em; font-weight: 800; margin: 22px 0 0; max-width: 13ch; }
+  .sub { font-size: clamp(18px, 1.7vw, 24px); line-height: 1.35; max-width: 44ch; margin: 24px 0 40px; opacity: .92; }
+  .meta { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px 28px; margin: 0; padding-bottom: clamp(36px, 5vw, 64px); }
+  .meta div { border-top: 1px solid color-mix(in oklab, var(--on-world) 30%, transparent); padding-top: 10px; }
+  .meta dt { opacity: .7; }
+  .meta dd { margin: 4px 0 0; font-size: 16px; }
+  .hero-img :global(img) { width: 100%; height: auto; border-radius: 18px 18px 0 0; display: block; box-shadow: 0 -20px 60px -30px rgba(0,0,0,.5); }
+
+  .tldr { display: grid; grid-template-columns: 1fr 1fr; gap: 28px 48px; padding-block: clamp(56px, 8vw, 110px); }
+  .t-col h2 { margin: 0 0 10px; font-weight: 500; color: var(--muted); }
+  .t-col p { margin: 0; font-size: clamp(18px, 1.5vw, 22px); line-height: 1.45; letter-spacing: -.01em; }
+  .results { grid-column: 1 / -1; list-style: none; margin: 16px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 0; border-top: 1.5px solid var(--line); }
+  .results li { padding: 22px 18px 6px 0; border-right: 1.5px solid var(--line); display: grid; gap: 6px; }
+  .results li:last-child { border-right: 0; }
+  .results b { font-size: clamp(40px, 4.6vw, 68px); letter-spacing: -.055em; line-height: .9; color: var(--world); font-variant-numeric: tabular-nums; }
+  .results span { color: var(--muted); font-size: 15px; max-width: 20ch; }
+  :global(:root[data-theme='dark']) .results b { color: color-mix(in oklab, var(--world) 55%, white); }
+  @media (prefers-color-scheme: dark) { :global(:root:not([data-theme='light'])) .results b { color: color-mix(in oklab, var(--world) 55%, white); } }
+
+  .next { display: block; background: var(--world); color: var(--on-world); text-decoration: none; padding-block: clamp(56px, 8vw, 110px); margin-top: clamp(40px, 6vw, 80px); }
+  .next .wrap { display: grid; gap: 8px; }
+  .next strong { font-size: clamp(48px, 9vw, 140px); letter-spacing: -.06em; line-height: .9; font-weight: 800; }
+  .next strong span { display: inline-block; transition: transform .4s var(--ease); }
+  .next:hover strong span { transform: translateX(16px); }
+  .n-line { font-size: 18px; opacity: .85; }
+
+  @media (max-width: 800px) {
+    .meta { grid-template-columns: 1fr 1fr; }
+    .tldr { grid-template-columns: 1fr; }
+    .results li { border-right: 0; border-bottom: 1.5px solid var(--line); padding-bottom: 18px; }
+  }
+</style>

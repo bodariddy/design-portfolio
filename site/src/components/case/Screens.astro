@@ -1,0 +1,29 @@
+---
+// A horizontal strip of phone screens. Drag/scroll on desktop, swipe on mobile.
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+interface Props { shots: { src: ImageMetadata; alt: string; cap?: string }[]; label: string }
+const { shots, label } = Astro.props;
+---
+<figure class="strip" aria-label={label}>
+  <div class="track" tabindex="0">
+    {shots.map((s, i) => (
+      <div class="shot">
+        <div class="phone"><Image src={s.src} alt={s.alt} widths={[300, 520]} sizes="260px" loading="lazy" /></div>
+        {s.cap && <figcaption class="mono"><span>{String(i + 1).padStart(2, '0')}</span>{s.cap}</figcaption>}
+      </div>
+    ))}
+  </div>
+</figure>
+
+<style>
+  .strip { margin: 0; position: relative; }
+  .track { display: flex; gap: clamp(14px, 2vw, 24px); overflow-x: auto; scroll-snap-type: x mandatory; padding: 8px 2px 22px; scrollbar-width: thin; scrollbar-color: var(--line-strong) transparent; overscroll-behavior-x: contain; }
+  .track:focus-visible { outline-offset: 6px; }
+  .shot { flex: 0 0 clamp(200px, 19vw, 260px); scroll-snap-align: start; }
+  .phone { border-radius: 26px; overflow: hidden; background: #111; padding: 5px; box-shadow: 0 1px 0 var(--line), 0 24px 40px -24px rgba(0,0,0,.45); transition: transform .5s var(--ease); }
+  .phone :global(img) { border-radius: 21px; width: 100%; height: auto; aspect-ratio: 390 / 844; object-fit: cover; object-position: top; }
+  .shot:hover .phone { transform: translateY(-6px); }
+  figcaption { display: flex; gap: 8px; margin-top: 12px; color: var(--muted); text-transform: none; letter-spacing: 0; font-size: 12px; line-height: 1.4; }
+  figcaption span { color: var(--text); }
+</style>

@@ -21,3 +21,6 @@
 | 2026-11-19 | Roqqu metrics (45%, 101,045, −30% queries, +20% CSAT) OK to publish | Your confirmation |
 | 2026-11-19 | Contract label on EN1, Clink, STEMuli. Full-time roles (Roqqu, Glover, Sterling) unlabelled, as is standard. Sterling and Glover genuinely overlapped | Your input |
 | 2026-11-19 | Polish pass 1: mobile menu, hide-on-scroll nav, paper grain, native page transitions, reveals, skip link, OG image, device-frame placeholders, cursor pill, hidden "Coin run" game (press G), dark-mode accent contrast | Make it feel finished and classy |
+| 2026-11-19 | Case-study template (`layouts/Case.astro`): colour-world hero → TL;DR + results → context/role/insights → decisions with screen strips → results → reflection → next project | Results first, scannable in ~90s |
+| 2026-11-19 | Roqqu screens from Figma limited to flows Tosin publicly claimed before (KYC, send/tx states, checkers, Qash, Academy). Figma covers list a 5-person team (Crypto) and Jaykay + Tosin (Stocks) | Honest attribution. Stocks excluded until scope is confirmed |
+| 2026-11-19 | `DRAFT` flag in `data/site.ts` shows dashed review notes on the site. Set false at launch | Keeps open questions visible during review |
