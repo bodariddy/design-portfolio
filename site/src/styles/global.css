@@ -25,6 +25,8 @@
   --w-glover: #c92f63;  /* hibiscus */
   --w-weave: #b9512b;   /* laterite */
   --w-qash: #5b3cc4;    /* ankara violet */
+  --w-edubanc: #b0262c; /* kola red */
+  --w-stemuli: #2f5d8a; /* harmattan blue */
   --on-world: #fbf7ee;
   --hl: rgba(255,255,255,.6);
   --accent-text: var(--w-roqqu);
@@ -55,7 +57,13 @@
     --w-glover: #d8396e;
     --w-weave: #c95c33;
   --w-qash: #6c4ee0;
+  --w-edubanc: #c8353b;
+  --w-stemuli: #3a6fa3;
     --w-qash: #6c4ee0;
+  --w-edubanc: #c8353b;
+  --w-stemuli: #3a6fa3;
+    --w-edubanc: #c8353b;
+    --w-stemuli: #3a6fa3;
     --hl: rgba(255,255,255,.06);
     --accent-text: #8f97ff;
     --accent-text-2: #ff7aa2;
@@ -77,6 +85,8 @@
   --w-glover: #d8396e;
   --w-weave: #c95c33;
   --w-qash: #6c4ee0;
+  --w-edubanc: #c8353b;
+  --w-stemuli: #3a6fa3;
   --hl: rgba(255,255,255,.06);
   --accent-text: #8f97ff;
   --accent-text-2: #ff7aa2;

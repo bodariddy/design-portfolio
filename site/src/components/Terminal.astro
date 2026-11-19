@@ -1,5 +1,5 @@
 ---
-import { projects, hasPage } from '../data/projects';
+import { featured as projects, hasPage } from '../data/projects';
 const receiptData = JSON.stringify(projects.map(p => ({ ch: p.ch, name: p.name, slug: p.slug, headline: p.headline, receipt: p.receipt, page: hasPage(p.slug) })));
 ---
 <div class="pos-wrap" data-ch="1" id="pos">
@@ -38,7 +38,7 @@ const receiptData = JSON.stringify(projects.map(p => ({ ch: p.ch, name: p.name, 
       </section>
 
       <!-- CH2 EN1: configurator cycles paint colours -->
-      <section class="ch" data-for="2">
+      <section class="ch" data-for="3">
         <p class="s-label">Configure your EN1</p>
         <svg class="car" viewBox="0 0 220 70"><path class="body" d="M12 50 C14 38 30 34 52 32 L78 18 C88 12 100 10 124 10 L150 11 C166 12 176 20 188 30 C200 32 210 38 210 50 Z" /><circle cx="56" cy="52" r="11" class="wheel"/><circle cx="168" cy="52" r="11" class="wheel"/><path class="glass" d="M84 20 L100 14 L146 14 L170 30 L76 30 Z"/></svg>
         <div class="swatches"><i></i><i></i><i></i><i></i></div>
@@ -46,7 +46,7 @@ const receiptData = JSON.stringify(projects.map(p => ({ ch: p.ch, name: p.name, 
       </section>
 
       <!-- CH3 Clink: payment link goes from pending to paid -->
-      <section class="ch" data-for="3">
+      <section class="ch" data-for="4">
         <p class="s-label">Payment link</p>
         <div class="link-card">
           <span class="mono link-url">clink.ng/ade-kicks</span>
@@ -57,7 +57,7 @@ const receiptData = JSON.stringify(projects.map(p => ({ ch: p.ch, name: p.name, 
       </section>
 
       <!-- CH4 Glover Lite: pay for anything, no KYC -->
-      <section class="ch" data-for="4">
+      <section class="ch" data-for="5">
         <p class="s-label">Hello 👋 · no KYC needed</p>
         <div class="svc"><i>🎁</i><i>📞</i><i>💡</i><i>📶</i><i>📺</i><i>💱</i></div>
         <div class="toast toast-soft">Airtime ₦2,000 · Success <b>✓</b></div>
@@ -65,7 +65,7 @@ const receiptData = JSON.stringify(projects.map(p => ({ ch: p.ch, name: p.name, 
       </section>
 
       <!-- CH5 Qash: dollar card slides in, naira converts to dollars -->
-      <section class="ch" data-for="5">
+      <section class="ch" data-for="2">
         <p class="s-label">Dollar balance</p>
         <p class="s-big" data-count="1250" data-prefix="$">$0</p>
         <div class="vcard"><span class="mono">QASH · VIRTUAL</span><span class="mono">•••• 4021</span><b>VISA</b></div>

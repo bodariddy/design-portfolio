@@ -30,3 +30,5 @@
 | 2026-11-19 | Stocks: Tosin sole designer (Jaykay reviewed only, no credit needed). Qash app: co-designed with one other designer | Tosin's confirmation |
 | 2026-11-19 | Clink reflection: shut down after fraud and chargeback issues; framed as the origin of a risk-first design approach | Tosin's input |
 | 2026-11-19 | EN1 placeholder case study from old-site copy and images until the Figma link arrives | Tosin's request |
+| 2026-11-19 | Featured order: **Roqqu → Qash → EN1 → Clink → Glover Lite → Weave** (terminal keys 1–6 follow it) | Tosin's call |
+| 2026-11-19 | Edubanc and STEMuli added as **Other projects**: compact list under the grid, each with its own case study built from the old portfolio | Tosin's request. Keeps the grid focused on fintech |

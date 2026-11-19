@@ -8,6 +8,7 @@ export type Project = {
   years: string;
   colour: string; // CSS var name of its colour world
   device: 'phone' | 'laptop';
+  featured?: boolean; // false = shown under 'Other projects', not in the grid or terminal
   metrics: { value: string; label: string }[];
   receipt: [string, string][]; // printed on the POS receipt
 };
@@ -34,9 +35,29 @@ export const projects: Project[] = [
     ],
   },
   {
+    slug: 'qash',
+    device: 'phone',
+    ch: 2,
+    name: 'Qash',
+    headline: 'Send, spend and save in dollars: one app for money across borders',
+    tags: ['Fintech', 'Payments', 'Cards'],
+    years: '2024 – now',
+    colour: '--w-qash',
+    metrics: [
+      { value: '101k', label: 'transactions, year one' },
+      { value: '150+', label: 'countries' },
+    ],
+    receipt: [
+      ['TXNS / YR1', '101,045'],
+      ['COUNTRIES', '150+'],
+      ['CURRENCIES', 'NGN USD GBP'],
+      ['DOLLAR CARD', '30 SEC'],
+    ],
+  },
+  {
     slug: 'en1',
     device: 'laptop',
-    ch: 2,
+    ch: 3,
     name: 'EN1',
     headline: 'A luxury EV brand’s digital platform, built from zero',
     tags: ['Automotive', 'Web + App', 'Design system'],
@@ -56,7 +77,7 @@ export const projects: Project[] = [
   {
     slug: 'clink',
     device: 'laptop',
-    ch: 3,
+    ch: 4,
     name: 'Clink',
     headline: 'Co-founding a payment-link tool: ₦2M+ volume, and what fraud taught me',
     tags: ['Fintech', 'Founder'],
@@ -76,7 +97,7 @@ export const projects: Project[] = [
   {
     slug: 'glover-lite',
     device: 'phone',
-    ch: 4,
+    ch: 5,
     name: 'Glover Lite',
     headline: 'Cutting drop-off 30% by removing KYC from the front door',
     tags: ['Fintech', 'Mobile + Web', 'A/B tested'],
@@ -94,26 +115,6 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: 'qash',
-    device: 'phone',
-    ch: 5,
-    name: 'Qash',
-    headline: 'Send, spend and save in dollars: one app for money across borders',
-    tags: ['Fintech', 'Payments', 'Cards'],
-    years: '2024 – now',
-    colour: '--w-qash',
-    metrics: [
-      { value: '101k', label: 'transactions, year one' },
-      { value: '150+', label: 'countries' },
-    ],
-    receipt: [
-      ['TXNS / YR1', '101,045'],
-      ['COUNTRIES', '150+'],
-      ['CURRENCIES', 'NGN USD GBP'],
-      ['DOLLAR CARD', '30 SEC'],
-    ],
-  },
-  {
     slug: 'weave',
     device: 'phone',
     ch: 6,
@@ -125,7 +126,41 @@ export const projects: Project[] = [
     metrics: [{ value: 'Soon', label: 'in progress' }],
     receipt: [['STATUS', 'PENDING']],
   },
+  {
+    slug: 'edubanc',
+    device: 'laptop',
+    featured: false,
+    ch: 7,
+    name: 'Edubanc',
+    headline: 'School-fee loans, teacher training and school banking for Sterling Bank',
+    tags: ['EdTech', 'Banking', 'Web + Mobile + Admin'],
+    years: '2019 – 2023',
+    colour: '--w-edubanc',
+    metrics: [
+      { value: '₦45M+', label: 'loan volume' },
+      { value: '1,000+', label: 'schools onboarded' },
+    ],
+    receipt: [['LOANS', '₦45M+'], ['SCHOOLS', '1,000+'], ['USERS', '4,000+']],
+  },
+  {
+    slug: 'stemuli',
+    device: 'laptop',
+    featured: false,
+    ch: 8,
+    name: 'STEMuli',
+    headline: 'Virtual mentorships and work-based learning for US students',
+    tags: ['EdTech', 'US · Remote', 'Web'],
+    years: '2021 – 2022',
+    colour: '--w-stemuli',
+    metrics: [
+      { value: '+25%', label: 'retention' },
+      { value: '4', label: 'user types designed for' },
+    ],
+    receipt: [['RETENTION', '+25%'], ['USER TYPES', '4']],
+  },
 ];
+export const featured = projects.filter(p => p.featured !== false);
+export const others = projects.filter(p => p.featured === false);
 
 // Which projects have a case-study page (src/pages/work/<slug>.astro).
 const pages = import.meta.glob('../pages/work/*.astro');

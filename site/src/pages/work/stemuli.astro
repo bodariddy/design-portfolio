@@ -1,0 +1,72 @@
+---
+import Case from '../../layouts/Case.astro';
+import { Image } from 'astro:assets';
+
+const img = import.meta.glob<{ default: ImageMetadata }>('../../assets/work/stemuli/*.webp', { eager: true });
+const s = (n: string) => img[`../../assets/work/stemuli/${n}.webp`].default;
+---
+<Case
+  slug="stemuli"
+  title="Connecting US students to mentors and their first jobs"
+  sub="STEMuli Workplace connects high-school and college students with companies through virtual mentorships, internships, scholarships and job opportunities."
+  meta={[
+    ['Role', 'Product Designer · Contract'],
+    ['Team', '3 designers'],
+    ['Timeline', 'May 2021 – Apr 2022'],
+    ['Platform', 'Web · Mobile'],
+  ]}
+  hero={s('hero')}
+  heroAlt="STEMuli virtual classroom with mentor and students"
+  tldr={{
+    problem: 'STEM students reached the job market unprepared, and finding a mentor was hard. Districts couldn’t see work-based learning data, mentors couldn’t track progress, and companies couldn’t reach campuses.',
+    did: 'With two other designers, I ran UX audits and user research, then wireframed and designed a task-driven mentorship platform for four user types: students, mentors, district admins and industry partners.',
+  }}
+  results={[
+    { value: '+25%', label: 'retention after the video-learning redesign' },
+    { value: '4', label: 'user types, one platform' },
+    { value: 'US', label: 'students, parents & educators' },
+  ]}
+>
+  <section class="wrap sec">
+    <p class="side mono">01 · Four users, four problems</p>
+    <ol class="insights" role="list" data-reveal>
+      <li><span class="mono">01</span><h3>Students</h3><p>Easy access to mentors, content, scheduling and real opportunities, all task-driven.</p></li>
+      <li><span class="mono">02</span><h3>Mentors</h3><p>Better matching, goal setting, and tracking of each mentee’s performance and engagement.</p></li>
+      <li><span class="mono">03</span><h3>District admins</h3><p>Data on students’ work-based learning in one place, without heavy admin.</p></li>
+      <li><span class="mono">04</span><h3>Industry partners</h3><p>A direct line to campuses, with mentorship programmes they can manage and reward.</p></li>
+    </ol>
+  </section>
+
+  <section class="decision">
+    <div class="wrap d-head">
+      <p class="mono d-n">Design</p>
+      <h2>A classroom, a dashboard and a door to work</h2>
+      <div class="d-cols" data-reveal>
+        <div><h4 class="mono">Learning</h4><p>A redesigned video-learning experience with live sessions, quizzes and assessments, which improved retention by 25%.</p></div>
+        <div><h4 class="mono">Tracking</h4><p>Analytics that give mentors and admins visibility of engagement and progress.</p></div>
+        <div><h4 class="mono">Opportunity</h4><p>Scholarships and internships with clear objectives, plus a simple onboarding for each user type.</p></div>
+      </div>
+    </div>
+    <div class="wrap duo" data-reveal>
+      <Image src={s('dashboard')} alt="STEMuli student dashboard" widths={[700, 1200]} sizes="(max-width: 900px) 94vw, 46vw" />
+      <Image src={s('quiz')} alt="STEMuli quiz assessment" widths={[700, 1200]} sizes="(max-width: 900px) 94vw, 46vw" />
+    </div>
+    <div class="wrap duo" data-reveal>
+      <Image src={s('assessment')} alt="Live assessment in virtual classroom" widths={[700, 1200]} sizes="(max-width: 900px) 94vw, 46vw" />
+      <Image src={s('analytics')} alt="Engagement analytics" widths={[700, 1200]} sizes="(max-width: 900px) 94vw, 46vw" />
+    </div>
+    <div class="wrap grid3" data-reveal>
+      <Image src={s('scholarship')} alt="Scholarship opportunity detail" widths={[500, 900]} sizes="(max-width: 900px) 94vw, 31vw" />
+      <Image src={s('onboarding')} alt="Choose user type onboarding" widths={[500, 900]} sizes="(max-width: 900px) 94vw, 31vw" />
+      <Image src={s('partner')} alt="Industry partner onboarding" widths={[500, 900]} sizes="(max-width: 900px) 94vw, 31vw" />
+    </div>
+  </section>
+
+  <section class="wrap sec">
+    <p class="side mono">Reflection</p>
+    <div class="txt" data-reveal>
+      <p class="lead">Designing for four users means designing four products that share one spine.</p>
+      <p>Working remotely with a US team taught me to make the research do the arguing. When every user type wants something different, evidence is what keeps the platform coherent.</p>
+    </div>
+  </section>
+</Case>

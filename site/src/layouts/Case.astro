@@ -30,7 +30,7 @@ const next = live[(live.findIndex(x => x.slug === slug) + 1) % live.length];
     <main id="main">
       <header class="hero">
         <div class="wrap">
-          <nav class="crumbs mono" aria-label="Breadcrumb"><a href="/#work">Work</a><span>/</span><span>CH {String(p.ch).padStart(2, '0')} · {p.name}</span></nav>
+          <nav class="crumbs mono" aria-label="Breadcrumb"><a href="/#work">Work</a><span>/</span><span>{p.featured === false ? 'Other' : `CH ${String(p.ch).padStart(2, '0')}`} · {p.name}</span></nav>
           <h1>{title}</h1>
           <p class="sub">{sub}</p>
           <dl class="meta">
@@ -56,7 +56,7 @@ const next = live[(live.findIndex(x => x.slug === slug) + 1) % live.length];
 
       <a class="next" href={`/work/${next.slug}`} style={`--world: var(${next.colour})`}>
         <div class="wrap">
-          <span class="mono">Next · CH {String(next.ch).padStart(2, '0')}</span>
+          <span class="mono">Next · {next.featured === false ? 'Other project' : `CH ${String(next.ch).padStart(2, '0')}`}</span>
           <strong>{next.name} <span aria-hidden="true">→</span></strong>
           <span class="n-line">{next.headline}</span>
         </div>

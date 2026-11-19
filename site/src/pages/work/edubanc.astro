@@ -1,0 +1,95 @@
+---
+import Case from '../../layouts/Case.astro';
+import { Image } from 'astro:assets';
+
+const img = import.meta.glob<{ default: ImageMetadata }>('../../assets/work/edubanc/*.webp', { eager: true });
+const s = (n: string) => img[`../../assets/work/edubanc/${n}.webp`].default;
+---
+<Case
+  slug="edubanc"
+  title="Making school banking feel simple"
+  sub="Edubanc is Sterling Bank’s EdTech platform: school-fee loans for families, affordable training for teachers, and digital payments and payroll for schools."
+  meta={[
+    ['Role', 'Product Designer · sole designer'],
+    ['Team', 'UX researcher, PM, 6 engineers'],
+    ['Timeline', 'Oct 2019 – 2023'],
+    ['Platform', 'Mobile · Web · Admin portal'],
+  ]}
+  hero={s('hero')}
+  heroAlt="Edubanc mobile app screens"
+  tldr={{
+    problem: 'Families turned to informal loans for school fees, teachers had no affordable way to upskill, and schools reconciled fees by hand, which was slow and open to fraud. Edubanc also sat on a traditional bank core that needed a lot of customer data.',
+    did: 'As the sole designer, I led the design direction for the whole platform (mobile app, web app and admin portal), from the style guide and components to the account-opening and loan flows.',
+  }}
+  results={[
+    { value: '₦45M+', label: 'loan volume' },
+    { value: '4,000+', label: 'registered users' },
+    { value: '1,000+', label: 'schools onboarded' },
+    { value: '1,000+', label: 'app downloads' },
+  ]}
+>
+  <section class="wrap sec">
+    <p class="side mono">01 · Who it’s for</p>
+    <ol class="insights" role="list" data-reveal>
+      <li><span class="mono">01</span><h3>Students &amp; parents</h3><p>Low-interest loans for secondary and tertiary education, instead of informal borrowing.</p></li>
+      <li><span class="mono">02</span><h3>Teachers</h3><p>Affordable, world-class training, where self-development was usually too expensive.</p></li>
+      <li><span class="mono">03</span><h3>Schools</h3><p>Fee collection, tracking, reconciliation and payroll, replacing manual processes that invited fraud.</p></li>
+    </ol>
+  </section>
+  <div class="wrap grid3" data-reveal>
+    <Image src={s('persona-student')} alt="Persona: Damilare, a student" widths={[500, 900]} sizes="(max-width: 900px) 94vw, 31vw" />
+    <Image src={s('persona-teacher')} alt="Persona: Olayinka, a teacher" widths={[500, 900]} sizes="(max-width: 900px) 94vw, 31vw" />
+    <Image src={s('persona-school')} alt="Persona: Annabel, a school owner" widths={[500, 900]} sizes="(max-width: 900px) 94vw, 31vw" />
+  </div>
+
+  <section class="decision">
+    <div class="wrap d-head">
+      <p class="mono d-n">Decision 01</p>
+      <h2>Account opening in four small steps</h2>
+      <div class="d-cols" data-reveal>
+        <div><h4 class="mono">Constraint</h4><p>Account opening ran on Sterling’s traditional core, which needs a lot of customer data. Long bank forms drive drop-off.</p></div>
+        <div><h4 class="mono">Decision</h4><p>Break it into four distinct sections of related data, with a progress bar guiding users through every step.</p></div>
+        <div><h4 class="mono">Principle</h4><p class="big">Same data, less weight</p></div>
+      </div>
+    </div>
+    <div class="wrap wide" data-reveal><Image src={s('account-opening')} alt="Edubanc account opening flow in steps" widths={[900, 1600]} sizes="(max-width: 1440px) 94vw, 1360px" /></div>
+  </section>
+
+  <section class="decision">
+    <div class="wrap d-head">
+      <p class="mono d-n">Decision 02</p>
+      <h2>A loan application, one question at a time</h2>
+      <div class="d-cols" data-reveal>
+        <div><h4 class="mono">Insight</h4><p>Loan applications gather personal and job details and run credit checks. Shown all at once, people give up.</p></div>
+        <div><h4 class="mono">Decision</h4><p>Present one field at a time, so people are never overwhelmed from the start. Information is gathered bit by bit until the application is complete.</p></div>
+        <div><h4 class="mono">Result</h4><p class="big">₦45M+ in loans</p></div>
+      </div>
+    </div>
+    <div class="wrap wide" data-reveal><Image src={s('loan-1')} alt="Loan application steps, part one" widths={[900, 1600]} sizes="(max-width: 1440px) 94vw, 1360px" /></div>
+    <div class="wrap wide" data-reveal><Image src={s('loan-2')} alt="Loan application steps, part two" widths={[900, 1600]} sizes="(max-width: 1440px) 94vw, 1360px" /></div>
+  </section>
+
+  <section class="decision">
+    <div class="wrap d-head">
+      <p class="mono d-n">Decision 03</p>
+      <h2>One system across app, web and admin</h2>
+      <div class="d-cols" data-reveal>
+        <div><h4 class="mono">Decision</h4><p>A shared style guide and component library across the mobile app, the user web app and the school admin portal.</p></div>
+        <div><h4 class="mono">Why</h4><p>One designer, three products and six engineers. A system was the only way to stay consistent and fast.</p></div>
+        <div><h4 class="mono">Result</h4><p class="big">1,000+ schools onboarded</p></div>
+      </div>
+    </div>
+    <div class="wrap duo" data-reveal>
+      <Image src={s('web')} alt="Edubanc website" widths={[700, 1200]} sizes="(max-width: 900px) 94vw, 46vw" />
+      <Image src={s('admin')} alt="Edubanc school admin portal" widths={[700, 1200]} sizes="(max-width: 900px) 94vw, 46vw" />
+    </div>
+  </section>
+
+  <section class="wrap sec">
+    <p class="side mono">Reflection</p>
+    <div class="txt" data-reveal>
+      <p class="lead">Find the middle ground between the bank and the user.</p>
+      <p>The bank’s core needed data, and users needed less friction. The work was in the compromises: the same information, asked in a way that felt light. It also taught me to involve the people we design for early, so decisions come from facts rather than assumptions.</p>
+    </div>
+  </section>
+</Case>

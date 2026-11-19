@@ -1,15 +1,16 @@
 ---
-import { projects, hasPage } from '../data/projects';
+import { featured as projects, others, hasPage } from '../data/projects';
 import { Image } from 'astro:assets';
 import roqquCover from '../assets/work/roqqu/home.webp';
 import gloverCover from '../assets/work/glover-lite/dashboard-final.webp';
 import clinkCover from '../assets/work/clink/links.webp';
-const covers: Record<string, ImageMetadata> = { roqqu: roqquCover, 'glover-lite': gloverCover, clink: clinkCover };
+import en1Cover from '../assets/work/en1/web-1.webp';
+const covers: Record<string, ImageMetadata> = { roqqu: roqquCover, 'glover-lite': gloverCover, clink: clinkCover, en1: en1Cover };
 ---
 <section id="work" class="work" aria-labelledby="work-title">
   <div class="wrap work-head">
     <h2 id="work-title">Selected <span class="serif">work</span></h2>
-    <p class="mono muted">06 projects · 2019 — now</p>
+    <p class="mono muted">06 featured · 2019 — now</p>
   </div>
 
   <ul class="grid" role="list" id="grid">
@@ -48,6 +49,23 @@ const covers: Record<string, ImageMetadata> = { roqqu: roqquCover, 'glover-lite'
       </li>
     );})}
   </ul>
+  <div class="wrap others" aria-labelledby="others-title">
+    <h3 id="others-title" class="mono muted">Other projects</h3>
+    <ul role="list">
+      {others.map(o => (
+        <li style={`--world: var(${o.colour})`}>
+          <a href={hasPage(o.slug) ? `/work/${o.slug}` : '#work'}>
+            <span class="o-dot"></span>
+            <span class="o-name">{o.name}</span>
+            <span class="o-line">{o.headline}</span>
+            <span class="o-metric mono">{o.metrics[0].value} {o.metrics[0].label}</span>
+            <span class="o-years mono muted">{o.years}</span>
+            <span class="o-arrow" aria-hidden="true">↗</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
   <div class="cursor mono" id="cursor" aria-hidden="true"><span>View case study</span> ↗</div>
 </section>
 
@@ -114,6 +132,24 @@ const covers: Record<string, ImageMetadata> = { roqqu: roqquCover, 'glover-lite'
   .t-tags { opacity: .7; font-size: 11px; }
   .soon:last-child .d-screen { background: repeating-linear-gradient(90deg, #e9e4da 0 14.28%, #f2a900 14.28% 28.56%, #0b8086 28.56% 42.84%, #1d5c45 42.84% 57.12%, #c92f63 57.12% 71.4%, #b9512b 71.4% 85.68%, #2b36c9 85.68% 100%); color: #111; }
 
+  .others { padding-top: clamp(40px, 6vw, 72px); }
+  .others h3 { font-weight: 400; margin: 0 0 12px; }
+  .others ul { list-style: none; margin: 0; padding: 0; }
+  .others li { border-top: 1.5px solid var(--line); }
+  .others li:last-child { border-bottom: 1.5px solid var(--line); }
+  .others a { display: grid; grid-template-columns: 16px 160px 1fr auto 110px 24px; gap: 18px; align-items: center; padding: 22px 0; text-decoration: none; transition: padding .35s var(--ease), background .35s; }
+  .others a:hover { padding-left: 14px; background: linear-gradient(90deg, color-mix(in oklab, var(--world) 12%, transparent), transparent 70%); }
+  .o-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--world); }
+  .o-name { font-size: clamp(22px, 2.2vw, 30px); font-weight: 800; letter-spacing: -.035em; }
+  .o-line { color: var(--muted); font-size: 16px; }
+  .o-metric { background: color-mix(in oklab, var(--world) 16%, transparent); padding: 4px 9px; border-radius: 6px; text-transform: none; letter-spacing: 0; font-size: 12.5px; white-space: nowrap; }
+  .o-years { text-align: right; }
+  .o-arrow { font-size: 20px; transition: transform .3s var(--ease); }
+  .others a:hover .o-arrow { transform: translate(3px, -3px); }
+  @media (max-width: 900px) {
+    .others a { grid-template-columns: 14px 1fr auto; row-gap: 6px; }
+    .o-line { grid-column: 2 / -1; } .o-metric { grid-column: 2; justify-self: start; } .o-years { display: none; } .o-arrow { grid-row: 1; grid-column: 3; }
+  }
   .cursor { position: fixed; left: 0; top: 0; z-index: 60; pointer-events: none; margin: -20px 0 0 -10px; padding: 10px 14px; border-radius: 99px; background: var(--bg); color: var(--text); font-size: 11px; box-shadow: 0 10px 30px -10px rgba(0,0,0,.4); opacity: 0; scale: .6; transition: opacity .25s, scale .35s var(--ease); white-space: nowrap; }
   .cursor.on { opacity: 1; scale: 1; }
 
