@@ -16,7 +16,11 @@ We review each one together. **Status:** 🟢 steal · 🟡 maybe · 🔴 not fo
 ## Index
 | # | Site | Tags | What we're taking | Status |
 |---|---|---|---|---|
-| — | _empty, send links_ | | | |
+| 1 | [HUMAN.md](https://www.human-md.ai/) · [notes](human-md/notes.md) | `hero` `colour` `typography` `motion` `copy` | Colour worlds per chapter, display + serif + mono trio, scroll-built giant words | 🟢 |
+| 2 | [Anmol Agarwal](https://anmolagarwal.vercel.app/) · [notes](anmol-agarwal/notes.md) | `hero` `motion` `detail` | One signature object (retro TV), projects as channels, live animated UI inside the screen | 🟢 |
+| 3 | [Ethan Kinnan](https://ethankinnan.com/) · [notes](ethan-kinnan/notes.md) | `layout` `colour` `typography` | Calm warm canvas + one living element, year · company timeline list | 🟢 |
+| 4 | [Ben Doan](https://bdoan.me/) · [notes](bdoan/notes.md) | `layout` `case-study` `motion` | Full-bleed edge-to-edge project grid with hover spotlight | 🟢 |
+| 5 | [Resn](https://www.resn.co.nz/) · [notes](resn/notes.md) | `motion` `colour` | One-object loader (drop → line → hero), soft charcoal dark mode | 🟢 |
 
 ## Patterns we've agreed on
-_Filled in once we have 5–10 references._
+See `MOODBOARD.png` and `../design/DIRECTION.md`.

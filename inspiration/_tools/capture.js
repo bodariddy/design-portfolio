@@ -9,6 +9,7 @@ const scroll = p => p.evaluate(async () => { for (let y = 0; y < document.body.s
 (async () => {
   const b = await chromium.launch();
   const d = await b.newPage({ viewport: { width: 1440, height: 900 } });
+  const blocked = new Set(); d.on('requestfailed', r => { try { blocked.add(new URL(r.url()).host); } catch {} });
   await d.goto(url, { waitUntil: 'networkidle', timeout: 60000 }).catch(e => console.warn('nav:', e.message));
   await scroll(d); await d.waitForTimeout(1200);
   await d.screenshot({ path: `${dir}/hero.png` });
@@ -31,7 +32,8 @@ const scroll = p => p.evaluate(async () => { for (let y = 0; y < document.body.s
   await m.goto(url, { waitUntil: 'networkidle', timeout: 60000 }).catch(() => {});
   await scroll(m); await m.waitForTimeout(800);
   await m.screenshot({ path: `${dir}/mobile-full.png`, fullPage: true });
-  fs.writeFileSync(`${dir}/tokens.json`, JSON.stringify({ url, captured: new Date().toISOString(), ...tokens }, null, 2));
+  fs.writeFileSync(`${dir}/tokens.json`, JSON.stringify({ url, captured: new Date().toISOString(), ...tokens, failedHosts: [...blocked] }, null, 2));
+  if (blocked.size) console.log('FAILED HOSTS:', [...blocked].join(', '));
   console.log(JSON.stringify(tokens, null, 2));
   await b.close();
 })();
