@@ -1,5 +1,5 @@
 ---
-import { site } from '../data/site';
+import { site, updated } from '../data/site';
 ---
 <div class="end">
   <section class="contact wrap">
@@ -14,12 +14,21 @@ import { site } from '../data/site';
   </section>
 
   <footer class="foot wrap mono">
-    <span>© 2026 {site.name}</span><span>Designed &amp; built by me, with AI tools</span>
+    <span>© 2026 {site.name} · Updated {updated}</span><span><span data-lagos-clock>—</span> in Lagos, Nigeria</span><span>Designed &amp; built by me, with AI tools</span>
   </footer>
 
   <!-- Aurora: project colour worlds glowing up from the bottom edge (ref: Wikicasts) -->
   <div class="aurora" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
 </div>
+
+<script is:inline>
+  (function () {
+    const els = document.querySelectorAll('[data-lagos-clock]'); if (!els.length) return;
+    const f = new Intl.DateTimeFormat('en-GB', { hour: 'numeric', minute: '2-digit', second: '2-digit', hour12: true, timeZone: 'Africa/Lagos' });
+    const t = () => { const v = f.format(new Date()).replace(' ', '').toLowerCase(); els.forEach(e => e.textContent = v); };
+    t(); setInterval(t, 1000);
+  })();
+</script>
 
 <style>
   .end { position: relative; overflow: hidden; isolation: isolate; border-top: 1.5px solid var(--line); }
@@ -29,7 +38,7 @@ import { site } from '../data/site';
   .sub { font-size: clamp(17px, 1.4vw, 20px); max-width: 46ch; color: var(--muted); margin: 26px 0 30px; }
   .ctas { display: flex; gap: 12px; flex-wrap: wrap; }
   .btn-glass { background: color-mix(in oklab, var(--bg) 55%, transparent); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
-  .foot { position: relative; z-index: 1; display: flex; justify-content: space-between; padding-block: 28px; flex-wrap: wrap; gap: 8px; color: color-mix(in oklab, var(--text) 70%, transparent); }
+  .foot { position: relative; z-index: 1; display: flex; justify-content: space-between; padding-block: 28px; flex-wrap: wrap; gap: 8px; color: color-mix(in oklab, var(--text) 70%, transparent); font-variant-numeric: tabular-nums; }
 
   /* Dark: a faint haze in the brand gold (--coin), hugging the bottom edge. Light: no colour, just a soft halo. */
   .aurora { position: absolute; inset: auto 0 0 0; height: 26%; z-index: 0; pointer-events: none; display: none;

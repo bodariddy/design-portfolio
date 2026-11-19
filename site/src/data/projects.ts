@@ -8,6 +8,7 @@ export type Project = {
   years: string;
   colour: string; // CSS var name of its colour world
   device: 'phone' | 'laptop';
+  isNew?: boolean; // shows a hand-drawn “New” mark on the tile
   featured?: boolean; // false = shown under 'Other projects', not in the grid or terminal
   metrics: { value: string; label: string }[];
   receipt: [string, string][]; // printed on the POS receipt
@@ -116,6 +117,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'weave',
+    isNew: true,
     device: 'phone',
     ch: 6,
     name: 'Weave',

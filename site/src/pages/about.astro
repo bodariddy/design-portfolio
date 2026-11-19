@@ -5,6 +5,7 @@ import Nav from '../components/Nav.astro';
 import Experience from '../components/Experience.astro';
 import Contact from '../components/Contact.astro';
 import portrait from '../assets/portrait.png';
+import { site, updated } from '../data/site';
 
 const beliefs = [
   ['Clarity is a feature', 'Especially when someone’s money is on the line. If a nervous first-time user can’t follow it, it isn’t finished.'],
@@ -32,9 +33,15 @@ const offClock = [
     <!-- HERO -->
     <section class="hero wrap">
       <div class="intro">
-        <p class="mono muted">About</p>
+        <p class="mono muted">About · Updated {updated}</p>
         <h1>Hi, I’m <span class="serif">Tosin.</span></h1>
-        <p class="lede">I’m a senior product designer in Lagos. For six years I’ve made financial products simpler, faster and easier to trust: crypto trading, payments, gift cards and school banking.</p>
+        <div class="plain">
+          <p>I’m a senior product designer based in Lagos, Nigeria.</p>
+          <p>I currently design crypto, stocks, staking and futures at <a href="/work/roqqu">Roqqu</a>, and co-designed its money app, <a href="/work/qash">Qash</a>.</p>
+          <p>Before that I built <a href="/work/en1">EN1</a>’s digital platform, led design for <a href="/work/glover-lite">Glover Lite</a>, designed <a href="/work/edubanc">Edubanc</a> at Sterling Bank, and co-founded <a href="/work/clink">Clink</a>. Lately I’ve been designing <a href="/work/weave">Weave</a>, a shared account for groups.</p>
+          <p>I design in Figma and build in Framer and with AI tools, including this site.</p>
+          <p>You can find me on <a href={site.linkedin} rel="noopener">LinkedIn</a>, or reach me by <a href={`mailto:${site.email}`}>email</a>.</p>
+        </div>
         <dl class="facts">
           <div><dt class="mono muted">Based in</dt><dd>Lagos · <span id="clock">—</span> WAT</dd></div>
           <div><dt class="mono muted">Studied</dt><dd>Computer Science, FUNAAB</dd></div>
@@ -130,6 +137,10 @@ const offClock = [
   .hero { display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(32px, 6vw, 96px); align-items: end; padding-block: clamp(40px, 7vw, 96px) clamp(64px, 9vw, 120px); }
   h1 { font-size: clamp(64px, 11vw, 176px); line-height: .86; letter-spacing: -.06em; font-weight: 800; margin: 18px 0 32px; }
   h1 .serif { font-weight: 400; letter-spacing: -.03em; color: var(--accent-text); }
+  .plain { max-width: 34em; margin: 0 0 40px; }
+  .plain p { font-size: clamp(17px, 1.35vw, 19.5px); line-height: 1.55; margin: 0 0 .7em; }
+  .plain a { text-decoration: underline; text-decoration-color: color-mix(in oklab, var(--text) 30%, transparent); text-underline-offset: 3px; text-decoration-thickness: 1px; transition: text-decoration-color .2s; }
+  .plain a:hover { text-decoration-color: var(--coin); }
   .lede { font-size: clamp(20px, 1.9vw, 27px); line-height: 1.35; letter-spacing: -.015em; max-width: 30ch; margin: 0 0 40px; }
   .facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 32px; margin: 0; max-width: 560px; }
   .facts div { border-top: 1.5px solid var(--line); padding-top: 10px; }

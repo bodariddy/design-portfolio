@@ -1,3 +1,6 @@
+// Build date, shown as “Updated …”. Changes automatically on every deploy.
+export const updated = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'Africa/Lagos' });
+
 export const site = {
   name: 'Tosin Lasisi',
   email: 'thosynlasisi@gmail.com',
