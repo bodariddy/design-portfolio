@@ -28,7 +28,7 @@ const offClock = [
 <Base title="About · Tosin Lasisi" description="Tosin Lasisi is a senior product designer in Lagos with a Computer Science background, designing crypto, fintech and platform products.">
   <Nav />
 
-  <main>
+  <main id="main">
     <!-- HERO -->
     <section class="hero wrap">
       <div class="intro">
@@ -58,7 +58,7 @@ const offClock = [
       <div class="side mono muted">
         <p>01 · Where it started</p>
       </div>
-      <div class="body">
+      <div class="body" data-reveal>
         <p class="drop">I grew up in my father’s study. It was where I played my first computer games and learned to type, and where I first noticed that some products leave a lasting impression while others are forgotten the moment you close them.</p>
         <p>That curiosity took me to a degree in Computer Science, and from there into design. The engineering background never left. I think in systems, I speak the same language as the developers I work with, and I care about what’s feasible as much as what’s beautiful.</p>
         <p>Since then I’ve designed crypto trading at Roqqu, a luxury EV platform and its first design system at EN1, B2B gift cards at Glover, and school banking at Sterling. I also co-founded Clink, a payment-link tool, which taught me more about product than any job title.</p>
@@ -74,7 +74,7 @@ const offClock = [
     <!-- BELIEFS -->
     <section class="beliefs wrap" aria-labelledby="b-title">
       <div class="side mono muted"><p id="b-title">02 · What I believe</p></div>
-      <ol class="b-list" role="list">
+      <ol class="b-list" role="list" data-reveal>
         {beliefs.map(([t, d], i) => (
           <li><span class="mono n">{String(i + 1).padStart(2, '0')}</span><h3>{t}</h3><p>{d}</p></li>
         ))}
@@ -84,7 +84,7 @@ const offClock = [
     <!-- TOOLKIT -->
     <section class="toolkit wrap" aria-labelledby="t-title">
       <div class="side mono muted"><p id="t-title">03 · Toolkit</p></div>
-      <div class="t-grid">
+      <div class="t-grid" data-reveal>
         {Object.entries(toolkit).map(([group, items]) => (
           <div><h3 class="mono">{group}</h3><ul role="list">{items.map(i => <li>{i}</li>)}</ul></div>
         ))}
@@ -99,7 +99,7 @@ const offClock = [
         <p class="mono muted">05 · Off the clock</p>
         <h2 id="o-title">When I’m not in <span class="serif">Figma</span></h2>
       </div>
-      <ul class="off-grid" role="list">
+      <ul class="off-grid" role="list" data-reveal>
         {offClock.map(o => (
           <li class={`card card-${o.k}`}>
             <div class="art" aria-hidden="true">
@@ -124,17 +124,12 @@ const offClock = [
   const t = () => c.textContent = new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', timeZone: 'Africa/Lagos' });
   t(); setInterval(t, 30000);
 
-  // Reveal on scroll
-  if (!matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
-    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -10% 0px' });
-    document.querySelectorAll('.letter .body > p, .b-list li, .t-grid > div, .off-grid li').forEach((el, i) => { el.classList.add('rv'); el.style.setProperty('--d', (i % 4) * 70 + 'ms'); io.observe(el); });
-  }
 </script>
 
 <style>
   .hero { display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(32px, 6vw, 96px); align-items: end; padding-block: clamp(40px, 7vw, 96px) clamp(64px, 9vw, 120px); }
   h1 { font-size: clamp(64px, 11vw, 176px); line-height: .86; letter-spacing: -.06em; font-weight: 800; margin: 18px 0 32px; }
-  h1 .serif { font-weight: 400; letter-spacing: -.03em; color: var(--w-roqqu); }
+  h1 .serif { font-weight: 400; letter-spacing: -.03em; color: var(--accent-text); }
   .lede { font-size: clamp(20px, 1.9vw, 27px); line-height: 1.35; letter-spacing: -.015em; max-width: 30ch; margin: 0 0 40px; }
   .facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 32px; margin: 0; max-width: 560px; }
   .facts div { border-top: 1.5px solid var(--line); padding-top: 10px; }
@@ -189,9 +184,6 @@ const offClock = [
   .card-gaming .art { background: var(--w-roqqu); }
   .card-reading .art { background: var(--w-en1); }
 
-  /* Reveal */
-  :global(.rv) { opacity: 0; transform: translateY(18px); transition: opacity .7s var(--ease) var(--d, 0ms), transform .7s var(--ease) var(--d, 0ms); }
-  :global(.rv.in) { opacity: 1; transform: none; }
 
   @media (max-width: 1000px) {
     .off-grid { grid-template-columns: 1fr 1fr; }

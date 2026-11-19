@@ -5,5 +5,5 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   // Live URL. Change when a custom domain is added
   site: 'https://tosin-design-portfolio.vercel.app',
-  integrations: [mdx(), sitemap()],
+  integrations: [mdx(), sitemap({ filter: page => !/\/(og|cv)\/?$/.test(page) })],
 });

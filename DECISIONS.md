@@ -20,3 +20,4 @@
 | 2026-11-19 | Off the clock: Training, Gaming, Reading | Your input |
 | 2026-11-19 | Roqqu metrics (45%, 101,045, −30% queries, +20% CSAT) OK to publish | Your confirmation |
 | 2026-11-19 | Contract label on EN1, Clink, STEMuli. Full-time roles (Roqqu, Glover, Sterling) unlabelled, as is standard. Sterling and Glover genuinely overlapped | Your input |
+| 2026-11-19 | Polish pass 1: mobile menu, hide-on-scroll nav, paper grain, native page transitions, reveals, skip link, OG image, device-frame placeholders, cursor pill, hidden "Coin run" game (press G), dark-mode accent contrast | Make it feel finished and classy |

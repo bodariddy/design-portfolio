@@ -16,13 +16,13 @@ const email = site.email;
 
   <Nav />
 
-  <main>
+  <main id="main">
     <!-- HERO -->
     <section class="hero wrap">
       <div class="hero-copy">
         <p class="mono eyebrow"><span class="live"></span> Open to senior &amp; lead roles</p>
         <h1>I design how <span class="serif">money</span> moves.</h1>
-        <p class="sub">Senior Product Designer with 6+ years across crypto, fintech and platforms in Africa and beyond. I take products from first discovery to launch, and measure the result.</p>
+        <p class="sub">Senior Product Designer with 6+ years across crypto, fintech and platforms in Africa and beyond. I take products from first discovery to launch, test ideas in real builds, and measure the result.</p>
         <div class="hero-ctas">
           <a class="btn btn-solid" href="#work">See the work ↓</a>
           <a class="btn" href={`mailto:${email}`}>Get in touch</a>
@@ -42,7 +42,7 @@ const email = site.email;
       <p class="big" id="statement">
         {statement.split(' ').map(w => <span>{w} </span>)}
       </p>
-      <div class="principles">
+      <div class="principles" data-reveal>
         <div><h3>Problem first</h3><p>Discovery before design: research, journey maps and problem-framing workshops, so the team agrees on <em>why</em> before arguing about <em>what</em>.</p></div>
         <div><h3>High-stakes clarity</h3><p>KYC, transfers, irreversible actions. I design these moments for nervous users, because that’s where trust is won or lost.</p></div>
         <div><h3>Systems, not screens</h3><p>Design systems and patterns that let teams ship faster, from EN1’s first system to Roqqu’s trading surfaces.</p></div>
@@ -81,7 +81,7 @@ const email = site.email;
   .live { width: 8px; height: 8px; border-radius: 50%; background: #2fb36a; box-shadow: 0 0 0 0 #2fb36a88; animation: ping 2s infinite; }
   @keyframes ping { 70% { box-shadow: 0 0 0 8px #2fb36a00 } 100% { box-shadow: 0 0 0 0 #2fb36a00 } }
   h1 { margin: 0; font-size: clamp(44px, 6.2vw, 96px); line-height: .95; letter-spacing: -.055em; font-weight: 800; max-width: 11ch; }
-  h1 .serif { font-weight: 400; letter-spacing: -.025em; color: var(--w-roqqu); }
+  h1 .serif { font-weight: 400; letter-spacing: -.025em; color: var(--accent-text); }
   .sub { font-size: clamp(17px, 1.4vw, 20px); max-width: 46ch; color: var(--muted); margin: 26px 0 30px; }
   .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
   .meta { margin-top: 36px; }

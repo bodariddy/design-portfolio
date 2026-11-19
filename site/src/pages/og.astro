@@ -1,0 +1,36 @@
+---
+// 1200×630 social preview. Rendered to public/og.png by `npm run og`.
+import '../styles/global.css';
+---
+<!doctype html>
+<html lang="en" data-theme="light">
+<head><meta charset="utf-8" /><meta name="robots" content="noindex" /><title>OG</title></head>
+<body>
+  <div class="og">
+    <div class="top mono"><span><i class="dot"></i>Tosin Lasisi</span><span>Senior Product Designer · Lagos</span></div>
+    <h1>I design how <span class="serif">money</span> moves.</h1>
+    <div class="bottom">
+      <div class="m"><b>+30%</b><span>revenue</span></div>
+      <div class="m"><b>+22%</b><span>activation</span></div>
+      <div class="m"><b>₦45M+</b><span>processed</span></div>
+      <div class="slip mono"><span>APPROVED ✓</span><span>FINTECH · CRYPTO</span></div>
+    </div>
+    <div class="bars"><i></i><i></i><i></i><i></i><i></i></div>
+  </div>
+</body>
+</html>
+<style is:global>
+  body::after { display: none; }
+  html, body { margin: 0; width: 1200px; height: 630px; overflow: hidden; background: #f3eee4; }
+  .og { width: 1200px; height: 630px; padding: 56px 64px 0; box-sizing: border-box; display: flex; flex-direction: column; position: relative; color: #171614; }
+  .top { display: flex; justify-content: space-between; font-size: 16px; color: #6a655c; }
+  .top span:first-child { display: inline-flex; align-items: center; gap: 10px; color: #171614; font-weight: 600; }
+  .dot { width: 14px; height: 14px; border-radius: 50%; background: #f2a900; display: inline-block; }
+  h1 { font-size: 132px; line-height: .9; letter-spacing: -.058em; font-weight: 800; margin: 64px 0 0; max-width: 10ch; }
+  h1 .serif { color: #2b36c9; font-weight: 400; letter-spacing: -.03em; }
+  .bottom { margin-top: auto; margin-bottom: 44px; display: flex; gap: 40px; align-items: end; }
+  .m { display: grid; } .m b { font-size: 40px; letter-spacing: -.04em; } .m span { color: #6a655c; font-size: 18px; }
+  .slip { margin-left: auto; background: #fffdf8; padding: 14px 18px; display: grid; gap: 4px; font-size: 14px; box-shadow: 0 12px 30px -14px rgba(0,0,0,.3); transform: rotate(-3deg); }
+  .bars { position: absolute; left: 0; right: 0; bottom: 0; height: 14px; display: flex; }
+  .bars i { flex: 1; } .bars i:nth-child(1) { background: #2b36c9 } .bars i:nth-child(2) { background: #1d5c45 } .bars i:nth-child(3) { background: #0b8086 } .bars i:nth-child(4) { background: #c92f63 } .bars i:nth-child(5) { background: #b9512b }
+</style>

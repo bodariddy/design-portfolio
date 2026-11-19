@@ -69,11 +69,17 @@ const receiptData = JSON.stringify(projects.map(p => ({ ch: p.ch, name: p.name, 
         <p class="s-label center">Weave · case study coming soon</p>
       </section>
 
+      <!-- CH00 hidden game: collect coins -->
+      <section class="ch ch-game" data-for="0">
+        <canvas id="game" width="240" height="150" aria-label="Coin snake game"></canvas>
+        <div class="g-hud mono"><span>₦<b id="g-score">0</b></span><span id="g-msg">Arrows / 2·4·5·6</span></div>
+      </section>
+
       <div class="static" aria-hidden="true"></div>
       <div class="scanlines" aria-hidden="true"></div>
     </div>
 
-    <div class="brand mono"><span>TL·PAY</span><span class="leds"><i></i><i></i></span></div>
+    <div class="brand mono"><span>TL·PAY</span><button class="play-btn mono" data-action="game" aria-label="Play a hidden game">G · play</button><span class="leds"><i></i><i></i></span></div>
 
     <div class="keys">
       {projects.map(p => (
@@ -148,13 +154,87 @@ const receiptData = JSON.stringify(projects.map(p => ({ ch: p.ch, name: p.name, 
     document.querySelectorAll('.pos .key[data-key]').forEach(k => k.classList.toggle('active', k.dataset.key == cur));
   }
 
+  // ───── Hidden game: CH 00 ─────
+  const cv = $('game'), g = cv.getContext('2d');
+  const COLS = 24, ROWS = 15, CELL = 10;
+  let game = null, gameTimer = null, lastCh = 1;
+  function startGame() {
+    userInput(); lastCh = cur || lastCh;
+    screen.classList.remove('switching'); void screen.offsetWidth; screen.classList.add('switching');
+    pos.dataset.ch = 0; pos.classList.add('gaming');
+    screen.querySelectorAll('.ch').forEach(s => s.classList.toggle('on', s.dataset.for == 0));
+    $('scr-ch').textContent = 'CH 00'; $('cap-ch').textContent = 'CH 00 · SECRET';
+    $('cap-name').textContent = 'Coin run'; $('cap-line').textContent = 'Collect the coins. Don’t hit yourself. Press ✕ to exit.';
+    document.querySelectorAll('.pos .key[data-key]').forEach(k => k.classList.remove('active'));
+    game = { snake: [[6, 7], [5, 7], [4, 7]], dir: [1, 0], next: [1, 0], coin: null, score: 0, over: false };
+    placeCoin(); $('g-score').textContent = '0'; $('g-msg').textContent = 'Arrows / 2·4·5·6';
+    clearInterval(gameTimer); gameTimer = setInterval(step, 110); draw();
+  }
+  function stopGame(toCh) {
+    clearInterval(gameTimer); game = null; pos.classList.remove('gaming');
+    setChannel(toCh || lastCh);
+  }
+  function placeCoin() {
+    do { game.coin = [Math.floor(Math.random() * COLS), Math.floor(Math.random() * ROWS)]; }
+    while (game.snake.some(([x, y]) => x === game.coin[0] && y === game.coin[1]));
+  }
+  function turn(dx, dy) { if (!game || game.over) return; if (dx === -game.dir[0] && dy === -game.dir[1]) return; game.next = [dx, dy]; }
+  function step() {
+    if (!game || game.over) return;
+    game.dir = game.next;
+    const [hx, hy] = game.snake[0];
+    const nx = (hx + game.dir[0] + COLS) % COLS, ny = (hy + game.dir[1] + ROWS) % ROWS;
+    if (game.snake.some(([x, y]) => x === nx && y === ny)) return gameOver();
+    game.snake.unshift([nx, ny]);
+    if (nx === game.coin[0] && ny === game.coin[1]) { game.score += 1000; $('g-score').textContent = game.score.toLocaleString('en-NG'); placeCoin(); }
+    else game.snake.pop();
+    draw();
+  }
+  function gameOver() {
+    game.over = true; clearInterval(gameTimer);
+    let best = 0; try { best = Math.max(+localStorage.getItem('coinrun') || 0, game.score); localStorage.setItem('coinrun', best); } catch {}
+    $('g-msg').textContent = 'Game over · OK to retry';
+    $('r-ch').textContent = 'CH 00'; $('r-name').textContent = 'COIN RUN';
+    $('r-lines').innerHTML = [['COINS', String(game.score / 1000)], ['TOTAL', '₦' + game.score.toLocaleString('en-NG')], ['BEST', '₦' + best.toLocaleString('en-NG')]].map(([k, v]) => `<div><span>${k}</span><i></i><b>${v}</b></div>`).join('');
+    receipt.classList.remove('print'); void receipt.offsetWidth; receipt.classList.add('print');
+    draw();
+  }
+  function draw() {
+    g.fillStyle = '#0b0d0c'; g.fillRect(0, 0, cv.width, cv.height);
+    g.fillStyle = 'rgba(255,255,255,.04)';
+    for (let x = 0; x < COLS; x++) for (let y = 0; y < ROWS; y++) g.fillRect(x * CELL + 4, y * CELL + 4, 2, 2);
+    const [cx, cy] = game.coin;
+    g.fillStyle = '#f2a900'; g.beginPath(); g.arc(cx * CELL + 5, cy * CELL + 5, 4, 0, Math.PI * 2); g.fill();
+    game.snake.forEach(([x, y], i) => { g.fillStyle = i ? '#3fbf78' : '#7dffb2'; g.fillRect(x * CELL + 1, y * CELL + 1, CELL - 2, CELL - 2); });
+    if (game.over) { g.fillStyle = 'rgba(0,0,0,.55)'; g.fillRect(0, 0, cv.width, cv.height); g.fillStyle = '#fff'; g.font = '700 14px ui-monospace, monospace'; g.textAlign = 'center'; g.fillText('GAME OVER', cv.width / 2, cv.height / 2); }
+  }
+  // swipe on the screen (mobile)
+  let t0 = null;
+  screen.addEventListener('touchstart', e => { if (game) { t0 = e.touches[0]; } }, { passive: true });
+  screen.addEventListener('touchend', e => {
+    if (!game || !t0) return; const t = e.changedTouches[0], dx = t.clientX - t0.clientX, dy = t.clientY - t0.clientY;
+    if (Math.max(Math.abs(dx), Math.abs(dy)) < 20) return;
+    Math.abs(dx) > Math.abs(dy) ? turn(Math.sign(dx), 0) : turn(0, Math.sign(dy)); t0 = null;
+  });
+
   function schedule() { clearInterval(timer); if (auto) timer = setInterval(() => setChannel(cur + 1), 6500); }
   function userInput() { pos.classList.add('touched'); auto = false; clearInterval(timer); }
 
   const toggleTheme = () => window.__toggleTheme();
 
   pos.addEventListener('click', e => {
+    if (e.target.closest('[data-action="game"]')) { e.preventDefault(); return startGame(); }
     const k = e.target.closest('.key'); if (!k) return;
+    if (game) {
+      e.preventDefault();
+      const map = { 2: [0, -1], 4: [-1, 0], 5: [0, 1] };
+      if (k.dataset.key && map[k.dataset.key]) return turn(...map[k.dataset.key]);
+      if (k.dataset.action === 'theme') return turn(1, 0);
+      if (k.dataset.action === 'pause') return stopGame();
+      if (k.id === 'pos-ok' && game.over) return startGame();
+      if (k.dataset.key) return stopGame(+k.dataset.key);
+      return;
+    }
     if (k.dataset.key) { userInput(); setChannel(+k.dataset.key); }
     else if (k.dataset.action === 'prev') { userInput(); setChannel(cur - 1); }
     else if (k.dataset.action === 'pause') { userInput(); }
@@ -163,6 +243,14 @@ const receiptData = JSON.stringify(projects.map(p => ({ ch: p.ch, name: p.name, 
   addEventListener('keydown', e => {
     if (e.target.closest('input,textarea') || e.metaKey || e.ctrlKey) return;
     const r = pos.getBoundingClientRect(); if (r.bottom < 0 || r.top > innerHeight) return;
+    if (game) {
+      const m = { ArrowUp: [0, -1], ArrowDown: [0, 1], ArrowLeft: [-1, 0], ArrowRight: [1, 0], w: [0, -1], s: [0, 1], a: [-1, 0], d: [1, 0] };
+      if (m[e.key]) { e.preventDefault(); return turn(...m[e.key]); }
+      if (e.key === 'Escape') return stopGame();
+      if (e.key === 'Enter' && game.over) return startGame();
+      return;
+    }
+    if (e.key === 'g' || e.key === 'G') return startGame();
     if (e.key >= '1' && e.key <= String(data.length)) { userInput(); setChannel(+e.key); }
     if (e.key === 'ArrowRight') { userInput(); setChannel(cur + 1); }
     if (e.key === 'ArrowLeft') { userInput(); setChannel(cur - 1); }
@@ -215,12 +303,25 @@ const receiptData = JSON.stringify(projects.map(p => ({ ch: p.ch, name: p.name, 
   /* ───── Terminal body ───── */
   .pos {
     position: relative; z-index: 1; margin-top: 16px;
-    background: var(--surface);
+    background:
+      radial-gradient(120% 60% at 30% 0%, var(--hl), transparent 60%),
+      linear-gradient(180deg, var(--surface), color-mix(in oklab, var(--surface) 88%, var(--text)));
     border: 1.5px solid var(--line-strong);
     border-radius: 28px 28px 40px 40px;
     padding: 22px 18px 26px;
-    box-shadow: 0 1px 0 var(--line), 0 30px 60px -30px rgba(0,0,0,.35), inset 0 -6px 0 var(--line);
+    box-shadow: 0 1px 0 var(--line), 0 40px 70px -34px rgba(0,0,0,.45), 0 14px 24px -18px rgba(0,0,0,.25), inset 0 -6px 0 var(--line), inset 0 1.5px 0 var(--hl);
   }
+  .screen::after { content: ''; position: absolute; inset: 0; pointer-events: none; border-radius: 6px; background: linear-gradient(115deg, rgba(255,255,255,.09) 0%, rgba(255,255,255,.02) 28%, transparent 30%); }
+  .ch-game { inset: 26px 8px 8px; gap: 4px; }
+  .ch-game canvas { width: 100%; height: auto; image-rendering: pixelated; border-radius: 4px; }
+  .g-hud { display: flex; justify-content: space-between; font-size: 9px; opacity: .8; }
+  .g-hud b { color: var(--coin); }
+  .play-btn { appearance: none; border: 1px dashed var(--line-strong); background: none; color: var(--muted); border-radius: 6px; padding: 2px 6px; font-size: 9px; cursor: pointer; opacity: .7; transition: opacity .2s, background .2s; }
+  .play-btn:hover { opacity: 1; background: color-mix(in oklab, var(--coin) 20%, transparent); color: var(--text); }
+  .gaming .key[data-key='2'] small, .gaming .key[data-key='4'] small, .gaming .key[data-key='5'] small, .gaming .key-theme small { visibility: hidden; }
+  .gaming .key[data-key='2']::after { content: '↑'; } .gaming .key[data-key='4']::after { content: '←'; } .gaming .key[data-key='5']::after { content: '↓'; } .gaming .key-theme::after { content: '→'; }
+  .gaming .key::after { position: absolute; bottom: 4px; font: 600 10px var(--f-mono); color: var(--coin); }
+  .key { position: relative; }
   .printer { position: absolute; top: -16px; left: 9%; right: 9%; height: 34px; border: 1.5px solid var(--line-strong); border-bottom: 0; border-radius: 18px 18px 0 0; background: var(--surface); }
   .slot { position: absolute; top: 9px; left: 6%; right: 6%; height: 5px; border-radius: 4px; background: var(--text); opacity: .85; }
   .key b svg { display: block; }
@@ -326,8 +427,8 @@ const receiptData = JSON.stringify(projects.map(p => ({ ch: p.ch, name: p.name, 
     appearance: none; cursor: pointer; text-decoration: none;
     display: grid; place-items: center; gap: 0; height: 44px;
     border: 1.5px solid var(--line-strong); border-radius: 12px;
-    background: var(--bg); color: var(--text);
-    box-shadow: 0 3px 0 var(--line-strong);
+    background: linear-gradient(180deg, color-mix(in oklab, var(--bg) 82%, var(--hl-solid)), var(--bg)); color: var(--text);
+    box-shadow: 0 3px 0 var(--line-strong), inset 0 1px 0 var(--hl);
     transition: transform .08s, box-shadow .08s, background .2s;
     font-family: var(--f-display);
   }

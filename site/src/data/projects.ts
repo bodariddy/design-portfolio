@@ -7,6 +7,7 @@ export type Project = {
   tags: string[];
   years: string;
   colour: string; // CSS var name of its colour world
+  device: 'phone' | 'laptop';
   metrics: { value: string; label: string }[];
   receipt: [string, string][]; // printed on the POS receipt
 };
@@ -14,6 +15,7 @@ export type Project = {
 export const projects: Project[] = [
   {
     slug: 'roqqu',
+    device: 'phone',
     ch: 1,
     name: 'Roqqu',
     headline: 'Making crypto feel safe enough to trade',
@@ -33,6 +35,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'en1',
+    device: 'laptop',
     ch: 2,
     name: 'EN1',
     headline: 'A luxury EV brand’s digital platform, built from zero',
@@ -52,6 +55,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'clink',
+    device: 'laptop',
     ch: 3,
     name: 'Clink',
     headline: 'Co-founding a payment-link tool, idea to ₦2M+ volume',
@@ -71,6 +75,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'glover-business',
+    device: 'laptop',
     ch: 4,
     name: 'Glover Business',
     headline: 'The B2B gift card platform behind a 30% revenue lift',
@@ -89,6 +94,7 @@ export const projects: Project[] = [
   },
   {
     slug: 'weave',
+    device: 'phone',
     ch: 5,
     name: 'Weave',
     headline: 'Case study coming soon',
