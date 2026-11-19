@@ -70,7 +70,7 @@ export const projects: Project[] = [
     colour: '--w-en1',
     metrics: [
       { value: '7', label: 'products, 0 → 1' },
-      { value: '+15%', label: 'team velocity' },
+      { value: '3', label: 'surfaces: web, admin, in-car' },
     ],
     receipt: [
       ['PRODUCTS', '7'],
