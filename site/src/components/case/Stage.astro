@@ -1,0 +1,112 @@
+---
+// Premium device stage for case-study heroes (ref: tilted phone on a fluted plinth).
+// The device starts tilted and straightens as the stage scrolls into view; screens cycle inside.
+// Height is capped so nothing stretches: the stage never exceeds ~72vh / 760px.
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+interface Props { kind: 'phone' | 'browser'; screens: ImageMetadata[]; url?: string; label: string }
+const { kind, screens, url = '', label } = Astro.props;
+---
+<div class={`stage stage-${kind}`} data-stage aria-label={label} role="img">
+  <div class="plinth" aria-hidden="true"></div>
+  <div class="rig">
+    {kind === 'phone' ? (
+      <div class="iphone">
+        <span class="sb b1"></span><span class="sb b2"></span><span class="sb b3"></span><span class="sb b4"></span>
+        <div class="glass">
+          {screens.map((src, i) => (
+            <Image class={i === 0 ? 'on' : ''} src={src} alt="" widths={[390, 780]} sizes="340px" loading={i === 0 ? 'eager' : 'lazy'} />
+          ))}
+          <span class="island"></span>
+          <span class="glare"></span>
+        </div>
+      </div>
+    ) : (
+      <div class="browser">
+        <div class="chrome"><i></i><i></i><i></i><span class="url mono">{url}</span></div>
+        <div class="viewport">
+          {screens.map((src, i) => (
+            <Image class={i === 0 ? 'on' : ''} src={src} alt="" widths={[900, 1600]} sizes="(max-width: 900px) 90vw, 880px" loading={i === 0 ? 'eager' : 'lazy'} />
+          ))}
+          <span class="glare"></span>
+        </div>
+      </div>
+    )}
+    <div class="contact-shadow" aria-hidden="true"></div>
+  </div>
+</div>
+
+<script is:inline>
+  (function () {
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    document.querySelectorAll('[data-stage]').forEach(st => {
+      const imgs = [...st.querySelectorAll('.glass img, .viewport img')];
+      if (!reduce && imgs.length > 1) {
+        let i = 0;
+        setInterval(() => {
+          if (document.hidden) return;
+          imgs[i].classList.remove('on'); imgs[i].classList.add('off');
+          const prev = imgs[i]; setTimeout(() => prev.classList.remove('off'), 900);
+          i = (i + 1) % imgs.length; imgs[i].classList.add('on');
+        }, 2800);
+      }
+      if (reduce) { st.style.setProperty('--p', 1); return; }
+      const tick = () => {
+        const r = st.getBoundingClientRect();
+        const p = Math.min(1, Math.max(0, 1 - (r.top + r.height * .15) / (innerHeight * .9)));
+        st.style.setProperty('--p', p.toFixed(3));
+      };
+      addEventListener('scroll', tick, { passive: true }); tick();
+    });
+  })();
+</script>
+
+<style>
+  .stage { --p: 0; position: relative; overflow: hidden; border-radius: 24px 24px 0 0; height: clamp(460px, 72vh, 760px); perspective: 1600px;
+    background:
+      radial-gradient(60% 55% at 50% 38%, color-mix(in oklab, var(--world) 60%, white 12%), transparent 70%),
+      radial-gradient(120% 80% at 50% 120%, color-mix(in oklab, var(--world) 40%, black), transparent 60%),
+      color-mix(in oklab, var(--world) 78%, black);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.12); }
+
+  /* Glossy fluted plinth, in the project's colour */
+  .plinth { position: absolute; left: 50%; bottom: -12%; width: 140%; height: 70%; transform: translateX(-50%) rotateX(62deg); transform-origin: 50% 100%;
+    background:
+      repeating-linear-gradient(90deg, rgba(255,255,255,.0) 0 22px, rgba(255,255,255,.22) 26px, rgba(255,255,255,.05) 34px, rgba(0,0,0,.25) 44px, rgba(0,0,0,0) 48px),
+      linear-gradient(180deg, color-mix(in oklab, var(--world) 70%, white 10%), color-mix(in oklab, var(--world) 50%, black));
+    -webkit-mask: radial-gradient(60% 90% at 50% 100%, #000 40%, transparent 75%); mask: radial-gradient(60% 90% at 50% 100%, #000 40%, transparent 75%); opacity: .9; }
+
+  .rig { position: absolute; inset: 0; display: grid; place-items: center; transform-style: preserve-3d;
+    transform: rotateX(calc((1 - var(--p)) * 26deg)) rotateZ(calc((1 - var(--p)) * -16deg)) translateY(calc((1 - var(--p)) * 30px)) scale(calc(.92 + var(--p) * .08));
+    transition: transform .2s linear; }
+
+  /* iPhone: thin titanium rim, black bezel, slim buttons, island, glare */
+  .iphone { position: relative; height: 84%; aspect-ratio: 9 / 19.4; border-radius: 14.5% / 6.8%; padding: 1.1%;
+    background: linear-gradient(140deg, #c9c9ce 0%, #5a5a5f 12%, #2a2a2d 30%, #1c1c1f 55%, #3a3a3e 75%, #b4b4ba 92%, #6a6a70 100%);
+    box-shadow: 0 50px 80px -30px rgba(0,0,0,.65), 0 20px 30px -20px rgba(0,0,0,.5); }
+  .sb { position: absolute; width: 3px; border-radius: 2px; background: linear-gradient(90deg, #8d8d93, #3a3a3e); }
+  .b1 { left: -2px; top: 16%; height: 3.5%; } .b2 { left: -2px; top: 23%; height: 6.5%; } .b3 { left: -2px; top: 31.5%; height: 6.5%; } .b4 { right: -2px; top: 25%; height: 10%; }
+  .glass { position: relative; height: 100%; border-radius: 13.6% / 6.3%; overflow: hidden; background: #000; padding: 3.2%; }
+  .glass::before { content: ''; position: absolute; inset: 3.2%; border-radius: 11% / 5.2%; background: #000; }
+  .glass :global(img) { inset: 3.2% !important; width: 93.6% !important; height: 96.8% !important; border-radius: 11% / 5.2%; }
+  .glass :global(img), .viewport :global(img) { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; opacity: 0; transform: translateY(4%); transition: opacity .8s var(--ease), transform .9s var(--ease); }
+  .glass :global(img.on), .viewport :global(img.on) { opacity: 1; transform: none; }
+  .glass :global(img.off), .viewport :global(img.off) { opacity: 0; transform: translateY(-4%); }
+  .island { position: absolute; top: 4.4%; left: 50%; width: 30%; height: 3.2%; transform: translateX(-50%); background: #000; border-radius: 99px; z-index: 2; }
+  .glare { position: absolute; inset: 0; z-index: 3; pointer-events: none; background: linear-gradient(115deg, rgba(255,255,255,.18) 0%, rgba(255,255,255,.04) 30%, transparent 32%); }
+
+  /* Browser: premium window */
+  .browser { position: relative; width: min(880px, 86%); aspect-ratio: 16 / 10.4; border-radius: 14px; overflow: hidden; background: #111;
+    box-shadow: 0 0 0 1px rgba(255,255,255,.12), 0 60px 90px -40px rgba(0,0,0,.7), 0 24px 30px -24px rgba(0,0,0,.5); }
+  .chrome { height: 7%; min-height: 26px; display: flex; align-items: center; gap: 6px; padding: 0 12px; background: linear-gradient(#2a2826, #1d1c1b); }
+  .chrome i { width: 10px; height: 10px; border-radius: 50%; background: #ff5f57; } .chrome i:nth-child(2) { background: #febc2e; } .chrome i:nth-child(3) { background: #28c840; }
+  .url { margin: 0 auto; transform: translateX(-24px); padding: 3px 14px; border-radius: 6px; background: rgba(255,255,255,.07); color: rgba(255,255,255,.6); font-size: 10px; text-transform: none; letter-spacing: 0; }
+  .viewport { position: relative; height: 93%; overflow: hidden; }
+
+  .contact-shadow { position: absolute; left: 50%; bottom: 5%; width: 46%; height: 6%; transform: translateX(-50%); border-radius: 50%; background: radial-gradient(closest-side, rgba(0,0,0,.45), transparent); filter: blur(10px); z-index: -1; }
+
+  @media (max-width: 700px) {
+    .stage { height: clamp(420px, 68vh, 560px); border-radius: 18px 18px 0 0; }
+    .browser { width: 92%; }
+  }
+</style>

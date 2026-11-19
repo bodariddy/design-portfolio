@@ -2,6 +2,7 @@
 import Case from '../../layouts/Case.astro';
 import Screens from '../../components/case/Screens.astro';
 import Draft from '../../components/case/Draft.astro';
+import InteractionWall from '../../components/case/InteractionWall.astro';
 import { Image } from 'astro:assets';
 
 const img = import.meta.glob<{ default: ImageMetadata }>('../../assets/work/roqqu/*.webp', { eager: true });
@@ -79,6 +80,7 @@ const contracts = [
   ]}
   hero={s('hero-mockup')}
   heroAlt="Two Roqqu app screens on phones, showing the home balance and wallet"
+  stage={{ kind: 'phone', screens: [s('home'), s('kyc-start'), s('send-confirm'), s('stocks-home'), s('aeon-detail'), s('stake-dashboard')] }}
   tldr={{
     problem: 'New users were dropping out of a long, confusing KYC, and existing users were nervous about moving money. One wrong network or one unclear status and trust was gone, and the support queue grew.',
     did: 'First I fixed the foundations where trust is won or lost: identity verification, sending and tracking crypto, fiat in and out with Qash, and self-serve tools. Then I designed the new products that turned Roqqu into a multi-asset platform: tokenised Stocks, non-custodial Staking, AEON AI signals and perpetual Contracts.',
@@ -246,6 +248,8 @@ const contracts = [
     </div>
     <div class="wrap-bleed"><Screens shots={contracts} label="Contracts futures trading screens" /></div>
   </section>
+
+  <InteractionWall />
 
   <section class="wrap sec">
     <p class="side mono">Results</p>

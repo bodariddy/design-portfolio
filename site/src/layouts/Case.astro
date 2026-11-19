@@ -6,6 +6,7 @@ import Contact from '../components/Contact.astro';
 import { projects, hasPage } from '../data/projects';
 import { Image } from 'astro:assets';
 import '../styles/case.css';
+import Stage from '../components/case/Stage.astro';
 import type { ImageMetadata } from 'astro';
 
 interface Props {
@@ -17,8 +18,9 @@ interface Props {
   heroAlt: string;
   tldr: { problem: string; did: string };
   results: { value: string; label: string }[];
+  stage?: { kind: 'phone' | 'browser'; screens: ImageMetadata[]; url?: string };
 }
-const { slug, title, sub, meta, hero, heroAlt, tldr, results } = Astro.props;
+const { slug, title, sub, meta, hero, heroAlt, tldr, results, stage } = Astro.props;
 const i = projects.findIndex(p => p.slug === slug);
 const p = projects[i];
 const live = projects.filter(x => hasPage(x.slug));
@@ -38,7 +40,9 @@ const next = live[(live.findIndex(x => x.slug === slug) + 1) % live.length];
           </dl>
         </div>
         <div class="wrap hero-img">
-          <Image src={hero} alt={heroAlt} widths={[800, 1400, 2000]} sizes="(max-width: 1440px) 94vw, 1360px" loading="eager" />
+          {stage
+            ? <Stage kind={stage.kind} screens={stage.screens} url={stage.url} label={heroAlt} />
+            : <Image src={hero} alt={heroAlt} widths={[800, 1400, 2000]} sizes="(max-width: 1440px) 94vw, 1360px" loading="eager" />}
         </div>
       </header>
 
@@ -79,7 +83,7 @@ const next = live[(live.findIndex(x => x.slug === slug) + 1) % live.length];
   .meta div { border-top: 1px solid color-mix(in oklab, var(--on-world) 30%, transparent); padding-top: 10px; }
   .meta dt { opacity: .7; }
   .meta dd { margin: 4px 0 0; font-size: 16px; }
-  .hero-img :global(img) { width: 100%; height: auto; border-radius: 18px 18px 0 0; display: block; box-shadow: 0 -20px 60px -30px rgba(0,0,0,.5); }
+  .hero-img > :global(img) { width: 100%; height: clamp(420px, 68vh, 720px); object-fit: cover; object-position: 50% 40%; border-radius: 18px 18px 0 0; display: block; box-shadow: 0 -20px 60px -30px rgba(0,0,0,.5); }
 
   .tldr { display: grid; grid-template-columns: 1fr 1fr; gap: 28px 48px; padding-block: clamp(56px, 8vw, 110px); }
   .t-col h2 { margin: 0 0 10px; font-weight: 500; color: var(--muted); }
