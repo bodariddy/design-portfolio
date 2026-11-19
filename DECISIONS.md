@@ -34,4 +34,4 @@
 | 2026-11-19 | Edubanc and STEMuli added as **Other projects**: compact list under the grid, each with its own case study built from the old portfolio | Tosin's request. Keeps the grid focused on fintech |
 | 2026-11-19 | EN1 full case study from Figma: website, configurator, owner app/Kitshop (mobile), admin + ops dashboards + ERP, in-car infotainment, design system. Web Kitshop pending | Tosin's Figma link |
 | 2026-11-19 | Weave case study from Figma: Purses, approvals, collections, landing + store screenshots. Role and metrics TBC | Tosin's Figma link |
-| 2026-11-19 | Aurora gradient behind contact/footer on every page, in project colours (ref: Wikicasts); visible "Skip intro" pill on the loader (ref: Cinetic) | Tosin liked Wikicasts' bottom gradient |
+| 2026-11-19 | Footer glow (ref: Wikicasts), toned down per feedback: dark = low single-hue violet haze at the bottom edge; light = faint white halo, no colour; visible "Skip intro" pill on the loader (ref: Cinetic) | Tosin liked Wikicasts' bottom gradient |
