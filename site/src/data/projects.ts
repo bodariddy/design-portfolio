@@ -75,7 +75,7 @@ export const projects: Project[] = [
     receipt: [
       ['PRODUCTS', '7'],
       ['DESIGN SYSTEM', 'NEW'],
-      ['TEAM VELOCITY', '+15%'],
+      ['SURFACES', '3'],
       ['PLATFORMS', 'WEB/APP'],
     ],
   },
