@@ -1,26 +1,46 @@
 ---
 import { site } from '../data/site';
 ---
-<section class="contact wrap">
-  <p class="mono muted">Next transaction</p>
-  <h2>Hiring a senior <span class="serif">product designer?</span></h2>
-  <p class="sub">I’m looking for my next full-time role on a team building products people rely on.</p>
-  <div class="ctas">
-    <a class="btn btn-solid btn-xl" href={`mailto:${site.email}`}>{site.email}</a>
-    <a class="btn" href={site.linkedin} rel="noopener">LinkedIn ↗</a>
-    <a class="btn" href={site.cv}>Download CV</a>
-  </div>
-</section>
+<div class="end">
+  <section class="contact wrap">
+    <p class="mono muted">Next transaction</p>
+    <h2>Hiring a senior <span class="serif">product designer?</span></h2>
+    <p class="sub">I’m looking for my next full-time role on a team building products people rely on.</p>
+    <div class="ctas">
+      <a class="btn btn-solid btn-xl" href={`mailto:${site.email}`}>{site.email}</a>
+      <a class="btn btn-glass" href={site.linkedin} rel="noopener">LinkedIn ↗</a>
+      <a class="btn btn-glass" href={site.cv}>Download CV</a>
+    </div>
+  </section>
 
-<footer class="foot wrap mono muted">
-  <span>© 2026 {site.name}</span><span>Designed &amp; built by me, with AI tools</span>
-</footer>
+  <footer class="foot wrap mono">
+    <span>© 2026 {site.name}</span><span>Designed &amp; built by me, with AI tools</span>
+  </footer>
+
+  <!-- Aurora: project colour worlds glowing up from the bottom edge (ref: Wikicasts) -->
+  <div class="aurora" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+</div>
 
 <style>
-  .contact { padding-block: clamp(80px, 12vw, 160px); border-top: 1.5px solid var(--line); }
+  .end { position: relative; overflow: hidden; isolation: isolate; border-top: 1.5px solid var(--line); }
+  .contact { position: relative; z-index: 1; padding-block: clamp(80px, 12vw, 160px) clamp(120px, 16vw, 220px); }
   h2 { font-size: clamp(44px, 7.5vw, 120px); line-height: .92; letter-spacing: -.055em; margin: 16px 0 0; font-weight: 800; max-width: 12ch; }
   .serif { font-weight: 400; color: var(--accent-text-2); }
   .sub { font-size: clamp(17px, 1.4vw, 20px); max-width: 46ch; color: var(--muted); margin: 26px 0 30px; }
   .ctas { display: flex; gap: 12px; flex-wrap: wrap; }
-  .foot { display: flex; justify-content: space-between; padding-block: 28px; border-top: 1.5px solid var(--line); flex-wrap: wrap; gap: 8px; }
+  .btn-glass { background: color-mix(in oklab, var(--bg) 55%, transparent); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+  .foot { position: relative; z-index: 1; display: flex; justify-content: space-between; padding-block: 28px; flex-wrap: wrap; gap: 8px; color: color-mix(in oklab, var(--text) 70%, transparent); }
+
+  .aurora { position: absolute; inset: auto -10% 0 -10%; height: 85%; z-index: 0; pointer-events: none; filter: blur(60px) saturate(1.15); opacity: var(--aurora-o, .55);
+    -webkit-mask: linear-gradient(to top, #000 10%, transparent 92%); mask: linear-gradient(to top, #000 10%, transparent 92%); }
+  .aurora i { position: absolute; bottom: -30%; width: 42%; height: 90%; border-radius: 50%; animation: drift 18s ease-in-out infinite alternate; }
+  .aurora i:nth-child(1) { left: -4%;  background: var(--w-roqqu);  animation-delay: 0s; }
+  .aurora i:nth-child(2) { left: 18%;  background: var(--w-qash);   animation-delay: -4s; height: 75%; }
+  .aurora i:nth-child(3) { left: 40%;  background: var(--w-glover); animation-delay: -8s; }
+  .aurora i:nth-child(4) { left: 60%;  background: var(--coin);     animation-delay: -12s; height: 60%; opacity: .8; }
+  .aurora i:nth-child(5) { left: 76%;  background: var(--w-clink);  animation-delay: -6s; }
+  @keyframes drift { 0% { transform: translate3d(0, 0, 0) scale(1); } 50% { transform: translate3d(4%, -6%, 0) scale(1.08); } 100% { transform: translate3d(-3%, 2%, 0) scale(.96); } }
+  :global(:root[data-theme='dark']) .aurora { --aurora-o: .7; }
+  @media (prefers-color-scheme: dark) { :global(:root:not([data-theme='light'])) .aurora { --aurora-o: .7; } }
+  @media (prefers-reduced-motion: reduce) { .aurora i { animation: none; } }
 </style>

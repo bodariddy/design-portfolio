@@ -8,6 +8,7 @@
     <span class="track"><span class="fill"></span></span>
     <span class="mono label">Tosin Lasisi · Product Design</span>
   </div>
+  <span class="skip-pill mono">Skip intro ↵</span>
 </div>
 
 <script is:inline>
@@ -27,6 +28,7 @@
       setTimeout(() => el.remove(), 700);
     };
     el.addEventListener('click', done);
+    addEventListener('keydown', function k(e) { if (e.key === 'Enter' || e.key === 'Escape') { done(); removeEventListener('keydown', k); } });
     setTimeout(done, 1500);
   })();
 </script>
@@ -58,6 +60,7 @@
     position: absolute; left: 0; right: 0; top: 122px; text-align: center; color: var(--muted);
     opacity: 0; animation: fade .4s .7s forwards;
   }
+  .skip-pill { position: absolute; left: 50%; bottom: 36px; transform: translateX(-50%); border: 1.5px solid var(--line-strong); border-radius: 99px; padding: 7px 14px; color: var(--muted); opacity: 0; animation: fade .4s .3s forwards; }
   @keyframes drop { from { transform: translateY(-40px); opacity: 0 } 20% { opacity: 1 } to { transform: translateY(90px) } }
   @keyframes bounce { 0% { transform: translateY(90px) } 50% { transform: translateY(70px) } 100% { transform: translateY(90px) } }
   @keyframes fill { to { transform: scaleX(1) } }

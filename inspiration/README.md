@@ -22,6 +22,8 @@ We review each one together. **Status:** 🟢 steal · 🟡 maybe · 🔴 not fo
 | 4 | [Ben Doan](https://bdoan.me/) · [notes](bdoan/notes.md) | `layout` `case-study` `motion` | Full-bleed edge-to-edge project grid with hover spotlight | 🟢 |
 | 5 | [Resn](https://www.resn.co.nz/) · [notes](resn/notes.md) | `motion` `colour` | One-object loader (drop → line → hero), soft charcoal dark mode | 🟢 |
 | 6 | [Jaykay](https://jaykay-portfolio.vercel.app/index.html) · [notes](jaykay/notes.md) | `positioning` `hero` `motion` | Design-engineer positioning, live "drag to take over" hero, code-backed principles, testimonials | 🟢 ⚠️ differentiate (also ex-Roqqu) |
+| 9 | [Wikicasts](https://usewikicasts.com/) · [notes](wikicasts/notes.md) | `colour` `hero` `detail` | Footer aurora gradient (✅ built), rotating hero word, glass pills | 🟢 |
+| 10 | [Cinetic Creatives](https://cinetic-creatives.com/) · [notes](cinetic/notes.md) | `motion` `hero` `typography` | Skip-intro pill (✅ built), video tile previews, wide-caps manifesto | 🟡 |
 | 8 | [Commissioner CV](https://www.commissioner.design/David%20Ukauwa%20Resume.pdf) · [notes](commissioner-cv/notes.md) | `cv` `typography` | Spaced-caps title, one-line contact, company + grey role, skill chips, wavy dividers, signature | 🟢 |
 | 7 | [Commissioner](https://www.commissioner.design/) · [notes](commissioner/notes.md) | `positioning` `about` `detail` | About as a signed letter, "off the clock" interests, playable easter egg, GitHub graph | 🟢 |
 
