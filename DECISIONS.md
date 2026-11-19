@@ -41,3 +41,4 @@
 | 2026-11-19 | **Interaction wall** on Roqqu: 6 looping micro-interactions rebuilt in code (slide-to-confirm, liveness, tx timeline, leverage/liquidation, return calculator, network check); click to expand, Esc to close | Ref: Tiago Costa / Wealthsimple video |
 | 2026-11-19 | Weave stays **Weave** (not OneWeave) | Tosin's call |
 | 2026-11-19 | About opens with a plain, factual 5-line bio linking every company to its case study; "Updated <build date>" on About + footer; hand-drawn "New" scribble on the Weave tile; live Lagos clock (seconds) in footer | Refs: Benji Taylor, Bill Guo |
+| 2026-11-19 | Project cards: **copy and metrics always visible** (2 columns, framed image above; name, years, outcome headline, metric chips, tags, "View case study"). Hover-only info panel removed | Tosin: recruiters need copy at a glance |
