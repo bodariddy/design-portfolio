@@ -1,0 +1,64 @@
+tosin.lasisi
+Contact me
+Edubanc
+Edubanc is an EdTech Platform designed to improve education outcomes in the Nigerian society by introducing value-added products and initiatives
+Company - Sterling Bank
+Platforms - Web, Mobile
+Website - https://edubanc.ng/
+Background
+Edubanc introduces value-added products and initiatives such as; 
+School fees financing for students, 
+Teacher training
+School management system
+Payroll management for schools
+Project Goal
+Provide digital access to affordable education finance for Parents, Schools and students.
+Improve teaching quality by providing access to an enabling environment for Teachers to grow and hone their skills.
+Provide an avenue to integrate with existing Payroll and school management systems, so as to digitise day to day school administrative duties.
+Challenge
+The challenges in the educational sector include; 
+Lack of easy access to affordable finance for Parents and Schools alike. Individuals tend to  resort to traditional loan methods to get school funds.
+Teachers do not have easy access to affordable training resources which could proportionately improve teacher quality.
+Schools have to make do with traditional banking methods to solve their financial problems. These methods are inherently not as effective as digitised solutions.
+Role & Responsibility
+I was responsible for visual & user experience design. From creating components to drafting the style guides to be used across the project, I led the design direction for the entire platform; which consists of a mobile application, user-facing web app and an administrative portal. I worked as the sole designer on for Edubanc, while collaborating with a UX researcher, a product manager, a mobile developer and 5 software engineers.
+Discovery & Research
+To kickstart the design process we started by defining our users and aiming to understand their pain-points, the goal at this stage was to granularly understand what problems needed solving and in which priority.
+Who are the Users?
+Teachers: Will access affordable world-class teacher training through Edubanc.
+Students: Will get access to low-interest education loan to finance secondary & tertiary education.
+Schools: Access to a digitized management system that allows for super-easy collection, tracking and reconcillation of schools fees, simple Payroll management, etc.
+User persona
+Discovery & Research contd.
+Some key takeaways from our findings include: 
+For parents; inability to access affordable school fees financing is a barrier to quality education for children/wards.
+For teachers; inadequate provision of avenues for individuals to up-skill. Self-development prove to be expensive in most cases.
+For schools; Payment reconciliation is a manual process, this is not an effective method and it gives an avenue for fraud to occur.
+The Design
+For the design, I created high fidelity mockups of the intended solution for both web and mobile. It features an interface that is simple and sassy, and an experience that is easy to use and intuitive for all cadres of the intended audience.
+Some functionalities such as account opening and loan application is based on Sterling Bank’s traditional core,  this means in some cases a bulk of user data is required to process requests.
+To make the entire digital process user-friendly, I broke down long forms into smaller chunks of related data, guiding users every step of the information-gathering process by using progress bars.
+Simplifying the account opening process
+Bank account opening procedures are usually tedious to customers which makes for high drop-off rates. As account opening is a core part of the Edubanc’s business objectives, I ensured that the  process was simplified into multiple steps so it doesn’t overwhelm users. 
+
+The process was broken down into four distinct sections as shown below:
+Making loan application seamless
+The process of applying for a loan is yet another tedious one as it involves extensive data gathering. From personal & occupational  information to running credit checks. It is quite easy for this process to get tiring for users.
+For Edubanc’s loan application, I introduced a step by step data gathering process where the user is presented with one form field at a time. The aim of this approach was to ensure that the users were not overwhelmed by the amount of information they needed to provide from the onset, they are rather fed bit by bit till the whole process is complete.
+Impact 🚀
+Below are the numbers Edubanc has done since it launched in 2020.
+4k+
+1000+
+1k+
+₦45m+
+Registered users
+Schools Onboarded
+App downloads
+Loan volume
+Key Takeaways
+Leading the design direction for Edubanc has been a great learning opportunity in designing for an audience in the Edtech space. The most important things learnt are;
+It is important to always seek to engage with the target audience from an early stage in the design process. Solutions should not be based on assumptions but rather facts from insights garnered from user feedback and testing.
+As a designer, finding the middle ground between the business objectives and the user’s needs can be daunting; it is important to be able to make compromises to come up with solutions that align with the goals of all parties involved.
+Let’s talk📮
+thosynlasisi@gmail.com
+© 2022 — made with 💙

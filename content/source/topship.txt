@@ -1,0 +1,34 @@
+tosin.lasisi
+Contact me
+Topship
+Topship  allows African businesses export and import cargo, freight and parcels to their suppliers, distributors and customers at any location worldwide.
+Company - Topship Africa
+Platforms - Web application
+Website - https://topship.africa/
+Background
+Topship is a logistics solution for African business to enable them import and export cargo, freight and parcels to suppliers, distributors and customers worldwide. 
+
+The company wanted a redesign of the existing platform, the aim was to simplify processes and make the overall experience more user friendly and intuitive.
+Role & Responsibility
+I worked closely with a team of two other designers to research, scope, plan and execute Topship’s Goal. I was primarily responsible for product design and conducting user research for the app, including ux audits, wireframing, and visual design.
+Challenge
+The main challenge was solving the high rate of drop-offs on the existing application. After a UX audit of the existing application 
+we discovered that basic processes could be further simplified and the end to end experience can be made better to ensure users have a seamless journey.
+Design process
+The first step was to understand the major goals of the company. After discussing with stakeholders we had a quite solid understanding of what they company hoped to achieve with Topship - to be the leading choice for logistics by businesses in Africa.
+Next we carried out user research to get insights into the intended audience, what their objectives are and their current pain-points, we also aimed to learn more about how they currently import & export cargo.
+We then conducted a preliminary UX audit of the current solution. This uncovered some of the issues the users were facing on the existing application, and gave us insights on what to improve on, features to add, simply and demystify.
+Results from preliminary audit
+In addition to this preliminary audit, we also requested for feedback from the in-house product and support teams to get information about recurring user complaints and feature requests.
+Insights gleaned from all these gave us a good understanding of the redesign direction and what we needed to improve on.
+Results from company audit
+Visual design
+Based on the requirements and findings from our research, we designed an iteration of our proposed solution, taking into congnisance the feature requests and pain-ponts from the existing product.
+The end product features a web experience that conveys simplicity, and is easy to use and intuitive for our target audience.
+Learnings and next step
+This project provided an excellent opportunity to learn about designing for multiple user types. The most important things learnt were:
+User research is ultimately important when building any solution, it is better to design based on facts rather than assumptions of the problems people are facing and how best to solve them.
+Good design is never linear, it is beneficial to always re-iterate based on feedback from users. We are constantly improving the user experience for STEMuli.
+Let’s talk📮
+thosynlasisi@gmail.com
+© 2022 — made with 💙

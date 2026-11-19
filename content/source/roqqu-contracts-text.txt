@@ -1,0 +1,556 @@
+BTC/USDT
+$300.35
++$200 (1.52%)
+today
+Entry: $101,250
+$501,250
+Stats
++4.73%
+Entry
+$101,250
+Liquidation
+$98,450
+Position
+LONG
+Actions
+Stop loss (SL)
+Change
+Take profit (TP)
+Trading perpetual contracts involves significant risk, including potential for sudden and total loss of your investment and collateral. See more
+Apple Inc
+English
+9:41
+BTC/USDT- LONG
+Isolated
+Market
+Select leverage
+Amount to trade
+Label
+$ 0.00
+Available balance: $1,000
+Select option
+Estimated Liquidation Price
+Message
+Liquidation price
+Order value
+Margin required
+$0.56
+Fees
+0.0432% / 0.0144%
+Slide to buy Long
+Cancel
+Limit
+Execution price
+BTC/USDT — LONG
+Trigger
+Trigger price
+Trigger mode
+Select
+Swipe to buy Long
+Shares margin across all trades for flexibility, but higher exposure
+Trade settings
+Margin mode
+Recommended
+Keeps risk contained to one position
+Fund with Fiat
+Fund your contract wallet using Fiat
+Onchain deposit
+Fund your contract wallet using crypto
+Direct deposit
+top up your account from your banking application
+Cross
+Order type
+Market order
+Execute your trade instantly at the current market price.
+Limit order
+Set your own price and we will execute the trade only when the market hits it.
+Trigger order
+Place a trade that activates only when a specific trigger price is reached.
+Save changes
+Trades
+Orders
+Label 2
+Label 3
+Label 4
+Label 5
+Label 6
+Label 7
+Details
+24h volume
+Traders
+12,345
+Long
+Short
+Trading perpetual contracts involves significant risk, including potential for sudden and total loss of your investment and collateral due to high leverage and market volatility, and may not be suitable for all users. Prices may be influenced by funding rates and liquidity and you may be subject to automatic liquidations without notice. Market data provided by HyperLiquid. See less
+Price
+1.235
+Spread
+Home
+History
+Limits
+Profile
+Futures trading, for the rest of us
+Start by adding funds to your futures wallet
+Add funds
+Pairs
+Crypto
+Stocks
+Currencies
+All Pairs
++120
+New Listing
+Top gainers
+Vol 152.6k
+$125,000
+$185,000
++1.23%
+ETH/USDT
+Vol 75.4k
+$210,000
+$124,000
+XRP/USDT
+Vol 50.1k
+$60,000
+LTC/USDT
+Vol 20.8k
+$120,000
+ADA/USDT
+Vol 30.2k
+$45,000
+View all
+New to futures? Watch our guides
+2 min
+Top asset
+Top earner
+Tosin Lasisi
+Futures
+Wallet
+Markets
+Cards
+Hot pairs
+See all
+Learn futures trading
+Playlist • 2 videos
+How to Trade on Roqqu Futures
+How to Fund your Futures Account
+View full playlist on YouTube
+Contracts
+You need a username to continue
+Set up your username to start using Contracts.
+Set up my username
+Order placed successfully
+Your BTC short order has been placed
+Sent
+Jan 29, 2024
+On the way
+11:38pm
+Estimated Arrival
+Today
+Status
+View details
+Go to Contract dashboard
+Leverage
+Margin
+0.0432 / 0.0144%
+Close trade
+You’re about to close your BTC/USDT position at the current market price. Your profit/loss will be reflected in your Futures balance immediately.
+Current Price
++$98,450
+(+4.73%)
+Confirm Close
+Position closed successfully
+$XX USDT added to your balance
+Exit Price
+LONG 10x
++70.6%
+Entry Price
+Mark Price
+Share
+SHORT 10x
++110.6%
+Scan the QR code and start trading on Roqqu
+Referral code
+BODA2026
+-70.6%
+Scan the QR code and start trading
+Qash
+Your GBP Balance
+£123,450.24
+Family
+Deposit
+Withdraw
+Sell
+More Actions
+Daily Trading Challenge
+Join the challenge and secure your share of the USDC prize pool.
+Join now
+Stay Updated
+Delisting coins
+View the list of coins we are delisting
+Exchange Rates
+View all currencies rate at a glance
+Roqqu Expands to Europe
+We are now on the shores of Europe!.
+Your Wallet
+Bitcoin BTC
+£1,231.34
+2.840
+-0.61%
+Ethereum ETH
+£1,025.78
+3.240
++1.25%
+Ripple XRP
+£0.986
+4.123
+-0.92%
+Passkey (FaceID & TouchID)
+Polkadot DOT
+£25.67
+7.212
+-1.50%
+Chainlink LINK
+£13.89
+8.098
++0.33%
+Our 128+ Featured Coins
+$85,445,000
+$5,382,000
+$1,445,000
+-2.3%
+$27,445,000
+34.73%
+Explore the market
+Discover trending trades, top gainers, biggest losers, and newly listed coins.
+Popular
+Gainers
+Losers
+Most Bought
+Most Sold
+Newly listed
+Bitcoin
+$22,840
+Ethereum
+$0.36
++0.61%
+Tether
+USDT
+0.77
+Cardano
+Dogecoin
+DOGE
+$0.93
+Explore more features
+GameFi
+Roqqu Games
+Unlock thrilling rewards, exclusive treasures, and epic gems!
+Invest
+Bags
+Grow with confidence, and secure your path to financial freedom
+Latest market updates and news
+Category here
+Pi Network Faces Significant value challenges as market dynamics shift
+10 min read
+21m ago
+Refer friends to Roqqu
+Invite your friends and family to enjoy Roqqu with your code and earn money
+Challenge Ended 🎉
+Well done Trader! The challenge has come to an end. Check your results to see how you did.
+View result
+Your Futures Balance
+$50.00
+Available: $20
+In order:  $30
+Total returns:
++$100.45
+Top up
+Withdraw funds
+Open position(s) (1)
+Average PNL
+-7.23%
+Top losers
+Recent activity
+BTC/USDT — LONG (5x)
+Exit: $104,329
+Nov 6, 11:42 AM
++ $320 (+3.2%)
+Open
+SOL/USDT — LONG (2x)
+Entry: $210
+Liquidated: $207
+– $85 (–1.4%)
+Liquidated
+Trade Daily for a Chance 
+to Win USDC
+Trade consistently every month to earn a share of the USDC prize pool. To qualify, you must complete at least 20 trading days out of 25.
+Days remaining
+Prize Pool
+5,000 USDC
+Traders joined
++1,125
+How it works
+Bank verification details
+Select a challenge and trade futures on 20 out of 25 days every month.
+A Selfie
+You can miss up to 5 days. You’ll receive a warning strike for each day you miss.
+Exceed 5 strikes, you’ll be disqualified from the month’s challenge.
+Qualified traders at the end of the challenge receive USDC rewards.
+Transactions
+More
+Proceed
+Bronze
+FAQs
+Join challenge
+Challenge
+Leaderboard
+Trade at least $50 daily within the trading period.
+Ends in
+1,000 USDC
+Qualification rules
+Trade a minimum of $50 daily.
+Complete at least 20 trading days within the 25-day trading period.
+Only 5 missed days are allowed within the  trading period.
+Reward distribution
+$500
+$300
+$200
+4th - 50th
+$50 - $100 each
+51st - 500th
+4 each
+Traders currently on track
++525
+Starts in
+Opt out
+Opt out of challenge
+Once you opt out of this challenge, you won't be able to join this challenge mode again during the current campaign.
+You can still participate by joining another available challenge mode, provided you meet its requirements.
+Yes, opt out
+You've left the challenge
+This challenge mode is no longer available for you to join during the current campaign. You can still participate in another eligible challenge mode.
+Okay
+Silver
+I’m interested
+Trade at least $200 daily within the trading period.
+1,500 USDC
+This challenge hasn’t started yet. Let us know you're interested and we’ll notify you as soon as it goes live.
+Trade a minimum of $200 daily.
+$800
+GEMs
+You’re all set!
+You’ve shown interest in this challenge. We’ll notify you as soon as it goes live.
+200+ people are already in line with you.
+Gold
+Bronze Challenge
+Trade at least $1,000 daily within the period.
+2,500 USDC
+Trade a minimum of $1,000 daily.
+$1,500
+Completed
+Easter Eggs Hunt
+Complete challenges and receive exciting rewards.
+• Ended
+Golden Token Rush
+Coming soon
+• Ongoing
+7,500 USDC
+Current
+Campaigns
+Select a category
+Trade at least $1,000 daily within the trading period.
+Today’s volume
+MANA - 76%
+Trade status
+Reveal
+Qualified
+Days completed
+23/25
+Performance summary
+Daily PNL
++$21 (+1.24%)
+Cumulative PNL
++$56,381 (+12.33%)
+Win rate
+65% (26W / 14L)
+Final rank
+#18 of 2,050
+Warning strikes
+1/5 Used
+Exceeding this will disqualify you from the challenge.
+Trade at least $50 daily within the trading month.
+Well done Trader! Claim your reward and stay tuned for upcoming trading challenges.
+Claim reward
+PNL over 30 days
+20% (20W / 80L)
+Current rank
+#122 of 2,050
+Better Luck Next Time!
+You didn't qualify for a reward in this challenge, but another opportunity is just around the corner. Keep trading and join the next challenge for another chance to win.
+Share your win on:
+Well done Trader! The next challenge starts on the 4th of every month, don’t miss out.
+Post
+🚀 I just earned rewards from Futures Trading challenge!
+Join me and start trading futures today. #Roqqu #FutureTrading #BronzeChallenge
+Congratulations!
+You completed a bronze challenge. 
+Well done Trader!
+Your win
+$125
+#14 of 2,403
+No completed challenges yet
+You haven’t completed any challenges yet. Join a challenge and finish it to see it here.
+Reward earned
+250 USDC
+Trading Period
+Jan 1st-25th, 2026
+Completed days
+22/25
+Final PnL
++$56,381
+20 USDC
+Feb 1st-25th, 2026
+#127
+0 USDC
+Disqualified
+March, 2026
+Trading period
+Mar 1st-25th, 2026
++$630
+Strikes used
+Pending
+0/25
+5/5 Used
+You exceeded the maximum allowed missed trading days. You’re no longer eligible for the prize pool for this month, but you can join again next month.
+Trading days completed
+15/25
+Gold Challenge
+Trade at least $1,000 daily within the month.
+Arnold34
+2 strikes • Vol. $20k
++$485
+50scents
+J_B234
+YemiYem23
+AliHassan09
+Sarah_S4
+James042
+SoftLife
+Griffin45_
+No rankings yet
+The leaderboard will populate once traders start competing. Join the challenge and be among the first to rank.
+Days completed:
+13/25
+2/5 Strikes used
+$25/$50
+Pay Bills
+NFT’s
+Challenge FAQs
+What is the Daily Trading Challenge?
+This challenge rewards traders who trade consistently throughout the month. Complete the required number of trading days within the challenge period to qualify for a share of the USDC prize pool.
+When does the challenge start?
+How do I qualify for the rewards?
+What counts as a trading day?
+What happens if I miss more than 5 days?
+How is the leaderboard ranking determined?
+What happens if I qualify but rank outside the reward tiers?
+When will I receive my rewards?
+Can I join the challenge after it has started?
+What happens if I’m disqualified?
+Do all trades count toward the challenge?
+Coming soon challenge
+Price: $125,000
++$124,000
++7.23%
+SHORT
+Active trades
+Pending orders
+Limit: $125,000
++$200
+(1.52%) today
+$150,000
+View PNL
+Set Stop Loss
+Set a price where your trade will automatically close to limit losses.
+100.00
+Estimated PNL
+-$1,250
+Save
+Set Take Profit
+Set a price where your trade will automatically close once you’ve reached your target profit.
+Amount traded
+Opened on
+August 24, 2023 8:05 PM
+Closed on
+August 24, 2023 9:45 PM
+Networth
+101 USDT
+= $14,7803.39
+10 days pnl
++24%
++100 USDT
+30 days pnl
+-0.4%
+-34 USDT
+1 month pnl
++87 USDT
+Asset networth
+$624,553
+12 -04-2024
+$100
+Asset PNL
++25%
+Contract PNL
+Hot Pairs
+Take positions on your favorite coins without the noise
+Start trading
+Welcome to Futures
+Trade price movements with ease, no charts, no complexity.
+Learn more
+Introducing gestures
+Swipe left and right anywhere on the screen to switch between pages crypto and Qash easily
+Got it
+Next
+Skip
+What are Futures?
+Trade crypto by predicting price movements, up or down, without owning the asset.
+Your Futures balance
+Your futures trades use your stable coin balance (USDT/USDC). Top up using fiat or on-chain deposit if you’re low.
+Go long or short
+Go Long if you expect the price to rise,
+Go Short if you expect the price to fall.
+Choose a leverage
+Boost your position size with leverage. Higher leverage means bigger potential gains, and bigger risks.
+Set Stop Loss & Take Profit
+Protect your downside and lock in profits by setting automatic exit levels.
+Set Stop Loss/ Take Profit
+Stop loss (SL)/ Take Profit (TP)
+Keep an eye on your positions
+See your open trades, pending orders, liquidations, and PnL all in one clear view.
+Positions
+You’re all set to start trading
+That’s it. You now understand the basics. Open your first position with confidence.
+Start Trading
+Get started now
+Roqqu Markets
+Trade across futures and event markets: fund, place orders, and track performance.
+Get Started
+Trade across futures and event markets — fund, place orders, and track performance in real time
+Avg. order fill time: 5s
+🌍 All trading, one place
+🌍 All trading, one place
+🧭 Futures + Event Markets, live
+⚡️ Fast, real-time markets
+📈 Go long or short, 24/7
+🧨 Up to {X}× leverage available
+🔥 {N}+ perp pairs live now
+🗳️ {N}+ event markets live now
+🎯 Trade “Yes” or “No” with USDC
+📡 Live odds, updated in real time
+Watch a how to video
+Perpetual Futures
+Go long or short with leverage on perpetual contracts — fast execution, live pricing, full control.
+📈 Go long or short, 24/7
+Prediction Markets
+Buy “Yes” or “No” shares on real-world outcomes — funded with USDC and updated live
+🗳️ 10+ event markets live now
+Intro screens

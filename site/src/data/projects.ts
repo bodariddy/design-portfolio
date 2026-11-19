@@ -74,28 +74,49 @@ export const projects: Project[] = [
     ],
   },
   {
-    slug: 'glover-business',
-    device: 'laptop',
+    slug: 'glover-lite',
+    device: 'phone',
     ch: 4,
-    name: 'Glover Business',
-    headline: 'The B2B gift card platform behind a 30% revenue lift',
-    tags: ['B2B', 'Web'],
+    name: 'Glover Lite',
+    headline: 'Cutting drop-off 30% by removing KYC from the front door',
+    tags: ['Fintech', 'Mobile + Web', 'A/B tested'],
     years: '2022 – 2023',
     colour: '--w-glover',
     metrics: [
-      { value: '+30%', label: 'revenue' },
-      { value: '−30%', label: 'drop-off (Lite)' },
+      { value: '−30%', label: 'user drop-off' },
+      { value: '3', label: 'A/B-tested dashboards' },
     ],
     receipt: [
-      ['REVENUE', '+30%'],
-      ['DROP-OFF (LITE)', '-30%'],
-      ['PRODUCTS', 'B2B+B2C'],
+      ['DROP-OFF', '-30%'],
+      ['KYC AT SIGN-UP', 'NONE'],
+      ['SERVICES', '7'],
+      ['A/B VARIANTS', '3'],
+    ],
+  },
+  {
+    slug: 'qash',
+    device: 'phone',
+    ch: 5,
+    name: 'Qash',
+    headline: 'Send, spend and save in dollars: one app for money across borders',
+    tags: ['Fintech', 'Payments', 'Cards'],
+    years: '2024 – now',
+    colour: '--w-qash',
+    metrics: [
+      { value: '101k', label: 'transactions, year one' },
+      { value: '150+', label: 'countries' },
+    ],
+    receipt: [
+      ['TXNS / YR1', '101,045'],
+      ['COUNTRIES', '150+'],
+      ['CURRENCIES', 'NGN USD GBP'],
+      ['DOLLAR CARD', '30 SEC'],
     ],
   },
   {
     slug: 'weave',
     device: 'phone',
-    ch: 5,
+    ch: 6,
     name: 'Weave',
     headline: 'Case study coming soon',
     tags: ['TBC'],
@@ -105,3 +126,7 @@ export const projects: Project[] = [
     receipt: [['STATUS', 'PENDING']],
   },
 ];
+
+// Which projects have a case-study page (src/pages/work/<slug>.astro).
+const pages = import.meta.glob('../pages/work/*.astro');
+export const hasPage = (slug: string) => Object.keys(pages).some(k => k.endsWith(`/${slug}.astro`));

@@ -1,0 +1,52 @@
+/* Shared case-study body styles (imported by layouts/Case.astro) */
+.case-body .sec { display: grid; grid-template-columns: 1fr 2.2fr; gap: 32px; padding-block: clamp(44px, 6vw, 80px); border-top: 1.5px solid var(--line); }
+.case-body .side { margin: 6px 0 0; color: var(--muted); position: sticky; top: 92px; align-self: start; }
+.case-body .txt { max-width: 700px; }
+.case-body .txt p { font-size: clamp(17px, 1.35vw, 20px); line-height: 1.6; margin: 0 0 1em; }
+.case-body .txt .lead { font-size: clamp(22px, 2.1vw, 30px); line-height: 1.3; letter-spacing: -.02em; font-weight: 600; }
+.case-body .also { font-size: 28px; letter-spacing: -.03em; margin: 0 0 8px; }
+
+.case-body .insights { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 32px 40px; }
+.case-body .insights span { color: var(--muted); }
+.case-body .insights h3 { font-size: clamp(22px, 2vw, 28px); letter-spacing: -.03em; line-height: 1.1; margin: 8px 0 8px; }
+.case-body .insights p { margin: 0; color: var(--muted); }
+
+.case-body .part { padding-block: clamp(72px, 10vw, 150px) clamp(24px, 3vw, 40px); border-top: 1.5px solid var(--line); }
+.case-body .part .mono { color: var(--muted); margin: 0; }
+.case-body .part h2 { font-size: clamp(52px, 9vw, 150px); letter-spacing: -.06em; line-height: .88; margin: 14px 0 0; font-weight: 800; }
+.case-body .part .serif { font-weight: 400; letter-spacing: -.03em; color: var(--accent-text); }
+.case-body .part-sub { font-size: clamp(18px, 1.6vw, 23px); line-height: 1.45; max-width: 48ch; color: var(--muted); margin: 28px 0 0; }
+.case-body .decision { padding-block: clamp(56px, 8vw, 110px) clamp(20px, 3vw, 40px); border-top: 1.5px solid var(--line); }
+.case-body .d-n { color: var(--muted); margin: 0; }
+.case-body .d-head h2 { font-size: clamp(34px, 4.6vw, 72px); letter-spacing: -.05em; line-height: .95; margin: 14px 0 32px; max-width: 18ch; font-weight: 800; }
+.case-body .d-cols { display: grid; grid-template-columns: 1fr 1.4fr .9fr; gap: 28px 40px; margin-bottom: 36px; }
+.case-body .d-cols h4 { margin: 0 0 8px; font-weight: 500; color: var(--muted); }
+.case-body .d-cols p { margin: 0; font-size: 16.5px; line-height: 1.55; }
+.case-body .d-cols .big { font-size: clamp(22px, 2vw, 30px); font-weight: 700; letter-spacing: -.03em; line-height: 1.15; }
+.case-body .wrap-bleed { padding-left: var(--gutter); max-width: calc(1440px + (100vw - 1440px) / 2); margin-left: max(0px, calc((100vw - 1440px) / 2)); }
+
+.case-body .duo { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding-bottom: clamp(20px, 3vw, 40px); }
+.case-body .duo img { width: 100%; height: auto; border-radius: 14px; }
+
+.case-body .rtable { width: 100%; border-collapse: collapse; margin-bottom: 16px; }
+.case-body .rtable th, .case-body .rtable td { padding: 14px 0; border-top: 1.5px solid var(--line); font-size: 18px; text-align: left; }
+.case-body .rtable th { font-weight: 500; }
+.case-body .rtable td { text-align: right; font-weight: 700; font-variant-numeric: tabular-nums; }
+.case-body .rtable tr:last-child th, .case-body .rtable tr:last-child td { border-bottom: 1.5px solid var(--line); }
+
+@media (max-width: 900px) {
+    .case-body .sec { grid-template-columns: 1fr; gap: 10px; }
+    .case-body .side { position: static; }
+    .case-body .d-cols, .case-body .insights, .case-body .duo { grid-template-columns: 1fr; }
+  }
+
+/* Wide single image and image grids */
+.case-body .wide { padding-bottom: clamp(20px, 3vw, 40px); }
+.case-body .wide img, .case-body .grid3 img { width: 100%; height: auto; border-radius: 14px; }
+.case-body .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; padding-bottom: clamp(20px, 3vw, 40px); }
+.case-body .cap { font-family: var(--f-mono); font-size: 12px; color: var(--muted); margin: 10px 0 0; }
+.case-body .panel { background: var(--surface); border: 1.5px solid var(--line); border-radius: 18px; padding: clamp(14px, 2vw, 28px); }
+.case-body .ba { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.case-body .ba figure { margin: 0; }
+.case-body .ba .tag { display: inline-block; font-family: var(--f-mono); font-size: 11px; padding: 3px 9px; border-radius: 99px; border: 1.5px solid var(--line-strong); margin-bottom: 10px; }
+@media (max-width: 900px) { .case-body .grid3, .case-body .ba { grid-template-columns: 1fr; } }

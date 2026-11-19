@@ -1,18 +1,23 @@
 ---
-import { projects } from '../data/projects';
+import { projects, hasPage } from '../data/projects';
+import { Image } from 'astro:assets';
+import roqquCover from '../assets/work/roqqu/home.webp';
+import gloverCover from '../assets/work/glover-lite/dashboard-final.webp';
+import clinkCover from '../assets/work/clink/links.webp';
+const covers: Record<string, ImageMetadata> = { roqqu: roqquCover, 'glover-lite': gloverCover, clink: clinkCover };
 ---
 <section id="work" class="work" aria-labelledby="work-title">
   <div class="wrap work-head">
     <h2 id="work-title">Selected <span class="serif">work</span></h2>
-    <p class="mono muted">05 case studies · 2019 — now</p>
+    <p class="mono muted">06 projects · 2019 — now</p>
   </div>
 
   <ul class="grid" role="list" id="grid">
     {projects.map((p, i) => {
-      const soon = p.slug === 'weave';
+      const soon = !hasPage(p.slug);
       return (
-      <li class={`tile ${i < 2 ? 'tile-lg' : ''} ${soon ? 'soon' : ''}`} style={`--world: var(${p.colour})`}>
-        <a href={soon ? '#work' : `/work/${p.slug}`} aria-label={`${p.name}: ${p.headline}`} data-cursor={soon ? 'Coming soon' : 'View case study'}>
+      <li class={`tile tile-lg ${soon ? 'soon' : ''}`} style={`--world: var(${p.colour})`}>
+        <a href={soon ? '#work' : `/work/${p.slug}`} aria-label={`${p.name}: ${p.headline}`} data-cursor={soon ? 'Case study soon' : 'View case study'}>
           <div class="t-top mono">
             <span>CH {String(p.ch).padStart(2, '0')}</span>
             <span>{p.years}</span>
@@ -20,10 +25,12 @@ import { projects } from '../data/projects';
 
           <div class="t-media" aria-hidden="true">
             <div class={`device device-${p.device}`}>
-              <div class="d-screen">
-                <span class="mono">{p.name}</span>
-                <span class="mono d-note">Screens from Figma</span>
-              </div>
+              {covers[p.slug]
+                ? <div class="d-screen d-img"><Image src={covers[p.slug]} alt="" widths={[320, 520]} sizes="(max-width: 900px) 80vw, 460px" /></div>
+                : <div class="d-screen">
+                    <span class="mono">{p.name}</span>
+                    <span class="mono d-note">{soon ? 'Coming soon' : 'Screens from Figma'}</span>
+                  </div>}
             </div>
           </div>
 
@@ -70,7 +77,7 @@ import { projects } from '../data/projects';
     content: ''; position: absolute; inset: 0; pointer-events: none;
     background: radial-gradient(90% 70% at 50% 40%, rgba(255,255,255,.14), transparent 60%), linear-gradient(180deg, transparent 55%, rgba(0,0,0,.22));
   }
-  .tile a { position: absolute; inset: 0; display: flex; flex-direction: column; padding: clamp(18px, 2vw, 28px); text-decoration: none; }
+  .tile a { position: relative; min-height: inherit; height: 100%; display: flex; flex-direction: column; padding: clamp(18px, 2vw, 28px); text-decoration: none; }
   @media (hover: hover) and (pointer: fine) { .tile a { cursor: none; } }
 
   /* Hover spotlight */
@@ -89,7 +96,9 @@ import { projects } from '../data/projects';
       color-mix(in oklab, var(--world) 70%, #000);
     color: color-mix(in oklab, var(--on-world) 75%, transparent); }
   .d-note { opacity: .55; font-size: 10px; }
-  .device-phone { width: clamp(150px, 15vw, 210px); aspect-ratio: 9 / 19; border-radius: 30px; padding: 7px; background: #111; box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.18); position: relative; }
+  .d-img { display: block; overflow: hidden; }
+  .d-img :global(img) { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+  .device-phone { width: clamp(140px, 12.5vw, 190px); aspect-ratio: 9 / 19; border-radius: 30px; padding: 7px; background: #111; box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.18); position: relative; }
   .device-phone .d-screen { border-radius: 24px; }
   .device-phone::after { content: ''; position: absolute; top: 14px; left: 50%; width: 30%; height: 14px; margin-left: -15%; border-radius: 99px; background: #111; }
   .device-laptop { width: min(92%, 460px); aspect-ratio: 16 / 10.6; border-radius: 14px 14px 4px 4px; padding: 8px 8px 12px; background: #141414; box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.16); position: relative; }
@@ -103,7 +112,7 @@ import { projects } from '../data/projects';
   .t-metrics { display: flex; gap: 20px; flex-wrap: wrap; font-size: 14px; }
   .t-metrics b { font-size: 22px; letter-spacing: -.03em; }
   .t-tags { opacity: .7; font-size: 11px; }
-  .soon .d-screen { background: repeating-linear-gradient(90deg, #e9e4da 0 14.28%, #f2a900 14.28% 28.56%, #0b8086 28.56% 42.84%, #1d5c45 42.84% 57.12%, #c92f63 57.12% 71.4%, #b9512b 71.4% 85.68%, #2b36c9 85.68% 100%); color: #111; }
+  .soon:last-child .d-screen { background: repeating-linear-gradient(90deg, #e9e4da 0 14.28%, #f2a900 14.28% 28.56%, #0b8086 28.56% 42.84%, #1d5c45 42.84% 57.12%, #c92f63 57.12% 71.4%, #b9512b 71.4% 85.68%, #2b36c9 85.68% 100%); color: #111; }
 
   .cursor { position: fixed; left: 0; top: 0; z-index: 60; pointer-events: none; margin: -20px 0 0 -10px; padding: 10px 14px; border-radius: 99px; background: var(--bg); color: var(--text); font-size: 11px; box-shadow: 0 10px 30px -10px rgba(0,0,0,.4); opacity: 0; scale: .6; transition: opacity .25s, scale .35s var(--ease); white-space: nowrap; }
   .cursor.on { opacity: 1; scale: 1; }

@@ -1,0 +1,59 @@
+Bringing Ideas to Life
+Project Overview
+In the growing electric vehicle (EV) market, EN1 aspired to be the leading name in Nigeria. To achieve this, they needed more than just a cutting-edge product—they required a compelling digital presence that could connect with potential customers, elevate their brand, and drive conversions. My role as Product designer was to execute their digital transformation, ensuring that the digital experience mirrored the luxury and performance of their vehicles.
+Configurator
+Mobile Application
+Admin Portal
+We moved quickly into prototyping, focusing on creating intuitive user flows that balanced luxury with ease of use.
+
+Website & Mobile App:
+Designed a minimalist homepage with high-quality images and smooth interactions, making it easy for users to explore vehicles while feeling the premium nature of the brand.
+Developed a car configurator, enabling users to visualize their ideal vehicle—color, trim, features—in real time. This added a personal touch, letting customers feel connected to their purchase.
+Created a kitshop for EN1-branded merchandise, reinforcing brand identity and allowing for additional revenue streams.
+
+Admin Portal:
+Built a simple, intuitive admin dashboard for EN1’s internal team to manage car orders, merchandise, and customer inquiries.
+The configurator let’s users personalise their car by selecting preferences such as paint, wheel type and lighting.
+Worked on a premium EV brand experience in Nigeria, focusing on luxury positioning, digital experience, and user engagement.
+The Challenge
+The mobile version ensures the experience is consistent and accessible across devices
+The admin portal was designed to manage everything user facing such as order tracking, product upload, team management e.t.c,
+Conlusion
+Understanding the User
+Finding structure:
+Elevating a Premium Electric Vehicle Brand in Nigeria
+How do you create a luxury digital experience that feels premium and resonates locally
+While the project is still ongoing, the design direction positioned EN1 as not just an automotive brand, but as a statement of lifestyle and innovation. For me, this project reinforced how important it is to design experiences that balance aspiration with context — especially when introducing premium products into emerging markets.
+User insights:
+Audience: Affluent, tech-forward, sustainability-conscious Nigerians
+Motivations: Prestige, innovation, environmental responsibility
+Barriers: High cost, infrastructure concerns (charging, support)
+Approach
+Created user-flows: awareness → exploration → purchase
+Designed experience architecture for digital touch-points
+Designed the EN1 design system
+Balanced local context with global luxury standards
+Role & Responsibility
+I was responsible for:
+Visual Design: Creating a cohesive, luxury-focused aesthetic for the entire digital experience.
+User Flows & Prototyping: Mapping out user journeys across the website, mobile app, configurator, and internal portals.
+Collaboration: Working closely with developers and stakeholders to ensure the design translated well into the final product.
+EN1 was targeting Nigerian consumers—a market driven by rising fuel prices and growing interest in sustainable transportation options. My task was to craft a user-centric digital platform that would:
+Showcase EN1’s electric vehicles in a compelling, premium way.
+Allow users to explore and customize vehicles.
+Promote brand merchandise and generate additional revenue.
+Create a backend system to streamline operations for EN1’s internal team.
+This experience taught me how to adapt global design standards to a local market context — something I see as a recurring theme in my work
+Framing the Problem
+My Role
+Industry
+Duration
+Key insights turned into design problems:
+How to make EV ownership aspirational but approachable
+How to communicate trust & long-term value
+How to design for a seamless purchase & ownership journey
+Thank you
+Product Designer
+Automobile
+2023-2025
+Case Study 01

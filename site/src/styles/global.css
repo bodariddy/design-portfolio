@@ -24,6 +24,7 @@
   --w-clink: #0b8086;   /* lagoon */
   --w-glover: #c92f63;  /* hibiscus */
   --w-weave: #b9512b;   /* laterite */
+  --w-qash: #5b3cc4;    /* ankara violet */
   --on-world: #fbf7ee;
   --hl: rgba(255,255,255,.6);
   --accent-text: var(--w-roqqu);
@@ -53,6 +54,8 @@
     --w-clink: #0f9096;
     --w-glover: #d8396e;
     --w-weave: #c95c33;
+  --w-qash: #6c4ee0;
+    --w-qash: #6c4ee0;
     --hl: rgba(255,255,255,.06);
     --accent-text: #8f97ff;
     --accent-text-2: #ff7aa2;
@@ -73,6 +76,7 @@
   --w-clink: #0f9096;
   --w-glover: #d8396e;
   --w-weave: #c95c33;
+  --w-qash: #6c4ee0;
   --hl: rgba(255,255,255,.06);
   --accent-text: #8f97ff;
   --accent-text-2: #ff7aa2;

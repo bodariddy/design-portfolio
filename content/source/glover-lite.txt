@@ -1,0 +1,70 @@
+tosin.lasisi
+Contact me
+Glover Lite
+How do we reduce the high rate of drop-offs induced as a result of tedious KYC processes on the Glover application?
+Company - Glover
+Platforms - Web, Mobile
+Website - https://gloverapp.co
+Background
+Glover lite aims to eradicate the factors that induce customer drop-offs on the existing Glover application, thus helping to  improve customer retention.
+With Glover lite, sensitive requests have been removed to enhance the free flow of account setup and service consumption for customers.
+Role & Responsibility
+For this project my primary responsibilities included:
+End to end visual design for both web and mobile
+Prototyping
+Defined colour, typography, components for the design system
+Designed mockups.
+Challenge
+The major pain points with the existing Glover application includes;
+High drop-offs due to tedious KYC requirements needed before features can be used extensively.
+Improving the usability of the overall app by making complex processes simpler.
+Design process
+UX Review of Glover App
+Before embarking on our outcomes and research for Glover Lite, we had to conduct a UX review on the existing app to discover pain points.
+We carried out several interviews with several stakeholders and ran a cognitive walkthrough of the app. Properties we looked out for were Navigation, Consistency, Content, Trustworthiness, Forms, Feedback, Error Handling, and Accessibility
+USER RESEARCH
+Empathy Map
+Business Goals:
+To offer services that would require less customer information in order to attract more users and increase retention.
+User Goals:
+The features to be used by the intended audience include:
+Buy Gift cards  
+Purchase airtime and electricity units
+Subscribe to TV, Data, and Internet services
+Buy Perfect Money
+Convert airtime to cash (after verification)
+User persona
+Competitive Analysis
+Before working on the Glover lite, we needed to understand how most gift card apps work. From the results, we concluded that features needed to add are: Ads, Categorization, Gift packages, Feature to gift a friend, customized gift cards.
+Result from competitor analysis
+Defining Requirements
+Dashboard: A simple dashboard that displays the actions that can be carried out.
+Other Payment Methods: With the absence of KYC, there is a need for other payment processes like Transfer, Card, etc.
+Ads: There's a need to let the users know more about the app like the benefits of glover pro, special gift card packages, etc.
+App Switch Button: An easy-to-access toggle button to switch from lite mode to pro mode.
+The Design
+Based on the requirements and findings from our research, a site map (information architecture) was designed to see how all the features would be placed. We later designed user flows to take care of every user outcome earlier highlighted.
+User Journey and Wireframes
+We highlighted the outcomes and designed user-flows with the aid of annotation to provide context to design
+Site map & wireframe
+High fidelity mockups
+The end product features a mobile and web experience that is easy to use and intuitive for our target audience.
+What changed?
+Some of the impovements we made on the existing design are highlighted below:
+Before
+After
+User testing & validation
+To ensure we are meeting the goals of the intended users we ran usability tests on the design prototype to validate our assumptions.
+We also conducted AB testing for screens with multiple design variants. The feedback gotten from these sessions gave us actionable insights and helped to define the final direction.
+Result from Hotjar
+Result from AB testing survey
+Learnings
+Make it simple; Users chose variants that were not heavy on colours as this adds to their cognitive workload. The most preferred design variants were simple and utilised whitespace judiciously.
+Accessibility is key; we found button & feature placement to be very important, most users preferred the design variant that had the features closer to the bottom of the screen
+Key Takeaways
+Designing a payment solution for giftcards and perfect money was exciting and considerably challenging. The most important things learnt are;
+User research is ultimately important when building any solution, it is better to design based on facts rather than assumptions of the problems people are facing and how best to solve them.
+Good design is never linear, it is beneficial to always re-iterate based on feedback from users. We are constantly improving the user experience for Glover.
+Let’s talk📮
+thosynlasisi@gmail.com
+© 2022 — made with 💙

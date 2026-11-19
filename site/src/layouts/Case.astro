@@ -3,8 +3,9 @@
 import Base from './Base.astro';
 import Nav from '../components/Nav.astro';
 import Contact from '../components/Contact.astro';
-import { projects } from '../data/projects';
+import { projects, hasPage } from '../data/projects';
 import { Image } from 'astro:assets';
+import '../styles/case.css';
 import type { ImageMetadata } from 'astro';
 
 interface Props {
@@ -20,7 +21,7 @@ interface Props {
 const { slug, title, sub, meta, hero, heroAlt, tldr, results } = Astro.props;
 const i = projects.findIndex(p => p.slug === slug);
 const p = projects[i];
-const live = projects.filter(x => x.slug !== 'weave');
+const live = projects.filter(x => hasPage(x.slug));
 const next = live[(live.findIndex(x => x.slug === slug) + 1) % live.length];
 ---
 <Base title={`${p.name}: ${title} · Tosin Lasisi`} description={sub}>
@@ -49,7 +50,7 @@ const next = live[(live.findIndex(x => x.slug === slug) + 1) % live.length];
         </ul>
       </section>
 
-      <article class="body">
+      <article class="body case-body">
         <slot />
       </article>
 
@@ -74,7 +75,7 @@ const next = live[(live.findIndex(x => x.slug === slug) + 1) % live.length];
   .crumbs a { text-decoration: none; } .crumbs a:hover { text-decoration: underline; }
   h1 { font-size: clamp(44px, 7.4vw, 124px); line-height: .9; letter-spacing: -.058em; font-weight: 800; margin: 22px 0 0; max-width: 13ch; }
   .sub { font-size: clamp(18px, 1.7vw, 24px); line-height: 1.35; max-width: 44ch; margin: 24px 0 40px; opacity: .92; }
-  .meta { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px 28px; margin: 0; padding-bottom: clamp(36px, 5vw, 64px); }
+  .meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px 28px; margin: 0; padding-bottom: clamp(36px, 5vw, 64px); }
   .meta div { border-top: 1px solid color-mix(in oklab, var(--on-world) 30%, transparent); padding-top: 10px; }
   .meta dt { opacity: .7; }
   .meta dd { margin: 4px 0 0; font-size: 16px; }

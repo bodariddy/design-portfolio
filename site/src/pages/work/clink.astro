@@ -1,0 +1,118 @@
+---
+import Case from '../../layouts/Case.astro';
+import Draft from '../../components/case/Draft.astro';
+import { Image } from 'astro:assets';
+
+const img = import.meta.glob<{ default: ImageMetadata }>('../../assets/work/clink/*.webp', { eager: true });
+const s = (n: string) => img[`../../assets/work/clink/${n}.webp`].default;
+---
+<Case
+  slug="clink"
+  title="Co-founding a payment-link tool, from idea to ₦2M+"
+  sub="Clink lets small businesses and creators get paid by sharing a link, not their bank details, with multiple payment methods and simple tracking."
+  meta={[
+    ['Role', 'Co-founder & Product Designer'],
+    ['Team', '3 designers, plus engineering'],
+    ['Timeline', 'Mar 2021 – 2023'],
+    ['Platform', 'Web app · responsive'],
+  ]}
+  hero={s('hero')}
+  heroAlt="Clink web dashboard and checkout on desktop and mobile"
+  tldr={{
+    problem: 'Online sellers in Nigeria got paid by sending their personal bank details to every customer. It was informal and tedious, easy to fake, and impossible to reconcile. Payment gateways needed business documents most early-stage sellers didn’t have.',
+    did: 'As co-founder I owned product strategy, research and design. We designed a web app where anyone can create a payment link in minutes, take payment through Paystack or Flutterwave, and track every link from one dashboard.',
+  }}
+  results={[
+    { value: '+20%', label: 'conversion' },
+    { value: '−35%', label: 'onboarding time' },
+    { value: '300+', label: 'registered users' },
+    { value: '150+', label: 'links created' },
+    { value: '₦2M+', label: 'transaction volume' },
+  ]}
+>
+  <section class="wrap sec">
+    <p class="side mono">01 · Context</p>
+    <div class="txt" data-reveal>
+      <p class="lead">“Send me your account number” is how a lot of Nigerian commerce still works.</p>
+      <p>The online vendor, the artist selling a piece, the freelancer: all of them typed out bank details for every sale, then checked their banking app to see who had paid. Payment gateways solved this, but only after a business onboarding most small sellers couldn’t pass.</p>
+      <p>Clink did the heavy lifting for them: no business paperwork, just a link that accepts payment.</p>
+    </div>
+  </section>
+
+  <section class="wrap sec">
+    <p class="side mono">02 · My role</p>
+    <div class="txt" data-reveal>
+      <p>Co-founder and product designer. I owned the product vision, UX strategy and growth experiments, and led research, visual design and prototyping, working with two other designers.</p>
+    </div>
+  </section>
+
+  <section class="wrap sec">
+    <p class="side mono">03 · Who it’s for</p>
+    <ol class="insights" role="list" data-reveal>
+      <li><span class="mono">01</span><h3>Business owners</h3><p>Getting paid for products and services, and needing to know who paid for what.</p></li>
+      <li><span class="mono">02</span><h3>Individuals</h3><p>Donations, a one-off art sale, “buy me a coffee”: payments without a business behind them.</p></li>
+    </ol>
+  </section>
+  <div class="wrap duo" data-reveal>
+    <Image src={s('persona-1')} alt="Persona: Sophia, an entrepreneur who wants customers to pay with ease" widths={[600, 1000]} sizes="(max-width: 900px) 94vw, 46vw" />
+    <Image src={s('persona-2')} alt="Persona: Adebayo, a customer who wants to pay for products comfortably" widths={[600, 1000]} sizes="(max-width: 900px) 94vw, 46vw" />
+  </div>
+
+  <section class="decision">
+    <div class="wrap d-head">
+      <p class="mono d-n">Decision 01</p>
+      <h2>Two payment processors, not one</h2>
+      <div class="d-cols" data-reveal>
+        <div><h4 class="mono">Insight</h4><p>Single payment methods failed customers, and a gateway outage meant a lost sale.</p></div>
+        <div><h4 class="mono">Decision</h4><p>Integrate both Paystack and Flutterwave, so customers pay the way they’re most comfortable with and sellers are protected from downtime on either.</p></div>
+        <div><h4 class="mono">Result</h4><p class="big">+20% conversion</p></div>
+      </div>
+    </div>
+    <div class="wrap wide" data-reveal><Image src={s('checkout')} alt="Clink checkout with multiple payment methods on desktop and mobile" widths={[900, 1600]} sizes="(max-width: 1440px) 94vw, 1360px" /></div>
+  </section>
+
+  <section class="decision">
+    <div class="wrap d-head">
+      <p class="mono d-n">Decision 02</p>
+      <h2>Onboarding in minutes, not documents</h2>
+      <div class="d-cols" data-reveal>
+        <div><h4 class="mono">Insight</h4><p>Sellers wanted to share a link today. Every extra field felt like the gateway onboarding they were trying to avoid.</p></div>
+        <div><h4 class="mono">Decision</h4><p>A guided onboarding that only asks for what regulation requires, with a clear “things to do” checklist on the dashboard so setup never blocks a first link.</p></div>
+        <div><h4 class="mono">Result</h4><p class="big">−35% onboarding time</p></div>
+      </div>
+    </div>
+    <div class="wrap duo" data-reveal>
+      <Image src={s('verification')} alt="Clink verification step explaining what is needed" widths={[700, 1200]} sizes="(max-width: 900px) 94vw, 46vw" />
+      <Image src={s('dashboard')} alt="Clink dashboard with things to do and overview" widths={[700, 1200]} sizes="(max-width: 900px) 94vw, 46vw" />
+    </div>
+  </section>
+
+  <section class="decision">
+    <div class="wrap d-head">
+      <p class="mono d-n">Decision 03</p>
+      <h2>Fix what beta users told us</h2>
+      <div class="d-cols" data-reveal>
+        <div><h4 class="mono">Feedback</h4><p>We launched in beta and listened through surveys and one-to-one calls. Customers complained about high fees, and link creation felt long.</p></div>
+        <div><h4 class="mono">Decision</h4><p><b>Flexible charge bearer:</b> the link creator chooses who pays the fees. <b>Better form layout:</b> required fields first, optional ones moved down.</p></div>
+        <div><h4 class="mono">Result</h4><p class="big">150+ links, ₦2M+ volume</p></div>
+      </div>
+    </div>
+    <div class="wrap duo" data-reveal>
+      <Image src={s('create-link')} alt="Clink create payment link form" widths={[700, 1200]} sizes="(max-width: 900px) 94vw, 46vw" />
+      <Image src={s('links')} alt="Clink links list with status" widths={[700, 1200]} sizes="(max-width: 900px) 94vw, 46vw" />
+    </div>
+    <div class="wrap duo" data-reveal>
+      <Image src={s('mobile')} alt="Clink mobile responsive screens" widths={[700, 1200]} sizes="(max-width: 900px) 94vw, 46vw" />
+      <Image src={s('tablet')} alt="Clink on tablet" widths={[700, 1200]} sizes="(max-width: 900px) 94vw, 46vw" />
+    </div>
+  </section>
+
+  <section class="wrap sec">
+    <p class="side mono">Reflection</p>
+    <div class="txt" data-reveal>
+      <p class="lead">Being a founder made me a better designer.</p>
+      <p>When you own the outcome, research stops being a phase and becomes how you decide anything. Design was never linear on Clink: every beta conversation changed the product.</p>
+      <Draft>What happened to Clink, and what did founding it teach you? An honest line here is the strongest part of a founder story.</Draft>
+    </div>
+  </section>
+</Case>

@@ -1,0 +1,280 @@
+9:41
+Crypto
+Qash
+Label 3
+Label 4
+Label 5
+Label 6
+Label 7
+Web3
+Current Wallet Balance
+£16.789900
++0.00
+Wallet A
+Send
+Receive
+Scan
+Stake & Earn
+Put your crypto to work and receive rewards.
+Start earning
+Assets
+NFTs
+DeFi
+Solana
+-1.05%
+£0.00
+0 SOL
+Ethereum
++3.71
+0 ETH
+Polygon
++2.33%
+0 POL
+Bitcoin
+-0.31%
+0 BTC
+Passkey (FaceID & TouchID)
+Manage Assets
+Home
+Stake
+History
+Explore
+Forgot Password?
+PQRS
+WXYZ
+Continue
+$100.00
+approx. 0.00 SOL
+fee = $1
+Available: $200 · Use max
+Network: Ethereum
+Stake [Coin name]
+English
+Estimate rewards with the stake calculator
+£100.00
+Available: £200
+Stake calculator
+Return calculator
+You can earn
++0.0127
+If you stake
+2.0 SOL
+Stake amount
+Label
+0.00                                                            SOL
+Message
+Select option
+Duration
+30 days
+180 days
+365 days
+Earn rate
+7.2 APY
+Min stake
+0.01 SOL
+Network fee
+0.0127 SOL
+Done
+Insufficient funds to cover staking amount and blockchain network fees.
+approx. 0.00 POL
+Stake Polygon
+Your ETH balance is insufficient to cover the network fee. Top up
+Pay Bills
+NFT’s
+Preview Stake
+Confirm Stake
+You stake
+2.45 APY
+Payout frequency
+Weekly
+Unstaking period
+2-3 days
+Deducted from wallet balance
+Rewards fee
+[X]% of rewards
+A [X]% fee is taken from your rewards as you earn them. The amount you stake is never charged.
+Staking initiated
+2.3 SOL is now activating. Rewards will start in 2 days
+Est rewards
++0.23 SOL
+Trx hash
+5x9f...a3kd
+View on explorer
+View Assets
+Forgot PIN?
+Confirm Transaction
+Input your 6 digit transaction PIN to confirm
+your transaction and authenticate your request
+Confirm transaction
+Earn on what you hold
+Receive any of the stakeable assets - ETH, SOL, POL and others - to start earning up to 7% yield in a year.
+Deposit crypto
+Receive assets
+Receive crypto
+Learn how staking works
+Popular coins you can stake
+2% APY
+Get Solana
+Nano
+Get Nano
+Get Ethereum
+Get Polygon
+Watch a how to video
+Stake crypto to earn up to 2.34 APY
+Staking earns yield on assets you already hold. Roqqu never takes custody — your keys sign every action on this device.
+How it works
+Pick an amount and confirm with Face ID. Your assets are delegated to a validator.
+Activation
+Your stake goes live at the start of the next epoch — usually within ~2 days.
+Earn
+Rewards accrue automatically each epoch. Watch them grow under My positions.
+Unstake
+Unstake anytime. A network unbonding wait applies (~3 days for SOL) — no rewards during it.
+Withdraw
+Once unbonding ends, withdraw your assets back to your wallet.
+What you should know
+Direct deposit
+top up your account from your banking application
+APY is variable
+Set by the network, not Roqqu.
+Unbonding periods differ
+~3 days SOL · ~9–14 days ETH.
+Minimums & fees apply
+Small gas fee; SOL keeps a ~0.002 rent reserve.
+Rewards aren't guaranteed
+Depends on network and validator uptime.
+Validation powered by Everstake
+How Staking works
+Close
+Total staked value
+Available to stake
+Learn more
+0.1234 · $100.00
+7.2% APY
+Earn ≈ 0.012 ETH / yr
+≈ $100.00
+Stake Ethereum
+Earn ≈ 0.012 MATIC / yr
+Earn ≈ 0.012 SOL / yr
+Stake Solana
+$1,842.60
+Rewards earned +$63.40
+Showing recent network averages - live rates are temporarily unavilable
+Upgrade
+My positions
+View all
+2.5 APY
+0.123 SOL
+≈ ₦5,835,000
+Rewards earned
+This is how much rewards you have earned from staking your assets
++$300.35
+Gains as of today
+Your positions
+Active
+Deactivating
+Withdrawable
+Withdrawal complete
+1.2 SOL is now in your Web3 wallet
+Claim rewards
+$1,000.00
++0.00123 SOL
+Your balances
+Staked
+Earning rewards
+25.0000 SOL
+Unstaking
+Not earning · ready 27 Sep
+3.0000 SOL
+≈ ₦700,200
+4.2000 SOL · ≈ ₦980,280
+Info
+Status
++0.041 SOL
+Current APY
+2.4%
+Unbonding period
+SOL position
+Add Stake
+Your rewards balance is insufficient to cover the network fee
+You need about 0.00021431603772 ETH to cover the network fee. POL staking settles on ethereum.
+Top up
+Cancel
+Claim 0.0412 ETH rewards
+Ethereum sends rewards through a network withdrawal queue. They'll reach your wallet in about 5–10 days, depending on network demand. You can't cancel once it starts.
+Confirm Claim
+$0.00
+Rewards have been sent to your Solana wallet
+Rewards on the way
+Arrives around 4 Oct
+0.0412 ETH
+Withdrawal started · 0.0412 ETH arrives around 4 Oct
+Preview Unstake
+Confirm Unstake
+You unstake
+Stays staked
+9.6190 SOL
+Stops earning
+≈ $30 / yr
+This amount stops earning straight away. You can withdraw it once unbonding ends.
+Confirm unstake
+12.6190 SOL staked
+Unstake [Coin name]
+100.00 SOL
+Your note here...
+For rewards that are not instant we show them a bottom sheet to inform them, then add a row for it under their balances
+Tosin  Lasisi
+Your BTC Balance
+Swap
+Earn up to 7.5 APY on Bitcoin
+Put your BTC to work and receive rewards
+Try now
+Transactions
++$45,750
+No transactions yet
+You haven't made any transactions
+BTC Market Value
+£77,474.00
+-387,666 (-1.52%)
+Over the last day
+Market status
+Market Cap
+1.54T
+Circulating Supply
+19.8M
+Fully Diluted Valuation
+Max Supply
+24h Volume
+Total Supply
+All time low
+All time high
+£100,478.23
+About Bitcoin
+Bitcoin (BTC) is a cryptocurrency. Users are able to generate BTC through the process of mining. Bitcoin has a current supply of 19,288,312. The last known price of Bitcoin is 21,882.772765377 USD and is up to 0.67 over the last 24hours.  It is currently trading on 9976 active markets with $15,526,826,827.98 traded over the last 24 hours.  More information can be found at http://bitcoin.org/.
+Official website
+Trade Bitcoin on futures
+Open positions easily and trade with confidence.
+Start trading
+₦108,569.00
+0.04 BTC
+Total Value
+≈₦1,442,452.24
+Returns
++₦123,234
++80%
+Market cap
+Total supply
+Circulating supply
+24hr trade volume
+Max.supply
+$421 billion
+$19.3 million
+$15.2 billion
+$21 million
+News about Bitcoin
+Techcabal
+Bitcoin surpasses $50k in June
+10 min read
+21m ago
+Bitcoin halving - what to expect
+Sell

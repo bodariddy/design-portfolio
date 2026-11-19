@@ -1,0 +1,153 @@
+---
+import Case from '../../layouts/Case.astro';
+import Screens from '../../components/case/Screens.astro';
+import Draft from '../../components/case/Draft.astro';
+import { Image } from 'astro:assets';
+
+const img = import.meta.glob<{ default: ImageMetadata }>('../../assets/work/glover-lite/*.webp', { eager: true });
+const s = (n: string) => img[`../../assets/work/glover-lite/${n}.webp`].default;
+
+const flows = [
+  { src: s('splash'), alt: 'Glover splash screen', cap: 'Straight in: no documents at the door' },
+  { src: s('create-account'), alt: 'Create account with email and phone only', cap: 'Sign-up asks for an email and phone, nothing more' },
+  { src: s('dashboard-final'), alt: 'Final Glover Lite dashboard with service tiles', cap: 'Every service one tap from home' },
+  { src: s('airtime'), alt: 'Buy airtime screen', cap: 'Airtime in a few fields' },
+  { src: s('electricity'), alt: 'Electricity payment with transaction limit and Go Pro link', cap: 'Limits shown honestly, with the way to raise them' },
+  { src: s('giftcard'), alt: 'Gift card buy or sell choice', cap: 'Buy or sell gift cards: one clear choice' },
+  { src: s('transactions'), alt: 'Transaction history with clear success and failed states', cap: 'History that says what happened, in words' },
+  { src: s('profile'), alt: 'Account screen with Switch to Glover Pro toggle', cap: 'Lite ↔ Pro is one switch away' },
+];
+const ab = [
+  { src: s('ab-a'), alt: 'Dashboard variant A: banner at top, tiles below', cap: 'Variant A' },
+  { src: s('ab-b'), alt: 'Dashboard variant B: banner at top, larger tiles', cap: 'Variant B' },
+  { src: s('ab-c'), alt: 'Dashboard variant C: tiles at top, banner lower', cap: 'Variant C' },
+  { src: s('dashboard-final'), alt: 'Final dashboard after testing', cap: 'Final: lighter colour, features within thumb reach' },
+];
+const dark = [
+  { src: s('dark-splash'), alt: 'Dark mode onboarding: the better way to buy, sell and trade gift cards', cap: 'Onboarding, dark' },
+  { src: s('dark-2'), alt: 'Dark mode onboarding: access to digital assets', cap: 'Digital assets' },
+  { src: s('dark-3'), alt: 'Dark mode onboarding: refill on the go', cap: 'Bills on the go' },
+];
+---
+<Case
+  slug="glover-lite"
+  title="Cutting drop-off 30% by moving KYC out of the way"
+  sub="Glover Lite gave Glover’s users gift cards, airtime and bills without the heavy identity checks that were driving them away, on mobile and web."
+  meta={[
+    ['Role', 'Senior Product Designer'],
+    ['Company', 'Glover'],
+    ['Timeline', '2022 – 2023'],
+    ['Platform', 'iOS · Android · Web'],
+  ]}
+  hero={s('hero')}
+  heroAlt="Glover Lite app screens on two phones"
+  tldr={{
+    problem: 'Glover asked for KYC before people could use most features. Many new users simply left: they wanted to buy airtime or a gift card, not upload their ID.',
+    did: 'I led end-to-end design for Glover Lite, a lighter mode with the sensitive requests removed. I ran a UX review of the existing app, did research and competitor analysis, designed the information architecture, flows and design system, and validated with usability and A/B testing.',
+  }}
+  results={[
+    { value: '−30%', label: 'user drop-off' },
+    { value: '0', label: 'KYC steps to start' },
+    { value: '7', label: 'services in Lite mode' },
+    { value: '3', label: 'dashboard variants A/B tested' },
+  ]}
+>
+  <section class="wrap sec">
+    <p class="side mono">01 · Context</p>
+    <div class="txt" data-reveal>
+      <p class="lead">How do you keep people who leave the moment you ask for their BVN?</p>
+      <p>Glover is a Nigerian app for gift cards and everyday payments. The full app (Glover Pro) needed identity verification before most features unlocked. That made sense for high-risk actions, but not for buying airtime.</p>
+      <p>The business goal was clear: offer services that need less customer information, to attract more users and keep them. Glover Lite removes the sensitive requests so people can sign up and use the core services straight away, and upgrade to Pro when they need more.</p>
+    </div>
+  </section>
+
+  <section class="wrap sec">
+    <p class="side mono">02 · My role</p>
+    <div class="txt" data-reveal>
+      <p>End-to-end design for mobile and web: the UX review, research, information architecture, user flows, prototyping, high-fidelity design and the design system (colour, typography and components), plus usability and A/B testing.</p>
+    </div>
+  </section>
+
+  <section class="wrap sec">
+    <p class="side mono">03 · Research</p>
+    <div class="txt" data-reveal>
+      <p>We started with a <b>UX review of the existing app</b>: stakeholder interviews and a cognitive walkthrough covering navigation, consistency, content, trustworthiness, forms, feedback, error handling and accessibility.</p>
+      <p>The empathy map was blunt. Users said things like <em>“I really need to add my BVN before buying airtime?”</em> and <em>“Nah, my BVN is not secure.”</em> In practice they postponed KYC, complained to customer care, bought from another brand or deleted the app.</p>
+    </div>
+  </section>
+  <div class="wrap duo" data-reveal>
+    <div class="panel"><Image src={s('empathy-map')} alt="Empathy map: says, thinks, does, feels" widths={[600, 1000]} sizes="(max-width: 900px) 94vw, 46vw" /><p class="cap">Empathy map</p></div>
+    <div class="panel"><Image src={s('persona')} alt="Persona: Faith, a sales representative who is not comfortable giving personal data" widths={[600, 1000]} sizes="(max-width: 900px) 94vw, 46vw" /><p class="cap">Persona: Faith, “I am not comfortable giving my sensitive data.”</p></div>
+  </div>
+
+  <section class="wrap sec">
+    <p class="side mono">04 · Requirements</p>
+    <ol class="insights" role="list" data-reveal>
+      <li><span class="mono">01</span><h3>A simple dashboard</h3><p>Every action visible from home: gift cards, airtime, electricity, internet, cable TV, airtime-to-cash and Perfect Money.</p></li>
+      <li><span class="mono">02</span><h3>Payments without KYC</h3><p>With no verified wallet, Lite needed other ways to pay: bank transfer and card.</p></li>
+      <li><span class="mono">03</span><h3>Room to upsell</h3><p>Ads for gift card packages and the benefits of Glover Pro, learned from competitor analysis.</p></li>
+      <li><span class="mono">04</span><h3>A one-tap mode switch</h3><p>An easy toggle between Lite and Pro, so upgrading never feels like starting over.</p></li>
+    </ol>
+  </section>
+  <div class="wrap duo" data-reveal>
+    <div class="panel"><Image src={s('sitemap')} alt="Glover Lite site map" widths={[600, 1000]} sizes="(max-width: 900px) 94vw, 46vw" /><p class="cap">Site map</p></div>
+    <div class="panel"><Image src={s('wireframes')} alt="User flow wireframes for dashboard and payment" widths={[600, 1000]} sizes="(max-width: 900px) 94vw, 46vw" /><p class="cap">Annotated user flows and wireframes</p></div>
+  </div>
+
+  <section class="decision">
+    <div class="wrap d-head">
+      <p class="mono d-n">Decision 01</p>
+      <h2>Let people in first, verify later</h2>
+      <div class="d-cols" data-reveal>
+        <div><h4 class="mono">Insight</h4><p>Users didn’t object to verification. They objected to verification <em>before value</em>.</p></div>
+        <div><h4 class="mono">Decision</h4><p>Sign-up with email and phone only. Every service reachable from home. Transaction limits stated plainly with a “Go Pro to increase” link, so the upgrade appears at the moment it’s useful.</p></div>
+        <div><h4 class="mono">Result</h4><p class="big">−30% drop-off</p></div>
+      </div>
+    </div>
+    <div class="wrap-bleed"><Screens shots={flows} label="Glover Lite app flow screens" /></div>
+  </section>
+
+  <section class="decision">
+    <div class="wrap d-head">
+      <p class="mono d-n">Decision 02</p>
+      <h2>Let users pick the dashboard</h2>
+      <div class="d-cols" data-reveal>
+        <div><h4 class="mono">What we tested</h4><p>Three dashboard variants with different colour weight and feature placement, tested through usability sessions, Hotjar and an A/B survey (47 responses).</p></div>
+        <div><h4 class="mono">What we learned</h4><p><b>Make it simple:</b> people preferred the variants lightest on colour, which reduced cognitive load. <b>Accessibility is key:</b> they preferred features closer to the bottom of the screen, within thumb reach.</p></div>
+        <div><h4 class="mono">Result</h4><p class="big">A calmer, thumb-first home</p></div>
+      </div>
+    </div>
+    <div class="wrap-bleed"><Screens shots={ab} label="Dashboard A/B variants" /></div>
+    <div class="wrap duo" data-reveal>
+      <div class="panel"><Image src={s('ab-survey')} alt="A/B survey results pie charts" widths={[600, 1000]} sizes="(max-width: 900px) 94vw, 46vw" /><p class="cap">A/B survey: which design do you prefer?</p></div>
+      <div class="panel"><Image src={s('hotjar')} alt="Hotjar test and validation results" widths={[600, 1000]} sizes="(max-width: 900px) 94vw, 46vw" /><p class="cap">Hotjar results</p></div>
+    </div>
+  </section>
+
+  <section class="decision">
+    <div class="wrap d-head">
+      <p class="mono d-n">Decision 03</p>
+      <h2>One experience, phone to desktop</h2>
+      <div class="d-cols" data-reveal>
+        <div><h4 class="mono">Insight</h4><p>Many gift card buyers shop from a laptop, especially for bulk or gifting.</p></div>
+        <div><h4 class="mono">Decision</h4><p>A responsive web experience built on the same design system, plus a dark theme for onboarding.</p></div>
+        <div><h4 class="mono">Result</h4><p class="big">Consistent across web &amp; mobile</p></div>
+      </div>
+    </div>
+    <div class="wrap grid3" data-reveal>
+      <Image src={s('web-dashboard')} alt="Glover Lite web dashboard" widths={[600, 1000]} sizes="(max-width: 900px) 94vw, 31vw" />
+      <Image src={s('web-giftcards')} alt="Glover Lite web gift card marketplace" widths={[600, 1000]} sizes="(max-width: 900px) 94vw, 31vw" />
+      <Image src={s('web-transactions')} alt="Glover Lite web transaction history" widths={[600, 1000]} sizes="(max-width: 900px) 94vw, 31vw" />
+    </div>
+    <div class="wrap-bleed"><Screens shots={dark} label="Dark mode onboarding screens" /></div>
+  </section>
+
+  <section class="wrap sec">
+    <p class="side mono">Reflection</p>
+    <div class="txt" data-reveal>
+      <p class="lead">Design from facts, not assumptions, and expect to iterate.</p>
+      <p>The biggest win here wasn’t a screen. It was reordering the relationship: value first, verification later. The A/B work reminded me that “simple” is something users tell you, not something you decide for them.</p>
+      <Draft>Do you have a before/after of the old Glover home or KYC flow? It would make the change much clearer.</Draft>
+    </div>
+  </section>
+</Case>

@@ -24,3 +24,6 @@
 | 2026-11-19 | Case-study template (`layouts/Case.astro`): colour-world hero → TL;DR + results → context/role/insights → decisions with screen strips → results → reflection → next project | Results first, scannable in ~90s |
 | 2026-11-19 | Roqqu screens from Figma limited to flows Tosin publicly claimed before (KYC, send/tx states, checkers, Qash, Academy). Figma covers list a 5-person team (Crypto) and Jaykay + Tosin (Stocks) | Honest attribution. Stocks excluded until scope is confirmed |
 | 2026-11-19 | `DRAFT` flag in `data/site.ts` shows dashed review notes on the site. Set false at launch | Keeps open questions visible during review |
+| 2026-11-19 | Roqqu expanded into two parts: foundations (KYC, send, checkers, Qash, Academy) + platform (Stocks, Staking, AEON, Contracts) | Tosin confirmed scope |
+| 2026-11-19 | Glover project is **Glover Lite** (not Business); Clink and Glover Lite case studies rebuilt from old Figma portfolio | Tosin's correction + own source material |
+| 2026-11-19 | Added **Qash** as project 05 (placeholder case study); Weave moves to 06; terminal now 6 channels, theme toggle moved to brand row | Tosin's request |

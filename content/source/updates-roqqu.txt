@@ -1,0 +1,51 @@
+Old KYC
+How did we validate?
+We validated the new design by conducting internal testing with a small group of users, allowing us to support our assumptions with data. This led to a notable decrease in drop-offs and a mostly smooth experience.
+Designing Qash: A Fiat Based Solution
+Creating an Engaging Academy Experience
+Results and Impact
+Context
+Research & User Needs
+Design Approach
+Developing Essential Tools for Users
+Through my work on the Roqqu platform, I was able to contribute significantly to the development of a user-friendly and informative cryptocurrency experience. By conducting thorough research, designing intuitive interfaces, and providing valuable tools, I helped to improve user satisfaction, increase engagement, and drive business growth.
+This project was about redesigning the Roqqu mobile app — a cryptocurrency platform with millions of users. The goal was to improve usability, streamline workflows, and create a modern, cohesive design system that made crypto accessible to everyday users.
+The methods employed in our research include; 
+Interviews,  allowing for in-depth discussions with users;
+Analytics, to examine data patterns and trends (Hotjar, mixpanel, maze google analytics)
+Surveys, to gather quantitative information from Roqqu’s large user base.
+Simple onboarding & verification; Redesigned KYC flow for clarity and trust
+Introduced an academy on mobile to enlighten users about Crypto
+Introduced “Qash” - sustainable Crypto to Fiat solution.
+Redesigning KYC
+New KYC
+One of the primary challenges faced by cryptocurrency users is the complexity of converting fiat currencies (like USD, EUR, or NGN) into digital assets. The Qash feature was designed to address this issue by providing a simple and efficient way for users to perform fiat-based transactions within the Roqqu platform.
+To address the lack of educational resources for cryptocurrency users, the Academy feature was designed to provide a comprehensive learning platform within the Roqqu app. It featured:
+Curated learning paths: Tailored learning journeys for both beginners and advanced users.
+Interactive content: Quizzes, videos, and case studies made the learning experience more engaging.
+Role & Responsibility
+Core improvements:
+Simplified documentation upload: Users could easily submit identity documents straight from the mobile app.
+Automated real-time verification: Integrated automated verification for faster processing.
+Clear guidance: Provided users with step-by-step instructions, reducing confusion.
+Redesigning a Seamless Cryptocurrency Experience
+To provide users with the information they need to make informed decisions and troubleshoot issues, I designed the following tools:
+Rate Checker: A real-time tool that displayed current exchange rates for various cryptocurrencies.
+Network Checker: A feature that allowed users to check the status of different blockchain networks.
+Transaction Checker: A tool that provided users with detailed information about their transaction history, including status, fees, and confirmation times.
+My role was end-to-end product design: from understanding user pain points, to redefining flows, to creating the new visual system. I collaborated with product managers, engineers, and brand stakeholders to ensure usability improvements aligned with business goals.
+Key pain points uncovered:
+Crypto felt complex, untrustworthy, and intimidating to new users.
+KYC process was frustrating → drop-offs.
+Need for a sustainable Crypto to Fiat solution.
+Research
+Conceptualise
+Design
+My Role
+Industry
+Duration
+Senior Product Designer
+Crypto
+2023-2025
+Thank you
+Case Study 01

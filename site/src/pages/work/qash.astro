@@ -1,0 +1,61 @@
+---
+import Case from '../../layouts/Case.astro';
+import Draft from '../../components/case/Draft.astro';
+import { Image } from 'astro:assets';
+import qash1 from '../../assets/work/roqqu/qash-1.webp';
+import qash2 from '../../assets/work/roqqu/qash-2.webp';
+---
+<Case
+  slug="qash"
+  title="One app for money across borders"
+  sub="Qash lets people send money, spend globally with a virtual Dollar Card, and convert between naira, dollars, pounds, euros and USDT in seconds."
+  meta={[
+    ['Role', 'Senior Product Designer'],
+    ['Company', 'Qash'],
+    ['Timeline', '2024 – present'],
+    ['Platform', 'iOS · Android · Web'],
+  ]}
+  hero={qash1}
+  heroAlt="Qash onboarding, wallet and exchange screens"
+  tldr={{
+    problem: 'Nigerians paying for things abroad, or getting paid from abroad, juggle banks, FX dealers and cards that get declined. Every hop adds fees, delay and doubt.',
+    did: 'I designed Qash: first as the fiat layer inside Roqqu, then as a standalone money app with $QashTag transfers, international payouts, a virtual Dollar Card and multi-currency conversion.',
+  }}
+  results={[
+    { value: '101k', label: 'transactions in year one' },
+    { value: '150+', label: 'countries for transfers' },
+    { value: '5', label: 'currencies: NGN, USD, GBP, EUR, USDT' },
+    { value: '30s', label: 'to get a Dollar Card' },
+  ]}
+>
+  <section class="wrap sec">
+    <p class="side mono">Status</p>
+    <div class="txt" data-reveal>
+      <p class="lead">This case study is being written.</p>
+      <p>Qash started as the fiat solution inside Roqqu, the feature that processed 101,045 transactions in its first year, and grew into its own product at <a href="https://qash.global/" rel="noopener">qash.global</a>.</p>
+      <Draft>Please confirm: (1) did you design the app, the website, or both? (2) Timeline? (3) Your scope vs the team's? (4) Metrics (users, volume)? (5) Figma link for Qash screens.</Draft>
+    </div>
+  </section>
+
+  <section class="wrap sec">
+    <p class="side mono">The product</p>
+    <ol class="insights" role="list" data-reveal>
+      <li><span class="mono">01</span><h3>Send</h3><p>Pay anyone with a $QashTag, any Nigerian bank account, or 150+ countries at live FX rates.</p></li>
+      <li><span class="mono">02</span><h3>Spend</h3><p>A virtual Visa or Mastercard in 30 seconds for Netflix, Spotify, Amazon and flights, with an optional physical card.</p></li>
+      <li><span class="mono">03</span><h3>Convert &amp; save</h3><p>Move between NGN, USD, GBP, EUR and USDT, and hold dollars.</p></li>
+      <li><span class="mono">04</span><h3>Pay bills</h3><p>Airtime, data, TV and utilities, with reminders so nothing is missed.</p></li>
+    </ol>
+  </section>
+
+  <div class="wrap duo" data-reveal>
+    <Image src={qash1} alt="Qash onboarding, home and exchange screens" widths={[700, 1200]} sizes="(max-width: 900px) 94vw, 46vw" />
+    <Image src={qash2} alt="Qash transactions and analytics screens" widths={[700, 1200]} sizes="(max-width: 900px) 94vw, 46vw" />
+  </div>
+
+  <section class="wrap sec">
+    <p class="side mono">Coming next</p>
+    <div class="txt" data-reveal>
+      <p>Key decisions for sending money, the Dollar Card and conversion, with screens from Figma.</p>
+    </div>
+  </section>
+</Case>

@@ -1,0 +1,31 @@
+tosin.lasisi
+Contact me
+STEMuli
+STEMuli Workplace Connects High School students and Corporations via Virtual Mentorships, Internships, Scholarships, and Job Opportunities.
+Company - STEMuli
+Platforms - Mobile & Web application
+Website - https://stemuli.net/
+Background
+STEMuli provides a suite of products that leverage technology to reimagine teaching and learning by connecting students to virtual mentoring, internships and introducing a game-based platform to make learning fun for students.
+STEMuli’s business objectives include enabling high schoolers and college students across the US an avenue to seamlessly and effortlessly match and be matched to relevant mentors for task driven work-based learning, in groups or one-on-one, with the goal of being well equipped for the job market.
+Role & Responsibility
+I worked closely with a team of two other designers to research, scope, plan and execute STEMuli Goal. I was primarily responsible for product design and conducting user research for the app, including ux audits, wireframing, and visual design.
+Problem Statement
+High Schoolers and College Students: STEM students are ill-equipped for the workplace or the job market until after their first job graduating college. In addition, right now, the complexity of matching and easy access to mentors result in diminished experience and interest for these parties. 
+District Admin and Staff: Accessing data about a student's work-based learning is almost impossible. There is no streamlined system/communication platform to track and aggregate relevant data. Wherever available, it is too complex, time consuming, and administratively heavy, rendering an admin person ill-informed and sadly ineffective. 
+Mentors: Not being able to set reasonable goals and track mentee’s performance and engagement result in lack of motivation. Effective pairing of mentor-mentees for successful collaboration is largely lacking. 
+Industry partners: Unable to provide job opportunities for students due to a large disconnect between industry partners and campuses. Inability to connect employees to well-managed mentorship opportunities with performance tracking capability and rewards system. Lack of an effective system to build and manage work/skill-based content distributed to appropriate audiences.
+What is the solution?
+High Schoolers and College Students: A secure, simple, intuitive, task-driven mentorship system with easy access to mentors, mentorship content, scheduling system, industry partners, and job opportunities. 
+District Admin and Staff: Robust data aggregation and reporting system, with seamless communication line between the district and industry partners.
+Mentors: A secure, simple, intuitive, task/goal-driven mentorship system with easy access to students, enhanced matching mechanism, mentorship content creator, scheduler, performance and engagement tracker.
+Industry partners: o reduce skill gap and eliminate the feeling of under-utilization and missed job opportunities for students, create a work-based learning system that captures relevant data and facilitate effective communication between the district and industry partners.
+Visual design
+Based on teh solutions we proposed we cam up with an extensive design for the various user types. We designed screens for mentors, inudtry partners, teachers and students.
+Learnings and next step
+This project provided an excellent opportunity to learn about designing for logistics businesses. The most important things learnt were:
+User research is ultimately important when building any solution, it is better to design based on facts rather than assumptions of the problems people are facing and how best to solve them.
+Good design is never linear, it is beneficial to always re-iterate based on feedback from users. We are constantly improving the user experience for Topship.
+Let’s talk📮
+thosynlasisi@gmail.com
+© 2022 — made with 💙

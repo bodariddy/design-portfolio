@@ -1,0 +1,63 @@
+tosin.lasisi
+Contact me
+Clink
+Clink is a platform that allows users receive payments for their products and services all by simply creating and sharing payment links.
+Company - Clink
+Platforms - Web application
+Website - https://clink.africa/
+Background
+Clink is a platform that allows users receive payments for their products and services all by simply creating and sharing payment links.
+It features a personal dashboard that allows for easy tracking and payment reconciliation, an intuitive way to manage created payment links and a simple and efficient way to create and send invoices.
+Project Goal
+The main aim of the project was to design a web application that helps users receive payments through payment links while providing their customers with multiple payment methods.
+Challenge
+The problems we hoped to tackle with Clink include; 
+Limitations with single modes of payment; Clink aggregates multiple payment modes to give users flexibility when making payments.
+For online business owners, sharing personal account details is not an effective method of receiving payments. Apart from being informal, it is tedious and could easily give room for fraud to occur. 
+Problem of tracking and reconciling payments with ease.
+Role & Responsibility
+For Clink, I collaborated with two other designers to craft out the design for the web application. My responsibilities included:  
+User research
+Product strategy 
+Visual design
+Protoyping amongst others.
+Design process
+USER RESEARCH
+How did we start?
+To design an effective solution we needed to understand how our intended users currently received payments and the challenges they are facing which current solutions as is.
+We conducted user research which revealed the major pain points users were facing. This helped us define the direction of the intended solution.
+Who are the Users?
+Business owners: Will use Clink to receive payments for their businesses such as product sales and payment for services rendered.
+Individuals: Will use Clink to receive payments for personal reasons, such as donations, sale of an artwork, coffee, et cetera.
+User persona
+How do users receive payments today?
+Typically, the niche of users we targeted with Clink accept payments by sending details of their bank accounts anytime a payment is to be made.
+From the online vendor that wants to sell products, the young individual selling his art to interested individuals, to the Creative accepting payments for service rendered; in all cases, these users have to manually send personal details so payment can be made.
+Conversation between a business owner and a customer
+Giving users multiple payment options
+To give users more flexibility when making payments we integrated with some of the biggest payment processors in Africa; “Paystack” & “Flutterwave”. This decision was made to enable users pay with options that are most comfortable with them, and also guard against possible downtime with either modes of payment.
+Why use Clink?
+To receive payments directly using Paystack or Flutterwave you need to go through an onboarding process where you provide business documentation and satisfy other requirements. Often times, these online businesses are in the early stages and don’t have these documents ready.
+Clink does the heavy-lifting for these types of users so they don’t have to go through tedious onboarding just to receive payments.
+The Design
+We designed both web and mobile responsive experiences for Clink. It features an intuitive onboarding process and a clean dashboard that highlights next steps and gives a summary of your link information and transaction details.
+User testing & validation
+We launched Clink in Beta to gather early feedback from select users, during this period we got insights on processes we needed to improve on through surveys and one - one calls.
+Learnings
+Making charge bearer flexible; In some cases, end customers complained about having to pay high fees to complete transactions. We didn’t have control over the fees since we rely on other payment processors to facilitate payment. To partly resolve this issue, we rolled out a feature to allow the link creator specify who bears the charges on transactions.
+Better form layout; We also received feedback about the link creation process, it seemed bogus to some users. To resolve this we moved optional fields farther down and pushed only the compulsory ones to the forefront.
+Impact 🚀
+Below are the numbers Clink has done since we launched Beta in 2021
+300+
+150+
+₦2m+
+Registered users
+Links created
+Transaction volume
+Key Takeaways
+Designing a payment solution for users was quite insightful. The most important things learnt are;
+User research is ultimately important when building any solution, it is better to design based on facts rather than assumptions of the problems people are facing and how best to solve them.
+Good design is never linear, it is beneficial to always re-iterate based on feedback from users. We are constantly improving the user experience for Clink.
+Let’s talk📮
+thosynlasisi@gmail.com
+© 2022 — made with 💙

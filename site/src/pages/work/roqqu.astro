@@ -28,22 +28,60 @@ const send = [
   { src: s('tx-progress-1'), alt: 'Transaction details processing state', cap: 'Then a live timeline…' },
   { src: s('tx-progress-done'), alt: 'Transaction details successful state', cap: '…to a clear “Successful”' },
 ];
+const stocks = [
+  { src: s('stocks-mode'), alt: 'Select your mode sheet: Crypto, Qash, Web3, Stocks & Commodities', cap: 'One app, four modes: a single switcher' },
+  { src: s('stocks-intro'), alt: 'Own real-world assets digitally intro screen with key benefits', cap: 'Tokenised assets explained before the first buy' },
+  { src: s('stocks-home'), alt: 'Stocks home with balance and featured stocks', cap: 'A home built around featured and tailored stocks' },
+  { src: s('stocks-detail'), alt: 'Apple stock detail with chart and overview tabs', cap: 'Stock detail: chart, financials, news' },
+  { src: s('stocks-buy'), alt: 'Buy Apple amount entry with keypad', cap: 'Buy in fiat amounts, fractions handled for you' },
+  { src: s('stocks-milestone'), alt: 'Congratulations you just bought your first tokenised stock card', cap: 'A shareable first-stock milestone' },
+  { src: s('stocks-dividends'), alt: 'Dividends dashboard with upcoming payouts', cap: 'Dividends: what you’ve earned and what’s next' },
+  { src: s('stocks-pnl'), alt: 'Apple position profit and loss screen', cap: 'Position P&L across timeframes' },
+];
+const staking = [
+  { src: s('stake-empty'), alt: 'Staking dashboard with no assets and popular coins to stake', cap: 'Empty state that teaches, then sells' },
+  { src: s('stake-learn'), alt: 'How staking works explainer', cap: 'How it works, including the honest parts' },
+  { src: s('stake-calc'), alt: 'Return calculator for staking', cap: 'Return calculator before any commitment' },
+  { src: s('stake-confirm'), alt: 'Preview stake with APY, payout frequency, unstaking period and fees', cap: 'Preview: APY, payouts, unbonding, fees' },
+  { src: s('stake-success'), alt: 'Staking initiated confirmation', cap: 'What happens next, in plain words' },
+  { src: s('stake-dashboard'), alt: 'Staking dashboard with total staked value and positions', cap: 'Positions and rewards at a glance' },
+  { src: s('stake-positions'), alt: 'Your positions list with active, deactivating and withdrawable tabs', cap: 'Every stake state made visible' },
+];
+const aeon = [
+  { src: s('aeon-entry'), alt: 'Home screen with AI Trading Signals card', cap: 'Discovered in context, from home' },
+  { src: s('aeon-intro'), alt: 'Trade with structured AI intelligence intro', cap: 'Positioned as structure, not hype' },
+  { src: s('aeon-detail'), alt: 'BTC/USDT signal detail with setup and reasoning', cap: 'Every signal shows its reasoning' },
+  { src: s('aeon-position'), alt: 'Taking a position from a signal with leverage', cap: 'From insight to position in one step' },
+  { src: s('aeon-success'), alt: 'Trade accepted confirmation from signal', cap: 'Clear confirmation, with an undo' },
+];
+const contracts = [
+  { src: s('ct-first'), alt: 'Futures first-time screen: Futures trading, for the rest of us', cap: '“Futures trading, for the rest of us”' },
+  { src: s('ct-settings'), alt: 'Trade settings for margin mode and order type', cap: 'Margin and order types explained, safest recommended' },
+  { src: s('ct-position'), alt: 'Taking a long position with leverage slider', cap: 'Liquidation price shown before you commit' },
+  { src: s('ct-open'), alt: 'Open position detail with chart and stats', cap: 'Open position: P&L, entry, liquidation' },
+  { src: s('ct-close'), alt: 'Close trade confirmation sheet', cap: 'Closing shows exactly what you lock in' },
+  { src: s('ct-receipt'), alt: 'Shareable PnL receipt with referral QR code', cap: 'Shareable P&L card that doubles as a referral' },
+  { src: s('ct-challenge'), alt: 'Daily trading challenge home', cap: 'Daily challenges with USDC prize pools' },
+  { src: s('ct-bronze'), alt: 'Bronze challenge progress and performance summary', cap: 'Progress, rank and rules in one view' },
+  { src: s('ct-leaderboard'), alt: 'Trading challenge leaderboard', cap: 'Leaderboards for healthy competition' },
+];
 ---
 <Case
   slug="roqqu"
   title="Making crypto feel safe enough to trade"
-  sub="Redesigning onboarding, money movement and self-serve tools for a crypto platform serving retail and Web3 users across Africa and Europe."
+  sub="From a safer KYC and send flow to stocks, staking, AI signals and futures: designing how a crypto app became a multi-asset platform for users across Africa and Europe."
   meta={[
     ['Role', 'Senior Product Designer'],
     ['Team', 'Product design team of 5, plus PM & engineering'],
     ['Timeline', 'Nov 2023 – present'],
     ['Platform', 'iOS · Android'],
+    ['Scope', 'Onboarding, payments, Stocks, Staking, AEON, Contracts'],
   ]}
   hero={s('hero-mockup')}
   heroAlt="Two Roqqu app screens on phones, showing the home balance and wallet"
   tldr={{
     problem: 'New users were dropping out of a long, confusing KYC, and existing users were nervous about moving money. One wrong network or one unclear status and trust was gone, and the support queue grew.',
-    did: 'I led discovery and redesigned the flows where trust is won or lost: identity verification, sending and tracking crypto, fiat in and out with Qash, and a set of self-serve tools that answer “is my money safe?” before anyone has to ask support.',
+    did: 'First I fixed the foundations where trust is won or lost: identity verification, sending and tracking crypto, fiat in and out with Qash, and self-serve tools. Then I designed the new products that turned Roqqu into a multi-asset platform: tokenised Stocks, non-custodial Staking, AEON AI signals and perpetual Contracts.',
   }}
   results={[
     { value: '−45%', label: 'onboarding time' },
@@ -58,8 +96,7 @@ const send = [
     <div class="txt" data-reveal>
       <p class="lead">In crypto, every tap feels high-stakes. Pick the wrong network and the money is gone. Don’t understand a status and you assume the worst.</p>
       <p>Roqqu lets people across Africa and Europe buy, sell, store and send crypto, and move between crypto and local currency. The business needed more sign-ups to become active traders, and fewer support tickets from people who didn’t understand what was happening to their funds.</p>
-      <p>The product is large: crypto, stocks, a Web3 wallet, cards and more, designed by a team of five. This case study focuses on the parts I owned.</p>
-      <Draft>To confirm: KYC & onboarding, send/transaction states, Qash, the three checkers and Academy were yours. Anything to add or remove?</Draft>
+      <p>Over two years the app grew from a crypto exchange into a platform with four modes (Crypto, Qash, Web3 and Stocks), plus futures, AI signals, staking and cards. It was designed by a team of five. This case study covers the parts I owned, in two parts: fixing the foundations, then expanding the platform.</p>
     </div>
   </section>
 
@@ -80,6 +117,7 @@ const send = [
     </ol>
   </section>
 
+  <div class="wrap part"><p class="mono">Part 1</p><h2>Fixing the <span class="serif">foundations</span></h2></div>
   <!-- Decisions -->
   <section class="decision">
     <div class="wrap d-head">
@@ -148,6 +186,67 @@ const send = [
     <Image src={s('academy-2')} alt="Roqqu Academy quiz and score screens" widths={[700, 1200]} sizes="(max-width: 800px) 94vw, 46vw" />
   </div>
 
+
+  <div class="wrap part"><p class="mono">Part 2</p><h2>Expanding the <span class="serif">platform</span></h2>
+    <p class="part-sub">Once the basics earned trust, the business moved fast into new products. My job was to make each one feel like part of the same calm, trustworthy app, for people who had often never invested, staked or traded futures before.</p>
+  </div>
+
+  <section class="decision">
+    <div class="wrap d-head">
+      <p class="mono d-n">Chapter 05 · Stocks &amp; Commodities</p>
+      <h2>Wall Street, from as little as $10</h2>
+      <div class="d-cols" data-reveal>
+        <div><h4 class="mono">The brief</h4><p>Let users own tokenised US and Nigerian stocks and commodities, 24/7, inside the same app they already trust for crypto.</p></div>
+        <div><h4 class="mono">What I designed</h4><p>A mode switcher that keeps Crypto, Qash, Web3 and Stocks separate but one tap apart. An intro that explains tokenised assets and answers the obvious questions (“Do I really own it?”) before the first buy. Fiat-amount buying, stock detail with financials and news, a dividends dashboard and a shareable first-stock milestone.</p></div>
+        <div><h4 class="mono">Design principle</h4><p class="big">Explain before you sell</p></div>
+      </div>
+      <Draft>Co-designed with another designer per the Figma cover. Confirm your share. Any launch metrics (users, volume)?</Draft>
+    </div>
+    <div class="wrap-bleed"><Screens shots={stocks} label="Stocks and commodities screens" /></div>
+  </section>
+
+  <section class="decision">
+    <div class="wrap d-head">
+      <p class="mono d-n">Chapter 06 · Staking</p>
+      <h2>Earning on what you hold, honestly</h2>
+      <div class="d-cols" data-reveal>
+        <div><h4 class="mono">The brief</h4><p>Non-custodial staking from the Web3 wallet (ETH, SOL, POL and more), with validation by Everstake.</p></div>
+        <div><h4 class="mono">What I designed</h4><p>A return calculator before any commitment. A preview that puts APY, payout frequency, unbonding period and fees side by side. A “How it works” that’s upfront about the trade-offs: APY is variable, unbonding takes days, rewards aren’t guaranteed. Every stake state (active, deactivating, withdrawable) is made visible.</p></div>
+        <div><h4 class="mono">Design principle</h4><p class="big">Trust comes from the fine print</p></div>
+      </div>
+      <Draft>Any metrics: total value staked, adoption?</Draft>
+    </div>
+    <div class="wrap-bleed"><Screens shots={staking} label="Staking screens" /></div>
+  </section>
+
+  <section class="decision">
+    <div class="wrap d-head">
+      <p class="mono d-n">Chapter 07 · AEON</p>
+      <h2>AI signals that show their working</h2>
+      <div class="d-cols" data-reveal>
+        <div><h4 class="mono">The brief</h4><p>AEON scans the market every minute and turns high-probability setups into structured trading signals.</p></div>
+        <div><h4 class="mono">What I designed</h4><p>Entry points where traders already are (home, futures, contract detail). A tone of structure over hype. Signals that always show their reasoning: the setup, the indicators, entry, stop loss and take profit. One step from insight to position, with confirmation and an undo.</p></div>
+        <div><h4 class="mono">Design principle</h4><p class="big">AI should explain, not just predict</p></div>
+      </div>
+      <Draft>Any metrics: signal usage, premium conversion?</Draft>
+    </div>
+    <div class="wrap-bleed"><Screens shots={aeon} label="AEON AI signal screens" /></div>
+  </section>
+
+  <section class="decision">
+    <div class="wrap d-head">
+      <p class="mono d-n">Chapter 08 · Contracts</p>
+      <h2>Futures trading, for the rest of us</h2>
+      <div class="d-cols" data-reveal>
+        <div><h4 class="mono">The brief</h4><p>Perpetual futures on crypto pairs: long or short with leverage. A powerful product, and an easy way to lose money if the design hides the risk.</p></div>
+        <div><h4 class="mono">What I designed</h4><p>Guided first-timer onboarding and how-to videos. Margin mode and order types explained in one line each, with the safer option recommended. Liquidation price, margin and fees shown before you commit, and slide-to-confirm instead of a tap. Clear close-trade summaries, shareable P&amp;L cards that double as referrals, and daily trading challenges with leaderboards.</p></div>
+        <div><h4 class="mono">Design principle</h4><p class="big">Make risk impossible to miss</p></div>
+      </div>
+      <Draft>Any metrics: traders, volume, challenge participation?</Draft>
+    </div>
+    <div class="wrap-bleed"><Screens shots={contracts} label="Contracts futures trading screens" /></div>
+  </section>
+
   <section class="wrap sec">
     <p class="side mono">Results</p>
     <div class="txt" data-reveal>
@@ -170,45 +269,8 @@ const send = [
     <div class="txt" data-reveal>
       <p class="lead">If I did it again, I’d instrument the KYC funnel step by step from day one.</p>
       <p>We found the biggest drop-off through interviews first. Earlier event data would have got us there faster. The bigger lesson: in financial products, the most valuable design work is often a status, a warning or a single sentence of reassurance, placed at exactly the right moment.</p>
+      <p>Designing Stocks, Staking, AEON and Contracts taught me the other half: as a platform grows, consistency becomes a safety feature. Every new product used the same confirmation patterns, the same way of showing fees and the same honest tone, so that trust carried over.</p>
       <Draft>Draft reflection. Edit it so it sounds like you.</Draft>
     </div>
   </section>
 </Case>
-
-<style>
-  .sec { display: grid; grid-template-columns: 1fr 2.2fr; gap: 32px; padding-block: clamp(44px, 6vw, 80px); border-top: 1.5px solid var(--line); }
-  .side { margin: 6px 0 0; color: var(--muted); position: sticky; top: 92px; align-self: start; }
-  .txt { max-width: 700px; }
-  .txt p { font-size: clamp(17px, 1.35vw, 20px); line-height: 1.6; margin: 0 0 1em; }
-  .txt .lead { font-size: clamp(22px, 2.1vw, 30px); line-height: 1.3; letter-spacing: -.02em; font-weight: 600; }
-  .also { font-size: 28px; letter-spacing: -.03em; margin: 0 0 8px; }
-
-  .insights { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 32px 40px; }
-  .insights span { color: var(--muted); }
-  .insights h3 { font-size: clamp(22px, 2vw, 28px); letter-spacing: -.03em; line-height: 1.1; margin: 8px 0 8px; }
-  .insights p { margin: 0; color: var(--muted); }
-
-  .decision { padding-block: clamp(56px, 8vw, 110px) clamp(20px, 3vw, 40px); border-top: 1.5px solid var(--line); }
-  .d-n { color: var(--muted); margin: 0; }
-  .d-head h2 { font-size: clamp(34px, 4.6vw, 72px); letter-spacing: -.05em; line-height: .95; margin: 14px 0 32px; max-width: 18ch; font-weight: 800; }
-  .d-cols { display: grid; grid-template-columns: 1fr 1.4fr .9fr; gap: 28px 40px; margin-bottom: 36px; }
-  .d-cols h4 { margin: 0 0 8px; font-weight: 500; color: var(--muted); }
-  .d-cols p { margin: 0; font-size: 16.5px; line-height: 1.55; }
-  .d-cols .big { font-size: clamp(22px, 2vw, 30px); font-weight: 700; letter-spacing: -.03em; line-height: 1.15; }
-  .wrap-bleed { padding-left: var(--gutter); max-width: calc(1440px + (100vw - 1440px) / 2); margin-left: max(0px, calc((100vw - 1440px) / 2)); }
-
-  .duo { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding-bottom: clamp(20px, 3vw, 40px); }
-  .duo :global(img) { width: 100%; height: auto; border-radius: 14px; }
-
-  .rtable { width: 100%; border-collapse: collapse; margin-bottom: 16px; }
-  .rtable th, .rtable td { padding: 14px 0; border-top: 1.5px solid var(--line); font-size: 18px; text-align: left; }
-  .rtable th { font-weight: 500; }
-  .rtable td { text-align: right; font-weight: 700; font-variant-numeric: tabular-nums; }
-  .rtable tr:last-child th, .rtable tr:last-child td { border-bottom: 1.5px solid var(--line); }
-
-  @media (max-width: 900px) {
-    .sec { grid-template-columns: 1fr; gap: 10px; }
-    .side { position: static; }
-    .d-cols, .insights, .duo { grid-template-columns: 1fr; }
-  }
-</style>

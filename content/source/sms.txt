@@ -1,0 +1,35 @@
+tosin.lasisi
+Contact me
+School Management System
+SMS is designed to enable the efficient running of schools through the digitization and automation of basic academic and administrative operations.
+Company - CodeVillage
+Platforms - Web application
+Website - https://codevillage.org//
+Background
+SMS is a School Management Software designed to manage daily activities that run your school.
+Role & Responsibility
+I worked closely with a team of two other designers to research, scope, plan and execute the design and direction for SMS. I was primarily responsible for product design and facilitating user research for the app, including ux audits, wireframing, and visual design.
+Challenge
+The main challenge was to improve the efficiency of running daily activities in a school by introducing automated processes and digitising basic operations.
+The solution
+The solution was to design a platform that makes running school activities as simple and efficient as possible. We kickstarted our design process by doing some research.
+Research
+To better understand the pain points of school administrators we facilitated onsite discovery sessions, we visited some schools and asked questions around how day to day activities are run, what they think could be made better and other nice to haves.
+Competitor analysis
+During the research phase, we also carried out competitor analysis to understand how similar companies have tackled the same problem. It was of great importance to get insights into what they are doing right, and where improvements can be made
+We analysed 3 school management solutions namely “Schoolable”, “Quick school manager” and “Web-school.in”.  Indepth research was made into their end to end experience from the discovery/consideration stage on the landing page through their onboarding processes and the in-app experience.
+We found out that: 
+2 out of the solutions have a tedious onboarding process, a lot of technical know how is required before these platforms can be efficiently used.
+1 out of the 3 doesn’t offer a management portal for parents to monitor the activities of their
+Our findings gave us better insights into the direction we needed to take for our solution.
+Visual design
+Based on the requirements and findings from our research, we designed an iteration of our proposed solution, our aim was to make otherwise complex processes as simple as possible.
+The end product features a web experience that conveys simplicity, and is easy to use and intuitive for our target audience.
+Learnings and next step
+This project provided an excellent opportunity to learn about designing SaaS
+The most important things learnt were:
+User research is ultimately important when building any solution, it is better to design based on facts rather than assumptions of the problems people are facing and how best to solve them.
+Good design is never linear, it is beneficial to always re-iterate based on feedback from users. We are constantly improving the user experience for SMS.
+Let’s talk📮
+thosynlasisi@gmail.com
+© 2022 — made with 💙
