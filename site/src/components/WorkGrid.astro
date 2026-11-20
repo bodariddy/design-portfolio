@@ -1,6 +1,7 @@
 ---
 // Framed project cards with copy and metrics always visible.
-// One column, stacked vertically: header line (name · outcome · years), unframed wide cover, metrics + outlined tags (refs: Grain, Bill Guo).
+// One column, stacked vertically: unframed wide cover, then all text together beneath it:
+// name · outcome · years on one line, metrics + outlined tags on the next (refs: Bill Guo, Grain).
 import { featured as projects, others, hasPage } from '../data/projects';
 import { Image } from 'astro:assets';
 import r1 from '../assets/work/roqqu/home.webp';
@@ -41,11 +42,6 @@ const covers: Record<string, Cover> = {
         return (
           <li class="card" style={`--world: var(${p.colour})`}>
             <a href={link ? `/work/${p.slug}` : '#work'} data-cursor={link ? 'View case study' : 'Case study soon'}>
-              <div class="c-head">
-                <span class="c-name"><i class="dot"></i><strong>{p.name}</strong></span>
-                <span class="c-line">{p.headline}</span>
-                <span class="c-meta mono muted">{String(p.ch).padStart(2, '0')} · {p.years}</span>
-              </div>
               <div class="media cover-bg" style={`--m1:${p.mesh![0]};--m2:${p.mesh![1]};--m3:${p.mesh![2]}`}>
                 {(() => { const c = covers[p.slug]; return (
                   c.kind === 'phones' ? (
@@ -66,6 +62,12 @@ const covers: Record<string, Cover> = {
                   </span>
                 )}
               </div>
+              <div class="c-text">
+              <div class="c-head">
+                <span class="c-name"><i class="dot"></i><strong>{p.name}</strong></span>
+                <span class="c-line">{p.headline}</span>
+                <span class="c-meta mono muted">{String(p.ch).padStart(2, '0')} · {p.years}</span>
+              </div>
               <div class="c-foot">
                 <div class="c-metrics">
                   {p.metrics.map(x => <span><b>{x.value}</b> {x.label}</span>)}
@@ -74,6 +76,7 @@ const covers: Record<string, Cover> = {
                   {p.tags.map(t => <span class="tag mono">{t}</span>)}
                   <span class="go">{link ? 'View case study' : 'Coming soon'} <span aria-hidden="true">→</span></span>
                 </div>
+              </div>
               </div>
             </a>
           </li>
@@ -124,7 +127,8 @@ const covers: Record<string, Cover> = {
   .cards { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(72px, 9vw, 128px); }
 
   /* Project row (refs: Grain header line, Bill Guo unframed cover + outlined tags) */
-  .card a { display: flex; flex-direction: column; gap: 16px; text-decoration: none; color: inherit; }
+  .card a { display: flex; flex-direction: column; gap: 18px; text-decoration: none; color: inherit; }
+  .c-text { display: flex; flex-direction: column; gap: 12px; }
   .c-head { display: flex; align-items: baseline; gap: 6px 14px; flex-wrap: wrap; }
   .c-name { display: inline-flex; align-items: center; gap: 10px; }
   .c-name strong { font-family: var(--f-display); font-size: clamp(22px, 2vw, 28px); letter-spacing: -.035em; font-weight: 700; }
