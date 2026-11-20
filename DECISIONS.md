@@ -72,3 +72,4 @@
 | 2026-11-20 | Whitespace: one section rhythm (`--section`, 88–168px) and section dividers removed; space separates sections, hairlines only inside lists | Judicious whitespace |
 | 2026-11-20 | Dark mode: **live film grain** (ref: nahiyan.codes): grey high-contrast noise that jumps ~10×/s, 12% opacity, on a deeper warm black `#0f0e0d`. Light mode keeps still paper grain. Reduced motion = still | Tosin likes the grainy dark background |
 | 2026-11-20 | "7+ years" everywhere (site, meta description, canvas, CV regenerated); contact label "Next transaction" → "Contact" | Tosin: 7 years' experience; label unclear |
+| 2026-11-20 | About trimmed to **intro → story → contact**: "Principles I design by" and "Off the clock" removed (generic principles add little signal for senior hiring; case studies prove them). Hobbies folded into one sentence in the story | Tosin agreed |
