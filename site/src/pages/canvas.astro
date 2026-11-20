@@ -101,7 +101,7 @@ const notes = [
 
         <!-- EXPERIENCE -->
         <div class="item exp" style="left:2560px;top:1500px;--r:.6deg" data-label="Experience">
-          <ol role="list">{experience.map(([y, c, r, m]) => <li><span class="mono muted">{y}</span><strong>{c}</strong><span class="m mono">{m}</span></li>)}</ol>
+          <ol role="list">{experience.map(([y, c, r]) => <li><span><strong>{c}</strong> <span class="muted">{r}</span></span><span class="muted">{y.replace(' — ', ' to ')}</span></li>)}</ol>
         </div>
 
         <!-- TESTIMONIALS -->
@@ -329,7 +329,8 @@ const notes = [
   /* Experience */
   .exp { width: 700px; padding: 20px 24px; border-radius: 22px; background: var(--surface); box-shadow: inset 0 0 0 1px var(--line); }
   .exp ol { list-style: none; margin: 0; padding: 0; }
-  .exp li { display: grid; grid-template-columns: 130px 1fr auto; gap: 14px; align-items: baseline; padding: 12px 0; border-top: 1px solid var(--line); font-size: 17px; }
+  .exp li strong { font-weight: 500; }
+  .exp li { display: flex; justify-content: space-between; gap: 14px; align-items: baseline; padding: 12px 0; border-top: 1px solid var(--line); font-size: 17px; }
   .exp li:first-child { border-top: 0; }
   .exp .m { font-size: 12px; background: color-mix(in oklab, var(--coin) 22%, transparent); padding: 3px 8px; border-radius: 6px; }
 

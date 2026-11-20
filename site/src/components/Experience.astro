@@ -1,24 +1,29 @@
 ---
+// Experience list (ref: Commissioner): company + role on the left, years on the right.
 import { experience } from '../data/site';
 interface Props { title?: string }
-const { title = 'Experience' } = Astro.props;
+const { title = 'Where I’ve been' } = Astro.props;
 ---
 <section class="exp wrap" aria-labelledby="exp-title">
-  <h2 id="exp-title" class="mono muted">{title}</h2>
+  <h2 id="exp-title">{title}</h2>
   <ol role="list">
-    {experience.map(([y, c, r, m]) => (
-      <li><span class="mono muted">{y}</span><strong>{c}</strong><span class="muted role">{r}</span><span class="m">{m}</span></li>
+    {experience.map(([y, c, r]) => (
+      <li>
+        <span class="who"><strong>{c}</strong><span class="role">{r}</span></span>
+        <span class="yrs">{y.replace(' — ', ' to ')}</span>
+      </li>
     ))}
   </ol>
 </section>
 
 <style>
   .exp { padding-bottom: clamp(80px, 10vw, 140px); }
-  h2 { font-weight: 400; margin: 0 0 12px; }
+  h2 { font-size: clamp(20px, 1.8vw, 26px); font-weight: 500; letter-spacing: -.02em; margin: 0 0 clamp(20px, 3vw, 40px); }
   ol { list-style: none; margin: 0; padding: 0; }
-  li { display: grid; grid-template-columns: 150px minmax(0, 1fr) minmax(0, 1.2fr) 190px; gap: 16px; align-items: baseline; padding: 18px 0; border-top: 1.5px solid var(--line); font-size: 18px; transition: padding .3s var(--ease); }
-  li:last-child { border-bottom: 1.5px solid var(--line); }
-  li:hover { padding-left: 10px; }
-  .m { justify-self: end; font-family: var(--f-mono); font-size: 13px; background: color-mix(in oklab, var(--coin) 22%, transparent); padding: 3px 8px; border-radius: 6px; }
-  @media (max-width: 760px) { li { grid-template-columns: 1fr auto; row-gap: 4px; } li > span:first-child { grid-column: 1 / -1; } .role { display: none; } }
+  li { display: flex; justify-content: space-between; align-items: baseline; gap: 24px; padding: clamp(18px, 2vw, 26px) 0; border-bottom: 1px solid var(--line); font-size: clamp(17px, 1.5vw, 22px); letter-spacing: -.015em; }
+  .who { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 14px; row-gap: 2px; }
+  .who strong { font-weight: 500; }
+  .role, .yrs { color: var(--muted); }
+  .yrs { white-space: nowrap; font-variant-numeric: tabular-nums; }
+  @media (max-width: 600px) { li { flex-direction: column; gap: 4px; } .who { flex-direction: column; } }
 </style>
