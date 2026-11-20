@@ -35,7 +35,6 @@ const email = site.email;
           <a class="btn btn-solid" href="#work">See the work ↓</a>
           <a class="btn" href={`mailto:${email}`}>Get in touch</a>
         </div>
-        <p class="mono muted meta">Lagos, NG · <span id="lagos-time">—</span> WAT</p>
       </div>
       <div class="hero-object">
         <Terminal />
@@ -50,14 +49,6 @@ const email = site.email;
   </main>
 </Base>
 
-<script is:inline>
-  // Lagos clock
-  const lt = document.getElementById('lagos-time');
-  const tick = () => lt.textContent = new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', timeZone: 'Africa/Lagos' });
-  tick(); setInterval(tick, 30000);
-
-</script>
-
 <style>
   .hero { display: grid; grid-template-columns: 1.05fr 1fr; align-items: center; gap: 40px; min-height: calc(100svh - 68px); padding-block: 24px 40px; }
   .eyebrow { display: inline-flex; align-items: center; gap: 8px; border: 1.5px solid var(--line); border-radius: 99px; padding: 6px 12px; margin: 0 0 28px; }
@@ -67,8 +58,6 @@ const email = site.email;
   h1 .serif { font-weight: 400; letter-spacing: -.025em; color: var(--accent-text); }
   .sub { font-size: clamp(17px, 1.4vw, 20px); max-width: 46ch; color: var(--muted); margin: 26px 0 30px; }
   .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
-  .meta { margin-top: 36px; }
-  @media (max-width: 900px) { .meta { margin: 24px 0 0; } }
   @media (max-width: 900px) {
     .hero { grid-template-columns: 1fr; min-height: auto; padding-top: 32px; gap: 8px; }
     .hero-object { order: 2; }

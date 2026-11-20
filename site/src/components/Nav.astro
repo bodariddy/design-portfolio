@@ -40,7 +40,6 @@ const isCurrent = (m: string) => m && (m === '/' ? path === '/' : path.startsWit
         )}
         <button class="icon-btn" data-theme-toggle aria-label="Switch light or dark theme"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor"/></svg></button>
       </div>
-      <p class="r-status"><span class="live"></span>Open to senior roles</p>
       <p class="r-time mono"><span data-lagos-clock>—</span> · Lagos</p>
     </div>
   </aside>
@@ -160,8 +159,6 @@ const isCurrent = (m: string) => m && (m === '/' ? path === '/' : path.startsWit
   .r-sub a:hover { color: var(--text); }
   .r-foot { margin-top: auto; display: grid; gap: 12px; }
   .r-ctrl { display: flex; gap: 8px; align-items: center; }
-  .r-status { margin: 0; display: inline-flex; align-items: center; gap: 8px; font-size: 13.5px; color: var(--muted); }
-  .r-status .live { width: 7px; height: 7px; border-radius: 50%; background: #2fb36a; }
   .r-time { margin: 0; color: var(--muted); font-size: 11px; font-variant-numeric: tabular-nums; }
   .rail .icon-btn { width: 34px; height: 34px; }
 

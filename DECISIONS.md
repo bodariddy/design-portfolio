@@ -80,3 +80,4 @@
 | 2026-11-20 | Project rows: all text grouped **below** the cover (name · outcome · years, then metrics + tags), so each project reads image → text without splitting | Tosin: text shouldn't break around the image |
 | 2026-11-20 | Work list captions rewritten Bill Guo-style: small project label (dot · name, years right), then a **conversational first-person line in serif** ("Rebuilt onboarding so first-time traders could trust crypto enough to start."), then metrics + tags. New `story` field in projects.ts | Tosin: tell a story, not name + subtitle |
 | 2026-11-20 | Footer Lagos clock removed (duplicate of the side rail clock); footer = © · updated date · built-with line | Tosin: shown twice |
+| 2026-11-20 | De-duplicated: hero Lagos time line removed (side rail clock stays); side rail "Open to senior roles" removed (hero pill stays; About keeps its Status fact) | Tosin: shown twice |
