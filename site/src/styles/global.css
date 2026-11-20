@@ -35,6 +35,10 @@
   --accent-text-2: var(--text);
   --hl-solid: #ffffff;
   --grain-opacity: .05;
+  /* Grain: light = still paper (dark specks); dark = live film grain (grey specks that flicker, ref: nahiyan.codes) */
+  --grain-paper: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  --grain-film: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='linear' slope='2.4' intercept='-.7'/%3E%3CfeFuncG type='linear' slope='2.4' intercept='-.7'/%3E%3CfeFuncB type='linear' slope='2.4' intercept='-.7'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  --grain: var(--grain-paper); --grain-play: paused;
   /* Gold "plate" behind media (replaces Bill Guo's green bokeh with our coin gold) */
   --pl-base: #f4ebd9; --pl-a: #f6d488; --pl-b: #fbe7b5; --pl-hi: rgba(255,255,255,.65);
   --plate:
@@ -62,8 +66,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme='light']) {
-    --bg: #131211;
-    --surface: #1c1a18;
+    --bg: #0f0e0d;
+    --surface: #191816;
     --text: #f1ebe0;
     --muted: #9b958a;
     --screen: #070807;
@@ -88,14 +92,14 @@
     --cv-base: #1d1b19; --cv-hi: #2c2925; --cv-lo: #121110; --cv-vig: rgba(0,0,0,.28); --cv-tint: 22%; --cv-glow: 40%; --cv-corner: 20%; --cv-deep: 30%;
     --accent-text-2: var(--text);
     --hl-solid: #3a3632;
-    --grain-opacity: .07;
+    --grain-opacity: .12; --grain: var(--grain-film); --grain-play: running;
     color-scheme: dark;
   }
 }
 :root[data-theme='dark'] {
   --cv-base: #1d1b19; --cv-hi: #2c2925; --cv-lo: #121110; --cv-vig: rgba(0,0,0,.28); --cv-tint: 22%; --cv-glow: 40%; --cv-corner: 20%; --cv-deep: 30%;
-  --bg: #131211;
-  --surface: #1c1a18;
+  --bg: #0f0e0d;
+  --surface: #191816;
   --text: #f1ebe0;
   --muted: #9b958a;
   --screen: #070807;
@@ -112,7 +116,7 @@
   --accent-text: var(--text);
   --accent-text-2: var(--text);
   --hl-solid: #3a3632;
-  --grain-opacity: .07;
+  --grain-opacity: .12; --grain: var(--grain-film); --grain-play: running;
   color-scheme: dark;
 }
 
@@ -136,7 +140,14 @@ body {
 /* Paper grain: subtle, fixed, never intercepts clicks */
 body::after {
   content: ''; position: fixed; inset: -50%; z-index: 90; pointer-events: none; opacity: var(--grain-opacity);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-image: var(--grain);
+  animation: grain .9s steps(1) infinite; animation-play-state: var(--grain-play);
+}
+/* Jumps the noise tile to a new offset ~10x a second, so the grain flickers like film rather than sitting still */
+@keyframes grain {
+  0% { transform: translate(0, 0); } 10% { transform: translate(-3%, -5%); } 20% { transform: translate(-8%, 2%); }
+  30% { transform: translate(4%, -9%); } 40% { transform: translate(-2%, 7%); } 50% { transform: translate(-9%, 4%); }
+  60% { transform: translate(7%, 0); } 70% { transform: translate(0, 8%); } 80% { transform: translate(-6%, -3%); } 90% { transform: translate(5%, 6%); }
 }
 h1, h2, h3 { text-wrap: balance; }
 h1, h2 { font-family: var(--f-display); }
