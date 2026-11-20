@@ -129,15 +129,11 @@ const covers: Record<string, Cover> = {
     box-shadow: inset 0 0 0 1px var(--line), 0 1px 0 var(--hl), 0 20px 40px -30px rgba(0,0,0,.35);
     transition: transform .5s var(--ease), box-shadow .5s var(--ease); }
   .media { position: relative; overflow: hidden; border-radius: 19px; aspect-ratio: 16 / 10.5; isolation: isolate;
-    background:
-      radial-gradient(70% 90% at 12% 10%, var(--m2), transparent 60%),
-      radial-gradient(60% 80% at 95% 95%, var(--m3), transparent 62%),
-      radial-gradient(50% 60% at 70% 20%, color-mix(in oklab, var(--m2) 60%, white 20%), transparent 70%),
-      var(--m1); }
+    background: var(--cover); }
   .media::before { /* grain + soft vignette for depth */
-    content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: .5; mix-blend-mode: overlay;
+    content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: .35; mix-blend-mode: overlay;
     background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
-  .media::after { content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none; box-shadow: inset 0 0 80px rgba(0,0,0,.18); border-radius: inherit; }
+  .media::after { content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none; box-shadow: inset 0 0 80px var(--cv-vig); border-radius: inherit; }
 
   /* Two phones, overlapped and angled */
   .phones { position: absolute; inset: 0; z-index: 1; }

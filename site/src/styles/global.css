@@ -43,6 +43,12 @@
     radial-gradient(26% 34% at 34% 84%, var(--pl-hi), transparent 70%),
     var(--pl-base);
 
+  /* Neutral cover wash for project media: warm stone with a trace of the project colour (--m1) */
+  --cv-base: #ebe6de; --cv-hi: #faf7f2; --cv-lo: #d9d2c7; --cv-tint: 9%; --cv-vig: rgba(60,45,25,.07);
+  --cover:
+    radial-gradient(75% 95% at 14% 8%, var(--cv-hi), transparent 62%),
+    radial-gradient(65% 85% at 96% 100%, color-mix(in oklab, var(--m1, var(--cv-lo)) var(--cv-tint), var(--cv-lo)), transparent 66%),
+    linear-gradient(165deg, var(--cv-base), color-mix(in oklab, var(--cv-base) 94%, var(--m1, var(--cv-base))));
   --f-display: 'Bricolage Grotesque Variable', system-ui, sans-serif;
   --f-serif: 'Instrument Serif', Georgia, serif;
   --f-mono: 'JetBrains Mono Variable', ui-monospace, monospace;
@@ -78,6 +84,7 @@
   --pl-base: #221d16; --pl-a: #6b5020; --pl-b: #3a2e1a; --pl-hi: rgba(255,214,140,.05);
     --pl-base: #221d16; --pl-a: #6b5020; --pl-b: #3a2e1a; --pl-hi: rgba(255,214,140,.05);
     --accent-text: #8f97ff;
+    --cv-base: #22201d; --cv-hi: #34302b; --cv-lo: #181716; --cv-tint: 14%; --cv-vig: rgba(0,0,0,.25);
     --accent-text-2: #ff7aa2;
     --hl-solid: #3a3632;
     --grain-opacity: .07;
@@ -85,6 +92,7 @@
   }
 }
 :root[data-theme='dark'] {
+  --cv-base: #22201d; --cv-hi: #34302b; --cv-lo: #181716; --cv-tint: 14%; --cv-vig: rgba(0,0,0,.25);
   --bg: #131211;
   --surface: #1c1a18;
   --text: #f1ebe0;
