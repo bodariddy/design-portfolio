@@ -5,15 +5,10 @@ import Nav from '../components/Nav.astro';
 import Experience from '../components/Experience.astro';
 import Contact from '../components/Contact.astro';
 import OffClock from '../components/OffClock.astro';
+import Beliefs from '../components/Beliefs.astro';
 import portrait from '../assets/portrait.png';
 import { site, updated } from '../data/site';
 
-const beliefs = [
-  ['Clarity is a feature', 'Especially when someone’s money is on the line. If a nervous first-time user can’t follow it, it isn’t finished.'],
-  ['Good design is measurable', 'If it doesn’t move a number or remove real pain, it’s decoration. I agree what success looks like before I open Figma.'],
-  ['Systems give teams time back', 'A good design system is the quiet reason a team ships faster next quarter.'],
-  ['Own the problem, not the ticket', 'Founding Clink taught me to care about the outcome, not just the hand-off.'],
-];
 
 const toolkit = {
   Design: ['Figma', 'FigJam', 'Miro', 'Prototyping', 'Design systems'],
@@ -74,15 +69,7 @@ const toolkit = {
       </div>
     </section>
 
-    <!-- BELIEFS -->
-    <section class="beliefs wrap" aria-labelledby="b-title">
-      <div class="side mono muted"><p id="b-title">02 · What I believe</p></div>
-      <ol class="b-list" role="list" data-reveal>
-        {beliefs.map(([t, d], i) => (
-          <li><span class="mono n">{String(i + 1).padStart(2, '0')}</span><h3>{t}</h3><p>{d}</p></li>
-        ))}
-      </ol>
-    </section>
+    <Beliefs />
 
     <!-- TOOLKIT -->
     <section class="toolkit wrap" aria-labelledby="t-title">
@@ -132,7 +119,7 @@ const toolkit = {
   figcaption { display: flex; justify-content: space-between; margin-top: 10px; color: var(--muted); }
 
   /* Two-column editorial sections */
-  .letter, .beliefs, .toolkit { display: grid; grid-template-columns: 1fr 2.2fr; gap: 32px; padding-block: clamp(56px, 8vw, 110px); border-top: 1.5px solid var(--line); }
+  .letter, .toolkit { display: grid; grid-template-columns: 1fr 2.2fr; gap: 32px; padding-block: clamp(56px, 8vw, 110px); border-top: 1.5px solid var(--line); }
   .side p { margin: 6px 0 0; position: sticky; top: 92px; }
   .body { max-width: 680px; }
   .body p { font-size: clamp(18px, 1.5vw, 21px); line-height: 1.6; margin: 0 0 1.1em; }
@@ -179,7 +166,7 @@ const toolkit = {
   @media (max-width: 900px) {
     .hero { grid-template-columns: 1fr; align-items: start; }
     .portrait { max-width: 520px; }
-    .letter, .beliefs, .toolkit { grid-template-columns: 1fr; gap: 12px; }
+    .letter, .toolkit { grid-template-columns: 1fr; gap: 12px; }
     .side p { position: static; }
   }
   @media (max-width: 600px) {
