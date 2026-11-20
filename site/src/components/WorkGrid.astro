@@ -41,7 +41,7 @@ const covers: Record<string, Cover> = {
         return (
           <li class="card" style={`--world: var(${p.colour})`}>
             <a href={link ? `/work/${p.slug}` : '#work'} data-cursor={link ? 'View case study' : 'Case study soon'}>
-              <div class="media" style={`--m1:${p.mesh![0]};--m2:${p.mesh![1]};--m3:${p.mesh![2]}`}>
+              <div class="media cover-bg" style={`--m1:${p.mesh![0]};--m2:${p.mesh![1]};--m3:${p.mesh![2]}`}>
                 {(() => { const c = covers[p.slug]; return (
                   c.kind === 'phones' ? (
                     <div class="phones">
@@ -129,7 +129,7 @@ const covers: Record<string, Cover> = {
     box-shadow: inset 0 0 0 1px var(--line), 0 1px 0 var(--hl), 0 20px 40px -30px rgba(0,0,0,.35);
     transition: transform .5s var(--ease), box-shadow .5s var(--ease); }
   .media { position: relative; overflow: hidden; border-radius: 19px; aspect-ratio: 16 / 10.5; isolation: isolate;
-    background: var(--cover); }
+}
   .media::before { /* grain + soft vignette for depth */
     content: ''; position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: .35; mix-blend-mode: overlay;
     background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }

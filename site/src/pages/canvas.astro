@@ -70,7 +70,7 @@ const notes = [
           return (
             <a class="item card" href={`/work/${p.slug}`} data-label={`${p.name} · ${String(p.ch).padStart(2, '0')}`}
                style={`left:${x}px;top:${y}px;--r:${r}deg;--world:var(${p.colour});--m1:${p.mesh![0]};--m2:${p.mesh![1]};--m3:${p.mesh![2]}`}>
-              <div class="media">
+              <div class="media cover-bg">
                 {c.kind === 'phones'
                   ? <><div class="ph b"><Image src={c.b} alt="" widths={[260, 480]} sizes="150px" /></div><div class="ph a"><Image src={c.a} alt="" widths={[260, 480]} sizes="160px" /></div></>
                   : <div class="wide"><Image src={c.a} alt="" widths={[500, 900]} sizes="400px" /></div>}
@@ -290,7 +290,7 @@ const notes = [
   /* Project cards */
   .card { width: 460px; padding: 7px; border-radius: 24px; background: var(--surface); box-shadow: inset 0 0 0 1px var(--line), 0 30px 50px -34px rgba(0,0,0,.45); }
   .media { position: relative; height: 290px; border-radius: 18px; overflow: hidden;
-    background: var(--cover); }
+}
   .ph { position: absolute; width: 30%; aspect-ratio: 390/844; border-radius: 22px; padding: 3px; background: linear-gradient(140deg, #d4d4d9, #232326 40%, #9a9aa0); box-shadow: 0 24px 40px -16px rgba(0,0,0,.5); }
   .ph :global(img) { width: 100%; height: 100%; object-fit: cover; object-position: top; border-radius: 19px; border: 3px solid #000; display: block; }
   .ph.a { left: 50%; top: 12%; transform: translateX(-10%) rotate(6deg); }

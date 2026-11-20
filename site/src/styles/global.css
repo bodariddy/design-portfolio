@@ -43,12 +43,10 @@
     radial-gradient(26% 34% at 34% 84%, var(--pl-hi), transparent 70%),
     var(--pl-base);
 
-  /* Neutral cover wash for project media: warm stone with a trace of the project colour (--m1) */
-  --cv-base: #ebe6de; --cv-hi: #faf7f2; --cv-lo: #d9d2c7; --cv-tint: 9%; --cv-vig: rgba(60,45,25,.07);
-  --cover:
-    radial-gradient(75% 95% at 14% 8%, var(--cv-hi), transparent 62%),
-    radial-gradient(65% 85% at 96% 100%, color-mix(in oklab, var(--m1, var(--cv-lo)) var(--cv-tint), var(--cv-lo)), transparent 66%),
-    linear-gradient(165deg, var(--cv-base), color-mix(in oklab, var(--cv-base) 94%, var(--m1, var(--cv-base))));
+  /* Project covers: a muted, tinted studio backdrop. Project palette (--m1/2/3) mixed into warm neutrals:
+     tinted base, soft glow behind the device, pale top corner, deeper opposite corner. */
+  --cv-base: #ece6dd; --cv-hi: #fbf8f3; --cv-lo: #cfc5b8; --cv-vig: rgba(60,45,25,.08);
+  --cv-tint: 16%; --cv-glow: 42%; --cv-corner: 24%; --cv-deep: 34%;
   --f-display: 'Bricolage Grotesque Variable', system-ui, sans-serif;
   --f-serif: 'Instrument Serif', Georgia, serif;
   --f-mono: 'JetBrains Mono Variable', ui-monospace, monospace;
@@ -84,7 +82,7 @@
   --pl-base: #221d16; --pl-a: #6b5020; --pl-b: #3a2e1a; --pl-hi: rgba(255,214,140,.05);
     --pl-base: #221d16; --pl-a: #6b5020; --pl-b: #3a2e1a; --pl-hi: rgba(255,214,140,.05);
     --accent-text: #8f97ff;
-    --cv-base: #22201d; --cv-hi: #34302b; --cv-lo: #181716; --cv-tint: 14%; --cv-vig: rgba(0,0,0,.25);
+    --cv-base: #1d1b19; --cv-hi: #2c2925; --cv-lo: #121110; --cv-vig: rgba(0,0,0,.28); --cv-tint: 22%; --cv-glow: 40%; --cv-corner: 20%; --cv-deep: 30%;
     --accent-text-2: #ff7aa2;
     --hl-solid: #3a3632;
     --grain-opacity: .07;
@@ -92,7 +90,7 @@
   }
 }
 :root[data-theme='dark'] {
-  --cv-base: #22201d; --cv-hi: #34302b; --cv-lo: #181716; --cv-tint: 14%; --cv-vig: rgba(0,0,0,.25);
+  --cv-base: #1d1b19; --cv-hi: #2c2925; --cv-lo: #121110; --cv-vig: rgba(0,0,0,.28); --cv-tint: 22%; --cv-glow: 40%; --cv-corner: 20%; --cv-deep: 30%;
   --bg: #131211;
   --surface: #1c1a18;
   --text: #f1ebe0;
@@ -178,3 +176,12 @@ img { max-width: 100%; display: block; }
 
 /* Media on a gold plate: Stage reads --m1/2/3 */
 .plate-vars { --m1: var(--pl-base); --m2: var(--pl-a); --m3: var(--pl-b); }
+
+/* Project covers: background is built where the project colours (--m1/2/3) are set, not on :root */
+.cover-bg {
+  background:
+    radial-gradient(52% 62% at 50% 64%, color-mix(in oklab, var(--m2) var(--cv-glow), var(--cv-hi)), transparent 72%),
+    radial-gradient(55% 75% at 6% 0%, color-mix(in oklab, var(--m3) var(--cv-corner), var(--cv-hi)), transparent 66%),
+    radial-gradient(70% 90% at 100% 100%, color-mix(in oklab, var(--m1) var(--cv-deep), var(--cv-lo)), transparent 70%),
+    linear-gradient(165deg, color-mix(in oklab, var(--m1) calc(var(--cv-tint) * .6), var(--cv-base)), color-mix(in oklab, var(--m1) var(--cv-tint), var(--cv-base)));
+}
