@@ -51,3 +51,4 @@
 | 2026-11-19 | Removed the +15% team velocity claim everywhere (cards, experience, receipt, EN1 case study, CV) | Tosin's call |
 | 2026-11-19 | Nav: links hidden behind a "Menu" button on all screen sizes; full-screen menu with big numbered links, featured work list, contact and live Lagos clock. Bar keeps logo, theme toggle, Get in touch | Tosin's request |
 | 2026-11-19 | Loaders: homepage intro plays every visit (~2.4s: coin → line → POS terminal draws → APPROVED → wipe); short (~1s) intro on case studies in the project's gradient; all skippable, off for reduced motion | Tosin chose all 3 options |
+| 2026-11-20 | **Canvas homepage prototype** at /canvas (not linked, excluded from sitemap): Figma-style pannable/zoomable board with frame labels, cursors, stickies, stamps, minimap, toolbar, List view escape; classic homepage unchanged | Exploring Tosin's canvas idea side by side before deciding |

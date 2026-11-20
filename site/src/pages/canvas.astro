@@ -1,0 +1,369 @@
+---
+// PROTOTYPE: the homepage as a Figma-style canvas. Drag to pan, scroll/pinch to zoom.
+// Everything is real DOM (links, text) so it stays accessible; "List view" goes back to the classic homepage.
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Terminal from '../components/Terminal.astro';
+import { Image } from 'astro:assets';
+import { featured, others } from '../data/projects';
+import { site, experience, testimonials } from '../data/site';
+import portrait from '../assets/portrait.png';
+import r1 from '../assets/work/roqqu/home.webp';
+import r2 from '../assets/work/roqqu/stocks-home.webp';
+import q1 from '../assets/work/qash/home-gbp.webp';
+import q2 from '../assets/work/qash/card.webp';
+import e1 from '../assets/work/en1/landing.webp';
+import c1 from '../assets/work/clink/dashboard.webp';
+import g1 from '../assets/work/glover-lite/dashboard-final.webp';
+import g2 from '../assets/work/glover-lite/airtime.webp';
+import w1 from '../assets/work/weave/home.webp';
+import w2 from '../assets/work/weave/review.webp';
+
+type Cover = { kind: 'phones'; a: ImageMetadata; b: ImageMetadata } | { kind: 'wide'; a: ImageMetadata };
+const covers: Record<string, Cover> = {
+  roqqu: { kind: 'phones', a: r1, b: r2 }, qash: { kind: 'phones', a: q1, b: q2 }, en1: { kind: 'wide', a: e1 },
+  clink: { kind: 'wide', a: c1 }, 'glover-lite': { kind: 'phones', a: g1, b: g2 }, weave: { kind: 'phones', a: w1, b: w2 },
+};
+// Board positions (px on a 3700 × 2500 board). Slight rotations keep it feeling hand-placed.
+const pos: Record<string, [number, number, number]> = {
+  roqqu: [260, 220, -1.2], qash: [820, 120, .8], en1: [2420, 160, 1], clink: [2980, 560, -1],
+  'glover-lite': [300, 1560, .8], weave: [860, 1660, -.8],
+};
+const notes = [
+  ['Problem first', 'Discovery before design, so the team agrees on why before what.', '#ffe680', -3],
+  ['High-stakes clarity', 'KYC, transfers, irreversible actions: designed for nervous users.', '#ffd0dc', 2],
+  ['Systems, not screens', 'Foundations that let teams ship faster and stay consistent.', '#c9f0d8', -1.5],
+  ['Measured', 'Success agreed up front, tested before launch, tracked after.', '#cfe2ff', 2.5],
+] as const;
+---
+<Base title="Tosin Lasisi: Senior Product Designer (canvas)">
+  <div class="cv-page">
+    <Nav />
+
+    <div class="viewport" id="vp" aria-label="Portfolio canvas. Drag to pan, scroll to zoom." tabindex="-1">
+      <div class="board" id="board">
+
+        <!-- INTRO -->
+        <section class="item intro" style="left:1400px;top:720px" data-label="Intro" data-home>
+          <p class="mono eyebrow"><span class="live"></span> Open to senior &amp; lead roles</p>
+          <h1>I design how <span class="serif">money</span> moves.</h1>
+          <p class="sub">Senior Product Designer with 6+ years across crypto, fintech and platforms in Africa and beyond. I take products from first discovery to launch, test ideas in real builds, and measure the result.</p>
+          <div class="ctas"><a class="btn btn-solid" href={`mailto:${site.email}`}>Get in touch</a><a class="btn" href={site.cv}>Download CV</a></div>
+        </section>
+
+        <!-- TERMINAL -->
+        <div class="item term" style="left:2140px;top:760px" data-label="TL·PAY terminal">
+          <Terminal />
+        </div>
+
+        <!-- PROJECTS -->
+        {featured.map(p => {
+          const [x, y, r] = pos[p.slug]; const c = covers[p.slug];
+          return (
+            <a class="item card" href={`/work/${p.slug}`} data-label={`${p.name} · ${String(p.ch).padStart(2, '0')}`}
+               style={`left:${x}px;top:${y}px;--r:${r}deg;--world:var(${p.colour});--m1:${p.mesh![0]};--m2:${p.mesh![1]};--m3:${p.mesh![2]}`}>
+              <div class="media">
+                {c.kind === 'phones'
+                  ? <><div class="ph b"><Image src={c.b} alt="" widths={[260, 480]} sizes="150px" /></div><div class="ph a"><Image src={c.a} alt="" widths={[260, 480]} sizes="160px" /></div></>
+                  : <div class="wide"><Image src={c.a} alt="" widths={[500, 900]} sizes="400px" /></div>}
+                {p.isNew && <span class="new serif">New</span>}
+              </div>
+              <div class="cap">
+                <div class="c-top"><strong><i></i>{p.name}</strong><span class="mono muted">{p.years}</span></div>
+                <p>{p.headline}</p>
+                <div class="chips">{p.metrics.map(m => <span><b>{m.value}</b> {m.label}</span>)}</div>
+              </div>
+            </a>
+          );
+        })}
+
+        <!-- ABOUT -->
+        <a class="item about" href="/about" style="left:300px;top:840px;--r:-1deg" data-label="About">
+          <div class="pf"><Image src={portrait} alt="Portrait of Tosin Lasisi" widths={[300, 500]} sizes="200px" /></div>
+          <div>
+            <h2>Hi, I’m <span class="serif">Tosin.</span></h2>
+            <p>Senior product designer in Lagos. Computer Science graduate. I design in Figma and build in Framer and with AI tools, including this site.</p>
+            <span class="more">Read more →</span>
+          </div>
+        </a>
+
+        <!-- OTHER PROJECTS AS STAMPS -->
+        {others.map((o, i) => (
+          <a class="item stamp" href={`/work/${o.slug}`} style={`left:${940 + i * 200}px;top:${900 + i * 70}px;--r:${i ? 6 : -5}deg;--m1:${o.mesh![0]};--m2:${o.mesh![1]}`} data-label={i === 0 ? 'Other projects' : ''}>
+            <span class="st-in"><strong>{o.name}</strong><span class="mono">{o.metrics[0].value}</span><span class="mono yr">{o.years}</span></span>
+          </a>
+        ))}
+
+        <!-- PRINCIPLES AS STICKIES -->
+        <div class="item notes" style="left:1460px;top:1660px" data-label="How I work">
+          {notes.map(([t, d, c, r]) => <div class="note" style={`--bg:${c};--r:${r}deg`}><strong>{t}</strong><p>{d}</p></div>)}
+        </div>
+
+        <!-- EXPERIENCE -->
+        <div class="item exp" style="left:2560px;top:1500px;--r:.6deg" data-label="Experience">
+          <ol role="list">{experience.map(([y, c, r, m]) => <li><span class="mono muted">{y}</span><strong>{c}</strong><span class="m mono">{m}</span></li>)}</ol>
+        </div>
+
+        <!-- TESTIMONIALS -->
+        <div class="item quotes" style="left:2560px;top:2060px" data-label="Kind words">
+          {testimonials.map(t => <blockquote class={t.placeholder ? 'q-ph' : ''}>“{t.quote}”<cite>{t.name}, {t.role} · {t.company}</cite></blockquote>)}
+        </div>
+
+        <!-- CONTACT -->
+        <section class="item contact" style="left:1460px;top:2140px" data-label="Contact">
+          <h2>Hiring a senior <span class="serif">product designer?</span></h2>
+          <div class="ctas"><a class="btn btn-solid" href={`mailto:${site.email}`}>{site.email}</a><a class="btn" href={site.linkedin} rel="noopener">LinkedIn ↗</a></div>
+        </section>
+
+        <!-- cursor-style annotations -->
+        <span class="item tag t1" style="left:1340px;top:640px">Tosin</span>
+        <span class="item tag t2" style="left:2100px;top:700px">Press a key ↘</span>
+      </div>
+    </div>
+
+    <!-- Toolbar (bottom centre) -->
+    <div class="toolbar" role="toolbar" aria-label="Canvas controls">
+      <button data-z="out" aria-label="Zoom out">−</button>
+      <button data-z="label" class="zl mono" aria-label="Fit to screen" title="Fit to screen (0)">100%</button>
+      <button data-z="in" aria-label="Zoom in">+</button>
+      <span class="sep"></span>
+      <button data-z="home" class="mono" title="Back to intro (H)">Intro</button>
+      <button data-z="fit" class="mono" title="See everything (0)">Fit</button>
+      <span class="sep"></span>
+      <a href="/" class="mono list">List view</a>
+    </div>
+
+    <!-- Minimap -->
+    <div class="minimap" id="mm" aria-hidden="true"><div class="mm-board" id="mmb"></div><div class="mm-view" id="mmv"></div></div>
+
+    <p class="hint mono" id="hint"><span class="d">Drag to explore · scroll or pinch to zoom</span><span class="m">Drag · pinch to zoom</span></p>
+  </div>
+</Base>
+
+<script is:inline>
+  (function () {
+    const vp = document.getElementById('vp'), board = document.getElementById('board');
+    const BW = 3700, BH = 2500;
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let x = 0, y = 0, s = 1, anim = null, drawMini = () => {};
+    const items = [...board.querySelectorAll('.item')];
+    const zl = document.querySelector('.zl');
+
+    // Frame labels (Figma-style)
+    items.forEach(it => { if (it.dataset.label) { const l = document.createElement('span'); l.className = 'flabel mono'; l.textContent = it.dataset.label; l.setAttribute('aria-hidden', 'true'); it.appendChild(l); } });
+
+    const apply = () => {
+      board.style.transform = `translate3d(${x}px, ${y}px, 0) scale(${s})`;
+      board.style.setProperty('--inv', 1 / s);
+      zl.textContent = Math.round(s * 100) + '%';
+      drawMini();
+    };
+    const clampS = v => Math.min(1.6, Math.max(0.18, v));
+    const zoomAt = (cx, cy, ns) => { ns = clampS(ns); x = cx - (cx - x) * (ns / s); y = cy - (cy - y) * (ns / s); s = ns; apply(); };
+    const rectOf = el => ({ l: el.offsetLeft, t: el.offsetTop, w: el.offsetWidth, h: el.offsetHeight });
+    const flyTo = (tx, ty, ts, dur = 900) => {
+      cancelAnimationFrame(anim);
+      if (reduce || dur <= 0) { x = tx; y = ty; s = ts; return apply(); }
+      const fx = x, fy = y, fs = s, t0 = performance.now();
+      const step = t => { const k = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - k, 4);
+        x = fx + (tx - fx) * e; y = fy + (ty - fy) * e; s = fs + (ts - fs) * e; apply(); if (k < 1) anim = requestAnimationFrame(step); };
+      anim = requestAnimationFrame(step);
+    };
+    const frame = (r, pad = 60, max = 1) => {
+      const vw = vp.clientWidth, vh = vp.clientHeight - 70 - 80;
+      const ts = clampS(Math.min((vw - pad * 2) / r.w, (vh - pad * 2) / r.h, max));
+      return [vw / 2 - (r.l + r.w / 2) * ts, 70 + vh / 2 - (r.t + r.h / 2) * ts, ts];
+    };
+    const bbox = els => { const rs = els.map(rectOf); const l = Math.min(...rs.map(r => r.l)), t = Math.min(...rs.map(r => r.t)), r = Math.max(...rs.map(r => r.l + r.w)), b = Math.max(...rs.map(r => r.t + r.h)); return { l, t, w: r - l, h: b - t }; };
+    const fitAll = (d) => flyTo(...frame(bbox(items.filter(i => !i.classList.contains('tag'))), 40), d);
+    const goHome = (d) => {
+      const home = [board.querySelector('[data-home]'), board.querySelector('.term')];
+      flyTo(...frame(bbox(home), innerWidth < 700 ? 16 : 80, 1), d);
+    };
+
+    // Minimap
+    const mm = document.getElementById('mm'), mmb = document.getElementById('mmb'), mmv = document.getElementById('mmv');
+    const MW = 170, ms = MW / BW;
+    mm.style.width = MW + 'px'; mm.style.height = BH * ms + 'px';
+    items.filter(i => !i.classList.contains('tag')).forEach(it => { const r = rectOf(it); const d = document.createElement('i'); d.style.cssText = `left:${r.l * ms}px;top:${r.t * ms}px;width:${r.w * ms}px;height:${r.h * ms}px;${it.style.getPropertyValue('--m1') ? 'background:' + it.style.getPropertyValue('--m1') : ''}`; mmb.appendChild(d); });
+    drawMini = function () {
+      const vx = -x / s, vy = -y / s, vw = vp.clientWidth / s, vh = vp.clientHeight / s;
+      mmv.style.cssText = `left:${vx * ms}px;top:${vy * ms}px;width:${vw * ms}px;height:${vh * ms}px`;
+    };
+    mm.addEventListener('click', e => { const r = mm.getBoundingClientRect(); const bx = (e.clientX - r.left) / ms, by = (e.clientY - r.top) / ms; flyTo(vp.clientWidth / 2 - bx * s, vp.clientHeight / 2 - by * s, s, 600); });
+    // Start: everything, then glide into the intro
+    fitAll(0);
+    setTimeout(() => goHome(1300), 700);
+    setTimeout(() => document.getElementById('hint').classList.add('gone'), 6000);
+
+    // Pointer pan + pinch
+    const pts = new Map(); let moved = 0, last = null, pinch = null;
+    vp.addEventListener('pointerdown', e => {
+      if (e.target.closest('.pos, button, input')) return; // let the terminal keys work
+      vp.setPointerCapture(e.pointerId); pts.set(e.pointerId, [e.clientX, e.clientY]); moved = 0; last = [e.clientX, e.clientY]; cancelAnimationFrame(anim);
+      if (pts.size === 2) { const [a, b] = [...pts.values()]; pinch = { d: Math.hypot(a[0] - b[0], a[1] - b[1]), s }; }
+      vp.classList.add('grabbing');
+    });
+    vp.addEventListener('pointermove', e => {
+      if (!pts.has(e.pointerId)) return;
+      pts.set(e.pointerId, [e.clientX, e.clientY]);
+      if (pts.size === 2 && pinch) {
+        const [a, b] = [...pts.values()]; const d = Math.hypot(a[0] - b[0], a[1] - b[1]);
+        zoomAt((a[0] + b[0]) / 2, (a[1] + b[1]) / 2, pinch.s * d / pinch.d); moved = 99; return;
+      }
+      const dx = e.clientX - last[0], dy = e.clientY - last[1]; last = [e.clientX, e.clientY];
+      moved += Math.abs(dx) + Math.abs(dy); x += dx; y += dy; apply();
+    });
+    const up = e => { pts.delete(e.pointerId); if (pts.size < 2) pinch = null; if (!pts.size) vp.classList.remove('grabbing'); };
+    vp.addEventListener('pointerup', up); vp.addEventListener('pointercancel', up);
+    // A drag shouldn't count as a click on a card
+    board.addEventListener('click', e => { if (moved > 6) { e.preventDefault(); e.stopPropagation(); } }, true);
+
+    vp.addEventListener('wheel', e => {
+      e.preventDefault(); cancelAnimationFrame(anim);
+      if (e.ctrlKey || e.metaKey) zoomAt(e.clientX, e.clientY, s * Math.exp(-e.deltaY * 0.01));
+      else { x -= e.deltaX; y -= e.deltaY; apply(); }
+      document.getElementById('hint').classList.add('gone');
+    }, { passive: false });
+    vp.addEventListener('dblclick', e => { if (!e.target.closest('a, button')) zoomAt(e.clientX, e.clientY, s * 1.6); });
+
+    document.querySelector('.toolbar').addEventListener('click', e => {
+      const b = e.target.closest('[data-z]'); if (!b) return;
+      const cx = innerWidth / 2, cy = innerHeight / 2;
+      ({ in: () => zoomAt(cx, cy, s * 1.25), out: () => zoomAt(cx, cy, s / 1.25), fit: () => fitAll(), label: () => fitAll(), home: () => goHome() })[b.dataset.z]();
+    });
+    addEventListener('keydown', e => {
+      if (e.target.closest('input, textarea') || document.getElementById('nav').classList.contains('open')) return;
+      if (e.key === '+' || e.key === '=') zoomAt(innerWidth / 2, innerHeight / 2, s * 1.25);
+      if (e.key === '-') zoomAt(innerWidth / 2, innerHeight / 2, s / 1.25);
+      if (e.key === '0') fitAll();
+      if (e.key === 'h' || e.key === 'H') goHome();
+    });
+    // Keyboard users: tabbing to something brings it into view
+    board.addEventListener('focusin', e => { const it = e.target.closest('.item'); if (it) flyTo(...frame(rectOf(it), 80, Math.max(s, .9)), 600); });
+
+    addEventListener('resize', () => apply());
+  })();
+</script>
+
+<style>
+  :global(body:has(.cv-page)) { overflow: hidden; height: 100svh; }
+  .cv-page :global(.nav) { position: fixed; left: 0; right: 0; }
+  .cv-page :global(.nav.hide) { transform: none; }
+  .cv-page :global(.nav::before) { opacity: 1; }
+
+  .viewport { position: fixed; inset: 0; overflow: hidden; cursor: grab; touch-action: none; user-select: none; outline: none;
+    background-color: var(--bg);
+    background-image: radial-gradient(circle, color-mix(in oklab, var(--text) 16%, transparent) 1px, transparent 1.4px);
+    background-size: 22px 22px; }
+  .viewport.grabbing { cursor: grabbing; }
+  .board { position: absolute; left: 0; top: 0; width: 3700px; height: 2500px; transform-origin: 0 0; will-change: transform; }
+
+  .item { position: absolute; transform: rotate(var(--r, 0deg)); }
+  :global(.flabel) { position: absolute; left: 0; top: -22px; font-size: 11px; color: var(--muted); white-space: nowrap; transform-origin: 0 100%; transform: scale(min(var(--inv, 1), 2.2)); }
+  .item:hover > :global(.flabel) { color: #2f6bff; }
+  a.item, .item.card { text-decoration: none; color: inherit; }
+  /* Figma-ish selection on hover */
+  a.item::after, .item.card::after { content: ''; position: absolute; inset: -6px; border: 1.5px solid #2f6bff; border-radius: 6px; opacity: 0; pointer-events: none; transition: opacity .15s;
+    background:
+      linear-gradient(#fff, #fff) 0 0 / 8px 8px no-repeat, linear-gradient(#fff, #fff) 100% 0 / 8px 8px no-repeat,
+      linear-gradient(#fff, #fff) 0 100% / 8px 8px no-repeat, linear-gradient(#fff, #fff) 100% 100% / 8px 8px no-repeat; }
+  a.item:hover::after, a.item:focus-visible::after { opacity: 1; }
+  a.item:focus-visible { outline: none; }
+
+  /* Intro */
+  .intro { width: 640px; }
+  .eyebrow { display: inline-flex; align-items: center; gap: 8px; border: 1.5px solid var(--line); border-radius: 99px; padding: 6px 12px; margin: 0 0 24px; background: var(--bg); }
+  .live { width: 8px; height: 8px; border-radius: 50%; background: #2fb36a; }
+  .intro h1 { margin: 0; font-size: 96px; line-height: .95; letter-spacing: -.055em; font-weight: 800; }
+  .intro h1 .serif { font-weight: 400; color: var(--accent-text); }
+  .sub { font-size: 20px; color: var(--muted); max-width: 30em; margin: 22px 0 26px; }
+  .ctas { display: flex; gap: 10px; flex-wrap: wrap; }
+  .term { width: 360px; }
+
+  /* Project cards */
+  .card { width: 460px; padding: 7px; border-radius: 24px; background: var(--surface); box-shadow: inset 0 0 0 1px var(--line), 0 30px 50px -34px rgba(0,0,0,.45); }
+  .media { position: relative; height: 290px; border-radius: 18px; overflow: hidden;
+    background: radial-gradient(70% 90% at 12% 10%, var(--m2), transparent 60%), radial-gradient(60% 80% at 95% 95%, var(--m3), transparent 62%), var(--m1); }
+  .ph { position: absolute; width: 30%; aspect-ratio: 390/844; border-radius: 22px; padding: 3px; background: linear-gradient(140deg, #d4d4d9, #232326 40%, #9a9aa0); box-shadow: 0 24px 40px -16px rgba(0,0,0,.5); }
+  .ph :global(img) { width: 100%; height: 100%; object-fit: cover; object-position: top; border-radius: 19px; border: 3px solid #000; display: block; }
+  .ph.a { left: 50%; top: 12%; transform: translateX(-10%) rotate(6deg); }
+  .ph.b { left: 50%; top: 20%; transform: translateX(-90%) rotate(-7deg); }
+  .wide { position: absolute; left: 8%; right: 8%; top: 12%; bottom: 10%; border-radius: 10px; overflow: hidden; box-shadow: 0 24px 40px -16px rgba(0,0,0,.5); transform: rotate(-2deg); }
+  .wide :global(img) { width: 100%; height: 100%; object-fit: cover; object-position: top left; }
+  .new { position: absolute; top: 10px; right: 14px; color: #ff2fa0; font-size: 22px; border: 2px solid #ff2fa0; border-radius: 50%; padding: 0 12px; transform: rotate(-6deg); }
+  .cap { padding: 14px 12px 10px; display: grid; gap: 8px; }
+  .c-top { display: flex; justify-content: space-between; align-items: center; }
+  .c-top strong { display: inline-flex; align-items: center; gap: 8px; font-size: 22px; letter-spacing: -.035em; }
+  .c-top i { width: 9px; height: 9px; border-radius: 50%; background: var(--world); }
+  .c-top .mono { font-size: 10.5px; }
+  .cap p { margin: 0; font-size: 16px; line-height: 1.35; color: color-mix(in oklab, var(--text) 80%, transparent); }
+  .chips { display: flex; gap: 6px; flex-wrap: wrap; }
+  .chips span { font-size: 12.5px; color: var(--muted); border: 1px solid var(--line); border-radius: 99px; padding: 4px 9px; }
+  .chips b { color: var(--text); }
+
+  /* About */
+  .about { width: 560px; display: grid; grid-template-columns: 180px 1fr; gap: 22px; padding: 18px; border-radius: 22px; background: var(--surface); box-shadow: inset 0 0 0 1px var(--line), 0 30px 50px -34px rgba(0,0,0,.4); }
+  .pf { border-radius: 14px; overflow: hidden; aspect-ratio: 4/5; }
+  .pf :global(img) { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); }
+  .about h2 { margin: 4px 0 10px; font-size: 40px; letter-spacing: -.05em; }
+  .about .serif { font-weight: 400; color: var(--accent-text); }
+  .about p { margin: 0 0 12px; color: var(--muted); font-size: 16px; }
+  .more { font-weight: 600; }
+
+  /* Stamps (ref: Bill Guo) */
+  .stamp { width: 180px; height: 220px; padding: 6px; background: #fffdf8; color: #171614; border: 7px dotted var(--bg);
+    filter: drop-shadow(0 14px 20px rgba(0,0,0,.22)); }
+  .st-in { height: 100%; display: flex; flex-direction: column; justify-content: flex-end; gap: 4px; padding: 14px; color: #fff;
+    background: radial-gradient(80% 80% at 20% 10%, var(--m2), transparent 70%), var(--m1); }
+  .st-in strong { font-size: 24px; letter-spacing: -.04em; }
+  .st-in .mono { font-size: 11px; opacity: .9; } .st-in .yr { opacity: .7; }
+
+  /* Sticky notes */
+  .notes { width: 900px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+  .note { background: var(--bg-note, var(--bg)); background: var(--bg); color: #1d1b16; padding: 18px 16px 22px; min-height: 190px; transform: rotate(var(--r)); box-shadow: 0 18px 24px -18px rgba(0,0,0,.45); }
+  .note strong { display: block; font-size: 20px; letter-spacing: -.03em; margin-bottom: 8px; }
+  .note p { margin: 0; font-family: var(--f-serif); font-style: italic; font-size: 18px; line-height: 1.3; }
+
+  /* Experience */
+  .exp { width: 700px; padding: 20px 24px; border-radius: 22px; background: var(--surface); box-shadow: inset 0 0 0 1px var(--line); }
+  .exp ol { list-style: none; margin: 0; padding: 0; }
+  .exp li { display: grid; grid-template-columns: 130px 1fr auto; gap: 14px; align-items: baseline; padding: 12px 0; border-top: 1px solid var(--line); font-size: 17px; }
+  .exp li:first-child { border-top: 0; }
+  .exp .m { font-size: 12px; background: color-mix(in oklab, var(--coin) 22%, transparent); padding: 3px 8px; border-radius: 6px; }
+
+  /* Quotes */
+  .quotes { width: 760px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .quotes blockquote { margin: 0; padding: 18px; border-radius: 18px; background: var(--surface); box-shadow: inset 0 0 0 1px var(--line); font-size: 15px; line-height: 1.45; }
+  .quotes blockquote.q-ph { color: var(--muted); font-style: italic; box-shadow: inset 0 0 0 1.5px color-mix(in oklab, var(--coin) 55%, transparent); }
+  .quotes cite { display: block; margin-top: 12px; font-style: normal; font-size: 12.5px; color: var(--text); }
+
+  /* Contact */
+  .contact { width: 900px; }
+  .contact h2 { margin: 0 0 24px; font-size: 88px; line-height: .92; letter-spacing: -.055em; font-weight: 800; }
+  .contact .serif { font-weight: 400; color: var(--accent-text-2); }
+
+  /* Multiplayer-style cursor tags */
+  .tag { display: inline-flex; padding: 4px 10px; border-radius: 4px 12px 12px 12px; font: 600 13px var(--f-display); color: #171614; background: var(--coin); }
+  .tag::before { content: ''; position: absolute; left: -12px; top: -12px; width: 14px; height: 14px; background: var(--coin); clip-path: polygon(0 0, 100% 45%, 45% 100%); }
+  .t2 { background: #7cc6ff; } .t2::before { background: #7cc6ff; }
+
+  /* Chrome */
+  .toolbar { position: fixed; left: 50%; bottom: 18px; transform: translateX(-50%); z-index: 40; display: flex; align-items: center; gap: 4px; padding: 6px; border-radius: 14px; background: #1c1b1a; color: #f3efe6; box-shadow: 0 16px 40px -14px rgba(0,0,0,.5); }
+  .toolbar button, .toolbar a { appearance: none; border: 0; background: none; color: inherit; height: 34px; min-width: 34px; padding: 0 10px; border-radius: 9px; cursor: pointer; font-size: 15px; text-decoration: none; display: inline-flex; align-items: center; }
+  .toolbar .mono { font-size: 11px; }
+  .toolbar button:hover, .toolbar a:hover { background: rgba(255,255,255,.1); }
+  .toolbar .list { background: var(--coin); color: #171614; font-weight: 600; }
+  .toolbar .list:hover { background: var(--coin); filter: brightness(1.05); }
+  .zl { min-width: 58px !important; justify-content: center; }
+  .sep { width: 1px; height: 20px; background: rgba(255,255,255,.15); margin: 0 4px; }
+  .minimap { position: fixed; right: 18px; bottom: 18px; z-index: 40; border-radius: 10px; overflow: hidden; background: color-mix(in oklab, var(--surface) 92%, transparent); box-shadow: inset 0 0 0 1px var(--line), 0 10px 30px -14px rgba(0,0,0,.4); cursor: pointer; }
+  .mm-board { position: absolute; inset: 0; }
+  .mm-board :global(i) { position: absolute; border-radius: 1.5px; background: color-mix(in oklab, var(--text) 25%, transparent); }
+  .mm-view { position: absolute; border: 1.5px solid #2f6bff; background: rgba(47,107,255,.08); border-radius: 2px; }
+  .hint { position: fixed; left: 50%; bottom: 70px; transform: translateX(-50%); z-index: 40; color: var(--muted); background: color-mix(in oklab, var(--bg) 85%, transparent); padding: 5px 10px; border-radius: 99px; transition: opacity .5s; pointer-events: none; }
+  .hint.gone { opacity: 0; }
+  .hint .m { display: none; }
+  @media (max-width: 700px) { .hint .d { display: none; } .hint .m { display: inline; } }
+  @media (max-width: 700px) { .minimap { display: none; } .toolbar [data-z='home'] { display: none; } }
+</style>
