@@ -1,60 +1,74 @@
-/* Shared case-study body styles (imported by layouts/Case.astro) */
-.case-body .sec { display: grid; grid-template-columns: 1fr 2.2fr; gap: 32px; padding-block: clamp(44px, 6vw, 80px); border-top: 1.5px solid var(--line); }
-.case-body .side { margin: 6px 0 0; color: var(--muted); position: sticky; top: 92px; align-self: start; }
-.case-body .txt { max-width: 700px; }
-.case-body .txt p { font-size: clamp(17px, 1.35vw, 20px); line-height: 1.6; margin: 0 0 1em; }
-.case-body .txt .lead { font-size: clamp(22px, 2.1vw, 30px); line-height: 1.3; letter-spacing: -.02em; font-weight: 600; }
-.case-body .also { font-size: 28px; letter-spacing: -.03em; margin: 0 0 8px; }
+/* Case-study body (structure ref: billguo.me/work/ncs)
+   One narrow centred reading column; big chapters open with a dashed divider + centred serif title;
+   media sits wider, on soft gold plates. Existing page markup (.sec, .part, .decision, …) is restyled here. */
 
-.case-body .insights { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 32px 40px; }
-.case-body .insights span { color: var(--muted); }
-.case-body .insights h3 { font-size: clamp(22px, 2vw, 28px); letter-spacing: -.03em; line-height: 1.1; margin: 8px 0 8px; }
-.case-body .insights p { margin: 0; color: var(--muted); }
+/* ── Reading column ── */
+.case-body .sec, .case-body .d-head { max-width: 640px; margin-inline: auto; padding-inline: var(--gutter); box-sizing: content-box; }
+.case-body .sec { display: block; padding-block: clamp(28px, 4vw, 48px); }
+.case-body .side { display: flex; align-items: center; gap: 8px; margin: 0 0 14px; color: var(--muted); font-size: 11px; }
+.case-body .side::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--coin); flex: none; }
+.case-body .txt { max-width: none; }
+.case-body .txt p { font-size: 17px; line-height: 1.7; margin: 0 0 1em; color: color-mix(in oklab, var(--text) 86%, transparent); }
+.case-body .txt .lead { font-family: var(--f-serif); font-weight: 400; font-size: clamp(24px, 2.2vw, 32px); line-height: 1.25; letter-spacing: -.01em; color: var(--text); }
+.case-body .also { font-size: 26px; letter-spacing: -.03em; margin: 0 0 8px; }
 
-.case-body .part { padding-block: clamp(72px, 10vw, 150px) clamp(24px, 3vw, 40px); border-top: 1.5px solid var(--line); }
-.case-body .part .mono { color: var(--muted); margin: 0; }
-.case-body .part h2 { font-size: clamp(52px, 9vw, 150px); letter-spacing: -.06em; line-height: .88; margin: 14px 0 0; font-weight: 800; }
-.case-body .part .serif { font-weight: 400; letter-spacing: -.03em; color: var(--accent-text); }
-.case-body .part-sub { font-size: clamp(18px, 1.6vw, 23px); line-height: 1.45; max-width: 48ch; color: var(--muted); margin: 28px 0 0; }
-.case-body .decision { padding-block: clamp(56px, 8vw, 110px) clamp(20px, 3vw, 40px); border-top: 1.5px solid var(--line); }
-.case-body .d-n { color: var(--muted); margin: 0; }
-.case-body .d-head h2 { font-size: clamp(34px, 4.6vw, 72px); letter-spacing: -.05em; line-height: .95; margin: 14px 0 32px; max-width: 18ch; font-weight: 800; }
-.case-body .d-cols { display: grid; grid-template-columns: 1fr 1.4fr .9fr; gap: 28px 40px; margin-bottom: 36px; }
-.case-body .d-cols h4 { margin: 0 0 8px; font-weight: 500; color: var(--muted); }
-.case-body .d-cols p { margin: 0; font-size: 16.5px; line-height: 1.55; }
-.case-body .d-cols .big { font-size: clamp(22px, 2vw, 30px); font-weight: 700; letter-spacing: -.03em; line-height: 1.15; }
-.case-body .wrap-bleed { padding-left: var(--gutter); max-width: calc(1440px + (100vw - 1440px) / 2); margin-left: max(0px, calc((100vw - 1440px) / 2)); }
+.case-body .insights { list-style: none; margin: 0; padding: 0; display: grid; gap: 28px; }
+.case-body .insights span { color: var(--muted); font-size: 11px; }
+.case-body .insights h3 { font-size: 22px; letter-spacing: -.03em; line-height: 1.15; margin: 6px 0 6px; font-weight: 600; }
+.case-body .insights p { margin: 0; color: var(--muted); line-height: 1.6; }
 
-.case-body .duo { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding-bottom: clamp(20px, 3vw, 40px); }
-.case-body .duo img { width: 100%; height: auto; border-radius: 14px; }
+/* ── Chapter openers (Part 1 / Part 2) ── */
+.case-body .part { max-width: 900px; margin-inline: auto; padding: clamp(72px, 10vw, 140px) var(--gutter) clamp(20px, 3vw, 36px); text-align: center; }
+.case-body .part > .mono { display: flex; align-items: center; gap: 18px; color: var(--muted); font-size: 11px; margin: 0 0 clamp(32px, 5vw, 56px); }
+.case-body .part > .mono::before, .case-body .part > .mono::after { content: ''; flex: 1; border-top: 1px dashed var(--line-strong); opacity: .35; }
+.case-body .part h2 { font-family: var(--f-serif); font-weight: 400; font-size: clamp(40px, 5vw, 72px); letter-spacing: -.02em; line-height: 1.02; margin: 0; }
+.case-body .part .serif { color: var(--accent-text); }
+.case-body .part-sub { font-size: 18px; line-height: 1.55; max-width: 46ch; color: var(--muted); margin: 22px auto 0; }
 
-.case-body .rtable { width: 100%; border-collapse: collapse; margin-bottom: 16px; }
-.case-body .rtable th, .case-body .rtable td { padding: 14px 0; border-top: 1.5px solid var(--line); font-size: 18px; text-align: left; }
-.case-body .rtable th { font-weight: 500; }
-.case-body .rtable td { text-align: right; font-weight: 700; font-variant-numeric: tabular-nums; }
-.case-body .rtable tr:last-child th, .case-body .rtable tr:last-child td { border-bottom: 1.5px solid var(--line); }
+/* ── Decisions / chapters ── */
+.case-body .decision { padding-block: clamp(48px, 7vw, 96px) clamp(16px, 2vw, 28px); }
+.case-body .d-n { display: flex; align-items: center; gap: 8px; color: var(--muted); margin: 0; font-size: 11px; }
+.case-body .d-n::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--coin); flex: none; }
+.case-body .d-head h2 { font-size: clamp(28px, 2.8vw, 38px); letter-spacing: -.04em; line-height: 1.08; margin: 12px 0 24px; font-weight: 650; max-width: none; }
+.case-body .d-cols { display: grid; grid-template-columns: 1fr; gap: 20px; margin-bottom: 32px; }
+.case-body .d-cols > div { display: grid; grid-template-columns: 96px 1fr; gap: 16px; align-items: baseline; }
+.case-body .d-cols h4 { margin: 0; font-weight: 500; color: var(--muted); font-size: 11px; }
+.case-body .d-cols p { margin: 0; font-size: 17px; line-height: 1.65; color: color-mix(in oklab, var(--text) 86%, transparent); }
+.case-body .d-cols .big { font-family: var(--f-serif); font-size: clamp(22px, 2vw, 28px); font-weight: 400; letter-spacing: -.01em; line-height: 1.2; color: var(--text); padding-left: 14px; border-left: 2px solid var(--coin); }
 
-@media (max-width: 900px) {
-    .case-body .sec { grid-template-columns: 1fr; gap: 10px; }
-    .case-body .side { position: static; }
-    .case-body .d-cols, .case-body .insights, .case-body .duo { grid-template-columns: 1fr; }
-  }
-
-/* Wide single image and image grids */
-.case-body .wide { padding-bottom: clamp(20px, 3vw, 40px); }
-.case-body .wide img, .case-body .grid3 img { width: 100%; height: auto; border-radius: 14px; }
-.case-body .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; padding-bottom: clamp(20px, 3vw, 40px); }
-.case-body .cap { font-family: var(--f-mono); font-size: 12px; color: var(--muted); margin: 10px 0 0; }
-.case-body .panel { background: var(--surface); border: 1.5px solid var(--line); border-radius: 18px; padding: clamp(14px, 2vw, 28px); }
+/* ── Media on gold plates ── */
+.case-body .wrap-bleed,
+.case-body .duo, .case-body .grid3, .case-body .wide {
+  max-width: 1120px; margin: clamp(8px, 1vw, 16px) max(var(--gutter), calc((100% - 1120px) / 2)) clamp(24px, 3vw, 40px);
+  padding: clamp(18px, 3vw, 44px); border-radius: 22px; background: var(--plate); box-sizing: border-box; }
+.case-body .wrap-bleed { padding-right: 0; overflow: hidden; }
+.case-body .duo { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.case-body .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.case-body .duo img, .case-body .wide img, .case-body .grid3 img { width: 100%; height: auto; border-radius: 12px; box-shadow: 0 24px 48px -28px rgba(0,0,0,.35); }
+.case-body .wrap-bleed figcaption { color: color-mix(in oklab, var(--text) 70%, transparent); }
+.case-body .cap { font-family: var(--f-mono); font-size: 11.5px; color: var(--muted); margin: 10px 0 0; }
+.case-body .panel { background: var(--bg); border-radius: 14px; padding: clamp(12px, 1.6vw, 22px); box-shadow: 0 20px 40px -30px rgba(0,0,0,.3); }
 .case-body .ba { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .case-body .ba figure { margin: 0; }
 .case-body .ba .tag { display: inline-block; font-family: var(--f-mono); font-size: 11px; padding: 3px 9px; border-radius: 99px; border: 1.5px solid var(--line-strong); margin-bottom: 10px; }
-@media (max-width: 900px) { .case-body .grid3, .case-body .ba { grid-template-columns: 1fr; } }
 
-/* Inline KPI row inside a decision */
-.case-body .kpis { list-style: none; margin: 4px 0 20px; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1.5px solid var(--line); }
-.case-body .kpis li { padding: 16px 16px 4px 0; display: grid; gap: 4px; }
-.case-body .kpis b { font-size: clamp(30px, 3vw, 44px); letter-spacing: -.05em; line-height: 1; color: var(--world); }
-.case-body .kpis b.ph { opacity: .45; }
-.case-body .kpis span { color: var(--muted); font-size: 14px; }
+/* ── Tables & KPIs ── */
+.case-body .rtable { width: 100%; border-collapse: collapse; margin-bottom: 16px; }
+.case-body .rtable th, .case-body .rtable td { padding: 13px 0; border-top: 1px solid var(--line); font-size: 17px; text-align: left; }
+.case-body .rtable th { font-weight: 400; color: color-mix(in oklab, var(--text) 86%, transparent); }
+.case-body .rtable td { text-align: right; font-weight: 650; font-variant-numeric: tabular-nums; }
+.case-body .rtable tr:last-child th, .case-body .rtable tr:last-child td { border-bottom: 1px solid var(--line); }
+.case-body .kpis { list-style: none; margin: 4px 0 20px; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.case-body .kpis li { padding: 14px; border-radius: 14px; background: var(--surface); box-shadow: inset 0 0 0 1px var(--line); display: grid; gap: 4px; }
+.case-body .kpis b { font-size: clamp(26px, 2.6vw, 36px); letter-spacing: -.05em; line-height: 1; }
+.case-body .kpis b.ph { opacity: .4; }
+.case-body .kpis span { color: var(--muted); font-size: 13px; }
+
+/* ── Interaction wall: centre its heading on the reading column ── */
+.case-body .iwall { border-top: 0; }
+
+@media (max-width: 900px) {
+  .case-body .duo, .case-body .grid3, .case-body .ba { grid-template-columns: 1fr; }
+  .case-body .d-cols > div { grid-template-columns: 1fr; gap: 6px; }
+}
 @media (max-width: 700px) { .case-body .kpis { grid-template-columns: 1fr 1fr; } }

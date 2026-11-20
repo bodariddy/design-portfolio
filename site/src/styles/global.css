@@ -7,11 +7,12 @@
    Light = "paper", Dark = "ink". Theme follows the system;
    [data-theme] on <html> overrides it when the visitor uses the switch. */
 :root {
-  --bg: #f3eee4;
-  --surface: #fbf8f2;
-  --text: #171614;
-  --muted: #6a655c;
-  --line: color-mix(in oklab, var(--text) 14%, transparent);
+  /* Light palette (ref: billguo.me): warm near-white paper, soft ink, quiet hairlines */
+  --bg: #fcf9f4;
+  --surface: #f5f1ea;
+  --text: #262524;
+  --muted: #74695e;
+  --line: color-mix(in oklab, var(--text) 10%, transparent);
   --line-strong: color-mix(in oklab, var(--text) 75%, transparent);
   --coin: #f2a900;           /* the "coin": loader, accents, cursor */
   --screen: #0f1110;         /* terminal screen */
@@ -33,6 +34,14 @@
   --accent-text-2: var(--w-glover);
   --hl-solid: #ffffff;
   --grain-opacity: .05;
+  /* Gold "plate" behind media (replaces Bill Guo's green bokeh with our coin gold) */
+  --pl-base: #f4ebd9; --pl-a: #f6d488; --pl-b: #fbe7b5;
+  --plate:
+    radial-gradient(38% 46% at 18% 24%, color-mix(in oklab, var(--pl-a) 70%, transparent), transparent 70%),
+    radial-gradient(34% 42% at 84% 74%, color-mix(in oklab, var(--pl-a) 55%, transparent), transparent 70%),
+    radial-gradient(30% 40% at 58% 14%, rgba(255,255,255,.7), transparent 70%),
+    radial-gradient(26% 34% at 34% 84%, rgba(255,255,255,.55), transparent 70%),
+    var(--pl-base);
 
   --f-display: 'Bricolage Grotesque Variable', system-ui, sans-serif;
   --f-serif: 'Instrument Serif', Georgia, serif;
@@ -66,6 +75,8 @@
     --w-edubanc: #c8353b;
     --w-stemuli: #3a6fa3;
     --hl: rgba(255,255,255,.06);
+  --pl-base: #221d16; --pl-a: #6b5020; --pl-b: #3a2e1a;
+    --pl-base: #221d16; --pl-a: #6b5020; --pl-b: #3a2e1a;
     --accent-text: #8f97ff;
     --accent-text-2: #ff7aa2;
     --hl-solid: #3a3632;
@@ -156,3 +167,6 @@ img { max-width: 100%; display: block; }
   .rv { opacity: 1; transform: none; }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
+
+/* Media on a gold plate: Stage reads --m1/2/3 */
+.plate-vars { --m1: var(--pl-base); --m2: var(--pl-a); --m3: var(--pl-b); }
