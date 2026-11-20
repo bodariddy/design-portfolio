@@ -44,7 +44,7 @@
 .case-body .wrap-bleed { padding-right: 0; overflow: hidden; }
 .case-body .duo { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .case-body .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-.case-body .duo img, .case-body .wide img, .case-body .grid3 img { width: 100%; height: auto; border-radius: 12px; box-shadow: 0 24px 48px -28px rgba(0,0,0,.35); }
+.case-body .duo img, .case-body .wide img, .case-body .grid3 img { width: 100%; height: auto; border-radius: 12px; filter: drop-shadow(0 18px 24px rgba(40,28,10,.16)); }
 .case-body .wrap-bleed figcaption { color: color-mix(in oklab, var(--text) 70%, transparent); }
 .case-body .cap { font-family: var(--f-mono); font-size: 11.5px; color: var(--muted); margin: 10px 0 0; }
 .case-body .panel { background: var(--bg); border-radius: 14px; padding: clamp(12px, 1.6vw, 22px); box-shadow: 0 20px 40px -30px rgba(0,0,0,.3); }
