@@ -13,6 +13,15 @@ const statement = 'I make money feel simple. For six years I’ve designed the m
 const email = site.email;
 ---
 <Base>
+  <script is:inline>
+    (function () {
+      const q = new URLSearchParams(location.search);
+      try {
+        if (q.has('list')) { localStorage.setItem('homeMode', 'list'); history.replaceState(null, '', '/' + location.hash); return; }
+        if (localStorage.getItem('homeMode') === 'canvas' && matchMedia('(min-width: 801px)').matches && !location.hash) location.replace('/canvas');
+      } catch {}
+    })();
+  </script>
   <Loader />
 
   <Nav />

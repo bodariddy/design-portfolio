@@ -130,7 +130,7 @@ const notes = [
       <button data-z="home" class="mono" title="Back to intro (H)">Intro</button>
       <button data-z="fit" class="mono" title="See everything (0)">Fit</button>
       <span class="sep"></span>
-      <a href="/" class="mono list">List view</a>
+      <a href="/?list" class="mono list" data-mode="list">List view</a>
     </div>
 
     <!-- Minimap -->
@@ -243,6 +243,7 @@ const notes = [
     board.addEventListener('focusin', e => { const it = e.target.closest('.item'); if (it) flyTo(...frame(rectOf(it), 80, Math.max(s, .9)), 600); });
 
     addEventListener('resize', () => apply());
+    document.querySelector('.toolbar [data-mode]').addEventListener('click', () => { try { localStorage.setItem('homeMode', 'list'); } catch {} });
   })();
 </script>
 
