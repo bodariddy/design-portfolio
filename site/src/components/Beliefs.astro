@@ -1,4 +1,5 @@
 ---
+import LineList from './LineList.astro';
 // "What I believe": line illustrations that draw themselves in as they scroll into view
 // (interaction ref: Jaykay's "What I stick to"; icons and copy are our own).
 // Layers: .x crosshair guides fade in → .d ink strokes draw → .a gold accents draw → .pt dot appears.
@@ -45,53 +46,4 @@ const beliefs = [
   },
 ];
 ---
-<section class="bel wrap" aria-labelledby="b-title">
-  <p class="mono muted">What I believe</p>
-  <h2 id="b-title">Principles I <span class="serif">design by.</span></h2>
-  <ol class="vals" role="list">
-    {beliefs.map((b, i) => (
-      <li class="val">
-        <b class="mono">{String(i + 1).padStart(2, '0')}</b>
-        <svg class="ill" viewBox="0 0 330 200" aria-hidden="true" set:html={b.svg} />
-        <h3>{b.t}</h3>
-        <p>{b.d}</p>
-      </li>
-    ))}
-  </ol>
-</section>
-
-<script is:inline>
-  (function () {
-    const items = document.querySelectorAll('.bel .val');
-    if (!('IntersectionObserver' in window)) { items.forEach(i => i.classList.add('in')); return; }
-    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -18% 0px' });
-    items.forEach(i => io.observe(i));
-  })();
-</script>
-
-<style>
-  .bel { padding-block: clamp(56px, 8vw, 110px); border-top: 1.5px solid var(--line); }
-  .bel h2 .serif { font-weight: 400; color: var(--accent-text); }
-  .bel h2 { font-size: clamp(40px, 5.4vw, 80px); letter-spacing: -.055em; line-height: .95; margin: 12px 0 0; font-weight: 800; }
-  .vals { list-style: none; margin: clamp(40px, 5vw, 72px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(56px, 7vw, 96px) clamp(32px, 6vw, 96px); }
-  .val { display: grid; grid-template-columns: 64px minmax(0, 1fr); align-items: start; align-content: start; }
-  .val > b { grid-row: 1; padding-top: 22px; color: var(--muted); font-weight: 400; }
-  .ill { grid-area: 1 / 2; width: 100%; max-width: 340px; height: auto; overflow: visible; }
-  .val h3 { grid-column: 2; margin: 22px 0 10px; font-size: clamp(22px, 2vw, 28px); line-height: 1.15; letter-spacing: -.03em; font-weight: 600; }
-  .val p { grid-column: 2; margin: 0; max-width: 44ch; font-size: 17px; line-height: 1.6; color: var(--muted); }
-
-  .ill :global(.x) { stroke: var(--coin); stroke-width: 1; opacity: 0; transition: opacity .8s .2s; }
-  .ill :global(.d) { fill: none; stroke: var(--text); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 1.4s cubic-bezier(.45, 0, .2, 1) .35s; }
-  .ill :global(.a) { fill: none; stroke: var(--coin); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 1s cubic-bezier(.45, 0, .2, 1) 1.2s; }
-  .ill :global(.pt) { fill: var(--coin); opacity: 0; transition: opacity .5s 1.4s; }
-  .val.in .ill :global(.x) { opacity: .45; }
-  .val.in .ill :global(.d), .val.in .ill :global(.a) { stroke-dashoffset: 0; }
-  .val.in .ill :global(.pt) { opacity: 1; }
-
-  @media (max-width: 860px) { .vals { grid-template-columns: 1fr; } .val { grid-template-columns: 40px minmax(0, 1fr); } }
-  @media (prefers-reduced-motion: reduce) {
-    .ill :global(.x) { opacity: .45; transition: none; }
-    .ill :global(.d), .ill :global(.a) { stroke-dashoffset: 0; transition: none; }
-    .ill :global(.pt) { opacity: 1; transition: none; }
-  }
-</style>
+<LineList id="b-title" label="What I believe" items={beliefs}>Principles I <span class="serif">design by.</span></LineList>

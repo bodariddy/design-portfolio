@@ -1,114 +1,49 @@
 ---
-// "Off the clock": three animated line icons (no interaction needed). Loops gently, livelier on hover.
+// "Off the clock": same draw-in line illustrations as "What I believe", plus a gentle idle loop once drawn.
+import LineList from './LineList.astro';
+const items = [
+  {
+    t: 'Training',
+    d: 'Working out keeps me disciplined and clear-headed. It’s also where a lot of my best ideas show up.',
+    tag: 'Body · discipline',
+    svg: `<path class="x" d="M0 100H330"/><path class="x" d="M165 0V200"/>
+      <path class="d" d="M60 136H270" pathLength="1"/>
+      <g class="lift">
+        <path class="d" d="M104 100H226" pathLength="1"/>
+        <rect class="d" x="78" y="70" width="16" height="60" rx="4" pathLength="1"/>
+        <rect class="d" x="236" y="70" width="16" height="60" rx="4" pathLength="1"/>
+        <rect class="a" x="96" y="80" width="8" height="40" rx="3" pathLength="1"/>
+        <rect class="a" x="226" y="80" width="8" height="40" rx="3" pathLength="1"/>
+        <circle class="pt" cx="165" cy="100" r="3"/>
+      </g>`,
+  },
+  {
+    t: 'Gaming',
+    d: 'It started in my dad’s study and never stopped. Games are still my favourite lesson in onboarding, feedback and reward.',
+    tag: 'Play · curiosity',
+    svg: `<path class="x" d="M0 100H330"/><path class="x" d="M205 0V200"/>
+      <g transform="translate(46.6 23.2) scale(1.2)">
+        <path class="d" d="M62 38h76c18 0 30 16 32 36 2 16-10 24-20 16l-14-12H64l-14 12c-10 8-22 0-20-16 2-20 14-36 32-36z" pathLength="1"/>
+        <path class="d" d="M62 52V70M53 61H71" pathLength="1"/>
+        <circle class="a blink" style="--i:0" cx="132" cy="52" r="5" pathLength="1"/>
+        <circle class="a blink" style="--i:1" cx="144" cy="64" r="5" pathLength="1"/>
+        <circle class="a blink" style="--i:3" cx="120" cy="64" r="5" pathLength="1"/>
+        <circle class="a blink" style="--i:2" cx="132" cy="76" r="5" pathLength="1"/>
+        <path class="a" d="M100 10V20M89 14L94 21M111 14L106 21" pathLength="1"/>
+      </g>
+      <circle class="pt" cx="205" cy="100" r="2.5"/>`,
+  },
+  {
+    t: 'Reading',
+    d: 'Books on product, psychology and how people make decisions, plus the occasional novel to switch off.',
+    tag: 'Mind · perspective',
+    svg: `<path class="x" d="M0 100H330"/><path class="x" d="M165 0V200"/>
+      <path class="d" d="M165 64c-18-10-44-12-66-9v80c22-3 48-1 66 9 18-10 44-12 66-9V55c-22-3-48-1-66 9z" pathLength="1"/>
+      <path class="d" d="M165 64V144" pathLength="1"/>
+      <path class="a" d="M113 76L149 80M113 90L149 94M113 104L141 107M181 80L217 76M181 94L217 90" pathLength="1"/>
+      <path class="flip" d="M165 64c16-9 38-11 60-9v80c-22-2-44 0-60 9z"/>
+      <circle class="pt" cx="165" cy="64" r="3"/>`,
+  },
+];
 ---
-<section class="off wrap" aria-labelledby="o-title">
-  <div class="off-head">
-    <p class="mono muted">Off the clock</p>
-    <h2 id="o-title">When I’m not in <span class="serif">Figma</span></h2>
-  </div>
-
-  <div class="toys" data-reveal>
-    <article class="toy t-train">
-      <div class="stage" aria-hidden="true">
-        <svg viewBox="0 0 200 120" class="ico">
-          <g class="lift">
-            <rect class="plate" x="34" y="32" width="14" height="46" rx="4" />
-            <rect class="plate sm" x="50" y="40" width="9" height="30" rx="3" />
-            <line class="rod" x1="59" y1="55" x2="141" y2="55" />
-            <rect class="plate sm" x="141" y="40" width="9" height="30" rx="3" />
-            <rect class="plate" x="152" y="32" width="14" height="46" rx="4" />
-          </g>
-          <line class="floor" x1="30" y1="104" x2="170" y2="104" />
-          <g class="sweat"><circle cx="100" cy="94" r="2.2" /><circle cx="88" cy="98" r="1.6" /><circle cx="112" cy="98" r="1.6" /></g>
-        </svg>
-      </div>
-      <h3>Training</h3>
-      <p>Working out keeps me disciplined and clear-headed. It’s also where a lot of my best ideas show up.</p>
-      <span class="mono tagline">Body · discipline</span>
-    </article>
-
-    <article class="toy t-game">
-      <div class="stage" aria-hidden="true">
-        <svg viewBox="0 0 200 120" class="ico">
-          <g class="pad">
-            <path class="body" d="M62 38h76c18 0 30 16 32 36 2 16-10 24-20 16l-14-12H64l-14 12c-10 8-22 0-20-16 2-20 14-36 32-36z" />
-            <g class="dpad"><line x1="62" y1="52" x2="62" y2="70" /><line x1="53" y1="61" x2="71" y2="61" /></g>
-            <circle class="b b1" cx="132" cy="54" r="5" /><circle class="b b2" cx="144" cy="64" r="5" />
-            <circle class="b b3" cx="120" cy="64" r="5" /><circle class="b b4" cx="132" cy="74" r="5" />
-          </g>
-          <g class="spark"><path d="M100 14v10M90 18l5 6M110 18l-5 6" /></g>
-        </svg>
-      </div>
-      <h3>Gaming</h3>
-      <p>It started in my dad’s study and never stopped. Games are still my favourite lesson in onboarding, feedback and reward.</p>
-      <span class="mono tagline">Play · curiosity</span>
-    </article>
-
-    <article class="toy t-read">
-      <div class="stage" aria-hidden="true">
-        <svg viewBox="0 0 200 120" class="ico">
-          <path class="cover" d="M100 34c-14-8-34-10-52-7v62c18-3 38-1 52 7 14-8 34-10 52-7V27c-18-3-38-1-52 7z" />
-          <line class="spine" x1="100" y1="34" x2="100" y2="96" />
-          <g class="lines"><line x1="60" y1="44" x2="88" y2="47" /><line x1="60" y1="54" x2="88" y2="57" /><line x1="60" y1="64" x2="82" y2="66" />
-            <line x1="112" y1="47" x2="140" y2="44" /><line x1="112" y1="57" x2="140" y2="54" /></g>
-          <path class="page p1" d="M100 34c12-7 30-9 46-7v62c-16-2-34 0-46 7z" />
-          <path class="page p2" d="M100 34c12-7 30-9 46-7v62c-16-2-34 0-46 7z" />
-        </svg>
-      </div>
-      <h3>Reading</h3>
-      <p>Books on product, psychology and how people make decisions, plus the occasional novel to switch off.</p>
-      <span class="mono tagline">Mind · perspective</span>
-    </article>
-  </div>
-</section>
-
-<style>
-  .off { padding-block: clamp(56px, 8vw, 110px); border-top: 1.5px solid var(--line); }
-  .off-head h2 { font-size: clamp(40px, 6vw, 92px); letter-spacing: -.055em; line-height: .95; margin: 12px 0 clamp(28px, 4vw, 44px); font-weight: 800; }
-  .off-head .serif { font-weight: 400; color: var(--accent-text); }
-  .toys { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
-  .toy { display: flex; flex-direction: column; gap: 8px; padding: 10px 10px 22px; border-radius: 24px; background: var(--surface); box-shadow: inset 0 0 0 1px var(--line); }
-  .toy > h3, .toy > p, .toy > .tagline { margin-inline: 12px; }
-  .toy h3 { margin-top: 10px; margin-bottom: 0; font-size: 24px; letter-spacing: -.03em; }
-  .toy > p { margin: 0 12px; color: var(--muted); font-size: 15.5px; }
-  .tagline { margin-top: auto; padding-top: 12px; color: var(--muted); }
-  .stage { height: 200px; border-radius: 16px; display: grid; place-items: center; background: var(--plate); }
-  .ico { width: 62%; overflow: visible; fill: none; stroke: var(--text); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
-  .toy { --spd: 1; }
-  .toy:hover { --spd: .6; }
-
-  /* Training: the bar is lifted, held, lowered */
-  .lift { animation: lift calc(2.6s * var(--spd)) var(--ease) infinite; transform-origin: 100px 55px; }
-  .plate { fill: var(--coin); stroke: var(--text); }
-  .plate.sm { fill: color-mix(in oklab, var(--coin) 55%, var(--bg)); }
-  .floor { stroke: var(--line-strong); opacity: .4; }
-  .sweat circle { fill: var(--text); stroke: none; opacity: 0; animation: sweat calc(2.6s * var(--spd)) infinite; }
-  @keyframes lift { 0%, 12% { transform: translateY(36px); } 42%, 62% { transform: translateY(-6px) rotate(-1.5deg); } 92%, 100% { transform: translateY(36px); } }
-  @keyframes sweat { 0%, 40% { opacity: 0; transform: translateY(0); } 55% { opacity: .5; } 75%, 100% { opacity: 0; transform: translateY(8px); } }
-
-  /* Gaming: controller bobs, buttons light in sequence */
-  .pad { animation: bob calc(3s * var(--spd)) ease-in-out infinite; transform-origin: 100px 64px; }
-  .body { fill: color-mix(in oklab, var(--surface) 60%, var(--bg)); }
-  .b { fill: var(--bg); }
-  .b1 { animation: btn calc(1.6s * var(--spd)) infinite; --on: #e5484d; }
-  .b2 { animation: btn calc(1.6s * var(--spd)) .4s infinite; --on: #2f6bff; }
-  .b3 { animation: btn calc(1.6s * var(--spd)) .8s infinite; --on: var(--coin); }
-  .b4 { animation: btn calc(1.6s * var(--spd)) 1.2s infinite; --on: #2fb36a; }
-  .dpad { animation: dp calc(1.6s * var(--spd)) infinite; }
-  .spark { stroke: var(--coin); opacity: 0; animation: spark calc(3s * var(--spd)) infinite; }
-  @keyframes bob { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-5px) rotate(-2deg); } }
-  @keyframes btn { 0%, 30% { fill: var(--on); } 40%, 100% { fill: var(--bg); } }
-  @keyframes dp { 0%, 100% { transform: translate(0, 0); } 25% { transform: translate(-1.5px, 0); } 75% { transform: translate(0, 1.5px); } }
-  @keyframes spark { 0%, 55% { opacity: 0; transform: translateY(6px); } 65% { opacity: 1; } 85%, 100% { opacity: 0; transform: translateY(-4px); } }
-
-  /* Reading: pages turn right to left */
-  .cover { fill: color-mix(in oklab, var(--surface) 60%, var(--bg)); }
-  .lines line { stroke: var(--muted); stroke-width: 2; }
-  .page { fill: var(--bg); transform-origin: 100px 60px; animation: flip calc(3.2s * var(--spd)) var(--ease) infinite; }
-  .p2 { animation-delay: calc(1.6s * var(--spd)); }
-  @keyframes flip { 0%, 10% { transform: scaleX(1); } 50% { transform: scaleX(0); } 90%, 100% { transform: scaleX(-1); opacity: 0; } }
-
-  @media (prefers-reduced-motion: reduce) { .ico * { animation: none !important; } .page { display: none; } }
-  @media (max-width: 1000px) { .toys { grid-template-columns: 1fr 1fr; } }
-  @media (max-width: 640px) { .toys { grid-template-columns: 1fr; } }
-</style>
+<LineList id="o-title" label="Off the clock" items={items} cols={3}>When I’m not in <span class="serif">Figma</span></LineList>
