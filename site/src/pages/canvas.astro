@@ -2,7 +2,6 @@
 // PROTOTYPE: the homepage as a Figma-style canvas. Drag to pan, scroll/pinch to zoom.
 // Everything is real DOM (links, text) so it stays accessible; "List view" goes back to the classic homepage.
 import Base from '../layouts/Base.astro';
-import Nav from '../components/Nav.astro';
 import Terminal from '../components/Terminal.astro';
 import { Image } from 'astro:assets';
 import { featured, others } from '../data/projects';
@@ -37,8 +36,17 @@ const notes = [
 ] as const;
 ---
 <Base title="Tosin Lasisi: Senior Product Designer (canvas)">
+  <!-- Canvas is tablet/desktop only: phones (≤800px, same cut-off as the homepage) go to the list view -->
+  <script is:inline>if (matchMedia('(max-width: 800px)').matches) location.replace('/?list' + location.hash);</script>
   <div class="cv-page">
-    <Nav />
+    <!-- No site nav on the canvas: just view + theme pills, so the board is for exploring -->
+    <div class="pills" role="group" aria-label="View and theme">
+      <div class="pill seg">
+        <a href="/?list" data-mode="list" aria-label="List view" title="List view"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M2 4h12M2 8h12M2 12h12" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg></a>
+        <a href="/canvas" data-mode="canvas" aria-label="Canvas view" title="Canvas view" aria-current="true"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><rect x="2" y="2" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.5" fill="none"/><rect x="9" y="4" width="5" height="4" rx="1" stroke="currentColor" stroke-width="1.5" fill="none"/><rect x="4" y="9" width="6" height="5" rx="1" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></a>
+      </div>
+      <button class="pill theme" data-theme-toggle aria-label="Switch light or dark theme" title="Theme"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor"/></svg></button>
+    </div>
 
     <div class="viewport" id="vp" aria-label="Portfolio canvas. Drag to pan, scroll to zoom." tabindex="-1">
       <div class="board" id="board">
@@ -170,7 +178,7 @@ const notes = [
       anim = requestAnimationFrame(step);
     };
     const frame = (r, pad = 60, max = 1) => {
-      const vw = vp.clientWidth, vh = vp.clientHeight - (innerWidth >= 1200 ? 20 : 70) - 80;
+      const vw = vp.clientWidth, vh = vp.clientHeight - 20 - 80;
       const ts = clampS(Math.min((vw - pad * 2) / r.w, (vh - pad * 2) / r.h, max));
       return [vw / 2 - (r.l + r.w / 2) * ts, 70 + vh / 2 - (r.t + r.h / 2) * ts, ts];
     };
@@ -233,7 +241,7 @@ const notes = [
       ({ in: () => zoomAt(cx, cy, s * 1.25), out: () => zoomAt(cx, cy, s / 1.25), fit: () => fitAll(), label: () => fitAll(), home: () => goHome() })[b.dataset.z]();
     });
     addEventListener('keydown', e => {
-      if (e.target.closest('input, textarea') || document.getElementById('nav').classList.contains('open')) return;
+      if (e.target.closest('input, textarea')) return;
       if (e.key === '+' || e.key === '=') { const r0 = vp.getBoundingClientRect(); zoomAt(r0.left + r0.width / 2, r0.top + r0.height / 2, s * 1.25); };
       if (e.key === '-') { const r0 = vp.getBoundingClientRect(); zoomAt(r0.left + r0.width / 2, r0.top + r0.height / 2, s / 1.25); };
       if (e.key === '0') fitAll();
@@ -243,15 +251,12 @@ const notes = [
     board.addEventListener('focusin', e => { const it = e.target.closest('.item'); if (it) flyTo(...frame(rectOf(it), 80, Math.max(s, .9)), 600); });
 
     addEventListener('resize', () => apply());
-    document.querySelector('.toolbar [data-mode]').addEventListener('click', () => { try { localStorage.setItem('homeMode', 'list'); } catch {} });
+    document.querySelectorAll('[data-mode]').forEach(a => a.addEventListener('click', () => { try { localStorage.setItem('homeMode', a.dataset.mode); } catch {} }));
   })();
 </script>
 
 <style>
   :global(body:has(.cv-page)) { overflow: hidden; height: 100svh; }
-  .cv-page :global(.nav) { position: fixed; left: 0; right: 0; }
-  .cv-page :global(.nav.hide) { transform: none; }
-  .cv-page :global(.nav::before) { opacity: 1; }
 
   .viewport { position: fixed; inset: 0; overflow: hidden; cursor: grab; touch-action: none; user-select: none; outline: none;
     background-color: var(--bg);
@@ -368,11 +373,13 @@ const notes = [
   .hint .m { display: none; }
   @media (max-width: 700px) { .hint .d { display: none; } .hint .m { display: inline; } }
   @media (max-width: 700px) { .minimap { display: none; } .toolbar [data-z='home'] { display: none; } }
-  /* Desktop: same side rail as the list view; the board, toolbar and hint sit to its right */
-  @media (min-width: 1200px) {
-    :global(body:has(.cv-page)) { padding-left: 0 !important; }
-    :global(body:has(.cv-page) .rail) { background: var(--bg); box-shadow: 1px 0 0 var(--line); }
-    .viewport { left: var(--rail); }
-    .toolbar, .hint { left: calc(50% + var(--rail) / 2); }
-  }
+  /* Bottom-left pills: List/Canvas switch + theme */
+  .pills { position: fixed; left: 18px; bottom: 18px; z-index: 40; display: flex; gap: 8px; }
+  .pill { display: inline-flex; align-items: center; height: 46px; padding: 5px; border-radius: 99px; color: var(--text); background: color-mix(in oklab, var(--surface) 96%, transparent); backdrop-filter: blur(10px); box-shadow: inset 0 0 0 1px var(--line), 0 10px 30px -14px rgba(0,0,0,.4); }
+  .seg a { display: grid; place-items: center; width: 36px; height: 36px; border-radius: 99px; color: var(--muted); transition: background .2s, color .2s; }
+  .seg a:hover { color: var(--text); }
+  .seg a[aria-current] { background: var(--text); color: var(--bg); }
+  .theme { appearance: none; border: 0; width: 46px; justify-content: center; cursor: pointer; }
+  .theme svg { transition: transform .4s var(--ease); }
+  .theme:hover svg { transform: rotate(180deg); }
 </style>

@@ -83,7 +83,6 @@ const isCurrent = (m: string) => m && (m === '/' ? path === '/' : path.startsWit
             </li>
           ))}
         </ul>
-        <a class="m-canvas mono" href="/canvas" data-mode="canvas">⊞ View as canvas</a>
       </nav>
 
       <aside class="m-side">
@@ -242,11 +241,9 @@ const isCurrent = (m: string) => m && (m === '/' ? path === '/' : path.startsWit
   .mode-nudge b { display: none; }
   .mode-nudge.on { opacity: 1; transform: none; }
   .open .mode-nudge { opacity: 0 !important; }
-  .m-main a.m-canvas { display: none; grid-template-columns: none; align-items: center; gap: 8px; margin-top: 20px; padding: 11px 16px; border-radius: 99px; border: 1.5px solid var(--line-strong); width: max-content; white-space: nowrap; font-size: 12px; }
   @media (max-width: 800px) {
     .mode { display: none; }
-    .m-main a.m-canvas { display: inline-flex; }
-    .menu-inner { grid-template-columns: 1fr; padding-top: 96px; }
+      .menu-inner { grid-template-columns: 1fr; padding-top: 96px; }
     .m-main a { grid-template-columns: 40px 1fr auto; }
   }
   @media (prefers-reduced-motion: reduce) { .menu { transition: none; } }
