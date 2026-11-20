@@ -38,7 +38,7 @@ const notes = [
 ---
 <Base title="Tosin Lasisi: Senior Product Designer (canvas)">
   <div class="cv-page">
-    <Nav rail={false} />
+    <Nav />
 
     <div class="viewport" id="vp" aria-label="Portfolio canvas. Drag to pan, scroll to zoom." tabindex="-1">
       <div class="board" id="board">
@@ -159,7 +159,7 @@ const notes = [
       drawMini();
     };
     const clampS = v => Math.min(1.6, Math.max(0.18, v));
-    const zoomAt = (cx, cy, ns) => { ns = clampS(ns); x = cx - (cx - x) * (ns / s); y = cy - (cy - y) * (ns / s); s = ns; apply(); };
+    const zoomAt = (cx, cy, ns) => { const o = vp.getBoundingClientRect(); cx -= o.left; cy -= o.top; ns = clampS(ns); x = cx - (cx - x) * (ns / s); y = cy - (cy - y) * (ns / s); s = ns; apply(); };
     const rectOf = el => ({ l: el.offsetLeft, t: el.offsetTop, w: el.offsetWidth, h: el.offsetHeight });
     const flyTo = (tx, ty, ts, dur = 900) => {
       cancelAnimationFrame(anim);
@@ -170,7 +170,7 @@ const notes = [
       anim = requestAnimationFrame(step);
     };
     const frame = (r, pad = 60, max = 1) => {
-      const vw = vp.clientWidth, vh = vp.clientHeight - 70 - 80;
+      const vw = vp.clientWidth, vh = vp.clientHeight - (innerWidth >= 1200 ? 20 : 70) - 80;
       const ts = clampS(Math.min((vw - pad * 2) / r.w, (vh - pad * 2) / r.h, max));
       return [vw / 2 - (r.l + r.w / 2) * ts, 70 + vh / 2 - (r.t + r.h / 2) * ts, ts];
     };
@@ -229,13 +229,13 @@ const notes = [
 
     document.querySelector('.toolbar').addEventListener('click', e => {
       const b = e.target.closest('[data-z]'); if (!b) return;
-      const cx = innerWidth / 2, cy = innerHeight / 2;
+      const r0 = vp.getBoundingClientRect(), cx = r0.left + r0.width / 2, cy = r0.top + r0.height / 2;
       ({ in: () => zoomAt(cx, cy, s * 1.25), out: () => zoomAt(cx, cy, s / 1.25), fit: () => fitAll(), label: () => fitAll(), home: () => goHome() })[b.dataset.z]();
     });
     addEventListener('keydown', e => {
       if (e.target.closest('input, textarea') || document.getElementById('nav').classList.contains('open')) return;
-      if (e.key === '+' || e.key === '=') zoomAt(innerWidth / 2, innerHeight / 2, s * 1.25);
-      if (e.key === '-') zoomAt(innerWidth / 2, innerHeight / 2, s / 1.25);
+      if (e.key === '+' || e.key === '=') { const r0 = vp.getBoundingClientRect(); zoomAt(r0.left + r0.width / 2, r0.top + r0.height / 2, s * 1.25); };
+      if (e.key === '-') { const r0 = vp.getBoundingClientRect(); zoomAt(r0.left + r0.width / 2, r0.top + r0.height / 2, s / 1.25); };
       if (e.key === '0') fitAll();
       if (e.key === 'h' || e.key === 'H') goHome();
     });
@@ -368,4 +368,11 @@ const notes = [
   .hint .m { display: none; }
   @media (max-width: 700px) { .hint .d { display: none; } .hint .m { display: inline; } }
   @media (max-width: 700px) { .minimap { display: none; } .toolbar [data-z='home'] { display: none; } }
+  /* Desktop: same side rail as the list view; the board, toolbar and hint sit to its right */
+  @media (min-width: 1200px) {
+    :global(body:has(.cv-page)) { padding-left: 0 !important; }
+    :global(body:has(.cv-page) .rail) { background: var(--bg); box-shadow: 1px 0 0 var(--line); }
+    .viewport { left: var(--rail); }
+    .toolbar, .hint { left: calc(50% + var(--rail) / 2); }
+  }
 </style>
