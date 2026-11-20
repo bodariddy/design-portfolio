@@ -4,6 +4,7 @@ export type Project = {
   ch: number;
   name: string;
   headline: string;
+  story?: string; // first-person, conversational line for the work list (ref: Bill Guo)
   tags: string[];
   years: string;
   colour: string; // CSS var name of its colour world
@@ -23,6 +24,7 @@ export const projects: Project[] = [
     ch: 1,
     name: 'Roqqu',
     headline: 'Making crypto feel safe enough to trade',
+    story: 'Rebuilt onboarding so first‑time traders could trust crypto enough to start.',
     tags: ['Crypto', 'Mobile'],
     years: '2023 – now',
     colour: '--w-roqqu',
@@ -44,6 +46,7 @@ export const projects: Project[] = [
     ch: 2,
     name: 'Qash',
     headline: 'One app for money across borders: 8 currencies, cards and passkeys',
+    story: 'Co-designed one app for moving money across eight currencies.',
     tags: ['Fintech', 'Payments', 'Cards'],
     years: 'Closed beta',
     colour: '--w-qash',
@@ -65,6 +68,7 @@ export const projects: Project[] = [
     ch: 3,
     name: 'EN1',
     headline: 'A luxury EV brand’s digital platform, built from zero',
+    story: 'Designed a luxury EV brand’s digital platform from the ground up.',
     tags: ['Automotive', 'Web + App', 'Design system'],
     years: '2023 – 2026',
     colour: '--w-en1',
@@ -86,6 +90,7 @@ export const projects: Project[] = [
     ch: 4,
     name: 'Clink',
     headline: 'Co-founding a payment-link tool: ₦2M+ volume, and what fraud taught me',
+    story: 'Co-founded a payment-link tool, and learned what fraud teaches you.',
     tags: ['Fintech', 'Founder'],
     years: '2021 – 2023',
     colour: '--w-clink',
@@ -130,6 +135,7 @@ export const projects: Project[] = [
     ch: 5,
     name: 'Weave',
     headline: 'A shared account for groups: money the whole group can see',
+    story: 'Designed a shared account so the whole group can see its money.',
     tags: ['Fintech', 'Group payments', 'Mobile'],
     years: 'Pre-launch',
     colour: '--w-weave',
