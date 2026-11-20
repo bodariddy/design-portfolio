@@ -26,7 +26,7 @@ const covers: Record<string, Cover> = {
 // Board positions (px on a 3700 × 2500 board). Slight rotations keep it feeling hand-placed.
 const pos: Record<string, [number, number, number]> = {
   roqqu: [260, 220, -1.2], qash: [820, 120, .8], en1: [2420, 160, 1], clink: [2980, 560, -1],
-  'glover-lite': [300, 1560, .8], weave: [860, 1660, -.8],
+  'glover-lite': [300, 1560, .8], weave: [300, 1560, -.8],
 };
 const notes = [
   ['Problem first', 'Discovery before design, so the team agrees on why before what.', '#ffe680', -3],
@@ -97,7 +97,7 @@ const notes = [
 
         <!-- OTHER PROJECTS AS STAMPS -->
         {others.map((o, i) => (
-          <a class="item stamp" href={`/work/${o.slug}`} style={`left:${940 + i * 200}px;top:${900 + i * 70}px;--r:${i ? 6 : -5}deg;--m1:${o.mesh![0]};--m2:${o.mesh![1]}`} data-label={i === 0 ? 'Other projects' : ''}>
+          <a class="item stamp" href={`/work/${o.slug}`} style={`left:${898 + i * 148}px;top:${890 + i * 55}px;--r:${[-5, 6, -3][i % 3]}deg;--m1:${o.mesh![0]};--m2:${o.mesh![1]}`} data-label={i === 0 ? 'Other projects' : ''}>
             <span class="st-in"><strong>{o.name}</strong><span class="mono">{o.metrics[0].value}</span><span class="mono yr">{o.years}</span></span>
           </a>
         ))}

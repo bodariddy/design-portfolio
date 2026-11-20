@@ -56,13 +56,6 @@ const receiptData = JSON.stringify(projects.map(p => ({ ch: p.ch, name: p.name, 
         <div class="s-row"><span class="s-small">12 views · 3 clicks</span><span class="s-small paid-count">1 paid</span></div>
       </section>
 
-      <!-- CH4 Glover Lite: pay for anything, no KYC -->
-      <section class="ch" data-for="5">
-        <p class="s-label">Hello 👋 · no KYC needed</p>
-        <div class="svc"><i>🎁</i><i>📞</i><i>💡</i><i>📶</i><i>📺</i><i>💱</i></div>
-        <div class="toast toast-soft">Airtime ₦2,000 · Success <b>✓</b></div>
-        <div class="s-row"><span class="s-small">Gift cards · bills · airtime</span><span class="s-strong">2 taps</span></div>
-      </section>
 
       <!-- CH5 Qash: dollar card slides in, naira converts to dollars -->
       <section class="ch" data-for="2">
@@ -72,8 +65,8 @@ const receiptData = JSON.stringify(projects.map(p => ({ ch: p.ch, name: p.name, 
         <div class="s-row"><span class="s-small">₦1,850,000 → $1,250</span><span class="s-small conv">Converted ✓</span></div>
       </section>
 
-      <!-- CH6 Weave: group payout waits for approvals -->
-      <section class="ch" data-for="6">
+      <!-- CH5 Weave: group payout waits for approvals -->
+      <section class="ch" data-for="5">
         <p class="s-label">Harmony Court · Purse</p>
         <p class="s-big" data-count="482500" data-prefix="₦">₦0</p>
         <div class="appr"><span>Gate repair · ₦185,000</span><span class="sig"><i></i><i></i><i></i></span></div>
@@ -90,7 +83,7 @@ const receiptData = JSON.stringify(projects.map(p => ({ ch: p.ch, name: p.name, 
       <div class="scanlines" aria-hidden="true"></div>
     </div>
 
-    <div class="brand mono"><span>TL·PAY</span><span class="brand-actions"><button class="play-btn mono" data-action="game" aria-label="Play a hidden game">G · play</button><button class="mini-theme" data-action="theme" aria-label="Switch light or dark theme"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor"/></svg></button></span><span class="leds"><i></i><i></i></span></div>
+    <div class="brand mono"><span>TL·PAY</span><span class="brand-actions"><button class="mini-theme" data-action="theme" aria-label="Switch light or dark theme"><svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor"/></svg></button></span><span class="leds"><i></i><i></i></span></div>
 
     <div class="keys">
       {projects.map(p => (
@@ -98,6 +91,7 @@ const receiptData = JSON.stringify(projects.map(p => ({ ch: p.ch, name: p.name, 
           <b>{p.ch}</b><small>{p.name.split(' ')[0].slice(0, 6)}</small>
         </button>
       ))}
+      <button class="key key-game" data-action="game" aria-label="Play a hidden game (G)"><b>G</b><small>PLAY</small></button>
       <button class="key fn fn-red" data-action="pause" aria-label="Pause autoplay"><b><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6l12 12M18 6L6 18"/></svg></b></button>
       <button class="key fn fn-yellow" data-action="prev" aria-label="Previous project"><b><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></b></button>
       <a class="key fn fn-green" id="pos-ok" href="#work" aria-label="Open this case study"><b>OK</b></a>
@@ -324,8 +318,6 @@ const receiptData = JSON.stringify(projects.map(p => ({ ch: p.ch, name: p.name, 
   .ch-game canvas { width: 100%; height: auto; image-rendering: pixelated; border-radius: 4px; }
   .g-hud { display: flex; justify-content: space-between; font-size: 9px; opacity: .8; }
   .g-hud b { color: var(--coin); }
-  .play-btn { appearance: none; border: 1px dashed var(--line-strong); background: none; color: var(--muted); border-radius: 6px; padding: 2px 6px; font-size: 9px; cursor: pointer; opacity: .7; transition: opacity .2s, background .2s; }
-  .play-btn:hover { opacity: 1; background: color-mix(in oklab, var(--coin) 20%, transparent); color: var(--text); }
   .gaming .key[data-key='2'] small, .gaming .key[data-key='4'] small, .gaming .key[data-key='5'] small, .gaming .key[data-key='6'] small { visibility: hidden; }
   .gaming .key[data-key='2']::after { content: '↑'; } .gaming .key[data-key='4']::after { content: '←'; } .gaming .key[data-key='5']::after { content: '↓'; } .gaming .key[data-key='6']::after { content: '→'; }
   .brand-actions { display: inline-flex; gap: 6px; align-items: center; }
@@ -467,6 +459,8 @@ const receiptData = JSON.stringify(projects.map(p => ({ ch: p.ch, name: p.name, 
   .key:active { transform: translateY(3px); box-shadow: 0 0 0 var(--line-strong); }
   .key.active { background: var(--coin); color: #171614; }
   .key.active small { color: #171614; opacity: .7; }
+  .key-game { border-style: dashed; box-shadow: none; background: transparent; }
+  .key-game b { color: var(--coin); }
   .fn b { font-size: 15px; }
   .fn-red { background: #e5484d; color: #fff; } .fn-yellow { background: #f2c200; color: #171614; } .fn-green { background: #2fb36a; color: #fff; }
   .fn-red:hover { background: #d63c41 } .fn-yellow:hover { background: #e0b300 } .fn-green:hover { background: #27a25e }
