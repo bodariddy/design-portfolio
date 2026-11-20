@@ -4,6 +4,7 @@ import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
 import Experience from '../components/Experience.astro';
 import Contact from '../components/Contact.astro';
+import OffClock from '../components/OffClock.astro';
 import portrait from '../assets/portrait.png';
 import { site, updated } from '../data/site';
 
@@ -20,11 +21,6 @@ const toolkit = {
   Build: ['Framer', 'Webflow', 'AI-assisted building', 'Claude Code', 'Vercel'],
 };
 
-const offClock = [
-  { k: 'training', title: 'Training', line: 'Working out keeps me disciplined and clear-headed. It’s also where a lot of my best ideas show up.', meta: 'Body · discipline' },
-  { k: 'gaming', title: 'Gaming', line: 'It started in my dad’s study and never stopped. Games are still my favourite lesson in onboarding, feedback and reward.', meta: 'Play · curiosity' },
-  { k: 'reading', title: 'Reading', line: 'Books on product, psychology and how people make decisions, plus the occasional novel to switch off.', meta: 'Mind · perspective' },
-];
 ---
 <Base title="About · Tosin Lasisi" description="Tosin Lasisi is a senior product designer in Lagos with a Computer Science background, designing crypto, fintech and platform products.">
   <Nav />
@@ -100,27 +96,7 @@ const offClock = [
 
     <Experience title="Where I’ve been" />
 
-    <!-- OFF THE CLOCK (ref: Commissioner) -->
-    <section class="off wrap" aria-labelledby="o-title">
-      <div class="off-head">
-        <p class="mono muted">05 · Off the clock</p>
-        <h2 id="o-title">When I’m not in <span class="serif">Figma</span></h2>
-      </div>
-      <ul class="off-grid" role="list" data-reveal>
-        {offClock.map(o => (
-          <li class={`card card-${o.k}`}>
-            <div class="art" aria-hidden="true">
-              {o.k === 'training' && <svg viewBox="0 0 120 60"><rect x="8" y="18" width="10" height="24" rx="3"/><rect x="20" y="12" width="10" height="36" rx="3"/><rect x="90" y="12" width="10" height="36" rx="3"/><rect x="102" y="18" width="10" height="24" rx="3"/><line x1="30" y1="30" x2="90" y2="30"/></svg>}
-              {o.k === 'gaming' && <svg viewBox="0 0 120 60"><path d="M30 14h60c14 0 22 12 22 24 0 10-8 14-14 10l-10-8H32l-10 8c-6 4-14 0-14-10 0-12 8-24 22-24z"/><line x1="32" y1="24" x2="32" y2="36"/><line x1="26" y1="30" x2="38" y2="30"/><circle cx="84" cy="26" r="3" class="f"/><circle cx="92" cy="33" r="3" class="f"/></svg>}
-              {o.k === 'reading' && <svg viewBox="0 0 120 60"><path d="M60 16c-10-6-26-8-40-6v38c14-2 30 0 40 6 10-6 26-8 40-6V10c-14-2-30 0-40 6z"/><line x1="60" y1="16" x2="60" y2="54"/><line x1="30" y1="22" x2="50" y2="24"/><line x1="30" y1="30" x2="50" y2="32"/><line x1="70" y1="24" x2="90" y2="22"/></svg>}
-            </div>
-            <h3>{o.title}</h3>
-            <p>{o.line}</p>
-            <span class="mono muted meta">{o.meta}</span>
-          </li>
-        ))}
-      </ul>
-    </section>
+    <OffClock />
 
     <Contact />
   </main>
