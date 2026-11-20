@@ -5,7 +5,7 @@ import Base from '../layouts/Base.astro';
 import Terminal from '../components/Terminal.astro';
 import { Image } from 'astro:assets';
 import { featured, others } from '../data/projects';
-import { site, experience, testimonials } from '../data/site';
+import { site, experience } from '../data/site';
 import portrait from '../assets/portrait.png';
 import r1 from '../assets/work/roqqu/home.webp';
 import r2 from '../assets/work/roqqu/stocks-home.webp';
@@ -113,9 +113,6 @@ const notes = [
         </div>
 
         <!-- TESTIMONIALS -->
-        <div class="item quotes" style="left:2560px;top:2060px" data-label="Kind words">
-          {testimonials.map(t => <blockquote class={t.placeholder ? 'q-ph' : ''}>“{t.quote}”<cite>{t.name}, {t.role} · {t.company}</cite></blockquote>)}
-        </div>
 
         <!-- CONTACT -->
         <section class="item contact" style="left:1460px;top:2140px" data-label="Contact">
@@ -340,10 +337,6 @@ const notes = [
   .exp .m { font-size: 12px; background: color-mix(in oklab, var(--coin) 22%, transparent); padding: 3px 8px; border-radius: 6px; }
 
   /* Quotes */
-  .quotes { width: 760px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-  .quotes blockquote { margin: 0; padding: 18px; border-radius: 18px; background: var(--surface); box-shadow: inset 0 0 0 1px var(--line); font-size: 15px; line-height: 1.45; }
-  .quotes blockquote.q-ph { color: var(--muted); font-style: italic; box-shadow: inset 0 0 0 1.5px color-mix(in oklab, var(--coin) 55%, transparent); }
-  .quotes cite { display: block; margin-top: 12px; font-style: normal; font-size: 12.5px; color: var(--text); }
 
   /* Contact */
   .contact { width: 900px; }

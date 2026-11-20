@@ -6,10 +6,8 @@ import WorkGrid from '../components/WorkGrid.astro';
 import Nav from '../components/Nav.astro';
 import Experience from '../components/Experience.astro';
 import Contact from '../components/Contact.astro';
-import Testimonials from '../components/Testimonials.astro';
 import { site } from '../data/site';
 
-const statement = 'I make money feel simple. For six years I’ve designed the moments where people trust a product with their savings, their salary and their business.';
 const email = site.email;
 ---
 <Base>
@@ -30,7 +28,7 @@ const email = site.email;
     <!-- HERO -->
     <section class="hero wrap">
       <div class="hero-copy">
-        <p class="mono eyebrow"><span class="live"></span> Open to senior &amp; lead roles</p>
+        <p class="label eyebrow"><span class="live"></span> Open to senior &amp; lead roles</p>
         <h1>I design how <span class="serif">money</span> moves.</h1>
         <p class="sub">Senior Product Designer with 6+ years across crypto, fintech and platforms in Africa and beyond. I take products from first discovery to launch, test ideas in real builds, and measure the result.</p>
         <div class="hero-ctas">
@@ -46,21 +44,6 @@ const email = site.email;
 
     <WorkGrid />
 
-    <!-- STATEMENT: words light up as you scroll (ref: HUMAN.md) -->
-    <section class="statement wrap" aria-label="About">
-      <p class="mono muted">How I work</p>
-      <p class="big" id="statement">
-        {statement.split(' ').map(w => <span>{w} </span>)}
-      </p>
-      <div class="principles" data-reveal>
-        <div><h3>Problem first</h3><p>Discovery before design: research, journey maps and problem-framing workshops, so the team agrees on <em>why</em> before arguing about <em>what</em>.</p></div>
-        <div><h3>High-stakes clarity</h3><p>KYC, transfers, irreversible actions. I design these moments for nervous users, because that’s where trust is won or lost.</p></div>
-        <div><h3>Systems, not screens</h3><p>Design systems and patterns that let teams ship faster, from EN1’s first system to Roqqu’s trading surfaces.</p></div>
-        <div><h3>Measured</h3><p>Success metrics agreed up front, usability tests before launch, data after.</p></div>
-      </div>
-    </section>
-
-    <Testimonials />
     <Experience />
 
     <Contact />
@@ -73,17 +56,6 @@ const email = site.email;
   const tick = () => lt.textContent = new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', timeZone: 'Africa/Lagos' });
   tick(); setInterval(tick, 30000);
 
-  // Statement: light words up as it scrolls through the viewport
-  const words = [...document.querySelectorAll('#statement span')];
-  const st = document.getElementById('statement');
-  const onScroll = () => {
-    const r = st.getBoundingClientRect();
-    const k = Math.min(1, Math.max(0, (innerHeight * .85 - r.top) / (r.height + innerHeight * .35)));
-    const n = Math.round(k * words.length);
-    words.forEach((w, i) => w.classList.toggle('lit', i < n));
-  };
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches) words.forEach(w => w.classList.add('lit'));
-  else { addEventListener('scroll', onScroll, { passive: true }); onScroll(); }
 </script>
 
 <style>
@@ -102,16 +74,6 @@ const email = site.email;
     .hero-object { order: 2; }
   }
 
-  :global(.exp) { border-top: 1.5px solid var(--line); padding-top: clamp(56px, 8vw, 110px); }
-  .statement { padding-block: clamp(72px, 10vw, 140px); }
-  .big { font-size: clamp(32px, 4.6vw, 72px); line-height: 1.05; letter-spacing: -.045em; font-weight: 700; margin: 18px 0 clamp(40px, 5vw, 72px); max-width: 22ch; }
-  .big span { color: color-mix(in oklab, var(--text) 18%, var(--bg)); transition: color .35s var(--ease); }
-  .big span.lit { color: var(--text); }
-  .principles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; border-top: 1.5px solid var(--line); padding-top: 28px; }
-  .principles h3 { margin: 0 0 8px; font-size: 20px; letter-spacing: -.02em; }
-  .principles p { margin: 0; color: var(--muted); font-size: 15.5px; }
-  .principles em { font-family: var(--f-serif); font-size: 1.15em; color: var(--text); }
-  @media (max-width: 900px) { .principles { grid-template-columns: 1fr 1fr; } }
-  @media (max-width: 560px) { .principles { grid-template-columns: 1fr; } }
+  :global(.exp) { padding-top: var(--section); }
 
 </style>

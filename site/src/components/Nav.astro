@@ -36,7 +36,6 @@ const isCurrent = (m: string) => m && (m === '/' ? path === '/' : path.startsWit
           <div class="mode" role="group" aria-label="View mode">
             <a href="/?list" data-mode="list" aria-label="List view" title="List view" aria-current={homeMode === 'list' ? 'true' : undefined}><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M2 4h12M2 8h12M2 12h12" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg></a>
             <a href="/canvas" data-mode="canvas" aria-label="Canvas view" title="Canvas view" aria-current={homeMode === 'canvas' ? 'true' : undefined}><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><rect x="2" y="2" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.5" fill="none"/><rect x="9" y="4" width="5" height="4" rx="1" stroke="currentColor" stroke-width="1.5" fill="none"/><rect x="4" y="9" width="6" height="5" rx="1" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></a>
-            <span class="mode-nudge r-nudge mono" hidden>New · explore my work as a canvas</span>
           </div>
         )}
         <button class="icon-btn" data-theme-toggle aria-label="Switch light or dark theme"><svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor"/></svg></button>
@@ -58,7 +57,6 @@ const isCurrent = (m: string) => m && (m === '/' ? path === '/' : path.startsWit
           <a href="/canvas" data-mode="canvas" aria-label="Canvas view" title="Canvas view" aria-current={homeMode === 'canvas' ? 'true' : undefined}>
             <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><rect x="2" y="2" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.5" fill="none"/><rect x="9" y="4" width="5" height="4" rx="1" stroke="currentColor" stroke-width="1.5" fill="none"/><rect x="4" y="9" width="6" height="5" rx="1" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
           </a>
-          <span class="mode-nudge mono" hidden>New · explore my work as a canvas <b aria-hidden="true">↑</b></span>
         </div>
       )}
       <button class="icon-btn" data-theme-toggle aria-label="Switch light or dark theme">
@@ -87,7 +85,7 @@ const isCurrent = (m: string) => m && (m === '/' ? path === '/' : path.startsWit
 
       <aside class="m-side">
         <div class="m-block" style="--i:4">
-          <p class="mono muted">Featured work</p>
+          <p class="label">Featured work</p>
           <ul role="list" class="m-work">
             {featured.map(p => (
               <li><a href={`/work/${p.slug}`} style={`--world: var(${p.colour})`}><i></i>{p.name}<span class="mono muted">{p.years}</span></a></li>
@@ -95,7 +93,7 @@ const isCurrent = (m: string) => m && (m === '/' ? path === '/' : path.startsWit
           </ul>
         </div>
         <div class="m-block" style="--i:5">
-          <p class="mono muted">Contact</p>
+          <p class="label">Contact</p>
           <a class="m-cta" href={`mailto:${site.email}`}>Get in touch →</a>
           <a class="m-mail" href={`mailto:${site.email}`}>{site.email}</a>
           <a href={site.linkedin} rel="noopener">LinkedIn ↗</a>
@@ -126,16 +124,6 @@ const isCurrent = (m: string) => m && (m === '/' ? path === '/' : path.startsWit
     addEventListener('keydown', e => { if (e.key === 'Escape' && nav.classList.contains('open')) { set(false); btn.focus(); } });
     // View mode: remember the visitor's choice
     document.querySelectorAll('[data-mode]').forEach(a => a.addEventListener('click', () => { try { localStorage.setItem('homeMode', a.dataset.mode); } catch {} }));
-    // One-time nudge on the list homepage, after the intro
-    const nudge = [...document.querySelectorAll('.mode-nudge')].find(n => n.parentElement.offsetParent !== null);
-    if (nudge && location.pathname === '/' && matchMedia('(min-width: 801px)').matches) {
-      let seen = false; try { seen = localStorage.getItem('modeNudge') === '1'; } catch {}
-      if (!seen) {
-        const show = () => { nudge.hidden = false; requestAnimationFrame(() => nudge.classList.add('on')); try { localStorage.setItem('modeNudge', '1'); } catch {}
-          setTimeout(() => { nudge.classList.remove('on'); setTimeout(() => nudge.hidden = true, 500); }, 7000); };
-        setTimeout(show, document.documentElement.classList.contains('is-loading') ? 3000 : 900);
-      }
-    }
     // Rail scroll-spy on the homepage: Work / Contact light up as you reach them
     const spy = document.querySelectorAll('.rail [data-spy]');
     if (spy.length && location.pathname === '/' && 'IntersectionObserver' in window) addEventListener('DOMContentLoaded', () => {
@@ -148,8 +136,8 @@ const isCurrent = (m: string) => m && (m === '/' ? path === '/' : path.startsWit
     });
     // Lagos clock (shared attribute with the footer)
     const els = document.querySelectorAll('[data-lagos-clock]');
-    if (els.length) { const f = new Intl.DateTimeFormat('en-GB', { hour: 'numeric', minute: '2-digit', second: '2-digit', hour12: true, timeZone: 'Africa/Lagos' });
-      const t = () => { const v = f.format(new Date()).replace(' ', '').toLowerCase(); els.forEach(e => e.textContent = v); }; t(); setInterval(t, 1000); }
+    if (els.length) { const f = new Intl.DateTimeFormat('en-GB', { hour: 'numeric', minute: '2-digit', hour12: true, timeZone: 'Africa/Lagos' });
+      const t = () => { const v = f.format(new Date()).replace(' ', '').toLowerCase(); els.forEach(e => e.textContent = v); }; t(); setInterval(t, 15000); }
   })();
 </script>
 
@@ -176,8 +164,6 @@ const isCurrent = (m: string) => m && (m === '/' ? path === '/' : path.startsWit
   .r-status .live { width: 7px; height: 7px; border-radius: 50%; background: #2fb36a; }
   .r-time { margin: 0; color: var(--muted); font-size: 11px; font-variant-numeric: tabular-nums; }
   .rail .icon-btn { width: 34px; height: 34px; }
-  .r-nudge { top: auto !important; bottom: calc(100% + 12px); left: 0; right: auto !important; }
-  .r-nudge::before { top: auto !important; bottom: -5px; left: 44px; right: auto !important; }
 
   .nav { position: sticky; top: 0; z-index: 50; transition: transform .45s var(--ease); }
   .nav::before { content: ''; position: absolute; inset: 0; z-index: 0; opacity: 0; transition: opacity .3s; background: color-mix(in oklab, var(--bg) 84%, transparent); backdrop-filter: blur(14px) saturate(1.2); -webkit-backdrop-filter: blur(14px) saturate(1.2); box-shadow: 0 1px 0 var(--line); }
@@ -236,11 +222,6 @@ const isCurrent = (m: string) => m && (m === '/' ? path === '/' : path.startsWit
   .mode a { display: inline-grid; place-items: center; width: 32px; height: 28px; padding: 0; border-radius: 99px; font-size: 13.5px; font-weight: 600; text-decoration: none; color: var(--muted); transition: background .25s, color .25s; }
   .mode a:hover { color: var(--text); }
   .mode a[aria-current] { background: var(--text); color: var(--bg); }
-  .mode-nudge { position: absolute; top: calc(100% + 12px); right: 0; white-space: nowrap; padding: 8px 12px; border-radius: 10px; background: var(--coin); color: #171614; font-size: 11px; box-shadow: 0 10px 24px -10px rgba(0,0,0,.35); opacity: 0; transform: translateY(-6px); transition: opacity .4s, transform .5s var(--ease); pointer-events: none; }
-  .mode-nudge::before { content: ''; position: absolute; top: -5px; right: 13px; width: 10px; height: 10px; background: var(--coin); transform: rotate(45deg); }
-  .mode-nudge b { display: none; }
-  .mode-nudge.on { opacity: 1; transform: none; }
-  .open .mode-nudge { opacity: 0 !important; }
   @media (max-width: 800px) {
     .mode { display: none; }
       .menu-inner { grid-template-columns: 1fr; padding-top: 96px; }

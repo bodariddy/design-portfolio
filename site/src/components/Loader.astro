@@ -1,5 +1,5 @@
 ---
-// Homepage intro (~2.3s, every visit; skip with click / Enter / Esc; off for reduced motion).
+// Homepage intro (~2.3s, first visit only; skip with click / Enter / Esc; off for reduced motion).
 // A coin drops, lands on a line, the line becomes the POS terminal outline, the coin becomes
 // the screen glow, then the curtain lifts onto the real terminal.
 ---
@@ -31,7 +31,8 @@
   (function () {
     const el = document.getElementById('loader');
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduce) { el.remove(); return; }
+    let seen = false; try { seen = localStorage.getItem('introSeen') === '1'; localStorage.setItem('introSeen', '1'); } catch {}
+    if (reduce || seen) { el.remove(); return; }
     document.documentElement.classList.add('is-loading');
     let ended = false;
     const done = () => {

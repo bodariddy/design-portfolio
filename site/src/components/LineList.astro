@@ -8,7 +8,7 @@ interface Props { id: string; label: string; items: Item[]; cols?: 2 | 3; class?
 const { id, label, items, cols = 2, class: cls = '' } = Astro.props;
 ---
 <section class:list={['ll wrap', cls]} aria-labelledby={id} style={`--cols:${cols}`}>
-  <p class="mono muted">{label}</p>
+  <p class="label">{label}</p>
   <h2 id={id}><slot /></h2>
   <ol class="vals" role="list">
     {items.map((b, i) => (
@@ -33,7 +33,7 @@ const { id, label, items, cols = 2, class: cls = '' } = Astro.props;
 </script>
 
 <style>
-  .ll { padding-block: clamp(56px, 8vw, 110px); border-top: 1.5px solid var(--line); }
+  .ll { padding-block: var(--section) 0; }
   .ll h2 { font-size: clamp(40px, 5.4vw, 80px); letter-spacing: -.055em; line-height: .95; margin: 12px 0 0; font-weight: 800; }
   .ll h2 :global(.serif) { font-weight: 400; color: var(--accent-text); }
   .vals { list-style: none; margin: clamp(40px, 5vw, 72px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(var(--cols), minmax(0, 1fr)); gap: clamp(56px, 7vw, 96px) clamp(32px, 5vw, 80px); }

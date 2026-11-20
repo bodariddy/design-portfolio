@@ -30,7 +30,7 @@ const covers: Record<string, Cover> = {
 ---
 <section id="work" class="work" aria-labelledby="work-title">
   <div class="wrap work-head">
-    <h2 id="work-title">Selected <span class="serif">work</span></h2>
+    <h2 id="work-title">Selected work</h2>
     <p class="mono muted">{String(projects.length).padStart(2, '0')} featured · 2019 — now</p>
   </div>
 
@@ -83,7 +83,7 @@ const covers: Record<string, Cover> = {
   </div>
 
   <div class="wrap others" aria-labelledby="others-title">
-    <h3 id="others-title" class="mono muted">Other projects</h3>
+    <h3 id="others-title" class="label">Other projects</h3>
     <ul role="list">
       {others.map(o => (
         <li style={`--world: var(${o.colour})`}>
@@ -115,7 +115,7 @@ const covers: Record<string, Cover> = {
 </script>
 
 <style>
-  .work { padding-block: clamp(56px, 7vw, 104px) 0; position: relative; }
+  .work { padding-block: clamp(64px, 9vw, 128px) 0; position: relative; }
   .work-head { display: flex; justify-content: space-between; align-items: end; gap: 16px; margin-bottom: clamp(24px, 3vw, 40px); flex-wrap: wrap; }
   .work-head .mono { margin: 0 0 .6em; }
   .work-head h2 { margin: 0; font-size: clamp(48px, 9vw, 136px); line-height: .88; letter-spacing: -.055em; font-weight: 800; }

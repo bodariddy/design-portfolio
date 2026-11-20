@@ -3,7 +3,7 @@ import { site, updated } from '../data/site';
 ---
 <div class="end">
   <section class="contact wrap" id="contact">
-    <p class="mono muted">Next transaction</p>
+    <p class="label">Next transaction</p>
     <h2>Hiring a senior <span class="serif">product designer?</span></h2>
     <p class="sub">I’m looking for my next full-time role on a team building products people rely on.</p>
     <div class="ctas">
@@ -24,15 +24,15 @@ import { site, updated } from '../data/site';
 <script is:inline>
   (function () {
     const els = document.querySelectorAll('[data-lagos-clock]'); if (!els.length) return;
-    const f = new Intl.DateTimeFormat('en-GB', { hour: 'numeric', minute: '2-digit', second: '2-digit', hour12: true, timeZone: 'Africa/Lagos' });
+    const f = new Intl.DateTimeFormat('en-GB', { hour: 'numeric', minute: '2-digit', hour12: true, timeZone: 'Africa/Lagos' });
     const t = () => { const v = f.format(new Date()).replace(' ', '').toLowerCase(); els.forEach(e => e.textContent = v); };
-    t(); setInterval(t, 1000);
+    t(); setInterval(t, 15000);
   })();
 </script>
 
 <style>
-  .end { position: relative; overflow: hidden; isolation: isolate; border-top: 1.5px solid var(--line); }
-  .contact { position: relative; z-index: 1; padding-block: clamp(72px, 10vw, 140px) clamp(64px, 8vw, 112px); }
+  .end { position: relative; overflow: hidden; isolation: isolate; }
+  .contact { position: relative; z-index: 1; padding-block: var(--section) clamp(64px, 8vw, 112px); }
   h2 { font-size: clamp(44px, 7.5vw, 120px); line-height: .92; letter-spacing: -.055em; margin: 16px 0 0; font-weight: 800; max-width: 12ch; }
   .serif { font-weight: 400; color: var(--accent-text-2); }
   .sub { font-size: clamp(17px, 1.4vw, 20px); max-width: 46ch; color: var(--muted); margin: 26px 0 30px; }

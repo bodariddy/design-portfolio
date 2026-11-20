@@ -1,4 +1,5 @@
 @import '@fontsource-variable/bricolage-grotesque';
+@import '@fontsource-variable/instrument-sans';
 @import '@fontsource/instrument-serif/400.css';
 @import '@fontsource/instrument-serif/400-italic.css';
 @import '@fontsource-variable/jetbrains-mono';
@@ -30,8 +31,8 @@
   --w-stemuli: #2f5d8a; /* harmattan blue */
   --on-world: #fbf7ee;
   --hl: rgba(255,255,255,.6);
-  --accent-text: var(--w-roqqu);
-  --accent-text-2: var(--w-glover);
+  --accent-text: var(--text);
+  --accent-text-2: var(--text);
   --hl-solid: #ffffff;
   --grain-opacity: .05;
   /* Gold "plate" behind media (replaces Bill Guo's green bokeh with our coin gold) */
@@ -47,11 +48,13 @@
      tinted base, soft glow behind the device, pale top corner, deeper opposite corner. */
   --cv-base: #ece6dd; --cv-hi: #fbf8f3; --cv-lo: #cfc5b8; --cv-vig: rgba(60,45,25,.08);
   --cv-tint: 16%; --cv-glow: 42%; --cv-corner: 24%; --cv-deep: 34%;
-  --f-display: 'Bricolage Grotesque Variable', system-ui, sans-serif;
+  --f-display: 'Bricolage Grotesque Variable', system-ui, sans-serif;  /* headlines + project names */
+  --f-body: 'Instrument Sans Variable', system-ui, sans-serif;          /* body + UI */
   --f-serif: 'Instrument Serif', Georgia, serif;
   --f-mono: 'JetBrains Mono Variable', ui-monospace, monospace;
 
   --gutter: clamp(16px, 4vw, 48px);
+  --section: clamp(88px, 12vw, 168px); /* one generous rhythm between sections */
   --rail: 240px;
   --ease: cubic-bezier(.2, .7, .1, 1);
   color-scheme: light;
@@ -81,9 +84,9 @@
     --hl: rgba(255,255,255,.06);
   --pl-base: #221d16; --pl-a: #6b5020; --pl-b: #3a2e1a; --pl-hi: rgba(255,214,140,.05);
     --pl-base: #221d16; --pl-a: #6b5020; --pl-b: #3a2e1a; --pl-hi: rgba(255,214,140,.05);
-    --accent-text: #8f97ff;
+    --accent-text: var(--text);
     --cv-base: #1d1b19; --cv-hi: #2c2925; --cv-lo: #121110; --cv-vig: rgba(0,0,0,.28); --cv-tint: 22%; --cv-glow: 40%; --cv-corner: 20%; --cv-deep: 30%;
-    --accent-text-2: #ff7aa2;
+    --accent-text-2: var(--text);
     --hl-solid: #3a3632;
     --grain-opacity: .07;
     color-scheme: dark;
@@ -106,8 +109,8 @@
   --w-edubanc: #c8353b;
   --w-stemuli: #3a6fa3;
   --hl: rgba(255,255,255,.06);
-  --accent-text: #8f97ff;
-  --accent-text-2: #ff7aa2;
+  --accent-text: var(--text);
+  --accent-text-2: var(--text);
   --hl-solid: #3a3632;
   --grain-opacity: .07;
   color-scheme: dark;
@@ -120,8 +123,9 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: var(--f-display);
+  font-family: var(--f-body);
   font-size: 17px;
+  letter-spacing: -.005em;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   transition: background-color .4s var(--ease), color .4s var(--ease);
@@ -135,6 +139,7 @@ body::after {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 h1, h2, h3 { text-wrap: balance; }
+h1, h2 { font-family: var(--f-display); }
 p, li, dd { text-wrap: pretty; }
 .num, [data-count] { font-variant-numeric: tabular-nums; }
 
@@ -159,6 +164,8 @@ img { max-width: 100%; display: block; }
 .mono { font-family: var(--f-mono); font-size: 12px; letter-spacing: .04em; text-transform: uppercase; }
 .serif { font-family: var(--f-serif); font-weight: 400; font-style: italic; letter-spacing: 0; }
 .muted { color: var(--muted); }
+/* Section labels: quiet sentence-case sans (mono is kept for data: dates, numbers, tags) */
+.label { font-family: var(--f-body); font-size: 14px; font-weight: 500; letter-spacing: 0; text-transform: none; color: var(--muted); }
 .wrap { padding-inline: var(--gutter); max-width: 1440px; margin-inline: auto; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
